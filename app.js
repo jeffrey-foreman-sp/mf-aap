@@ -1,18 +1,17 @@
+Ext.Loader.setConfig({
+	enabled: true, // Allows dynamc loading of JavaSCript files
+	disableCaching: false // Disable random parameter in the URLs path
+});
+
 Ext.application({
-    name: 'Aap',
-
-    appFolder: 'app',
-
-    launch: function() {
-        Ext.create('Ext.container.Viewport', {
-            layout: 'fit',
-            items: [
-                {
-                    xtype: 'panel',
-                    title: 'Users',
-                    html : 'List of users will go here'
-                }
-            ]
-        });
-    }
+	name: 'HR',
+	stores: ['Companies'],
+	launch: function(){
+		var store = this.getCompaniesStore();
+		store.each(function(company){
+			console.log('Company:' + company.get('name'));
+		});
+		
+	},
+	autoCreateViewport: true
 });
