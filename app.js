@@ -4,7 +4,7 @@ Ext.Loader.setConfig({
 });
 
 Ext.application({
-	name: 'HR',
+	name: 'Aap',/*
 	stores: ['Companies'],
 	launch: function(){
 		var store = this.getCompaniesStore();
@@ -12,6 +12,6 @@ Ext.application({
 			console.log('Company:' + company.get('name'));
 		});
 		
-	},
+	},*/
 	autoCreateViewport: true
 });

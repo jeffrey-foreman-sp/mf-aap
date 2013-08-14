@@ -1,4 +1,4 @@
-Ext.define('HR.view.Viewport', {
+Ext.define('Aap.view.Viewport', {
 	extend: 'Ext.container.Viewport',
 //	requires: ['HR.view.company.List'],
 	
