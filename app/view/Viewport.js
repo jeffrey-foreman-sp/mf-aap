@@ -1,7 +1,6 @@
 Ext.define('Aap.view.Viewport', {
 	extend: 'Ext.container.Viewport',
-	requires: ['Aap.view.MainHeader', 'Aap.view.mainbody.Allgemein'],
-	
+	requires: ['Aap.view.MainHeader', 'Aap.view.MainBody'],
 	layout: {
 		type:  'vbox',
 		align: 'center',
@@ -13,21 +12,21 @@ Ext.define('Aap.view.Viewport', {
 			xtype: 'panel',
 			height: 800,
 			width: 1200,
-			style: 'margin-top: auto; margin-bottom: auto;',	
+			style: 'margin-top: auto; margin-bottom: auto;',
+			border: 0,
 			layout: {
+				type: 'vbox',
 				align: 'stretch'
 			},
 			items: [
 				{
 					xtype: 'mainheader',
+					margin: 5,
 					height: 60
 				},{
 					xtype: 'mainbody',
-					height: 740,	
-					layout: {
-						type: 'hbox',
-						align: 'stretch'
-					}
+					border: 0,
+					flex: 1//,
 				}
 			]
 		}
