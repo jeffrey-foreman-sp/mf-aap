@@ -1,6 +1,6 @@
 Ext.define('Aap.view.Viewport', {
 	extend: 'Ext.container.Viewport',
-//	requires: ['HR.view.company.List'],
+	requires: ['Aap.view.MainHeader', 'Aap.view.mainbody.Allgemein'],
 	
 	layout: {
 		type:  'vbox',
@@ -19,52 +19,15 @@ Ext.define('Aap.view.Viewport', {
 			},
 			items: [
 				{
-					xtype: 'panel',
+					xtype: 'mainheader',
 					height: 60
 				},{
-					xtype: 'panel',
+					xtype: 'mainbody',
 					height: 740,	
 					layout: {
 						type: 'hbox',
 						align: 'stretch'
-					},
-					items: [
-						{
-							xtype: 'panel',
-							title: 'Geodatenbestand',
-							flex: 1
-						},{
-							xtype: 'panel',
-							title: 'Metadaten Allgemein',
-							flex: 1,
-							items: [
-								{
-									xtype: 'panel',
-									title: 'Allgemein',
-									flex: 1
-								}
-							]
-						},{
-							xtype: 'panel',
-							title: 'Metadaten AAP',
-							flex: 2, 
-							layout: {
-								type: 'hbox',
-								align: 'stretch'
-							},
-							items: [
-								{
-									xtype: 'panel',
-									title: 'Bewertung Nachhaltige Verfügbarkeit',
-									flex: 1
-								},{
-									xtype: 'panel',
-									title: 'Bewertung Archivwürdigkeit',
-									flex: 1
-								}	
-							]	
-						}
-					]
+					}
 				}
 			]
 		}
