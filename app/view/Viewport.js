@@ -1,5 +1,6 @@
 Ext.define('HR.view.Viewport', {
 	extend: 'Ext.container.Viewport',
+	requires: ['HR.view.company.List'],
 	layout: {
 		type:  'vbox',
 		align: 'stretch'
@@ -18,7 +19,7 @@ Ext.define('HR.view.Viewport', {
 				}
 			]
 		},
-		{	xtype: 'panel',
+		{	xtype: 'companylist',
 			title: 'Company List',
 			flex: 1
 		},
