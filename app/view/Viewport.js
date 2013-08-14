@@ -26,7 +26,7 @@ Ext.define('Aap.view.Viewport', {
 				},{
 					xtype: 'mainbody',
 					border: 0,
-					flex: 1//,
+					flex: 1
 				}
 			]
 		}
