@@ -1,6 +1,6 @@
 Ext.define('Aap.view.mainbody.Geodatenstand', {
 	extend: 'Ext.panel.Panel',
-//	requires: ['Aap.view.MainHeader', 'Aap.view.MainBody'],
+	requires: ['Aap.view.mainbody.geodatenstand.Tree'],
 	xtype: 'geodatenstand',
 	layout: {
 		type:  'vbox',
@@ -8,13 +8,17 @@ Ext.define('Aap.view.mainbody.Geodatenstand', {
 	},
 	items:[
 		{
-			xtype: 'panel',
+			xtype: 'tree',
 			flex: 1,
 			border: 0
 		},{
 			xtype: 'panel',
 			height: 60,
-			border: 0
+			border: 0/*,
+			style: {
+		    	'border-top-style': 'solid',
+		    	'border-top-width': 1
+			}*/	
 		}
 	]
 });
