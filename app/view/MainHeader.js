@@ -33,12 +33,12 @@ Ext.define('Aap.view.MainHeader',{
 				pack: 'end'
 			},
 			defaults: {
-				margin: '10 20 10 20'
+				margin: '0 20 0 0'
 			},
 			items: [
 				{
 					xtype: 'button',
-					text: 'Bearbeiten'
+					text: 'Bearbeiten abschliessen'
 				},{
 					xtype: 'button',
 					text: 'Anmelden'

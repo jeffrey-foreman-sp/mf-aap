@@ -1,7 +1,7 @@
 Ext.define('Aap.view.MainBody',{
 	extend: 'Ext.panel.Panel',
 	requires: [
-		'Aap.view.mainbody.Geodatenstand',
+		'Aap.view.mainbody.Tree',
 		'Aap.view.mainbody.Allgemein',
 		'Aap.view.mainbody.Verfuegbarkeit',
 		'Aap.view.mainbody.Archievwuerdigkeit'
@@ -14,7 +14,7 @@ Ext.define('Aap.view.MainBody',{
 	},
 	items: [
 		{
-			xtype: 'geodatenstand',
+			xtype: 'panel',
 			title: 'Geodatenbestand',
 			flex: 1,
 			padding: 5,
@@ -30,11 +30,31 @@ Ext.define('Aap.view.MainBody',{
 				},{
 					xtype: 'panel',
 					height: 60,
-					border: 0/*,
+					border: 0,
 					style: {
 				    	'border-top-style': 'solid',
 				    	'border-top-width': 1
-					}*/	
+					},
+					layout: {
+						type: 'hbox',
+						align: 'middle',
+						pack: 'center'
+					},
+					defaults: {
+							margin: '0 10 0 10'
+					},
+					items: [
+						{
+							xtype: 'button',
+							text: 'Erstellen'
+						},{
+								xtype: 'button',
+								text: 'Ändern'
+						},{
+							xtype: 'button',
+							text: 'Löschen'
+						}
+					]
 				}
 			]
 		},{
