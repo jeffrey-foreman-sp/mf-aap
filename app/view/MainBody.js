@@ -1,6 +1,9 @@
 Ext.define('Aap.view.MainBody',{
 	extend: 'Ext.panel.Panel',
-	requires: ['Aap.view.mainbody.Geodatenstand'],
+	requires: [
+		'Aap.view.mainbody.Geodatenstand'
+		, 'Aap.view.mainbody.Allgemein'
+	],
 	xtype: 'mainbody',
 	layout: {
 		type: 'hbox',
@@ -28,7 +31,7 @@ Ext.define('Aap.view.MainBody',{
 					title: 'Metadaten Allgemein',
 					height: 26
 				},{
-					xtype: 'panel',
+					xtype: 'allgemein',
 					title: 'Allgemein',
 					margin: '5 0 0 0',
 					flex: 1
