@@ -1,8 +1,9 @@
 Ext.define('Aap.view.MainBody',{
 	extend: 'Ext.panel.Panel',
 	requires: [
-		'Aap.view.mainbody.Geodatenstand'
-		, 'Aap.view.mainbody.Allgemein'
+		'Aap.view.mainbody.Geodatenstand',
+		'Aap.view.mainbody.Allgemein',
+		'Aap.view.mainbody.Verfuegbarkeit'
 	],
 	xtype: 'mainbody',
 	layout: {
@@ -62,7 +63,7 @@ Ext.define('Aap.view.MainBody',{
 					},
 					items: [
 						{
-							xtype: 'panel',
+							xtype: 'verfuegbarkeit',
 							title: 'Bewertung Nachhaltige Verfügbarkeit',
 							flex: 1,
 							margin: '0 5 0 0'
