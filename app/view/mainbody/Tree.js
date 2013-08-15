@@ -1,4 +1,4 @@
-Ext.define('Aap.view.mainbody.geodatenstand.Tree' ,{
+Ext.define('Aap.view.mainbody.Tree' ,{
     extend: 'Ext.tree.Panel',
 	xtype: 'tree',
     width: 150,

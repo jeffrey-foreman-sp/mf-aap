@@ -1,6 +1,6 @@
 Ext.define('Aap.view.mainbody.Geodatenstand', {
 	extend: 'Ext.panel.Panel',
-	requires: ['Aap.view.mainbody.geodatenstand.Tree'],
+	requires: ['Aap.view.mainbody.Tree'],
 	xtype: 'geodatenstand',
 	layout: {
 		type:  'vbox',

@@ -17,7 +17,26 @@ Ext.define('Aap.view.MainBody',{
 			xtype: 'geodatenstand',
 			title: 'Geodatenbestand',
 			flex: 1,
-			padding: 5
+			padding: 5,
+			layout: {
+				type:  'vbox',
+				align: 'stretch',
+			},
+			items:[
+				{
+					xtype: 'tree',
+					flex: 1,
+					border: 0
+				},{
+					xtype: 'panel',
+					height: 60,
+					border: 0/*,
+					style: {
+				    	'border-top-style': 'solid',
+				    	'border-top-width': 1
+					}*/	
+				}
+			]
 		},{
 			xtype: 'panel',
 			flex: 1,
