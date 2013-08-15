@@ -3,7 +3,8 @@ Ext.define('Aap.view.MainBody',{
 	requires: [
 		'Aap.view.mainbody.Geodatenstand',
 		'Aap.view.mainbody.Allgemein',
-		'Aap.view.mainbody.Verfuegbarkeit'
+		'Aap.view.mainbody.Verfuegbarkeit',
+		'Aap.view.mainbody.Archievwuerdigkeit'
 	],
 	xtype: 'mainbody',
 	layout: {
@@ -68,7 +69,7 @@ Ext.define('Aap.view.MainBody',{
 							flex: 1,
 							margin: '0 5 0 0'
 						},{
-							xtype: 'panel',
+							xtype: 'archievwuerdigkeit',
 							title: 'Bewertung Archivwürdigkeit',
 							flex: 1,
 							margin: '0 0 0 5'
