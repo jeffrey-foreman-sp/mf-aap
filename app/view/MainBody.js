@@ -1,5 +1,6 @@
 Ext.define('Aap.view.MainBody',{
 	extend: 'Ext.panel.Panel',
+	requires: ['Aap.view.mainbody.Geodatenstand'],
 	xtype: 'mainbody',
 	layout: {
 		type: 'hbox',
@@ -8,7 +9,7 @@ Ext.define('Aap.view.MainBody',{
 	},
 	items: [
 		{
-			xtype: 'panel',
+			xtype: 'geodatenstand',
 			title: 'Geodatenbestand',
 			flex: 1,
 			padding: 5
