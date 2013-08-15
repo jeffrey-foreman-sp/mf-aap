@@ -14,11 +14,11 @@ Ext.define('Aap.view.mainbody.Geodatenstand', {
 		},{
 			xtype: 'panel',
 			height: 60,
-			border: 0/*,
+			border: 0,
 			style: {
 		    	'border-top-style': 'solid',
 		    	'border-top-width': 1
-			}*/	
+			}	
 		}
 	]
 });
