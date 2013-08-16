@@ -24,7 +24,7 @@ Ext.define('Aap.view.MainBody',{
 			},
 			items:[
 				{
-					xtype: 'tree',
+					xtype: 'mainbodytree',
 					flex: 1,
 					border: 0
 				},{

@@ -1,6 +1,6 @@
 Ext.Loader.setConfig({
-	enabled: true//, // Allows dynamc loading of JavaSCript files
-	//disableCaching: false // Disable random parameter in the URLs path
+	enabled: true, // Allows dynamc loading of JavaSCript files
+	disableCaching: false // Disable random parameter in the URLs path
 });
 
 Ext.application({
