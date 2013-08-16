@@ -4,7 +4,11 @@ Ext.Loader.setConfig({
 });
 
 Ext.application({
-	name: 'Aap',/*
+	name: 'Aap',
+	controllers: [
+		'Tree'
+	],
+/*
 	stores: ['Companies'],
 	launch: function(){
 		var store = this.getCompaniesStore();
