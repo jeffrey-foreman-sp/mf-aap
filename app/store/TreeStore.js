@@ -13,10 +13,11 @@ Ext.define('Aap.store.TreeStore', {
             successProperty: 'success'
 		}
 	},
-    root: {
+    root: true
+
+	/*root: {
         text: 'Tree',
-        id: 'src',
-        expanded: true
-    }
+		expanded: true
+    }*/
 
 });

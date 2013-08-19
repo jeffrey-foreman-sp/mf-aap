@@ -15,7 +15,6 @@ Ext.define('Aap.view.MainBody',{
 	items: [
 		{
 			xtype: 'panel',
-			title: 'Geodatenbestand',
 			flex: 1,
 			padding: 5,
 			layout: {
@@ -26,6 +25,7 @@ Ext.define('Aap.view.MainBody',{
 				{
 					xtype: 'mainbodytree',
 					flex: 1,
+					rootVisible: false,
 					border: 0
 				},{
 					xtype: 'panel',
