@@ -1,10 +1,20 @@
 {
     "success": true,
     "children": [
-        { "id": 1, "name": "Phil", "leaf": true },
-        { "id": 2, "name": "Nico", "expanded": true, "children": [
-            { "id": 3, "name": "Mitchell", "leaf": true }
+        { "id": 1, "name": "swisstopo", "expanded": false, "children": [
+            { "id": 2, "name": "Geodatische Grundlagen", "children": [
+            	{ "id": 3, "name": "Beispiel Datensatz", "leaf": true }
+			]},
+        	{ "id": 4, "name": "Bilddaten", "loaded": true},
+        	{ "id": 8, "name": "Topographische Daten", "loaded": true},
+        	{ "id": 9, "name": "Höhendaten", "loaded": true},
+        	{ "id": 10, "name": "Kartenewerke", "loaded": true},
+        	{ "id": 11, "name": "Freizeitkarten", "loaded": true},
+        	{ "id": 12, "name": "Militärische Karten", "loaded": true},
+        	{ "id": 13, "name": "Übersichtskarten", "loaded": true}
         ]},
-        { "id": 4, "name": "Sue", "loaded": true }
+        { "id": 5, "name": "BAFU", "loaded": true },
+        { "id": 6, "name": "BFE", "loaded": true },
+        { "id": 7, "name": "BFS", "loaded": true }
     ]
 }
