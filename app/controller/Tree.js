@@ -6,7 +6,7 @@ Ext.define('Aap.controller.Tree', {
 	],
 	
 	stores: ['TreeStore'],
-	models: ['TreeModel'],
+	models: ['TreeNode'],
 
 
 /*	
