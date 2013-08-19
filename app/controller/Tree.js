@@ -7,7 +7,9 @@ Ext.define('Aap.controller.Tree', {
 	
 	stores: ['TreeStore'],
 	models: ['TreeModel'],
-	
+
+
+/*	
     init: function() {
         this.control({
             'viewport > panel': {
@@ -20,4 +22,6 @@ Ext.define('Aap.controller.Tree', {
         console.log('The panel was rendered');
         
     }
+*/
+
 });
