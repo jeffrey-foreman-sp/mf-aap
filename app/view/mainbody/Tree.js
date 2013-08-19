@@ -3,7 +3,7 @@ Ext.define('Aap.view.mainbody.Tree' ,{
     extend: 'Ext.tree.Panel',
 	alias: 'widget.mainbodytree',
    	title: 'Daten',
-//	store: 'treestore',	
+	store: 'TreeStore',
 
 	columns: [
 		{ 

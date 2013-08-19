@@ -18,5 +18,6 @@ Ext.define('Aap.controller.Tree', {
 
     onPanelRendered: function() {
         console.log('The panel was rendered');
+        
     }
 });
