@@ -18,7 +18,7 @@ Ext.define('Aap.view.mainbody.Allgemein',{
 			name: 'fachstelledesbundes'
 		},{		
 			fieldLabel: 'Zugangsberechtigungsstufe',
-			name: 'zugangberechtigungsstuffe'
+			name: 'zugangberechtigungsstufe'
 		},{		
 			fieldLabel: 'eCH-Kategorie',
 			name: 'echkategorie'
