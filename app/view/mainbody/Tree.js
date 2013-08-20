@@ -1,7 +1,7 @@
 Ext.define('Aap.view.mainbody.Tree' ,{
 
     extend: 'Ext.tree.Panel',
-	alias: 'widget.mainbodytree',
+	alias: 'widget.tree',
 	store: 'TreeStore',
 	
 	

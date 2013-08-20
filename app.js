@@ -6,7 +6,7 @@ Ext.Loader.setConfig({
 Ext.application({
 	name: 'Aap',
 	controllers: [
-		'Tree'
+		'tree.AddNode'
 	],
 /*
 	stores: ['Companies'],

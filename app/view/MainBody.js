@@ -23,7 +23,7 @@ Ext.define('Aap.view.MainBody',{
 			},
 			items:[
 				{
-					xtype: 'mainbodytree',
+					xtype: 'tree',
 					flex: 1,
 					rootVisible: false,
 					border: 0
@@ -46,6 +46,7 @@ Ext.define('Aap.view.MainBody',{
 					items: [
 						{
 							xtype: 'button',
+							action: 'create',
 							text: 'Erstellen'
 						},{
 								xtype: 'button',
