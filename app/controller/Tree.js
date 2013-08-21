@@ -31,29 +31,35 @@ Ext.define('Aap.controller.Tree', {
 		var store = Ext.getStore('TreeStore');
        	var treeelement = Ext.getCmp('treestructure');
 		var selection = treeelement.getSelectionModel().getSelection()[0]; //not very pretty
-
+		
+		
         var win = button.up('window'),
             form = win.down('form'),
             values = form.getValues();
 		
 		var newNode = Ext.create("Aap.model.TreeNode", {
 			name: values.name, 
-			leaf: true
+			leaf: false
 		});
 		
         if (form.getForm().isValid()) {
 			var selected = Aap.util.SelectedNode.isSelectedNode();		
 			if (selected == true ) {
-        	   	var nodeid = Aap.util.SelectedNode.getIdFromSelectedNode();				
-				var selectednode = store.getNodeById(nodeid); 
+ 
+	
+       	   	var nodeid = Aap.util.SelectedNode.getIdFromSelectedNode();
+			var selectednode = store.getNodeById(nodeid); 
 				selectednode.appendChild(newNode);
 				selectednode.expand();
+				console.log(selectednode);
         	}
 			else { 
 				store.getRootNode().appendChild(newNode);
 			}
         	 win.close();
 		}
+
+
 	}
 
 });

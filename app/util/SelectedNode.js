@@ -4,7 +4,7 @@ Ext.define('Aap.util.SelectedNode', {
         	var treeelement = Ext.getCmp('treestructure');
 			var selectionmodel = treeelement.getSelectionModel();
 			var selection = selectionmodel.getSelection()[0];
-			var nodeid = selection.getId();	
+			var nodeid = selection.internalId;	
 			return nodeid;
         },
 		isSelectedNode: function() {
