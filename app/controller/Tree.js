@@ -7,33 +7,53 @@ Ext.define('Aap.controller.Tree', {
 	requires: ['Aap.util.SelectedNode'],
 	stores: ['TreeStore'],
 	models: ['TreeNode'],
-//	views: [
-//		'mainbody.Tree'
-//	],
+	views: [
+		'mainbody.AddNode'
+	],
 	
 	init: function() {
 		this.control({
 			'mainbody button[action=create]': {
-				click: this.addNode
+				click: this.onAddNode
+			},
+			'addnode button[action=save]': {
+				click: this.doAddNode
 			}
 		});
 	}, 
 
-	addNode: function() {
+	onAddNode: function() {
+		var view = Ext.widget('addnode');
+	},
 
-	//var newNode = Ext.create("Aap.model.TreeNode", {name: "TestOffice"});
-		
-		var nodeid = Aap.util.SelectedNode.getIdFromSelectedNode();				
+	doAddNode: function(button){
+
 		var store = Ext.getStore('TreeStore');
-	
-		var selectednode = store.getNodeById(nodeid); 
-		selectednode.appendChild({
-			name: 'newNode',
+       	var treeelement = Ext.getCmp('treestructure');
+		var selection = treeelement.getSelectionModel().getSelection()[0]; //not very pretty
+
+        var win = button.up('window'),
+            form = win.down('form'),
+            values = form.getValues();
+		
+		var newNode = Ext.create("Aap.model.TreeNode", {
+			name: values.name, 
 			leaf: true
 		});
-		selectednode.expand();
-
-
+		
+        if (form.getForm().isValid()) {
+			var selected = Aap.util.SelectedNode.isSelectedNode();		
+			if (selected == true ) {
+        	   	var nodeid = Aap.util.SelectedNode.getIdFromSelectedNode();				
+				var selectednode = store.getNodeById(nodeid); 
+				selectednode.appendChild(newNode);
+				selectednode.expand();
+        	}
+			else { 
+				store.getRootNode().appendChild(newNode);
+			}
+        	 win.close();
+		}
 	}
 
 });
