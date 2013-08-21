@@ -8,7 +8,8 @@ Ext.define('Aap.controller.Tree', {
 	stores: ['TreeStore'],
 	models: ['TreeNode'],
 	views: [
-		'mainbody.AddNode'
+		'modals.AddNode',
+		'modals.RemoveNode'
 	],
 	
 	init: function() {
@@ -18,7 +19,13 @@ Ext.define('Aap.controller.Tree', {
 			},
 			'addnode button[action=save]': {
 				click: this.doAddNode
-			}
+			},
+			'mainbody button[action=remove]': {
+				click: this.onRemoveNode
+			},
+			'removenode button[action=confirm]': {
+				click: this.doRemoveNode
+			},
 		});
 	}, 
 
@@ -27,11 +34,9 @@ Ext.define('Aap.controller.Tree', {
 	},
 
 	doAddNode: function(button){
-
 		var store = Ext.getStore('TreeStore');
        	var treeelement = Ext.getCmp('treestructure');
 		var selection = treeelement.getSelectionModel().getSelection()[0]; //not very pretty
-		
 		
         var win = button.up('window'),
             form = win.down('form'),
@@ -45,21 +50,33 @@ Ext.define('Aap.controller.Tree', {
         if (form.getForm().isValid()) {
 			var selected = Aap.util.SelectedNode.isSelectedNode();		
 			if (selected == true ) {
- 
 	
        	   	var nodeid = Aap.util.SelectedNode.getIdFromSelectedNode();
 			var selectednode = store.getNodeById(nodeid); 
 				selectednode.appendChild(newNode);
 				selectednode.expand();
-				console.log(selectednode);
         	}
-			else { 
+		else { 
 				store.getRootNode().appendChild(newNode);
 			}
         	 win.close();
 		}
+	},
 
+	onRemoveNode: function() {
+		var selected = Aap.util.SelectedNode.isSelectedNode();		
+		if (selected == true ) {
+			var view = Ext.widget('removenode');
+		}
+	},
 
+	doRemoveNode: function() {
+		console.log('remove it');
+		var store = Ext.getStore('TreeStore');
+       	var nodeid = Aap.util.SelectedNode.getIdFromSelectedNode();
+		var selectednode = store.getNodeById(nodeid); 
+		selectednode.remove();
+       	.close();
 	}
 
 });

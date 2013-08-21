@@ -50,10 +50,11 @@ Ext.define('Aap.view.MainBody',{
 							action: 'create',
 							text: 'Erstellen'
 						},{
-								xtype: 'button',
-								text: 'Ändern'
+							xtype: 'button',
+							text: 'Ändern'
 						},{
 							xtype: 'button',
+							action: 'remove',
 							text: 'Löschen'
 						}
 					]

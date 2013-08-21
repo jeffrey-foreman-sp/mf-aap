@@ -1,6 +1,4 @@
-
-
-Ext.define('Aap.view.mainbody.AddNode', {
+Ext.define('Aap.view.modals.AddNode', {
     extend: 'Ext.window.Window',
     alias: 'widget.addnode',
     title: 'Neuer Knoten',
