@@ -13,7 +13,7 @@ Ext.define('Aap.view.modals.RemoveNode', {
         ];
         this.buttons = [
             {
-                text: 'Besätigen',
+                text: 'Daten Löschen',
                 action: 'confirm'
 			},
 			{
