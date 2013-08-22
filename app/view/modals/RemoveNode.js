@@ -3,6 +3,7 @@ Ext.define('Aap.view.modals.RemoveNode', {
     alias: 'widget.removenode',
     layout: 'fit',
     autoShow: true,
+	modal: true,
     initComponent: function () {
         this.items = [
             {

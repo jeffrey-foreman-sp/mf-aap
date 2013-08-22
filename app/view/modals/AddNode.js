@@ -4,6 +4,7 @@ Ext.define('Aap.view.modals.AddNode', {
     title: 'Neuer Knoten',
     layout: 'fit',
     autoShow: true,
+	modal: true,
     initComponent: function () {
         this.items = [
             {
