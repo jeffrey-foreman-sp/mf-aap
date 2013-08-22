@@ -11,7 +11,8 @@ Ext.define('Aap.view.modals.DataEdit', {
     autoShow: true,
 	modal: true,
 	resizable: false,
-    initComponent: function () {
+	initComponent: function () {
+ 		this.caller =  '',
         this.items = [
             {
 				xtype: 'panel',

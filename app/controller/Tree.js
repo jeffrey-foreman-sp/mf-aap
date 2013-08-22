@@ -18,13 +18,13 @@ Ext.define('Aap.controller.Tree', {
 			'mainbody button[action=create]': {
 				click: this.onAddNode
 			},
-			'addnode button[action=save]': {
+			'dataedit[caller=oan] button[action=save]': {
 				click: this.doAddNode
 			},
 			'mainbody button[action=edit]': {
 				click: this.onEditData
 			},
-			'dataedit button[action=save]': {
+			'dataedit[caller=oed] button[action=save]': {
 				click: this.doEditData
 			},
 			'mainbody button[action=remove]': {
@@ -37,7 +37,8 @@ Ext.define('Aap.controller.Tree', {
 	}, 
 
 	onAddNode: function() {
-		var view = Ext.widget('addnode');
+		var view = Ext.widget('dataedit');
+		view.caller = 'oan';
 	},
 
 	doAddNode: function(button){
@@ -77,6 +78,7 @@ Ext.define('Aap.controller.Tree', {
 		var selected = Aap.util.SelectedNode.isSelectedNode();		
 		if (selected == true ) {
 			var view = Ext.widget('dataedit');
+			view.caller = 'oed';
 		}
 	},
 
@@ -94,6 +96,7 @@ Ext.define('Aap.controller.Tree', {
 	},
 
 	doRemoveNode: function(button) {
+		console.log('remove node');
 		var store = Ext.getStore('TreeStore');
        	var nodeid = Aap.util.SelectedNode.getIdFromSelectedNode();
 		var selectednode = store.getNodeById(nodeid); 
