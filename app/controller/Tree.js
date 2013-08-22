@@ -21,18 +21,18 @@ Ext.define('Aap.controller.Tree', {
 			'addnode button[action=save]': {
 				click: this.doAddNode
 			},
+			'mainbody button[action=edit]': {
+				click: this.onEditData
+			},
+			'dataedit button[action=save]': {
+				click: this.doEditData
+			},
 			'mainbody button[action=remove]': {
 				click: this.onRemoveNode
 			},
 			'removenode button[action=confirm]': {
 				click: this.doRemoveNode
-			},
-			'mainbody button[action=edit]': {
-				click: this.onEditData
-			}/*,
-			'removenode button[action=confirm]': {
-				click: this.doRemoveNode
-			}*/
+			}
 		});
 	}, 
 
@@ -41,20 +41,22 @@ Ext.define('Aap.controller.Tree', {
 	},
 
 	doAddNode: function(button){
+		console.log('node add');
 		var store = Ext.getStore('TreeStore');
        	var treeelement = Ext.getCmp('treestructure');
 		var selection = treeelement.getSelectionModel().getSelection()[0]; //not very pretty
 		
-        var win = button.up('window'),
+        var win = button.up('window')/*,
             form = win.down('form'),
             values = form.getValues();
 		
-		var newNode = Ext.create("Aap.model.TreeNode", {
-			name: values.name, 
+*/		var newNode = Ext.create("Aap.model.TreeNode", {
+//		name: values.name, 
+		name: "name", 
 			leaf: false
 		});
 		
-        if (form.getForm().isValid()) {
+   /*     if (form.getForm().isValid()) {*/
 			var selected = Aap.util.SelectedNode.isSelectedNode();		
 			if (selected == true ) {
 	
@@ -66,8 +68,22 @@ Ext.define('Aap.controller.Tree', {
 		else { 
 				store.getRootNode().appendChild(newNode);
 			}
-        	 win.close();
+    	win.close();/*
+		}*/
+		
+	},
+
+	onEditData: function() {
+		var selected = Aap.util.SelectedNode.isSelectedNode();		
+		if (selected == true ) {
+			var view = Ext.widget('dataedit');
 		}
+	},
+
+	doEditData: function(button){
+		console.log('data edit');
+		var win = button.up('window');
+		win.close();	
 	},
 
 	onRemoveNode: function() {
@@ -84,14 +100,6 @@ Ext.define('Aap.controller.Tree', {
 		selectednode.remove();
         var win = button.up('window');
        	win.close();
-	},
-
-	onEditData: function() {
-		var selected = Aap.util.SelectedNode.isSelectedNode();		
-		if (selected == true ) {
-			var view = Ext.widget('dataedit');
-		}
 	}
-
 });
 
