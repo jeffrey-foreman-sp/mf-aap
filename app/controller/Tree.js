@@ -10,7 +10,7 @@ Ext.define('Aap.controller.Tree', {
 	views: [
 		'modals.AddNode',
 		'modals.RemoveNode',
-		'modals.DataEntry'
+		'modals.DataEdit'
 	],
 	
 	init: function() {
@@ -89,7 +89,7 @@ Ext.define('Aap.controller.Tree', {
 	onEditData: function() {
 		var selected = Aap.util.SelectedNode.isSelectedNode();		
 		if (selected == true ) {
-			var view = Ext.widget('dataentry');
+			var view = Ext.widget('dataedit');
 		}
 	}
 

@@ -1,11 +1,11 @@
-Ext.define('Aap.view.modals.DataEntry', {
+Ext.define('Aap.view.modals.DataEdit', {
     extend: 'Ext.window.Window',
 	requires: [
 		'Aap.view.modals.dataentry.Allgemein',
 		'Aap.view.modals.dataentry.Verfuegbarkeit',	
 		'Aap.view.modals.dataentry.Archivwuerdigkeit'		
 	],
-    alias: 'widget.dataentry',
+    alias: 'widget.dataedit',
 //  title: 'Neuer Knoten',
 //    layout: 'fit',
     autoShow: true,
