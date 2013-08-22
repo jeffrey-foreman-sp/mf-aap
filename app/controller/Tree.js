@@ -70,13 +70,13 @@ Ext.define('Aap.controller.Tree', {
 		}
 	},
 
-	doRemoveNode: function() {
-		console.log('remove it');
+	doRemoveNode: function(button) {
 		var store = Ext.getStore('TreeStore');
        	var nodeid = Aap.util.SelectedNode.getIdFromSelectedNode();
 		var selectednode = store.getNodeById(nodeid); 
 		selectednode.remove();
-       	.close();
+        var win = button.up('window');
+       	win.close();
 	}
 
 });
