@@ -10,7 +10,7 @@ Ext.define('Aap.view.Viewport', {
 	items:[
 		{
 			xtype: 'panel',
-			height: 800,
+			height: 650,
 			width: 1200,
 			style: 'margin-top: auto; margin-bottom: auto;',
 			border: 0,
