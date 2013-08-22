@@ -9,7 +9,8 @@ Ext.define('Aap.controller.Tree', {
 	models: ['TreeNode'],
 	views: [
 		'modals.AddNode',
-		'modals.RemoveNode'
+		'modals.RemoveNode',
+		'modals.DataEntry'
 	],
 	
 	init: function() {
@@ -26,6 +27,12 @@ Ext.define('Aap.controller.Tree', {
 			'removenode button[action=confirm]': {
 				click: this.doRemoveNode
 			},
+			'mainbody button[action=edit]': {
+				click: this.onEditData
+			}/*,
+			'removenode button[action=confirm]': {
+				click: this.doRemoveNode
+			}*/
 		});
 	}, 
 
@@ -77,6 +84,13 @@ Ext.define('Aap.controller.Tree', {
 		selectednode.remove();
         var win = button.up('window');
        	win.close();
+	},
+
+	onEditData: function() {
+		var selected = Aap.util.SelectedNode.isSelectedNode();		
+		if (selected == true ) {
+			var view = Ext.widget('dataentry');
+		}
 	}
 
 });
