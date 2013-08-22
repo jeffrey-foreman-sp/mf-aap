@@ -1,14 +1,45 @@
 Ext.define('Aap.view.modals.DataEntry', {
     extend: 'Ext.window.Window',
+	requires: [
+		'Aap.view.modals.dataentry.Allgemein',
+		'Aap.view.modals.dataentry.Verfuegbarkeit',	
+		'Aap.view.modals.dataentry.Archivwuerdigkeit'		
+	],
     alias: 'widget.dataentry',
 //  title: 'Neuer Knoten',
 //    layout: 'fit',
     autoShow: true,
 	modal: true,
+	resizable: false,
     initComponent: function () {
         this.items = [
             {
-                xtype: 'form',
+				xtype: 'panel',
+				title: 'Metadaten Bearbeiten',
+				layout: {
+					type: 'hbox',
+					align: 'stretch'
+					//bodyPadding: 15,				
+				},
+				defaults: {
+					margin: 10
+				},		
+				items: [
+					{
+						xtype: 'dataentryallgemein',
+						title: 'Allgemein'
+					},
+					{
+						xtype: 'dataentryverfuegbarkeit',
+						title: 'Bewertung Nachhaltige Verfügbarkeit'
+					},
+					{
+						xtype: 'dataentryarchivwuerdigkeit',
+						title: 'Bewertung Archievwürdigkeit'
+					}
+				]
+
+/*                xtype: 'form',
                 bodyStyle: {
                     background: 'none',
                     padding: '10px',
@@ -22,7 +53,7 @@ Ext.define('Aap.view.modals.DataEntry', {
                         fieldLabel: 'Name'
                     }
                 ]
-            }
+  */          }
         ];
         this.buttons = [
             {
