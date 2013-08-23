@@ -24,22 +24,22 @@ Ext.define('Aap.controller.Allgemein', {
         console.log('The allgemeinview panel was rendered');
 		var av = Ext.getCmp('allgemeinview');
 		var form = av.getForm();
-		var values = form.getValues();
 		
        	
 
 		var nodeid = Aap.util.SelectedNode.getIdFromSelectedNode();
+		console.log(nodeid);
 		var selectednode = Ext.getStore('TreeStore').getNodeById(nodeid); 
 		console.log(selectednode);
 		
 
-		var dta =  Ext.getStore('Allgemein').findRecord('name', 'swisstopo').data;
+		var dta =  Ext.getStore('Allgemein').findRecord('treenode_id', nodeid).data;
 		console.log(dta);
 
 
 		vs = form.setValues(dta);
 		
-		var values = form.getValues();
+//		var values = form.getValues();
 //		console.log(values);
 
     }
