@@ -7,40 +7,40 @@ Ext.define('Aap.view.modals.dataentry.Allgemein',{
 	items: [
 		{		
 			fieldLabel: 'Titel',
-			titel: 'name'
+			name: 'name'
 		},{		
 			fieldLabel: 'Identifikator (Sammlung)',
-			name: 'identifikator'
+			name: 'ident'
 		},{		
 			fieldLabel: 'Georeferenzdaten',
-			name: 'georeferenzdaten'
+			name: 'georefdat'
 		},{		
 			fieldLabel: 'Fachhstelle des Bundes',
-			name: 'fachstelledesbundes'
+			name: 'fachst'
 		},{		
 			fieldLabel: 'Zugangsberechtigungsstufe',
-			name: 'zugangberechtigungsstufe'
+			name: 'zugberech'
 		},{		
 			fieldLabel: 'eCH-Kategorie',
-			name: 'echkategorie'
+			name: 'echkateg'
 		},{		
 			fieldLabel: 'Nachführungszeitraum',
-			name: 'nachfuerungszeitraum'
+			name: 'nachfzeitr'
 		},{		
 			fieldLabel: 'Datenmenge (in GB)',
-			name: 'datenmengeingb'
+			name: 'datenmenge'
 		},{		
 			fieldLabel: 'im Jahr',
-			name: 'imjahr'
+			name: 'imjr'
 		},{		
 			fieldLabel: 'Datenzuwachs jährl. (in GB)',
-			name: 'datenzuwachsjaehrlich'
+			name: 'datenzuw'
 		},{		
 			xtype: 'textareafield',
 			grow: true,
 			anchor: '100%',
 			fieldLabel: 'Bemerkungen',
-			name: 'bemerkungen'
+			name: 'bemerk'
 		}
 	]
 });
