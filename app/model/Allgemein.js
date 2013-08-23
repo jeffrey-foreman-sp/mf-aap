@@ -11,6 +11,9 @@ Ext.define('Aap.model.Allgemein', {
 		"datenmenge", 
 		"imjr", 
 		"datenzuw", 
-		"bemerk"
-   ]
+		"bemerk",
+		"treenode_id"
+	],
+	belongsTo: 'TreeNode'
+	
 });

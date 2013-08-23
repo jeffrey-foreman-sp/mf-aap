@@ -3,7 +3,7 @@
     "children": [
         { "name": "swisstopo", "expanded": false, "children": [
             { "name": "Geodatische Grundlagen", "children": [
-            	{ "id": 3, "name": "Beispiel Datensatz", "leaf": true }
+            	{ "name": "Beispiel Datensatz", "leaf": true }
 			]},
         	{ "name": "Bilddaten", "loaded": true},
         	{ "name": "Topographische Daten", "loaded": true},

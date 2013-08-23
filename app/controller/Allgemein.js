@@ -26,13 +26,21 @@ Ext.define('Aap.controller.Allgemein', {
 		var form = av.getForm();
 		var values = form.getValues();
 		
-		//load alway the swisstopo record
+       	
+
+		var nodeid = Aap.util.SelectedNode.getIdFromSelectedNode();
+		var selectednode = Ext.getStore('TreeStore').getNodeById(nodeid); 
+		console.log(selectednode);
+		
+
 		var dta =  Ext.getStore('Allgemein').findRecord('name', 'swisstopo').data;
+		console.log(dta);
+
 
 		vs = form.setValues(dta);
 		
 		var values = form.getValues();
-		console.log(values);
+//		console.log(values);
 
     }
 

@@ -13,21 +13,8 @@
 			"datenmenge":"swisstopodatenmende", 
 			"imjr":"swisstopoimjr", 
 			"datenzuw":"swisstopodatenzuw", 
-			"bemerk":"swisstopobemerk"
-		},
-		{ 
-			/*"nodeid":"1112faf",*/
-			"name":"bsp", 
-			"ident": "bspident", 
-			"georefdat":"bspgeorefdat",
-			"fachst":"bspfach", 
-			"zugberech":"bspzugangsbe", 
-			"echkateg":"bspechkateg", 
-			"nachfzeitr":"bspzeitrnachf", 
-			"datenmenge":"bspdatenmende", 
-			"imjr":"bspimjr", 
-			"datenzuw":"bspdatenzuw", 
-			"bemerk":"bspbemerk"
+			"bemerk":"swisstopobemerk",
+			"treenode_id": "ext-record-1"
 		},
 		{ 
 			/*"nodeid":"1112faf",*/
@@ -41,7 +28,8 @@
 			"datenmenge":"bafudatenmende", 
 			"imjr":"bafuimjr", 
 			"datenzuw":"bafudatenzuw", 
-			"bemerk":"bafubemerk"
+			"bemerk":"bafubemerk",
+			"treenode_id": "ext-record-3"
 		}
 
     ]
