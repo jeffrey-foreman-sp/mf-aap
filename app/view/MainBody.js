@@ -24,6 +24,7 @@ Ext.define('Aap.view.MainBody',{
 			items:[
 				{
 					xtype: 'tree',
+					id: 'treestructure',
 					flex: 1,
 					rootVisible: false,
 					border: 0
@@ -49,10 +50,12 @@ Ext.define('Aap.view.MainBody',{
 							action: 'create',
 							text: 'Erstellen'
 						},{
-								xtype: 'button',
-								text: 'Ändern'
+							xtype: 'button',
+							action: 'edit',
+							text: 'Beartbeiten'
 						},{
 							xtype: 'button',
+							action: 'remove',
 							text: 'Löschen'
 						}
 					]

@@ -6,11 +6,13 @@ Ext.Loader.setConfig({
 Ext.application({
 	name: 'Aap',
 	controllers: [
-		'tree.AddNode'
+		'Tree',
+		'Allgemein'
 	],
-/*
-	stores: ['Companies'],
-	launch: function(){
+
+	stores: ['Allgemein'],
+
+/*	launch: function(){
 		var store = this.getCompaniesStore();
 		store.each(function(company){
 			console.log('Company:' + company.get('name'));
