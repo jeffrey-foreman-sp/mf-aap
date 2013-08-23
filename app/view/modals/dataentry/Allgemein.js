@@ -1,12 +1,13 @@
 Ext.define('Aap.view.modals.dataentry.Allgemein',{
 	extend: 'Ext.form.Panel',
-	xtype: 'dataentryallgemein',
+	alias: 'widget.dataentryallgemein',
 	bodyPadding: 10,
 	defaultType: 'textfield',
+	id: 'allgemeinview',
 	items: [
 		{		
 			fieldLabel: 'Titel',
-			name: 'titel'
+			titel: 'name'
 		},{		
 			fieldLabel: 'Identifikator (Sammlung)',
 			name: 'identifikator'

@@ -1,17 +1,59 @@
 //------------------------------------------------------------------
-// tree controls
+// display control of "Allgemein" panel
 //------------------------------------------------------------------
-
-Ext.define('Aap.controller.Tree', {
+Ext.define('Aap.controller.Allgemein', {
 	extend: 'Ext.app.Controller',
 	requires: ['Aap.util.SelectedNode'],
-	stores: ['TreeStore'],
-	models: ['TreeNode'],
+	stores: ['Allgemein'],
+	models: ['Allgemein'],
+	
 	views: [
-		'modals.RemoveNode',
 		'modals.DataEdit'
 	],
-	
+
+    init: function() {
+        this.control({
+
+            'panel#allgemeinview': {
+              //  render: this.onPanelRendered
+                afterrender: this.afterPanelRendered
+            }
+        });
+    },
+
+    afterPanelRendered: function() {
+        console.log('The allgemeinview panel was rendered');
+		var av = Ext.getCmp('allgemeinview');
+		var form = av.getForm();
+		var values = form.getValues();
+		
+		form = form.setValues(
+		{ 
+			/*"nodeid":"1112faf",*/
+			titel:"bsp", 
+			ident: "bspident", 
+			georefdat:"bspgeorefdat",
+			fachst:"bspfach", 
+			zugberech:"bspzugangsbe", 
+			echkateg:"bspechkateg", 
+			nachfzeitr:"bspzeitrnachf", 
+			datenmenge:"bspdatenmende", 
+			imjr:"bspimjr", 
+			datenzuw:"bspdatenzuw", 
+			bemerk:"bspbemerk"
+		}
+		);
+
+		var values = form.getValues();
+
+
+
+
+
+    }
+
+
+/*
 	init: function() {
 		this.control({
 			'mainbody button[action=create]': {
@@ -50,13 +92,13 @@ Ext.define('Aap.controller.Tree', {
             form = win.down('form'),
             values = form.getValues();
 		
-*/		var newNode = Ext.create("Aap.model.TreeNode", {
+		var newNode = Ext.create("Aap.model.TreeNode", {
 //		name: values.name, 
 		name: "name", 
 			leaf: false
 		});
 		
-   /*     if (form.getForm().isValid()) {*/
+        if (form.getForm().isValid()) {
 			var selected = Aap.util.SelectedNode.isSelectedNode();		
 			if (selected == true ) {
 	
@@ -69,7 +111,7 @@ Ext.define('Aap.controller.Tree', {
 				store.getRootNode().appendChild(newNode);
 			}
     	win.close();/*
-		}*/
+		}
 		
 	},
 
@@ -103,5 +145,7 @@ Ext.define('Aap.controller.Tree', {
         var win = button.up('window');
        	win.close();
 	}
+*/
+
 });
 
