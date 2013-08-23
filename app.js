@@ -8,9 +8,10 @@ Ext.application({
 	controllers: [
 		'Tree'
 	],
-/*
-	stores: ['Companies'],
-	launch: function(){
+
+	stores: ['Allgemein'],
+
+/*	launch: function(){
 		var store = this.getCompaniesStore();
 		store.each(function(company){
 			console.log('Company:' + company.get('name'));

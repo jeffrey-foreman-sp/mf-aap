@@ -1,0 +1,34 @@
+{
+    "success": true,
+    "children": [
+        { 
+			/*"nodeid":"1112faf",*/
+			"aufbewfrzuststellnv":"", 
+			"begrzuststellnv": "", 
+			"aufbewfrweitstellnv":"", 
+			"begrweitstellnv":"", 
+			"entscheidnv":"", 
+			"bemerkungnv":"", 
+			"aufbewfrzuststellaw":"", 
+			"begrzuststellaw": "", 
+			"aufbewfrweitstellaw":"", 
+			"begrweitstellaw":"", 
+			"entscheidaw":"", 
+			"bemerkungaw":"" 
+		},{ 
+			/*"nodeid":"1112faf",*/
+			"aufbewfrzuststellnv":"", 
+			"begrzuststellnv": "", 
+			"aufbewfrweitstellnv":"", 
+			"begrweitstellnv":"", 
+			"entscheidnv":"", 
+			"bemerkungnv":"", 
+			"aufbewfrzuststellnv":"", 
+			"begrzuststellnv": "", 
+			"aufbewfrweitstellnv":"", 
+			"begrweitstellnv":"", 
+			"entscheidnv":"", 
+			"bemerkungnv":"" 
+		}
+    ]
+}

@@ -9,6 +9,7 @@ Ext.define('Aap.view.mainbody.Tree' ,{
 		}
 	},
 
+//	rootVisible: true,
 	columns: [
 		{ 
 			xtype: 'treecolumn', 

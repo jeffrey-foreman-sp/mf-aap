@@ -1,0 +1,48 @@
+{
+    "success": true,
+    "children": [
+        { 
+			/*"nodeid":"1112faf",*/
+			"name":"swisstopo", 
+			"ident": "swisstopoident", 
+			"georefdat":"swisstopogeorefdat",
+			"fachst":"swisstopofach", 
+			"zugberech":"swisstopozugangsbe", 
+			"echkateg":"swisstopoechkateg", 
+			"nachfzeitr":"swisstopozeitrnachf", 
+			"datenmenge":"swisstopodatenmende", 
+			"imjr":"swisstopoimjr", 
+			"datenzuw":"swisstopodatenzuw", 
+			"bemerk":"swisstopobemerk"
+		},
+		{ 
+			/*"nodeid":"1112faf",*/
+			"name":"bsp", 
+			"ident": "bspident", 
+			"georefdat":"bspgeorefdat",
+			"fachst":"bspfach", 
+			"zugberech":"bspzugangsbe", 
+			"echkateg":"bspechkateg", 
+			"nachfzeitr":"bspzeitrnachf", 
+			"datenmenge":"bspdatenmende", 
+			"imjr":"bspimjr", 
+			"datenzuw":"bspdatenzuw", 
+			"bemerk":"bspbemerk"
+		},
+		{ 
+			/*"nodeid":"1112faf",*/
+			"name":"BAFU", 
+			"ident": "bafuident", 
+			"georefdat":"bafugeorefdat",
+			"fachst":"bafufach", 
+			"zugberech":"bafuzugangsbe", 
+			"echkateg":"bafuechkateg", 
+			"nachfzeitr":"bafuzeitrnachf", 
+			"datenmenge":"bafudatenmende", 
+			"imjr":"bafuimjr", 
+			"datenzuw":"bafudatenzuw", 
+			"bemerk":"bafubemerk"
+		}
+
+    ]
+}

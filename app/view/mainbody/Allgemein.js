@@ -1,5 +1,6 @@
 Ext.define('Aap.view.mainbody.Allgemein',{
 	extend: 'Ext.form.Panel',
+	store: 'Allgemein', 
 	xtype: 'allgemein',
 	bodyPadding: 10,
 	defaultType: 'textfield',
@@ -9,37 +10,44 @@ Ext.define('Aap.view.mainbody.Allgemein',{
 			name: 'titel'
 		},{		
 			fieldLabel: 'Identifikator (Sammlung)',
-			name: 'identifikator'
+			name: 'identifi'
 		},{		
 			fieldLabel: 'Georeferenzdaten',
-			name: 'georeferenzdaten'
+			name: 'georefdat'
 		},{		
 			fieldLabel: 'Fachhstelle des Bundes',
-			name: 'fachstelledesbundes'
+			name: 'fachst'
 		},{		
 			fieldLabel: 'Zugangsberechtigungsstufe',
-			name: 'zugangberechtigungsstufe'
+			name: 'zugangsbe'
 		},{		
 			fieldLabel: 'eCH-Kategorie',
-			name: 'echkategorie'
+			name: 'echkateg'
 		},{		
 			fieldLabel: 'Nachführungszeitraum',
-			name: 'nachfuerungszeitraum'
+			name: 'zeitrnachf'
 		},{		
 			fieldLabel: 'Datenmenge (in GB)',
-			name: 'datenmengeingb'
+			name: 'datenmengegb'
 		},{		
 			fieldLabel: 'im Jahr',
-			name: 'imjahr'
+			name: 'imjr'
 		},{		
 			fieldLabel: 'Datenzuwachs jährl. (in GB)',
-			name: 'datenzuwachsjaehrlich'
-		},{		
+			name: 'datenzuwj'
+		},{
+			
+
+
+
+
+
+		},{
 			xtype: 'textareafield',
 			grow: true,
 			anchor: '100%',
 			fieldLabel: 'Bemerkungen',
-			name: 'bemerkungen'
+			name: 'bemerk'
 		}
 	]
 });
