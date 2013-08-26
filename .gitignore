@@ -1,3 +1,12 @@
 
 *.swp
 
+
+
+# make git ignore white space differences, many different possibilites here
+# check http://www.kernel.org/pub/software/scm/git/docs/git-config.html#_variables
+ [core]
+    whitespace = -trailing-space,-indent-with-non-tab,-tab-in-indent
+
+
+
