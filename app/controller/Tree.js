@@ -85,9 +85,10 @@ Ext.define('Aap.controller.Tree', {
 		var selected = Aap.util.SelectedNode.isSelectedNode();		
 		if (selected == true ) {
 			var nodeid = Aap.util.SelectedNode.getIdFromSelectedNode();
-       	   	console.log(nodeid);
 			if (nodeid != "root"){
 				var view = Ext.widget('dataedit');
+			} else {
+       	   		console.log('Editing the root node is impossible!\nClick on a different item in the data tree!');
 			}
 		}
 	},
