@@ -28,9 +28,10 @@ Ext.define('Aap.controller.Allgemein', {
        	
 
 		var nodeid = Aap.util.SelectedNode.getIdFromSelectedNode();
-		console.log(nodeid);
+		console.log('nodeid');
+		console.log('nodeid:' + nodeid);
 		var selectednode = Ext.getStore('TreeStore').getNodeById(nodeid); 
-		console.log(selectednode);
+		console.log('selected node: ' + selectednode);
 		
 
 		var dta =  Ext.getStore('Allgemein').findRecord('treenode_id', nodeid).data;

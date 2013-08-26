@@ -14,6 +14,9 @@ Ext.define('Aap.controller.Tree', {
 	
 	init: function() {
 		this.control({
+			'tree': {
+				afterrender: this.initSelection
+			},
 			'mainbody button[action=create]': {
 				click: this.onAddNode
 			},
@@ -34,6 +37,12 @@ Ext.define('Aap.controller.Tree', {
 			}
 		});
 	}, 
+
+	initSelection: function() {
+		console.log('select root node after rendering of tree');
+		var rn = Ext.getStore('TreeStore').getRootNode();	
+		Ext.getCmp('treestructure').getSelectionModel().select(rn);
+	},
 
 	onAddNode: function() {
 		var view = Ext.widget('dataedit');
