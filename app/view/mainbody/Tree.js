@@ -8,8 +8,7 @@ Ext.define('Aap.view.mainbody.Tree' ,{
 			ptype: 'treeviewdragdrop'
 		}
 	},
-
-//	rootVisible: true,
+	
 	columns: [
 		{ 
 			xtype: 'treecolumn', 
