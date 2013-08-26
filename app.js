@@ -8,6 +8,7 @@ Ext.application({
 	controllers: [
 		'Tree',
 		'DataEdit',
+		'DataAdd'
 	],
 
 	stores: ['Allgemein'],

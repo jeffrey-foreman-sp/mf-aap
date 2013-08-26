@@ -8,7 +8,7 @@ Ext.define('Aap.controller.Tree', {
 	stores: ['TreeStore'],
 	models: ['TreeNode'],
 	views: [
-		'modals.RemoveNode',
+		'modals.DataRemove',
 		'modals.DataAdd',
 		'modals.DataEdit'
 	],
@@ -31,16 +31,16 @@ Ext.define('Aap.controller.Tree', {
 				click: this.doEditData
 			},
 			'mainbody button[action=remove]': {
-				click: this.onRemoveNode
+				click: this.onDataRemove
 			},
-			'removenode button[action=confirm]': {
-				click: this.doRemoveNode
+			'dataremove button[action=confirm]': {
+				click: this.doDataRemove
 			}
 		});
 	}, 
 
 	initSelection: function() {
-		console.log('select root node after rendering of tree');
+		console.log('Root node selected after rendering of tree');
 		var rn = Ext.getStore('TreeStore').getRootNode();	
 		Ext.getCmp('treestructure').getSelectionModel().select(rn);
 	},
@@ -99,21 +99,22 @@ Ext.define('Aap.controller.Tree', {
 		win.close();	
 	},
 
-	onRemoveNode: function() {
+	onDataRemove: function() {
 		var selected = Aap.util.SelectedNode.isSelectedNode();		
 		if (selected == true ) {
-			var view = Ext.widget('removenode');
+			var view = Ext.widget('dataremove');
+			console.log('Remove windows rendered');
 		}
 	},
 
-	doRemoveNode: function(button) {
-		console.log('remove node');
+	doDataRemove: function(button) {
 		var store = Ext.getStore('TreeStore');
        	var nodeid = Aap.util.SelectedNode.getIdFromSelectedNode();
 		var selectednode = store.getNodeById(nodeid); 
 		selectednode.remove();
         var win = button.up('window');
        	win.close();
+		console.log('Data removed');
 	}
 });
 
