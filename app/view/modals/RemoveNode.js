@@ -1,6 +1,6 @@
-Ext.define('Aap.view.modals.RemoveNode', {
+Ext.define('Aap.view.modals.DataRemove', {
     extend: 'Ext.window.Window',
-    alias: 'widget.removenode',
+    alias: 'widget.dataremove',
     layout: 'fit',
     autoShow: true,
 	modal: true,

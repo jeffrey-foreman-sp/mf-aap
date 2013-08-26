@@ -9,6 +9,7 @@ Ext.define('Aap.controller.Tree', {
 	models: ['TreeNode'],
 	views: [
 		'modals.RemoveNode',
+		'modals.DataAdd',
 		'modals.DataEdit'
 	],
 	
@@ -20,13 +21,13 @@ Ext.define('Aap.controller.Tree', {
 			'mainbody button[action=create]': {
 				click: this.onAddNode
 			},
-			'dataedit[caller=oan] button[action=save]': {
+			'dataadd button[action=save]': {
 				click: this.doAddNode
 			},
 			'mainbody button[action=edit]': {
 				click: this.onEditData
 			},
-			'dataedit[caller=oed] button[action=save]': {
+			'dataedit button[action=save]': {
 				click: this.doEditData
 			},
 			'mainbody button[action=remove]': {
@@ -45,12 +46,11 @@ Ext.define('Aap.controller.Tree', {
 	},
 
 	onAddNode: function() {
-		var view = Ext.widget('dataedit');
-		view.caller = 'oan';
+		var view = Ext.widget('dataadd');
 	},
 
 	doAddNode: function(button){
-		console.log('node add');
+		console.log('data add');
 		var store = Ext.getStore('TreeStore');
        	var treeelement = Ext.getCmp('treestructure');
 		var selection = treeelement.getSelectionModel().getSelection()[0]; //not very pretty
@@ -68,9 +68,8 @@ Ext.define('Aap.controller.Tree', {
    /*     if (form.getForm().isValid()) {*/
 			var selected = Aap.util.SelectedNode.isSelectedNode();		
 			if (selected == true ) {
-	
-       	   	var nodeid = Aap.util.SelectedNode.getIdFromSelectedNode();
-			var selectednode = store.getNodeById(nodeid); 
+       	   		var nodeid = Aap.util.SelectedNode.getIdFromSelectedNode();
+				var selectednode = store.getNodeById(nodeid); 
 				selectednode.appendChild(newNode);
 				selectednode.expand();
         	}
@@ -85,8 +84,11 @@ Ext.define('Aap.controller.Tree', {
 	onEditData: function() {
 		var selected = Aap.util.SelectedNode.isSelectedNode();		
 		if (selected == true ) {
-			var view = Ext.widget('dataedit');
-			view.caller = 'oed';
+			var nodeid = Aap.util.SelectedNode.getIdFromSelectedNode();
+       	   	console.log(nodeid);
+			if (nodeid != "root"){
+				var view = Ext.widget('dataedit');
+			}
 		}
 	},
 

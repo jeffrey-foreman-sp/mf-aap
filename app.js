@@ -7,7 +7,7 @@ Ext.application({
 	name: 'Aap',
 	controllers: [
 		'Tree',
-		'Allgemein'
+		'DataEditAllgemein',
 	],
 
 	stores: ['Allgemein'],

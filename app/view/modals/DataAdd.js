@@ -1,11 +1,11 @@
-Ext.define('Aap.view.modals.DataEdit', {
+Ext.define('Aap.view.modals.DataAdd', {
     extend: 'Ext.window.Window',
 	requires: [
 		'Aap.view.modals.dataentry.Allgemein',
 		'Aap.view.modals.dataentry.Verfuegbarkeit',	
 		'Aap.view.modals.dataentry.Archivwuerdigkeit'		
 	],
-    alias: 'widget.dataedit',
+    alias: 'widget.dataadd',
 //  title: 'Neuer Knoten',
 //    layout: 'fit',
     autoShow: true,
@@ -15,7 +15,7 @@ Ext.define('Aap.view.modals.DataEdit', {
         this.items = [
             {
 				xtype: 'panel',
-				title: 'Metadaten Bearbeiten',
+				title: 'Metadatensatz Erstellen',
 				layout: {
 					type: 'hbox',
 					align: 'stretch'
