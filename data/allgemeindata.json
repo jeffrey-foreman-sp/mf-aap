@@ -30,6 +30,66 @@
 			"datenzuw":"bafudatenzuw", 
 			"bemerk":"bafubemerk",
 			"treenode_id": "ext-record-2"
+		},
+		{ 
+			/*"nodeid":"1112faf",*/
+			"name":"Geodatische Grundlagen", 
+			"ident": "geodatident", 
+			"georefdat":"geodatgeorefdat",
+			"fachst":"geodatfach", 
+			"zugberech":"geodatzugangsbe", 
+			"echkateg":"geodatechkateg", 
+			"nachfzeitr":"geodatzeitrnachf", 
+			"datenmenge":"geodatdatenmende", 
+			"imjr":"geodatimjr", 
+			"datenzuw":"geodatdatenzuw", 
+			"bemerk":"geodatbemerk",
+			"treenode_id": "ext-record-5"
+		},
+		{ 
+			/*"nodeid":"1112faf",*/
+			"name":"Beispiel Datensatz", 
+			"ident": "bsplident", 
+			"georefdat":"bsplgeorefdat",
+			"fachst":"bsplfach", 
+			"zugberech":"bsplzugangsbe", 
+			"echkateg":"bsplechkateg", 
+			"nachfzeitr":"bsplzeitrnachf", 
+			"datenmenge":"bspldatenmende", 
+			"imjr":"bsplimjr", 
+			"datenzuw":"bspldatenzuw", 
+			"bemerk":"bsplbemerk",
+			"treenode_id": "ext-record-13"
+		},
+		{ 
+			/*"nodeid":"1112faf",*/
+			"name":"Bilddaten", 
+			"ident": "bilddatident", 
+			"georefdat":"bilddatgeorefdat",
+			"fachst":"bilddatfach", 
+			"zugberech":"bilddatzugangsbe", 
+			"echkateg":"bilddatechkateg", 
+			"nachfzeitr":"bilddatzeitrnachf", 
+			"datenmenge":"bilddatdatenmende", 
+			"imjr":"bilddatimjr", 
+			"datenzuw":"bilddatdatenzuw", 
+			"bemerk":"bilddatbemerk",
+			"treenode_id": "ext-record-6"
+		},
+		{ 
+			/*"nodeid":"1112faf",*/
+			"name":"BFE", 
+			"ident": "bfeident", 
+			"georefdat":"bfegeorefdat",
+			"fachst":"bfefach", 
+			"zugberech":"bfezugangsbe", 
+			"echkateg":"bfeechkateg", 
+			"nachfzeitr":"bfezeitrnachf", 
+			"datenmenge":"bfedatenmende", 
+			"imjr":"bfeimjr", 
+			"datenzuw":"bfedatenzuw", 
+			"bemerk":"bfebemerk",
+			"treenode_id": "ext-record-3"
 		}
     ]
 }

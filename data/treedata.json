@@ -2,19 +2,12 @@
     "success": true,
     "children": [
         { "name": "swisstopo", "expanded": false, "children": [
-            { "name": "Geodatische Grundlagen", "children": [
+            { "name": "Geodätische Grundlagen", "children": [
             	{ "name": "Beispiel Datensatz", "leaf": true }
 			]},
-        	{ "name": "Bilddaten", "loaded": true},
-        	{ "name": "Topographische Daten", "loaded": true},
-        	{ "name": "Höhendaten", "loaded": true},
-        	{ "name": "Kartenewerke", "loaded": true},
-        	{ "name": "Freizeitkarten", "loaded": true},
-        	{ "name": "Militärische Karten", "loaded": true},
-        	{ "name": "Übersichtskarten", "loaded": true}
+        	{ "name": "Bilddaten", "loaded": true}
         ]},
         { "name": "BAFU", "loaded": true },
-        { "name": "BFE", "loaded": true },
-        { "name": "BFS", "loaded": true }
+        { "name": "BFE", "loaded": true }
     ]
 }
