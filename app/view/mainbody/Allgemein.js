@@ -2,8 +2,10 @@ Ext.define('Aap.view.mainbody.Allgemein',{
 	extend: 'Ext.form.Panel',
 	store: 'Allgemein', 
 	xtype: 'allgemein',
+	alias: 'widget.displayallgemein',
+	id: 'displayallgemein',
 	bodyPadding: 10,
-	defaultType: 'textfield',
+	defaultType: 'displayfield',
 	items: [
 		{		
 			fieldLabel: 'Titel',

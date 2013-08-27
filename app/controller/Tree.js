@@ -40,7 +40,7 @@ Ext.define('Aap.controller.Tree', {
 	}, 
 
 	initSelection: function() {
-		console.log('Root node selected after rendering of tree');
+//		console.log('Root node selected after rendering of tree');
 		var rn = Ext.getStore('TreeStore').getRootNode();	
 		Ext.getCmp('treestructure').getSelectionModel().select(rn);
 	},

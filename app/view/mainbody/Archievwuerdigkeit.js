@@ -14,6 +14,9 @@ Ext.define('Aap.view.mainbody.Archievwuerdigkeit',{
 			fieldLabel: 'Begründung',
 			name: 'begruendung'
 		},{		
+			fieldLabel: 'Input durch',
+			name: 'inputdurch'
+		},{		
 			xtype: 'container',
 			html: '<h4>Weiter Stellen</h4>'		
 		},{		
