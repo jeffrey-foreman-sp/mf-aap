@@ -33,7 +33,7 @@
 		},
 		{ 
 			/*"nodeid":"1112faf",*/
-			"name":"Geodatische Grundlagen", 
+			"name":"Geodätische Grundlagen", 
 			"ident": "geodatident", 
 			"georefdat":"geodatgeorefdat",
 			"fachst":"geodatfach", 
@@ -44,7 +44,7 @@
 			"imjr":"geodatimjr", 
 			"datenzuw":"geodatdatenzuw", 
 			"bemerk":"geodatbemerk",
-			"treenode_id": "ext-record-5"
+			"treenode_id": "ext-record-4"
 		},
 		{ 
 			/*"nodeid":"1112faf",*/
@@ -59,7 +59,7 @@
 			"imjr":"bsplimjr", 
 			"datenzuw":"bspldatenzuw", 
 			"bemerk":"bsplbemerk",
-			"treenode_id": "ext-record-13"
+			"treenode_id": "ext-record-6"
 		},
 		{ 
 			/*"nodeid":"1112faf",*/
@@ -74,7 +74,7 @@
 			"imjr":"bilddatimjr", 
 			"datenzuw":"bilddatdatenzuw", 
 			"bemerk":"bilddatbemerk",
-			"treenode_id": "ext-record-6"
+			"treenode_id": "ext-record-5"
 		},
 		{ 
 			/*"nodeid":"1112faf",*/
