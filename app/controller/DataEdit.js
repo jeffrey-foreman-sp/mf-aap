@@ -23,8 +23,8 @@ Ext.define('Aap.controller.DataEdit', {
 
 		nodeid = Aap.util.SelectedNode.getIdFromSelectedNode();
 //		dta =  Ext.getStore('Allgemein').findRecord('treenode_id', nodeid).data;
-		rec =  Ext.getStore('Allgemein').findRecord('treenode_id', nodeid);
-		form = Ext.getCmp('allgemeinedit').getForm();
+		var rec =  Ext.getStore('Allgemein').findRecord('treenode_id', nodeid);
+		var form = Ext.getCmp('allgemeinedit').getForm();
 		form.loadRecord(rec);
 		console.log('Load data from store to form!');
     },
@@ -32,8 +32,9 @@ Ext.define('Aap.controller.DataEdit', {
 	doEditData: function(button){
 		console.log("Clicked save button!");
 		
-		record = form.getRecord();
-		values = form.getValues();	
+		var form = Ext.getCmp('allgemeinedit').getForm();
+		var record = form.getRecord();
+		var values = form.getValues();	
 		record.set(values);
 //		this.getAllgemeinStore().sync();
 		console.log('Write data from form to store!');
