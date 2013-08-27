@@ -9,10 +9,10 @@ Ext.define('Aap.view.mainbody.Allgemein',{
 	items: [
 		{		
 			fieldLabel: 'Titel',
-			name: 'titel'
+			name: 'name'
 		},{		
 			fieldLabel: 'Identifikator (Sammlung)',
-			name: 'identifi'
+			name: 'ident'
 		},{		
 			fieldLabel: 'Georeferenzdaten',
 			name: 'georefdat'
@@ -21,30 +21,23 @@ Ext.define('Aap.view.mainbody.Allgemein',{
 			name: 'fachst'
 		},{		
 			fieldLabel: 'Zugangsberechtigungsstufe',
-			name: 'zugangsbe'
+			name: 'zugberech'
 		},{		
 			fieldLabel: 'eCH-Kategorie',
 			name: 'echkateg'
 		},{		
 			fieldLabel: 'Nachführungszeitraum',
-			name: 'zeitrnachf'
+			name: 'nachfzeitr'
 		},{		
 			fieldLabel: 'Datenmenge (in GB)',
-			name: 'datenmengegb'
+			name: 'datenmenge'
 		},{		
 			fieldLabel: 'im Jahr',
 			name: 'imjr'
 		},{		
 			fieldLabel: 'Datenzuwachs jährl. (in GB)',
-			name: 'datenzuwj'
-		},{
-			
-
-
-
-
-
-		},{
+			name: 'datenzuw'
+		},{		
 			xtype: 'textareafield',
 			grow: true,
 			anchor: '100%',
