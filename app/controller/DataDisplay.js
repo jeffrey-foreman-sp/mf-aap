@@ -1,31 +1,32 @@
 Ext.define('Aap.controller.DataDisplay', {
 	extend: 'Ext.app.Controller',
-	requires: ['Aap.util.SelectedNode'],
+	requires: [
+		'Aap.util.SelectedNode'
+ 	],
 	stores: ['Allgemein'],
 	models: ['Allgemein'],
 	views: [
-		'mainbody.Allgemein'
+		'mainbody.Allgemein',
+		'mainbody.Tree'
 	],
 
     init: function() {
         this.control({
-            //'tree':  {
-            'mainheader button':  {
-                click: this.afterTreeRendered
+            'tree':  {
+                itemclick: this.selectionchange
             }
         });
     },
 
 
-    afterTreeRendered: function() {
-    	
+    selectionchange: function() {
+		console.log('test');
 		var nodeid = Aap.util.SelectedNode.getIdFromSelectedNode();
-		console.log(nodeid);  
-		rec = Ext.getStore('Allgemein').findRecord('treenode_id', nodeid);	
-		console.log(rec);  
-		var form = Ext.getCmp('displayallgemein');
-		console.log(form);  
-		form.loadRecord(rec);
+		if (nodeid != 'root') {
+			var rec = Ext.getStore('Allgemein').findRecord('treenode_id', nodeid);	
+			var form = Ext.getCmp('displayallgemein');
+			form.loadRecord(rec);
+		}
     }
 
 });
