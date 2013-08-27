@@ -36,8 +36,11 @@ Ext.define('Aap.controller.DataEdit', {
 		var record = form.getRecord();
 		var values = form.getValues();	
 		record.set(values);
-//		this.getAllgemeinStore().sync();
 		console.log('Write data from form to store!');
+
+		var rec = Ext.getStore('Allgemein').findRecord('treenode_id', nodeid);	
+		var form = Ext.getCmp('displayallgemein');
+		form.loadRecord(rec);
 
 		var win = button.up('window');
 		win.close();	

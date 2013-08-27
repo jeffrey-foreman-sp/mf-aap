@@ -18,7 +18,6 @@ Ext.define('Aap.controller.DataDisplay', {
         });
     },
 
-
     selectionchange: function() {
 		var nodeid = Aap.util.SelectedNode.getIdFromSelectedNode();
 		if (nodeid != 'root') {
@@ -27,6 +26,7 @@ Ext.define('Aap.controller.DataDisplay', {
 			form.loadRecord(rec);
 		}
     }
+
 
 });
 
