@@ -9,26 +9,38 @@ Ext.define('Aap.controller.DataEdit', {
 
     init: function() {
         this.control({
-            'dataedit #allgemeinview':  {
+            'dataedit #allgemeinedit ':  {
                 afterrender: this.afterPanelRendered
-            }
+            },
+			'dataedit button[action=save]': {
+				click: this.doEditData
+			},
         });
     },
 
     afterPanelRendered: function() {
-        console.log('The "data edit" panel was rendered');
+        console.log('The "data edit" panel was rendered!');
 
-		var nodeid = Aap.util.SelectedNode.getIdFromSelectedNode();
-		var dta =  Ext.getStore('Allgemein').findRecord('treenode_id', nodeid).data;
-		var form = Ext.getCmp('allgemeinview').getForm();
-		var values = form.getValues();
-		form.setValues(dta);
+		nodeid = Aap.util.SelectedNode.getIdFromSelectedNode();
+//		dta =  Ext.getStore('Allgemein').findRecord('treenode_id', nodeid).data;
+		rec =  Ext.getStore('Allgemein').findRecord('treenode_id', nodeid);
+		form = Ext.getCmp('allgemeinedit').getForm();
+		form.loadRecord(rec);
+		console.log('Load data from store to form!');
+    },
+
+	doEditData: function(button){
+		console.log("Clicked save button!");
 		
-//		var values = form.getValues();
-//		console.log(values);
-    }
+		record = form.getRecord();
+		values = form.getValues();	
+		record.set(values);
+//		this.getAllgemeinStore().sync();
+		console.log('Write data from form to store!');
 
-
+		var win = button.up('window');
+		win.close();	
+	},
 
 });
 

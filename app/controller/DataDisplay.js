@@ -20,7 +20,6 @@ Ext.define('Aap.controller.DataDisplay', {
 
 
     selectionchange: function() {
-		console.log('test');
 		var nodeid = Aap.util.SelectedNode.getIdFromSelectedNode();
 		if (nodeid != 'root') {
 			var rec = Ext.getStore('Allgemein').findRecord('treenode_id', nodeid);	

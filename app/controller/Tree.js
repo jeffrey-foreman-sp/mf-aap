@@ -25,10 +25,7 @@ Ext.define('Aap.controller.Tree', {
 				click: this.doAddNode
 			},
 			'mainbody button[action=edit]': {
-				click: this.onEditData
-			},
-			'dataedit button[action=save]': {
-				click: this.doEditData
+				click: this.openDataEdit
 			},
 			'mainbody button[action=remove]': {
 				click: this.onDataRemove
@@ -81,7 +78,8 @@ Ext.define('Aap.controller.Tree', {
 		
 	},
 
-	onEditData: function() {
+	openDataEdit: function() {
+		console.log('Clicked on "Bearbeiten button!"');
 		var selected = Aap.util.SelectedNode.isSelectedNode();		
 		if (selected == true ) {
 			var nodeid = Aap.util.SelectedNode.getIdFromSelectedNode();
@@ -91,12 +89,6 @@ Ext.define('Aap.controller.Tree', {
        	   		console.log('Editing the root node is impossible!\nClick on a different item in the data tree!');
 			}
 		}
-	},
-
-	doEditData: function(button){
-		console.log('data edit');
-		var win = button.up('window');
-		win.close();	
 	},
 
 	onDataRemove: function() {

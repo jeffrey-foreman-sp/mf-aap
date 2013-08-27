@@ -3,7 +3,7 @@ Ext.define('Aap.view.modals.dataentry.Allgemein',{
 	alias: 'widget.dataentryallgemein',
 	bodyPadding: 10,
 	defaultType: 'textfield',
-	id: 'allgemeinview',
+	id: 'allgemeinedit',
 	items: [
 		{		
 			fieldLabel: 'Titel',
