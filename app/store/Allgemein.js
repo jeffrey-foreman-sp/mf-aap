@@ -5,13 +5,14 @@ Ext.define('Aap.store.Allgemein', {
     autoLoad:true,
 	proxy: {
 		type: 'ajax',
-        url: 'data/allgemeindata.json',
+		api: {
+			read: 'data/allgemeindata.json',
+			update: 'data/update.json',
+		},	
 		reader: {
 			type: 'json',
 			root: 'children',
             successProperty: 'success'
 		}
-	}/*,
-    root: true*/
-
+	}
 });
