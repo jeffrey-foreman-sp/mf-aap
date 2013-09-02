@@ -14,7 +14,7 @@ Ext.define('Aap.controller.DataEdit', {
             },
 			'dataedit button[action=save]': {
 				click: this.doEditData
-			},
+			}
         });
     },
 
@@ -44,7 +44,7 @@ Ext.define('Aap.controller.DataEdit', {
 
 		var win = button.up('window');
 		win.close();	
-	},
+	}
 
 });
 

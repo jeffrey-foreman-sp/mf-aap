@@ -19,7 +19,7 @@ Ext.define('Aap.view.MainBody',{
 			padding: 5,
 			layout: {
 				type:  'vbox',
-				align: 'stretch',
+				align: 'stretch'
 			},
 			items:[
 				{

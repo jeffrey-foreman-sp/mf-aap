@@ -52,13 +52,13 @@ Ext.define('Aap.controller.Tree', {
        	var treeelement = Ext.getCmp('treestructure');
 		var selection = treeelement.getSelectionModel().getSelection()[0]; //not very pretty
 		
-        var win = button.up('window')/*,
+        var win = button.up('window');/*,
             form = win.down('form'),
             values = form.getValues();
 		
 */		var newNode = Ext.create("Aap.model.TreeNode", {
 //		name: values.name, 
-		name: "name", 
+			name: "name", 
 			leaf: false
 		});
 		

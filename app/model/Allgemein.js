@@ -19,7 +19,7 @@ Ext.define('Aap.model.Allgemein', {
 		type: 'ajax',
 		api: {
 			read: 'data/allgemeindata.json',
-			update: 'data/update.json',
+			update: 'data/update.json'
 		},	
 		reader: {
 			type: 'json',
