@@ -38,6 +38,7 @@ Ext.define('Aap.view.MainHeader',{
 			items: [
 				{
 					xtype: 'button',
+					action: 'toggleedit',
 					text: 'Bearbeiten abschliessen'
 				},{
 					xtype: 'button',

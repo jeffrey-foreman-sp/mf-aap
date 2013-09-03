@@ -7,15 +7,21 @@ Ext.define('Aap.controller.MainHeader', {
     init: function() {
         this.control({
 			'mainheader button[action=openinfo]': {
-                click: this.onClick
+                click: this.onInfoClick
+			},	
+			'mainheader button[action=toggleedit]': {
+                click: this.onToggleEdit
 			}	
 		});
     },
 
-    onClick: function() {
+    onInfoClick: function() {
 		Ext.widget('information');
-	}
+	},
    
+    onToggleEdit: function() {
+		console.log('test');
+	}
 
 
 });

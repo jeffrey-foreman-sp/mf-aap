@@ -8,6 +8,8 @@ Ext.define('Aap.view.MainBody',{
 		'Aap.view.mainbody.Archievwuerdigkeit'
 	],
 	xtype: 'mainbody',
+	id: 'mainbody',
+	alias: 'widget.mainbody',
 	layout: {
 		type: 'hbox',
 		bodyPadding: 5,
