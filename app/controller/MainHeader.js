@@ -10,7 +10,8 @@ Ext.define('Aap.controller.MainHeader', {
                 click: this.onInfoClick
 			},	
 			'mainheader button[action=toggleedit]': {
-                click: this.onToggleEdit
+       //         click: this.onToggleEdit,
+                toggle: this.onToggleEditButton
 			}	
 		});
     },
@@ -18,29 +19,23 @@ Ext.define('Aap.controller.MainHeader', {
     onInfoClick: function() {
 		Ext.widget('information');
 	},
-   
-    onToggleEdit: function() {
-		var	cb =  Ext.getCmp('createbutton');
-		var eb =  Ext.getCmp('editbutton');
-		var rb =  Ext.getCmp('removebutton');
-		var ep =  Ext.getCmp('exportbutton');
-		
-		if(cb.hidden == false){
-			cb.setVisible(false);
-			eb.setVisible(false);
-			rb.setVisible(false);
-			ep.setVisible(true);
-		} else {
-		console.log('else');
-			cb.setVisible(true);
-			eb.setVisible(true);
-			rb.setVisible(true);
-			ep.setVisible(false);
+  
+	onToggleEditButton: function(button, pressed) {
+    	if(!pressed){
+  	 		button.setText('Bearbeiten');
+   			Ext.getCmp('createbutton').hide();
+			Ext.getCmp('editbutton').hide();
+			Ext.getCmp('removebutton').hide();
+			Ext.getCmp('exportbutton').show();
 		}
-		
-
+    	else {
+  		  	button.setText('Bearbeiten abschliessen');
+   			Ext.getCmp('createbutton').show();
+			Ext.getCmp('editbutton').show();
+			Ext.getCmp('removebutton').show();
+			Ext.getCmp('exportbutton').hide();
+		}
 	}
-
 
 });
 
