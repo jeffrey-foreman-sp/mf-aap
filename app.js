@@ -9,7 +9,8 @@ Ext.application({
 		'Tree',
 		'DataEdit',
 		'DataAdd',
-		'DataDisplay'
+		'DataDisplay',
+		'MainHeader'
 	],
 
 	stores: ['Allgemein'],

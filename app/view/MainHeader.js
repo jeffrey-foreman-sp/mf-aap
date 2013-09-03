@@ -44,6 +44,7 @@ Ext.define('Aap.view.MainHeader',{
 					text: 'Anmelden'
 				},{
 					xtype: 'button',
+					action: 'openinfo',
 					text: 'Informationen'
 				}
 			]
