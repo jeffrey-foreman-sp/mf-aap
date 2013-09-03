@@ -20,7 +20,25 @@ Ext.define('Aap.controller.MainHeader', {
 	},
    
     onToggleEdit: function() {
-		console.log('test');
+		var	cb =  Ext.getCmp('createbutton');
+		var eb =  Ext.getCmp('editbutton');
+		var rb =  Ext.getCmp('removebutton');
+		var ep =  Ext.getCmp('exportbutton');
+		
+		if(cb.hidden == false){
+			cb.setVisible(false);
+			eb.setVisible(false);
+			rb.setVisible(false);
+			ep.setVisible(true);
+		} else {
+		console.log('else');
+			cb.setVisible(true);
+			eb.setVisible(true);
+			rb.setVisible(true);
+			ep.setVisible(false);
+		}
+		
+
 	}
 
 
