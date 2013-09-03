@@ -11,6 +11,9 @@ Ext.define('Aap.controller.DataEdit', {
         this.control({
             'dataedit #allgemeinedit ':  {
                 afterrender: this.afterPanelRendered
+            },
+			'dataedit button[action=save]': {
+				click: this.doEditData
 			}
         });
     },
