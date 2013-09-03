@@ -2,6 +2,7 @@ Ext.define('Aap.view.MainBody',{
 	extend: 'Ext.panel.Panel',
 	requires: [
 		'Aap.view.mainbody.Tree',
+		'Aap.view.mainbody.TreeTools',
 		'Aap.view.mainbody.Allgemein',
 		'Aap.view.mainbody.Verfuegbarkeit',
 		'Aap.view.mainbody.Archievwuerdigkeit'
@@ -29,36 +30,10 @@ Ext.define('Aap.view.MainBody',{
 					rootVisible: true,
 					border: 0
 				},{
-					xtype: 'panel',
+					xtype: 'treetools',
+					id: 'treetools',
 					height: 60,
-					border: 0,
-					style: {
-				    	'border-top-style': 'solid',
-				    	'border-top-width': 1
-					},
-					layout: {
-						type: 'hbox',
-						align: 'middle',
-						pack: 'center'
-					},
-					defaults: {
-							margin: '0 10 0 10'
-					},
-					items: [
-						{
-							xtype: 'button',
-							action: 'create',
-							text: 'Erstellen'
-						},{
-							xtype: 'button',
-							action: 'edit',
-							text: 'Beartbeiten'
-						},{
-							xtype: 'button',
-							action: 'remove',
-							text: 'Löschen'
-						}
-					]
+					border: 0
 				}
 			]
 		},{
