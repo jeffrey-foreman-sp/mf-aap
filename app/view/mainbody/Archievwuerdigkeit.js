@@ -1,5 +1,5 @@
 Ext.define('Aap.view.mainbody.Archievwuerdigkeit',{
-	extend: 'Ext.form.Panel',
+	extend: 'Ext.form.FormPanel',
 	xtype: 'archievwuerdigkeit',
 	bodyPadding: 10,
 	defaultType: 'textfield',
@@ -12,6 +12,9 @@ Ext.define('Aap.view.mainbody.Archievwuerdigkeit',{
 			name: 'bewertungra'
 		},{		
 			fieldLabel: 'Begründung',
+//			width: 20,
+			labelWidth: 200,
+			anchor: '-13',
 			name: 'begruendung'
 		},{		
 			fieldLabel: 'Input durch',
@@ -35,7 +38,7 @@ Ext.define('Aap.view.mainbody.Archievwuerdigkeit',{
 			fieldLabel: 'Begründung',
 			name: 'begruendung'
 		},{	
-			fieldLabel: 'Art Sampling/Selektion',
+			fieldLabel: 'Art Sampling / Selektion',
 			name: 'artsamplingselektion'
 		},{	
 			fieldLabel: 'Entscheid Archivwuerdikeit',
@@ -43,7 +46,6 @@ Ext.define('Aap.view.mainbody.Archievwuerdigkeit',{
 		},{		
 			xtype: 'textareafield',
 			grow: true,
-			anchor: '100%',
 			fieldLabel: 'Bemerkungen',
 			name: 'bemerkungen'
 		}
