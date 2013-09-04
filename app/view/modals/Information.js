@@ -8,7 +8,7 @@ Ext.define('Aap.view.modals.Information', {
         this.items = [
             {
                 xtype: 'panel',
-				html: '<h1>Informationen</h1><p>Hier infotext</p>'
+				html: '<h1>Informationen</h1><p>Hier infotext</p><iframe src="http://www.geo.admin.ch/"></p></iframe>'
             }
         ];
         this.buttons = [
