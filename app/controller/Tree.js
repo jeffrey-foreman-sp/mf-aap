@@ -8,25 +8,20 @@ Ext.define('Aap.controller.Tree', {
 	stores: ['TreeStore'],
 	models: ['TreeNode'],
 	views: [
-		'modals.DataRemove',
-		'modals.DataAdd',
-		'modals.DataEdit'
+		'mainbody.Tree'
 	],
 	
 	init: function() {
 		this.control({
 			'tree': {
 				afterrender: this.initSelection,
-				drop: this.dropItem
 			}
 		});
 	}, 
 
 	initSelection: function() {
 		console.log("Tree rendered");
-	},
-	dropItem: function() {
-		console.log('item dropped');
+		Ext.getCmp('treestructure').getView().getPlugin().dragZone.lock();
 	}
 
 });

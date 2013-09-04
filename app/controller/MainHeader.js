@@ -22,18 +22,32 @@ Ext.define('Aap.controller.MainHeader', {
   
 	onToggleEditButton: function(button, pressed) {
     	if(!pressed){
+		
+			// toggle header button
   	 		button.setText('Bearbeiten');
+
+			// toggle tree buttons
    			Ext.getCmp('createbutton').hide();
 			Ext.getCmp('editbutton').hide();
 			Ext.getCmp('removebutton').hide();
 			Ext.getCmp('exportbutton').show();
-		}
+		
+			// unlock drag&drop
+			Ext.getCmp('treestructure').getView().getPlugin().dragZone.lock();
+		}	
     	else {
+		
+			// toggle header button
   		  	button.setText('Bearbeiten abschliessen');
+			
+			// toggle tree buttons
    			Ext.getCmp('createbutton').show();
 			Ext.getCmp('editbutton').show();
 			Ext.getCmp('removebutton').show();
 			Ext.getCmp('exportbutton').hide();
+
+			// unlock drag&drop
+			Ext.getCmp('treestructure').getView().getPlugin().dragZone.unlock();
 		}
 	}
 
