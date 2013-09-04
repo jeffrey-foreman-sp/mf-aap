@@ -7,7 +7,12 @@ Ext.define('Aap.view.mainbody.Tree' ,{
 	viewConfig: {
 		plugins: {
 			ptype: 'treeviewdragdrop'
-		}
+		},
+		listeners: {       
+            beforedrop: function(node, data, overModel, dropPosition, dropFunction, eOpts ) {
+                console.log('beforedrop')
+            }
+		}   
 	},
 	
 	columns: [

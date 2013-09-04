@@ -6,7 +6,7 @@ Ext.Loader.setConfig({
 Ext.application({
 	name: 'Aap',
 	controllers: [
-//		'Tree',
+		'Tree',
 		'DataEdit',
 		'DataAdd',
 		'DataDisplay',
