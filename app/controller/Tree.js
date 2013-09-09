@@ -23,8 +23,17 @@ Ext.define('Aap.controller.Tree', {
 		});
 	}, 
 
- 	beforedropNode: function(node, data, overModel, dropPosition, dropFunction, eOpts ) {
+ 	beforedropNode: function(node, data, overModel, dropPosition, dropHandlers) {
     	console.log('beforedrop')
+		dropHandlers.wait = true;
+		Ext.MessageBox.confirm('Warnung', 'Are you sure', function(btn){
+    	    if (btn === 'yes') {
+    	        dropHandlers.processDrop();
+   		    } 
+			else {
+      	    	dropHandlers.cancelDrop();
+     		}
+		});
  	},  
 
     dropNode: function(node, data, overModel, dropPosition, dropFunction, eOpts ) {
