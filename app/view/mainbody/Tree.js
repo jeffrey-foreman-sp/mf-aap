@@ -9,15 +9,7 @@ Ext.define('Aap.view.mainbody.Tree' ,{
 		plugins: {
 			ptype: 'treeviewdragdrop',
 			dragText: 'Verschieben und Metadaten anpassen'
-		},
-		listeners: {       
-            beforedrop: function(node, data, overModel, dropPosition, dropFunction, eOpts ) {
-                console.log('beforedrop')
-            },  
-            drop: function(node, data, overModel, dropPosition, dropFunction, eOpts ) {
-                console.log('drop')
-            }  
-		}   
+		}
 	},
 	
 	columns: [
