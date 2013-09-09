@@ -27,11 +27,12 @@ Ext.define('Aap.controller.Tree', {
     	console.log('beforedrop')
 		dropHandlers.wait = true;
 		Ext.MessageBox.show({
-			title: 'Warnung?',
+			title: 'Warnung!',
             msg: 'Are you sure?',
+           	icon: Ext.MessageBox.WARNING, 
             buttons: Ext.MessageBox.YESNO,
             buttonText:{ 
-                yes: "Definitely!", 
+                yes: "Daten verschieben!", 
                 no: "Abbrechen!" 
             },
 			fn: function(btn){

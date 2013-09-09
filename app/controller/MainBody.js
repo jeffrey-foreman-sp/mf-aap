@@ -8,7 +8,6 @@ Ext.define('Aap.controller.MainBody', {
 	stores: ['TreeStore'],
 	models: ['TreeNode'],
 	views: [
-		'modals.DataRemove',
 		'modals.DataAdd',
 		'modals.DataEdit'
 	],
@@ -94,19 +93,26 @@ Ext.define('Aap.controller.MainBody', {
 	onDataRemove: function() {
 		var selected = Aap.util.SelectedNode.isSelectedNode();		
 		if (selected == true ) {
-			var view = Ext.widget('dataremove');
-			console.log('Remove windows rendered');
+			Ext.MessageBox.show({
+				title: 'Warnung!',
+        	    msg: 'Wollen Sie die Daten wirklich unwiderrufbar löschen?',
+        	    buttons: Ext.MessageBox.YESNO,
+        	   	icon: Ext.MessageBox.WARNING, 
+				buttonText:{ 
+        	        yes: "Daten löschen!", 
+        	        no: "Abbrechen!" 
+        	    },
+				fn: function(btn){
+    			    if (btn === 'yes') {
+						var store = Ext.getStore('TreeStore');
+						var nodeid = Aap.util.SelectedNode.getIdFromSelectedNode();
+						var selectednode = store.getNodeById(nodeid); 
+						selectednode.remove();
+					} 
+				}
+			})
 		}
-	},
-
-	doDataRemove: function(button) {
-		var store = Ext.getStore('TreeStore');
-       	var nodeid = Aap.util.SelectedNode.getIdFromSelectedNode();
-		var selectednode = store.getNodeById(nodeid); 
-		selectednode.remove();
-        var win = button.up('window');
-       	win.close();
-		console.log('Data removed');
 	}
+
 });
 
