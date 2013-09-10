@@ -37,6 +37,17 @@ Ext.define('Aap.util.Tree', {
 			else 	
 				{ isselectednode = true}
 			return isselectednode;
+		}, 
+
+		//***********************************************************
+		// check for inheritating node somewhere hieger in the 
+		//	 treestructure
+		// inpput: id of selected node (int) 
+		// output: true = inheritating node present, 
+		//   false = no inheritating node presen (boolean)
+		//***********************************************************
+
+		isInherited: function(id) {
 		} 
 
     }
