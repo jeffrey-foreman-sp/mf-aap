@@ -30,9 +30,13 @@ Ext.define('Aap.controller.DataDisplay', {
 			forma.loadRecord(reca);
 		
 			var metaaap_id = node.get('metaaap_id');
-			var recv = Ext.getStore('MetaAap').findRecord('id', metaaap_id);	
+			var recm = Ext.getStore('MetaAap').findRecord('id', metaaap_id);	
+
 			var formv = Ext.getCmp('displayverfuegbarkeit');
-			formv.loadRecord(recv);
+			formv.loadRecord(recm);
+
+			var forma = Ext.getCmp('displayarchievwuerdigkeit');
+			forma.loadRecord(recm);
 		}
   }
 
