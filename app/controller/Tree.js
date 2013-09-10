@@ -28,7 +28,7 @@ Ext.define('Aap.controller.Tree', {
 		dropHandlers.wait = true;
 		Ext.MessageBox.show({
 			title: 'Warnung!',
-            msg: 'Are you sure?',
+            msg: 'Durch das Verschieben werden die Metadaten der neuen übergeordneten Position übernommen!</br></br>Was möchten Sie tun?',
            	icon: Ext.MessageBox.WARNING, 
             buttons: Ext.MessageBox.YESNO,
             buttonText:{ 
