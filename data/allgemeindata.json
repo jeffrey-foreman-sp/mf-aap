@@ -2,7 +2,7 @@
     "success": true,
     "children": [
         { 
-			/*"nodeid":"1112faf",*/
+			"id":"1", 
 			"name":"swisstopo", 
 			"ident": "swisstopoident", 
 			"georefdat":"swisstopogeorefdat",
@@ -13,11 +13,10 @@
 			"datenmenge":"swisstopodatenmende", 
 			"imjr":"swisstopoimjr", 
 			"datenzuw":"swisstopodatenzuw", 
-			"bemerk":"swisstopobemerk",
-			"treenode_id": "ext-record-1"
+			"bemerk":"swisstopobemerk"
 		},
 		{ 
-			/*"nodeid":"1112faf",*/
+			"id":"2", 
 			"name":"BAFU", 
 			"ident": "bafuident", 
 			"georefdat":"bafugeorefdat",
@@ -28,11 +27,10 @@
 			"datenmenge":"bafudatenmende", 
 			"imjr":"bafuimjr", 
 			"datenzuw":"bafudatenzuw", 
-			"bemerk":"bafubemerk",
-			"treenode_id": "ext-record-2"
+			"bemerk":"bafubemerk"
 		},
 		{ 
-			/*"nodeid":"1112faf",*/
+			"id":"3", 
 			"name":"Geodätische Grundlagen", 
 			"ident": "geodatident", 
 			"georefdat":"geodatgeorefdat",
@@ -43,11 +41,10 @@
 			"datenmenge":"geodatdatenmende", 
 			"imjr":"geodatimjr", 
 			"datenzuw":"geodatdatenzuw", 
-			"bemerk":"geodatbemerk",
-			"treenode_id": "ext-record-4"
+			"bemerk":"geodatbemerk"
 		},
 		{ 
-			/*"nodeid":"1112faf",*/
+			"id":"4", 
 			"name":"Beispiel Datensatz", 
 			"ident": "bsplident", 
 			"georefdat":"bsplgeorefdat",
@@ -58,11 +55,10 @@
 			"datenmenge":"bspldatenmende", 
 			"imjr":"bsplimjr", 
 			"datenzuw":"bspldatenzuw", 
-			"bemerk":"bsplbemerk",
-			"treenode_id": "ext-record-6"
+			"bemerk":"bsplbemerk"
 		},
 		{ 
-			/*"nodeid":"1112faf",*/
+			"id":"5", 
 			"name":"Bilddaten", 
 			"ident": "bilddatident", 
 			"georefdat":"bilddatgeorefdat",
@@ -73,11 +69,10 @@
 			"datenmenge":"bilddatdatenmende", 
 			"imjr":"bilddatimjr", 
 			"datenzuw":"bilddatdatenzuw", 
-			"bemerk":"bilddatbemerk",
-			"treenode_id": "ext-record-5"
+			"bemerk":"bilddatbemerk"
 		},
 		{ 
-			/*"nodeid":"1112faf",*/
+			"id":"6", 
 			"name":"BFE", 
 			"ident": "bfeident", 
 			"georefdat":"bfegeorefdat",
@@ -88,8 +83,7 @@
 			"datenmenge":"bfedatenmende", 
 			"imjr":"bfeimjr", 
 			"datenzuw":"bfedatenzuw", 
-			"bemerk":"bfebemerk",
-			"treenode_id": "ext-record-3"
+			"bemerk":"bfebemerk"
 		}
     ]
 }
