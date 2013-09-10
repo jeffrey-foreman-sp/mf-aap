@@ -4,7 +4,7 @@
 
 Ext.define('Aap.controller.MainBody', {
 	extend: 'Ext.app.Controller',
-	requires: ['Aap.util.SelectedNode'],
+	requires: ['Aap.util.Tree'],
 	stores: ['TreeStore'],
 	models: ['TreeNode'],
 	views: [

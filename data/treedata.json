@@ -1,13 +1,13 @@
 {
     "success": true,
     "children": [
-        { "id": "1", "name": "swisstopo", "allgemein": "1", "metaaap": "", "expanded": false, "children": [
-            { "id": "2", "name": "Geodätische Grundlagen", "allgemein": "2", "metaaap": "", "children": [
-            	{ "id": "3", "name": "Beispiel Datensatz", "allgemein": "3", "metaaap": "", "leaf": true }
+        { "id": "1", "name": "swisstopo", "allgemein_id": "1", "metaaap_id": "", "expanded": false, "children": [
+            { "id": "2", "name": "Geodätische Grundlagen", "allgemein_id": "2", "metaaap_id": "", "children": [
+            	{ "id": "3", "name": "Beispiel Datensatz", "allgemein_id": "3", "metaaap_id": "", "leaf": true }
 			]},
-        	{ "id": "4", "name": "Bilddaten", "allgemein": "", "metaaap": "", "loaded": true}
+        	{ "id": "4", "name": "Bilddaten", "allgemein_id": "4", "metaaap_id": "", "loaded": true}
         ]},
-        { "id": "5", "name": "BAFU", "allgemein": "5", "metaaap": "", "loaded": true },
-        { "id": "6", "name": "BFE", "allgemein": "6", "metaaap": "", "loaded": true }
+        { "id": "5", "name": "BAFU", "allgemein_id": "5", "metaaap_id": "", "loaded": true },
+        { "id": "6", "name": "BFE", "allgemein_id": "6", "metaaap_id": "", "loaded": true }
     ]
 }

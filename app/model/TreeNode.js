@@ -14,8 +14,5 @@ Ext.define('Aap.model.TreeNode', {
 			root: 'children',
             successProperty: 'success'
 		}
-	},
-	associations: [
-		{type: 'hasOne', model: 'Aap.model.Allgemein'}
-	]
+	}
 });

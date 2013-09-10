@@ -1,6 +1,6 @@
 Ext.define('Aap.controller.DataAdd', {
 	extend: 'Ext.app.Controller',
-	requires: ['Aap.util.SelectedNode'],
+	requires: ['Aap.util.Tree'],
 	stores: ['Allgemein'],
 	models: ['Allgemein'],
 	views: [

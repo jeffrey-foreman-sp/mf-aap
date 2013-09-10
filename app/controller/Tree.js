@@ -4,7 +4,7 @@
 
 Ext.define('Aap.controller.Tree', {
 	extend: 'Ext.app.Controller',
-	requires: ['Aap.util.SelectedNode'],
+//	requires: ['Aap.util.SelectedNode'],
 	stores: ['TreeStore'],
 	models: ['TreeNode'],
 	views: [
@@ -51,7 +51,6 @@ Ext.define('Aap.controller.Tree', {
     }, 
 
 	initSelection: function() {
-		console.log("Tree rendered");
 		Ext.getCmp('treestructure').getView().getPlugin().dragZone.lock();
 	}
 

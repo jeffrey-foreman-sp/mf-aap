@@ -1,6 +1,6 @@
 Ext.define('Aap.controller.DataEdit', {
 	extend: 'Ext.app.Controller',
-	requires: ['Aap.util.SelectedNode'],
+	requires: ['Aap.util.Tree'],
 	stores: ['Allgemein'],
 	models: ['Allgemein'],
 	views: [
@@ -21,9 +21,8 @@ Ext.define('Aap.controller.DataEdit', {
     afterPanelRendered: function() {
         console.log('The "data edit" panel was rendered!');
 
-		nodeid = Aap.util.SelectedNode.getIdFromSelectedNode();
-//		dta =  Ext.getStore('Allgemein').findRecord('treenode_id', nodeid).data;
-		var rec =  Ext.getStore('Allgemein').findRecord('treenode_id', nodeid);
+		nodeid = Aap.util.Tree.getSelectedNode();
+		var rec =  Ext.getStore('Allgemein').findRecord('id', nodeid);
 		var form = Ext.getCmp('allgemeinedit').getForm();
 		form.loadRecord(rec);
 		console.log('Load data from store to form!');
