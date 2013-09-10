@@ -16,6 +16,7 @@ Ext.define('Aap.view.mainbody.Tree' ,{
 		{ 
 			xtype: 'treecolumn', 
 			header: 'Geodatenbestand',
+			sortable: false,
 			dataIndex: 'name', 
 			flex: 1 
 		}
