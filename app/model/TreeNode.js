@@ -1,11 +1,13 @@
 Ext.define('Aap.model.TreeNode', {
  	extend: 'Ext.data.Model',
 	fields: [
-        'name' 
+        {name: "id", type: 'int'}, 
+        {name: "name", type: 'string'}, 
+        {name: "allgemein_id", type: 'int'}, 
+        {name: "meta_id", type: 'int'} 
     ],
 	proxy: {
 		type: 'ajax',
-		//url: 'http://mf1t.bgdi.admin.ch/~ltbar/aap-tool/data/treedata.json',
         url: 'data/treedata.json',
 		reader: {
 			type: 'json',
