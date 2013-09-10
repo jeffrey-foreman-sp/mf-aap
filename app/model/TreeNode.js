@@ -4,7 +4,7 @@ Ext.define('Aap.model.TreeNode', {
         {name: "id", type: 'int'}, 
         {name: "name", type: 'string'}, 
         {name: "allgemein_id", type: 'int'}, 
-        {name: "meta_id", type: 'int'} 
+        {name: "metaaap_id", type: 'int'} 
     ],
 	proxy: {
 		type: 'ajax',

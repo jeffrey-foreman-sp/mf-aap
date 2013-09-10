@@ -17,20 +17,6 @@
 		},
 		{ 
 			"id":"2", 
-			"name":"BAFU", 
-			"ident": "bafuident", 
-			"georefdat":"bafugeorefdat",
-			"fachst":"bafufach", 
-			"zugberech":"bafuzugangsbe", 
-			"echkateg":"bafuechkateg", 
-			"nachfzeitr":"bafuzeitrnachf", 
-			"datenmenge":"bafudatenmende", 
-			"imjr":"bafuimjr", 
-			"datenzuw":"bafudatenzuw", 
-			"bemerk":"bafubemerk"
-		},
-		{ 
-			"id":"3", 
 			"name":"Geodätische Grundlagen", 
 			"ident": "geodatident", 
 			"georefdat":"geodatgeorefdat",
@@ -44,7 +30,7 @@
 			"bemerk":"geodatbemerk"
 		},
 		{ 
-			"id":"4", 
+			"id":"3", 
 			"name":"Beispiel Datensatz", 
 			"ident": "bsplident", 
 			"georefdat":"bsplgeorefdat",
@@ -58,7 +44,7 @@
 			"bemerk":"bsplbemerk"
 		},
 		{ 
-			"id":"5", 
+			"id":"4", 
 			"name":"Bilddaten", 
 			"ident": "bilddatident", 
 			"georefdat":"bilddatgeorefdat",
@@ -70,6 +56,20 @@
 			"imjr":"bilddatimjr", 
 			"datenzuw":"bilddatdatenzuw", 
 			"bemerk":"bilddatbemerk"
+		},
+		{ 
+			"id":"5", 
+			"name":"BAFU", 
+			"ident": "bafuident", 
+			"georefdat":"bafugeorefdat",
+			"fachst":"bafufach", 
+			"zugberech":"bafuzugangsbe", 
+			"echkateg":"bafuechkateg", 
+			"nachfzeitr":"bafuzeitrnachf", 
+			"datenmenge":"bafudatenmende", 
+			"imjr":"bafuimjr", 
+			"datenzuw":"bafudatenzuw", 
+			"bemerk":"bafubemerk"
 		},
 		{ 
 			"id":"6", 

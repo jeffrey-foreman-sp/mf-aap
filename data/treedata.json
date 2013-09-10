@@ -1,13 +1,13 @@
 {
     "success": true,
     "children": [
-        { "name": "swisstopo", "expanded": false, "children": [
-            { "name": "Geodätische Grundlagen", "children": [
-            	{ "name": "Beispiel Datensatz", "leaf": true }
+        { "id": "1", "name": "swisstopo", "allgemein": "1", "metaaap": "", "expanded": false, "children": [
+            { "id": "2", "name": "Geodätische Grundlagen", "allgemein": "2", "metaaap": "", "children": [
+            	{ "id": "3", "name": "Beispiel Datensatz", "allgemein": "3", "metaaap": "", "leaf": true }
 			]},
-        	{ "name": "Bilddaten", "loaded": true}
+        	{ "id": "4", "name": "Bilddaten", "allgemein": "", "metaaap": "", "loaded": true}
         ]},
-        { "name": "BAFU", "loaded": true },
-        { "name": "BFE", "loaded": true }
+        { "id": "5", "name": "BAFU", "allgemein": "5", "metaaap": "", "loaded": true },
+        { "id": "6", "name": "BFE", "allgemein": "6", "metaaap": "", "loaded": true }
     ]
 }
