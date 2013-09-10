@@ -3,7 +3,8 @@ Ext.define('Aap.model.MetaAap', {
 
 	fields: [
         {name: "id", type: 'int'}, 
-        {name: "aufbewzs", type: 'int'}, 
+        {name: "erfass", type: 'date'}, 
+        {name: "modif", type: 'date'}, 
 		{name: "begrzs", type: 'string'}, 
 		{name: "inpaufb", type: 'string'}, 
 		{name: "aufbewws", type: 'int'},
