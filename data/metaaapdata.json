@@ -2,33 +2,45 @@
     "success": true,
     "children": [
         { 
-			/*"nodeid":"1112faf",*/
-			"aufbewfrzuststellnv":"", 
-			"begrzuststellnv": "", 
-			"aufbewfrweitstellnv":"", 
-			"begrweitstellnv":"", 
-			"entscheidnv":"", 
-			"bemerkungnv":"", 
-			"aufbewfrzuststellaw":"", 
-			"begrzuststellaw": "", 
-			"aufbewfrweitstellaw":"", 
-			"begrweitstellaw":"", 
-			"entscheidaw":"", 
-			"bemerkungaw":"" 
-		},{ 
-			/*"nodeid":"1112faf",*/
-			"aufbewfrzuststellnv":"", 
-			"begrzuststellnv": "", 
-			"aufbewfrweitstellnv":"", 
-			"begrweitstellnv":"", 
-			"entscheidnv":"", 
-			"bemerkungnv":"", 
-			"aufbewfrzuststellnv":"", 
-			"begrzuststellnv": "", 
-			"aufbewfrweitstellnv":"", 
-			"begrweitstellnv":"", 
-			"entscheidnv":"", 
-			"bemerkungnv":"" 
+        	"id": "1", 
+        	"aufbewzs": "51" , 
+			"begrzs": "testbegr1",
+			"inpaufb": "inputter1", 
+			"aufbewws": "41",
+			"begrw": "test2begr1", 
+			"entsaufbew": "11",
+			"bemerkaufbew": "beblabla1",
+        
+       		"bewzs": "terchiv1", 
+			"begrzs": "testbegr1",
+			"inparch": "asdfa1", 
+			"bewws": "xcyxc1",
+			"begrws": "etzw1", 
+			"bewba": "gfjf1", 
+			"begrba": "tk1", 
+			"artsampl": "vew1", 
+			"entsarch": "cvgu1", 
+			"bemerkarch": "bermerkungs bla bla archiv 1" 
+		},{  
+        	"id": "2", 
+        	"aufbewzs": "52" , 
+			"begrzs": "testbegr2",
+			"inpaufb": "inputter2", 
+			"aufbewws": "42",
+			"begrw": "test2begr2", 
+			"entsaufbew": "12",
+			"bemerkaufbew": "beblabla2",
+        
+       		"bewzs": "terchiv2", 
+			"begrzs": "testbegr2",
+			"inparch": "asdfa2", 
+			"bewws": "xcyxc2",
+			"begrws": "etzw2", 
+			"bewba": "gfjf2", 
+			"begrba": "tk2", 
+			"artsampl": "vew2", 
+			"entsarch": "cvgu2", 
+			"bemerkarch": "bermerkungs bla bla archiv 2" 
 		}
     ]
 }

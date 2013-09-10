@@ -14,7 +14,7 @@ Ext.application({
 		'MainHeader'
 	],
 
-	stores: ['Allgemein'],
+	stores: ['Allgemein', 'MetaAap'],
 
 /*	launch: function(){
 		var store = this.getCompaniesStore();

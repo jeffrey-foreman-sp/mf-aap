@@ -14,7 +14,6 @@ Ext.define('Aap.model.Allgemein', {
 		{name: "datenzuw", type: 'float'}, 
 		{name: "bemerk", type: 'string'}
 	],
-	belongsTo: 'Aap.model.TreeNode',
 	proxy: {
 		type: 'ajax',
 		api: {
