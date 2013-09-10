@@ -41,6 +41,26 @@
 			"artsampl": "vew2", 
 			"entsarch": "cvgu2", 
 			"bemerkarch": "bermerkungs bla bla archiv 2" 
+ 		},{  
+        	"id": "3", 
+        	"aufbewzs": "53" , 
+			"begrzs": "testbegr3",
+			"inpaufb": "inputter3", 
+			"aufbewws": "43",
+			"begrw": "test2begr3", 
+			"entsaufbew": "13",
+			"bemerkaufbew": "beblabla3",
+        
+       		"bewzs": "terchiv3", 
+			"begrzs": "testbegr3",
+			"inparch": "asdfa3", 
+			"bewws": "xcyxc3",
+			"begrws": "etzw3", 
+			"bewba": "gfjf3", 
+			"begrba": "tk3", 
+			"artsampl": "vew3", 
+			"entsarch": "cvgu3", 
+			"bemerkarch": "bermerkungs bla bla archiv 3" 
 		}
-    ]
+	]
 }
