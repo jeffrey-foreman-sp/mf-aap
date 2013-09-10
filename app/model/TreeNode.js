@@ -3,6 +3,8 @@ Ext.define('Aap.model.TreeNode', {
 	fields: [
         {name: "id", type: 'int'}, 
         {name: "name", type: 'string'}, 
+        {name: "erfass", type: 'date'}, 
+        {name: "modif", type: 'date'}, 
         {name: "metanode", type: 'boolean'}, 
         {name: "allgemein_id", type: 'int'}, 
         {name: "metaaap_id", type: 'int'} 

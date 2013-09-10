@@ -1,39 +1,41 @@
 Ext.define('Aap.view.mainbody.Verfuegbarkeit',{
 	extend: 'Ext.form.Panel',
+	store: 'Allgemein', 
 	xtype: 'verfuegbarkeit',
+	alias: 'widget.verfuegbarkeit',
+	id: 'displayverfuegbarkeit',
 	bodyPadding: 10,
-	defaultType: 'textfield',
+	defaultType: 'displayfield',
 	items: [
 		{		
 			xtype: 'container',
 			html: '<h4>Zuständige Stelle</h4>'		
 		},{		
 			fieldLabel: 'Aufbewahrungsfrist',
-			name: 'aufbewahrungsfrist'
+			name: 'aufbewzs'
 		},{		
 			fieldLabel: 'Begründung',
-			name: 'begruendung'
+			name: 'begrzs'
 		},{		
 			fieldLabel: 'Input durch',
-			name: 'inputdurch'
+			name: 'inpaufb'
 		},{		
 			xtype: 'container',
 			html: '<h4>Weiter Stellen</h4>'		
 		},{		
 			fieldLabel: 'Aufbewahrungsfrist',
-			name: 'aufbewahrungsfrist'
+			name: 'aufbewws'
 		},{		
 			fieldLabel: 'Begründung',
-			name: 'begruendung'
+			name: 'begrw'
 		},{		
 			fieldLabel: 'Entscheid Aufbewahrungsfrist',
-			name: 'enscheidaufbewahrungsfrist'
+			name: 'entsaufbew'
 		},{		
-			xtype: 'textareafield',
 			grow: true,
 			anchor: '100%',
 			fieldLabel: 'Bemerkungen',
-			name: 'bemerkungen'
+			name: 'bemerkaufbew'
 		}
 	]
 });

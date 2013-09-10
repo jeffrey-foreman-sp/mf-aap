@@ -23,10 +23,16 @@ Ext.define('Aap.controller.DataDisplay', {
 	
 		if (nodeid != 'root') {
 			var node = Ext.getStore('TreeStore').getNodeById(nodeid);
+
 			var allgemein_id = node.get('allgemein_id');
-			var rec = Ext.getStore('Allgemein').findRecord('id', allgemein_id);	
-			var form = Ext.getCmp('displayallgemein');
-			form.loadRecord(rec);
+			var reca = Ext.getStore('Allgemein').findRecord('id', allgemein_id);	
+			var forma = Ext.getCmp('displayallgemein');
+			forma.loadRecord(reca);
+		
+			var metaaap_id = node.get('metaaap_id');
+			var recv = Ext.getStore('MetaAap').findRecord('id', metaaap_id);	
+			var formv = Ext.getCmp('displayverfuegbarkeit');
+			formv.loadRecord(recv);
 		}
   }
 
