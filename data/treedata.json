@@ -4,44 +4,51 @@
         {
 			"id": "1",
 			"name": "swisstopo",
+			"metanode": "true",
 			"allgemein_id": "1",
-			"metaaap_id": "",
+			"metaaap_id": "1",
 			"expanded": false,
 			"children": [
             	{	
 					"id": "2",
 					"name": "Geodätische Grundlagen",
+					"metanode": "false",
 					"allgemein_id": "2",
-					"metaaap_id": "",
+					"metaaap_id": "1",
 					"children": [
 						{
 							"id": "3",
 							"name": "Beispiel Datensatz",
+							"metanode": "false",
 							"allgemein_id": "3",
-							"metaaap_id": "",
+							"metaaap_id": "1",
 							"leaf": true
 						}
 					]
 				},{ 
 					"id": "4",
 					"name": "Bilddaten",
+					"metanode": "false",
 					"allgemein_id": "4",
-					"metaaap_id": "",
+					"metaaap_id": "1",
 					"loaded": true
 				}
         	]
 		},{
 			"id": "5",
 			"name": "BAFU",
+			"metanode": "true",
 			"allgemein_id": "5",
-			"metaaap_id": "",
+			"metaaap_id": "2",
 			"loaded": true 
 		},{
 			"id": "6",
 			"name": "BFE",
+			"metanode": "true",
 			"allgemein_id": "6",
-			"metaaap_id": "",
+			"metaaap_id": "3",
 			"loaded": true 
 		}
-    ]
+    
+		]
 }
