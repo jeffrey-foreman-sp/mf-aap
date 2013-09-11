@@ -14,7 +14,6 @@ Ext.define('Aap.util.Tree', {
 
 		//***********************************************************
 		// get selection in tree
-		// input: selection (object)
 		// output: selection item (object)
 		//***********************************************************
         getSelectedItem:  function() {
@@ -29,7 +28,7 @@ Ext.define('Aap.util.Tree', {
 		// inpput: selection object 
 		// output: true = selected, false = not selected (boolean)
 		//***********************************************************
-		SelectedNode: function(selection) {
+		isSelectedNode: function(selection) {
 			var length = selection.length;
 			var isselectednode;
 			if (length == 0)
@@ -40,16 +39,52 @@ Ext.define('Aap.util.Tree', {
 		}, 
 
 		//***********************************************************
-		// check for inheritating node somewhere hieger in the 
+		// check whether node is starting point of meta data inhertance 
+		// inpput: id of selected node (int) 
+		// output: (boolean)	
+		//		true = is meta node, 
+		//   	false = is not meta node 
+		//***********************************************************
+		isMetanode: function(selectedItem) {
+			var selitem = selectedItem
+			var mn = selitem.get('metanode');
+			return mn;
+		},
+
+ 		//***********************************************************
+		// check for inheritating node somewhere heigher in the 
 		//	 treestructure
 		// inpput: id of selected node (int) 
-		// output: true = inheritating node present, 
-		//   false = no inheritating node presen (boolean)
+		// output: (boolean)
+		//		true = inheritating node present, 
+		//   	false = no inheritating node presen 
 		//***********************************************************
-
-		isInherited: function(id) {
-		} 
-
+		isInherited: function() {
+			var response = false;
+			var currentitem = Aap.util.Tree.getSelectedItem();
+	
+			function checkForInheritance(currentitem){	
+				if (currentitem.parentNode.isRoot() == true) {
+					return false;
+				}
+				else if (Aap.util.Tree.isMetanode(currentitem) == true) {	
+					return true;
+				}
+				else {
+					var parentid = currentitem.parentNode.get('id');
+					var currentitem = Ext.getStore('TreeStore').getNodeById(parentid);
+					return checkForInheritance(currentitem);
+				}
+			} 
+		
+			if (Aap.util.Tree.isMetanode(currentitem) == true) {	
+				return false;
+			} 
+			else {
+				var response = checkForInheritance(currentitem);	
+				return response;
+			}
+		}		
     }
 });
 
