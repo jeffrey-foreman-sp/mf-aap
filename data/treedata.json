@@ -8,6 +8,7 @@
 			"allgemein_id": "1",
 			"metaaap_id": "1",
 			"expanded": false,
+			"leaf": false,
 			"children": [
             	{	
 					"id": "2",
@@ -15,6 +16,7 @@
 					"metanode": "false",
 					"allgemein_id": "2",
 					"metaaap_id": "1",
+					"leaf": false,
 					"children": [
 						{
 							"id": "3",
@@ -31,7 +33,7 @@
 					"metanode": "false",
 					"allgemein_id": "4",
 					"metaaap_id": "1",
-					"loaded": true
+					"leaf": true
 				}
         	]
 		},{
@@ -40,14 +42,14 @@
 			"metanode": "true",
 			"allgemein_id": "5",
 			"metaaap_id": "2",
-			"loaded": true 
+			"leaf": true
 		},{
 			"id": "6",
 			"name": "BFE",
 			"metanode": "true",
 			"allgemein_id": "6",
 			"metaaap_id": "3",
-			"loaded": true 
+			"leaf": true
 		}
     
 		]
