@@ -21,7 +21,7 @@ Ext.define('Aap.controller.DataDisplay', {
 		var selectedTreeItem = Aap.util.Tree.getSelectedItem();
 		var nodeid = selectedTreeItem.getId()
 	
-		if (nodeid != 'root') {
+		if (selectedTreeItem.isRoot() == false) {
 			var node = Ext.getStore('TreeStore').getNodeById(nodeid);
 
 			var allgemein_id = node.get('allgemein_id');
