@@ -4,16 +4,16 @@
         {
 			"id": "1",
 			"name": "swisstopo",
-			"metanode": "true",
+			"metanode": "false",
 			"allgemein_id": "1",
-			"metaaap_id": "1",
+			"metaaap_id": "",
 			"expanded": false,
 			"leaf": false,
 			"children": [
             	{	
 					"id": "2",
 					"name": "Geodätische Grundlagen",
-					"metanode": "false",
+					"metanode": "true",
 					"allgemein_id": "2",
 					"metaaap_id": "1",
 					"leaf": false,
@@ -32,7 +32,7 @@
 					"name": "Bilddaten",
 					"metanode": "false",
 					"allgemein_id": "4",
-					"metaaap_id": "1",
+					"metaaap_id": "",
 					"leaf": true
 				}
         	]
