@@ -54,7 +54,6 @@ Ext.define('Aap.util.Tree', {
  		//***********************************************************
 		// check for inheritating node somewhere heigher in the 
 		//	 treestructure
-		// inpput: id of selected node (int) 
 		// output: (boolean)
 		//		true = inheritating node present, 
 		//   	false = no inheritating node presen 
@@ -77,14 +76,42 @@ Ext.define('Aap.util.Tree', {
 				}
 			} 
 		
-			if (Aap.util.Tree.isMetanode(currentitem) == true) {	
+			if (Aap.util.Tree.isMetanode(currentitem) == true || currentitem.isRoot() == true) {
 				return false;
 			} 
 			else {
 				var response = checkForInheritance(currentitem);	
 				return response;
 			}
-		}		
+		},	
+
+		//***********************************************************
+		// set (inherit) metadata from superiour metanode
+		//***********************************************************
+		inheritMetaaap: function() {
+			 currentitem = Aap.util.Tree.getSelectedItem();
+			var metanodeitem = currentitem; 
+			
+			function getInheritedNode(metanodeitem, currentitem){	
+				if (Aap.util.Tree.isMetanode(metanodeitem) == true) {	
+					var metm = metanodeitem.get('metaaap_id');
+					currentitem.set('metaaap_id', metm)
+				}
+				else {
+					var metanodeitem = metanodeitem.parentNode;
+					getInheritedNode(metanodeitem, currentitem);
+				}
+				
+			} 
+		
+			if (Aap.util.Tree.isInherited(currentitem) == false) { 
+				console.log('no superiour metadata node');	
+			}
+			else {
+				getInheritedNode(metanodeitem, currentitem);	
+			}
+		}
+	
     }
 });
 
