@@ -61,6 +61,46 @@
 			"artsampl": "vew3", 
 			"entsarch": "cvgu3", 
 			"bemerkarch": "bermerkungs bla bla archiv 3" 
+		},{  
+        	"id": "4", 
+        	"aufbewzs": "54" , 
+			"begrzs": "testbegr4",
+			"inpaufb": "inputter4", 
+			"aufbewws": "44",
+			"begrw": "test2begr4", 
+			"entsaufbew": "14",
+			"bemerkaufbew": "beblabla4",
+        
+       		"bewzs": "terchiv4", 
+			"begrzs": "testbegr4",
+			"inparch": "asdfa4", 
+			"bewws": "xcyxc4",
+			"begrws": "etzw44", 
+			"bewba": "gfjf4", 
+			"begrba": "t4", 
+			"artsampl": "vew4", 
+			"entsarch": "cvgu4", 
+			"bemerkarch": "bermerkungs bla bla archiv 4" 
+		},{  
+        	"id": "0", 
+        	"aufbewzs": "-" , 
+			"begrzs": "-",
+			"inpaufb": "-", 
+			"aufbewws": "-",
+			"begrw": "-", 
+			"entsaufbew": "-",
+			"bemerkaufbew": "-",
+        
+       		"bewzs": "-", 
+			"begrzs": "-",
+			"inparch": "-", 
+			"bewws": "-",
+			"begrws": "-", 
+			"bewba": "-", 
+			"begrba": "-", 
+			"artsampl": "-", 
+			"entsarch": "-", 
+			"bemerkarch": "-" 
 		}
 	]
 }
