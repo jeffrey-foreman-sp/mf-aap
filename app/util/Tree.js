@@ -54,13 +54,14 @@ Ext.define('Aap.util.Tree', {
  		//***********************************************************
 		// check for inheritating node somewhere heigher in the 
 		//	 treestructure
+		// input: (record: Ext.data.Model)
 		// output: (boolean)
 		//		true = inheritating node present, 
 		//   	false = no inheritating node presen 
 		//***********************************************************
-		isInherited: function() {
+		isInherited: function(record) {
 			var response = false;
-			var currentitem = Aap.util.Tree.getSelectedItem();
+			var currentitem = record;
 	
 			function checkForInheritance(currentitem){	
 				if (currentitem.parentNode.isRoot() == true) {
@@ -85,33 +86,35 @@ Ext.define('Aap.util.Tree', {
 			}
 		},	
 
-		//***********************************************************
-		// set (inherit) metadata from superiour metanode
-		//***********************************************************
-		inheritMetaaap: function() {
-			 currentitem = Aap.util.Tree.getSelectedItem();
-			var metanodeitem = currentitem; 
-			
-			function getInheritedNode(metanodeitem, currentitem){	
-				if (Aap.util.Tree.isMetanode(metanodeitem) == true) {	
-					var metm = metanodeitem.get('metaaap_id');
-					currentitem.set('metaaap_id', metm)
-				}
-				else {
-					var metanodeitem = metanodeitem.parentNode;
-					getInheritedNode(metanodeitem, currentitem);
-				}
-				
-			} 
 		
-			if (Aap.util.Tree.isInherited(currentitem) == false) { 
-				console.log('no superiour metadata node');	
-			}
-			else {
-				getInheritedNode(metanodeitem, currentitem);	
-			}
-		}
-	
+		//***********************************************************
+		// change the metaaap_id of all child nodes below the passed node
+		// input:
+		// 		currentnode (Ext.data.Model): starting point of cascading
+		//		new_metaid (int): new value for the metaaap_id property 
+		//***********************************************************
+		setChildrensMetaId: function(currentnode, new_metaid) { 
+			currentnode.cascadeBy(function (new_id) {
+				this.set('metaaap_id', new_id);
+				console.log(this.get('metaaap_id'));
+			}, null, [new_metaid]);
+		},
+			
+		//***********************************************************
+		// get the metaaap_id from the parents nodes
+		// input: currentnode (Ext.data.Model): starting point of cascading
+		// output: parents_metaid (int): metaaap_id in one of the parent nodes 
+		//***********************************************************
+		getParentsMetaId: function(currentnode) { 
+			var parents_metaid;
+			currentnode.bubble(function (p_metaid) {
+				this.get('metaaap_id');
+				console.log(this.get('name'));
+				console.log(this.get('metaaap_id'));
+				p_metaid = this.get('metaaap_id');
+			}, null, [parents_metaid]);
+			return parents_metaid;
+		}	
     }
 });
 

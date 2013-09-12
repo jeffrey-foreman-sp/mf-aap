@@ -1,7 +1,5 @@
-Ext.define('Aap.controller.tree.Leaf', {
-	views: [
-		'mainbody.Tree'
-	],
+Ext.define('Aap.controller.tree.DragAndDrop', {
+	views: ['mainbody.Tree'],
     statics: {
 
 		//***********************************************************
