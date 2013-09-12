@@ -39,7 +39,6 @@ Ext.define('Aap.controller.Tree', {
             },
 			fn: function(btn){
     		    if (btn === 'yes') {
-					Aap.controller.tree.Leaf.leafToDropPosition(node, data, overModel, dropPosition, dropHandlers);
 					dropHandlers.processDrop();
    			    } 
 				else {
@@ -50,7 +49,8 @@ Ext.define('Aap.controller.Tree', {
  	},  
 
     dropNode: function(node, data, overModel, dropPosition, dropFunction, eOpts ) {
-    	console.log('drop')
+    	console.log(dropPosition);
+    	console.log('drop');
     }, 
 
 	initSelection: function() {
