@@ -4,7 +4,9 @@
 
 Ext.define('Aap.controller.Tree', {
 	extend: 'Ext.app.Controller',
-//	requires: ['Aap.util.SelectedNode'],
+	requires: [	
+		'Aap.controller.tree.Leaf'
+	],
 	stores: ['TreeStore'],
 	models: ['TreeNode'],
 	views: [
@@ -37,7 +39,8 @@ Ext.define('Aap.controller.Tree', {
             },
 			fn: function(btn){
     		    if (btn === 'yes') {
-    		        dropHandlers.processDrop();
+					Aap.controller.tree.Leaf.leafToDropPosition(node, data, overModel, dropPosition, dropHandlers);
+					dropHandlers.processDrop();
    			    } 
 				else {
     	  	    	dropHandlers.cancelDrop();
