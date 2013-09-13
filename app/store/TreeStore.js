@@ -5,7 +5,7 @@ Ext.define('Aap.store.TreeStore', {
     autoLoad:true,
     root: {
       name: 'Gesamtbestand',
-      expandable: false 
+	  expandable: false 
 	}
 
 });

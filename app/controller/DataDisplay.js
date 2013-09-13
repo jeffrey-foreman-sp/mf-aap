@@ -18,7 +18,7 @@ Ext.define('Aap.controller.DataDisplay', {
     },
 
     selectionchange: function() {
-		var selectedTreeItem = Aap.util.Tree.getSelectedItem();
+		var selectedTreeItem = Aap.util.Tree.getSelectedNode();
 		var nodeid = selectedTreeItem.getId()
 	
 		if (selectedTreeItem.isRoot() == false) {
