@@ -60,6 +60,10 @@ Ext.define('Aap.controller.Tree', {
 			if (Aap.util.Tree.isMetanode(moved_node) == true) {
 				moved_node.set('metanode', false);
 			}
+		}	
+		else {
+			Aap.util.Tree.setChildrensMetaId2(moved_node);
+			console.log('not upper data');
 		}
    		console.log('drop');
     }, 
