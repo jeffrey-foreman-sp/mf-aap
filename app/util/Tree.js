@@ -109,6 +109,7 @@ Ext.define('Aap.util.Tree', {
 		setChildrensMetaId: function(currentnode, new_metaid) { 
 			currentnode.cascadeBy(function (new_id) {
 				this.set('metaaap_id', new_id);
+				this.set('metanode', false);
 			}, null, [new_metaid]);
 			console.log(currentnode.get('name') + '´s children metaaap_id properties are set to ' + new_metaid);
 		},
@@ -123,7 +124,7 @@ Ext.define('Aap.util.Tree', {
 		setChildrensMetaId2: function(currentnode) { 
 			currentnode.cascadeBy(function () {
 				if (this.hasChildNodes == true) {this.set('metaaap_id', 0);}
-				else {this.set('metanode', true);}
+				else if (currentnode.get('metanode') == false) {this.set('metanode', true);}
 			}, null, null);
 			console.log(currentnode.get('name') + '´s children metaaap_id properties are set to 0 exept on its last child nodes'); 
 		}
