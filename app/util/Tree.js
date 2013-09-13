@@ -106,15 +106,18 @@ Ext.define('Aap.util.Tree', {
 		// output: parents_metaid (int): metaaap_id in one of the parent nodes 
 		//***********************************************************
 		getParentsMetaId: function(currentnode) { 
-			var parents_metaid;
+			var parents_metaid = 0;
 			currentnode.bubble(function (p_metaid) {
-				this.get('metaaap_id');
 				console.log(this.get('name'));
+				console.log(this.get('metanode'));
 				console.log(this.get('metaaap_id'));
-				p_metaid = this.get('metaaap_id');
+				if (this.get('metanode') == true){
+					parents_metaid = this.get('metaaap_id');
+				}
 			}, null, [parents_metaid]);
 			return parents_metaid;
 		}	
-    }
+    
+	}
 });
 
