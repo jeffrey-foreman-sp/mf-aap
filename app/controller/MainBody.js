@@ -69,9 +69,10 @@ Ext.define('Aap.controller.MainBody', {
 
 	openDataEdit: function() {
 		console.log('Clicked on "Bearbeiten button!"');
-		var selected = Aap.util.SelectedNode.isSelectedNode();		
+		var selection = Aap.util.Tree.getTreeSelection();		
+		var selected = Aap.util.Tree.isSelectedNode(selection);		
 		if (selected == true ) {
-			var nodeid = Aap.util.SelectedNode.getIdFromSelectedNode();
+			var nodeid = Aap.util.Tree.getSelectedNode().get('id');
 			if (nodeid != "root"){
 				var view = Ext.widget('dataedit');
 			} else {

@@ -6,9 +6,7 @@ Ext.define('Aap.view.modals.DataEdit', {
 		'Aap.view.modals.dataentry.Archivwuerdigkeit'		
 	],
     alias: 'widget.dataedit',
-//  title: 'Neuer Knoten',
-//    layout: 'fit',
-    autoShow: true,
+	autoShow: true,
 	modal: true,
 	resizable: false,
 	initComponent: function () {

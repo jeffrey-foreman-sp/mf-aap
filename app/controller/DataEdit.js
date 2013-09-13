@@ -1,15 +1,15 @@
 Ext.define('Aap.controller.DataEdit', {
 	extend: 'Ext.app.Controller',
 	requires: ['Aap.util.Tree'],
-	stores: ['Allgemein'],
-	models: ['Allgemein'],
+	stores: ['Allgemein', 'MetaAap'],
+	models: ['Allgemein', 'MetaAap'],
 	views: [
 		'modals.DataEdit'
 	],
 
     init: function() {
         this.control({
-            'dataedit #allgemeinedit ':  {
+            'dataedit':  { 
                 afterrender: this.afterPanelRendered
             },
 			'dataedit button[action=save]': {
@@ -21,10 +21,16 @@ Ext.define('Aap.controller.DataEdit', {
     afterPanelRendered: function() {
         console.log('The "data edit" panel was rendered!');
 
-		nodeid = Aap.util.Tree.getSelectedNode();
+		nodeid = Aap.util.Tree.getSelectedNode().get('id');
+		console.log(nodeid);
 		var rec =  Ext.getStore('Allgemein').findRecord('id', nodeid);
+		console.log('test');
 		var form = Ext.getCmp('allgemeinedit').getForm();
+		console.log('test');
 		form.loadRecord(rec);
+		console.log('test');
+		form.loadRecord(rec);
+		console.log('test');
 		console.log('Load data from store to form!');
     },
 
@@ -37,7 +43,7 @@ Ext.define('Aap.controller.DataEdit', {
 		record.set(values);
 		console.log('Write data from form to store!');
 
-		var rec = Ext.getStore('Allgemein').findRecord('treenode_id', nodeid);	
+		var rec =  Ext.getStore('Allgemein').findRecord('id', nodeid);
 		var form = Ext.getCmp('displayallgemein');
 		form.loadRecord(rec);
 

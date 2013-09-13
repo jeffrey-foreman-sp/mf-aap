@@ -7,8 +7,8 @@ Ext.application({
 	name: 'Aap',
 	controllers: [
 		'Tree',
-//		'DataEdit',
-//		'DataAdd',
+		'DataEdit',
+		'DataAdd',
 		'DataDisplay',
 		'MainBody',
 		'MainHeader'
