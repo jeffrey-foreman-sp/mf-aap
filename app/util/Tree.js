@@ -47,6 +47,7 @@ Ext.define('Aap.util.Tree', {
 		//***********************************************************
 		isMetanode: function(selectednode) {
 			var mn = selectednode.get('metanode');
+			console.log(selectednode.get('name') + ' is metanode: ' + mn);
 			return mn;
 		},
 
@@ -65,15 +66,16 @@ Ext.define('Aap.util.Tree', {
 			}
 			else {
 				node.bubble(function (resp) {
-					console.log(this.get('name'));
-					console.log(this.get('id'));
-					console.log(this.get('metanode'));
-					console.log(this.get('metaaap_id'));
+//					console.log(this.get('name'));
+//					console.log(this.get('id'));
+//					console.log(this.get('metanode'));
+//					console.log(this.get('metaaap_id'));
 					if (this.get('metanode') == true){
 						response = true;
 					}
 				}, null, [response]);
 			}
+			console.log(node.get('name') + ' is inherited: ' + response);
 			return response;
 		},
     
@@ -86,13 +88,14 @@ Ext.define('Aap.util.Tree', {
 		getParentsMetaId: function(currentnode) { 
 			var parents_metaid = 0;
 			currentnode.bubble(function (p_metaid) {
-				console.log(this.get('name'));
-				console.log(this.get('metanode'));
-				console.log(this.get('metaaap_id'));
+//				console.log(this.get('name'));
+//				console.log(this.get('metanode'));
+//				console.log(this.get('metaaap_id'));
 				if (this.get('metanode') == true){
 					parents_metaid = this.get('metaaap_id');
 				}
 			}, null, [parents_metaid]);
+			console.log(currentnode.get('name') + '´s parents metaid is ' + parents_metaid);
 			return parents_metaid;
 		},
    
@@ -106,9 +109,10 @@ Ext.define('Aap.util.Tree', {
 		setChildrensMetaId: function(currentnode, new_metaid) { 
 			currentnode.cascadeBy(function (new_id) {
 				this.set('metaaap_id', new_id);
-				console.log(this.get('metaaap_id'));
 			}, null, [new_metaid]);
+			console.log(currentnode.get('name') + '´s children metaaap_id properties are set to ' + new_metaid);
 		}
+	
 
  
 	}

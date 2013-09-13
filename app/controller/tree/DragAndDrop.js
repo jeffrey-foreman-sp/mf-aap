@@ -1,20 +1,29 @@
 Ext.define('Aap.controller.tree.DragAndDrop', {
 	views: ['mainbody.Tree'],
+	requires: ['Aap.util.Tree'],
     statics: {
 
 		//***********************************************************
-		// set dropPosition record as leaf=true if not already the case
-		// inpput: node 
+		// 
+		// 
 		//***********************************************************
-		enableDropOnLeaf: function(node, data, overModel, dropPosition, dropHandlers) {
-			var tree = Ext.getCmp('treestructure').getView();
-			var rec = tree.getRecord(node);
-			rec.set('leaf', false);
-			rec.set('loaded', true);
-			rec.set('expanded', true);
-			console.log(rec);
-			dropHandlers.processDrop();
+
+	Drop: function(node, data, overModel, dropPosition, eOpts) {
+
+		/*
+		var tree = Ext.getCmp('treestructure').getView();
+		var rec = tree.getRecord(node);
+		if (Aap.util.Tree.isMetanode(rec) == true) {
+			console.log('ismetanoded');
 		}
+		if (Aap.util.Tree.isInherited(rec) == true) {
+			console.log('inheriteddd');
+		}
+   		console.log('drop');
+*/
+		
+    }, 
+
     }
 });
 
