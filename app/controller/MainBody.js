@@ -82,7 +82,8 @@ Ext.define('Aap.controller.MainBody', {
 	},
 
 	onDataRemove: function() {
-		var selected = Aap.util.SelectedNode.isSelectedNode();		
+		var selection = Aap.util.Tree.getTreeSelection();
+		var selected = Aap.util.Tree.isSelectedNode(selection);		
 		if (selected == true ) {
 			Ext.MessageBox.show({
 				title: 'Warnung!',
@@ -96,7 +97,7 @@ Ext.define('Aap.controller.MainBody', {
 				fn: function(btn){
     			    if (btn === 'yes') {
 						var store = Ext.getStore('TreeStore');
-						var nodeid = Aap.util.SelectedNode.getIdFromSelectedNode();
+						var nodeid = Aap.util.Tree.getSelectedNode().get('id');
 						var selectednode = store.getNodeById(nodeid); 
 						selectednode.remove();
 					} 
