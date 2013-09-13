@@ -54,6 +54,12 @@ Ext.define('Aap.controller.Tree', {
 		var target_node = tree.getRecord(node);
 		var moved_node = data.records[0];
 		var meta_id;	
+		
+		if (dropPosition != 'append') {
+			target_node = target_node.parentNode;
+			console.log('not append');
+		}
+		
 		if (Aap.util.Tree.isInherited(target_node) == true || Aap.util.Tree.isMetanode(target_node) == true) {
 			meta_id = Aap.util.Tree.getParentsMetaId(target_node);
 			Aap.util.Tree.setChildrensMetaId(moved_node, meta_id);
@@ -65,6 +71,7 @@ Ext.define('Aap.controller.Tree', {
 			Aap.util.Tree.setChildrensMetaId2(moved_node);
 			console.log('not upper data');
 		}
+   		console.log(dropPosition);
    		console.log('drop');
     }, 
 
