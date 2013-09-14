@@ -21,10 +21,10 @@ Ext.define('Aap.controller.DataEdit', {
     afterPanelRendered: function() {
         console.log('The "data edit" panel was rendered!');
 
-		nodeid = Aap.util.Tree.getSelectedNode().get('id');
+		nodeid = Aap.util.Tree.getSelectedNode().get('allgemein_id');
 		console.log(nodeid);
 		var rec =  Ext.getStore('Allgemein').findRecord('id', nodeid);
-		console.log('test');
+		console.log(rec);
 		var form = Ext.getCmp('allgemeinedit').getForm();
 		console.log('test');
 		form.loadRecord(rec);
