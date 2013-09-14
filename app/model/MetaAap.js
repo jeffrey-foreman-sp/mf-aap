@@ -1,8 +1,8 @@
 Ext.define('Aap.model.MetaAap', {
  	extend: 'Ext.data.Model',
-
+	idgen: 'uuid',
 	fields: [
-        {name: "id", type: 'int'}, 
+        {name: "id", type: 'string'}, 
 		{name: "aufbewzs", type: 'int'}, 
 		{name: "begrzs", type: 'string'}, 
 		{name: "inpaufb", type: 'string'}, 
