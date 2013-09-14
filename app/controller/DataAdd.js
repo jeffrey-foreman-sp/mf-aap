@@ -19,9 +19,8 @@ Ext.define('Aap.controller.DataAdd', {
     afterPanelRendered: function() {
         console.log('The "data add" panel was rendered');
 		
-		var nodeid = Aap.util.SelectedNode.getIdFromSelectedNode();
-//		var selectednode = Ext.getStore('TreeStore').getNodeById(nodeid); 
-		var dta =  Ext.getStore('Allgemein').findRecord('treenode_id', nodeid).data;
+		var nodeid = Aap.util.Tree.getSelectedNode().get('id');
+		var dta =  Ext.getStore('Allgemein').findRecord('allgemein_id', nodeid).data;
 		var form = Ext.getCmp('allgemeinview').getForm();
 
 

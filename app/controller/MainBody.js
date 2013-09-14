@@ -42,7 +42,8 @@ Ext.define('Aap.controller.MainBody', {
 	},
 
 	onAddNode: function() {
-		var selected = Aap.util.SelectedNode.isSelectedNode();		
+		var selection = Aap.util.Tree.getTreeSelection();		
+		var selected = Aap.util.Tree.isSelectedNode(selection);		
 		if (selected == true ) {
 			var view = Ext.widget('dataadd');
 		}
@@ -53,17 +54,22 @@ Ext.define('Aap.controller.MainBody', {
 		var store = Ext.getStore('TreeStore');
        	var treeelement = Ext.getCmp('treestructure');
 		var selection = treeelement.getSelectionModel().getSelection()[0]; //not very pretty
-        var win = button.up('window');
-		
+	
+		// create new node	
 		var newNode = Ext.create("Aap.model.TreeNode", {
 			name: "name", 
 			leaf: false
 		});
-		
-       	var nodeid = Aap.util.SelectedNode.getIdFromSelectedNode();
+	
+		// append new node	
+       	var nodeid = Aap.util.Tree.getSelectedNode().get('id');
 		var selectednode = store.getNodeById(nodeid); 
+       	console.log(selectednode);
 		selectednode.appendChild(newNode);
 		selectednode.expand();
+        
+		// close windows 
+		var win = button.up('window');
     	win.close();
 	},
 
