@@ -36,22 +36,7 @@ Ext.define('Aap.view.modals.DataEdit', {
 						title: 'Bewertung Archievwürdigkeit'
 					}
 				]
-
-/*                xtype: 'form',
-                bodyStyle: {
-                    background: 'none',
-                    padding: '10px',
-                    border: '0'
-                },
-                items: [
-                    {
-                        xtype: 'textfield',
-                        name: 'name',
-                        allowBlank: false,
-                        fieldLabel: 'Name'
-                    }
-                ]
-  */          }
+          }
         ];
         this.buttons = [
             {
