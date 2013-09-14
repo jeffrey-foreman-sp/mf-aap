@@ -1,7 +1,8 @@
 Ext.define('Aap.model.TreeNode', {
  	extend: 'Ext.data.Model',
+	idgen: 'uuid',
 	fields: [
-        {name: "id", type: 'int'}, 
+        {name: "id", type: 'string'}, 
         {name: "name", type: 'string'}, 
         {name: "erfass", type: 'date'}, 
         {name: "modif", type: 'date'}, 
