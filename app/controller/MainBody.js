@@ -51,11 +51,13 @@ Ext.define('Aap.controller.MainBody', {
 
 	doAddNode: function(button){
 		console.log('data add');
+
+		// get selected node
 		var store = Ext.getStore('TreeStore');
        	var treeelement = Ext.getCmp('treestructure');
 		var selection = treeelement.getSelectionModel().getSelection()[0]; //not very pretty
 	
-		// create new node	
+/*		// create new node	
 		var newNode = Ext.create("Aap.model.TreeNode", {
 			name: "name", 
 			leaf: false
@@ -71,6 +73,7 @@ Ext.define('Aap.controller.MainBody', {
 		// close windows 
 		var win = button.up('window');
     	win.close();
+*/
 	},
 
 	openDataEdit: function() {

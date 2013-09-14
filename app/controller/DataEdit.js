@@ -22,15 +22,10 @@ Ext.define('Aap.controller.DataEdit', {
         console.log('The "data edit" panel was rendered!');
 
 		nodeid = Aap.util.Tree.getSelectedNode().get('allgemein_id');
-		console.log(nodeid);
 		var rec =  Ext.getStore('Allgemein').findRecord('id', nodeid);
 		console.log(rec);
 		var form = Ext.getCmp('allgemeinedit').getForm();
-		console.log('test');
 		form.loadRecord(rec);
-		console.log('test');
-		form.loadRecord(rec);
-		console.log('test');
 		console.log('Load data from store to form!');
     },
 
