@@ -23,14 +23,14 @@ Ext.define('Aap.controller.DataDisplay', {
 	
 		if (selectedTreeItem.isRoot() == false) {
 			var node = Ext.getStore('TreeStore').getNodeById(nodeid);
-console.log(node);
 
+			// display allgemein record in form			
 			var allgemein_id = node.get('allgemein_id');
 			var reca = Ext.getStore('Allgemein').findRecord('id', allgemein_id);
 			var forma = Ext.getCmp('disp_allg');
-		
 			forma.loadRecord(reca);
 		
+			// display metaaap  record in form			
 			var metaaap_id = node.get('metaaap_id');
 			var recm = Ext.getStore('MetaAap').findRecord('id', metaaap_id);
 			var formv = Ext.getCmp('disp_verf');

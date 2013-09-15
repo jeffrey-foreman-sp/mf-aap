@@ -19,29 +19,28 @@ Ext.define('Aap.controller.DataEdit', {
     },
 
     afterPanelRendered: function() {
-	
-		nodeid = Aap.util.Tree.getSelectedNode().get('allgemein_id');
-		var rec =  Ext.getStore('Allgemein').findRecord('id', nodeid);
-		console.log(rec);
-		var form = Ext.getCmp('edit_allg').getForm();
-		console.log(form);
-		form.loadRecord(rec);
-		console.log('Load data from store to form!');
 		
-		 metaaap_id = Aap.util.Tree.getSelectedNode().get('metaaap_id');
-		console.log(metaaap_id);
-		 recm = Ext.getStore('MetaAap').findRecord('id', metaaap_id);
-		console.log(recm);
-		 formv = Ext.getCmp('edit_verf').getForm();
-		console.log(formv);
-		formv.loadRecord(recm);
-		forma = Ext.getCmp('edit_arch');
-		forma.loadRecord(recm);
+		// load allgemein data into form	
+		var allgemein_id = Aap.util.Tree.getSelectedNode().get('allgemein_id');
+		var rec =  Ext.getStore('Allgemein').findRecord('id', allgemein_id);
+		var form = Ext.getCmp('edit_allg').getForm();
+		form.loadRecord(rec);
+		
+		// load meta data into form
+		var metaaap_id = Aap.util.Tree.getSelectedNode().get('metaaap_id');
+		var	recm = Ext.getStore('MetaAap').findRecord('id', metaaap_id);
+		Ext.getCmp('edit_verf').getForm().loadRecord(recm);
+		Ext.getCmp('edit_arch').loadRecord(recm);
 
-		// only display data if node is inherited	
+		// disable edit of metaaap when node is inherited	
 		selNode = Aap.util.Tree.getSelectedNode();
 		if (Aap.util.Tree.isInherited(selNode) == true) {
-			console.log('display only')
+			Ext.getCmp('edit_verf').getForm().getFields().each(function(field) {
+   		    	field.setDisabled(true);  
+			}, form);
+			Ext.getCmp('edit_arch').getForm().getFields().each(function(field) {
+   		    	field.setDisabled(true);  
+			}, form);
 		}
 		else {
 			
@@ -50,17 +49,42 @@ Ext.define('Aap.controller.DataEdit', {
 
 	doEditData: function(button){
 		console.log("Clicked save button!");
-		
-		var form = Ext.getCmp('allgemeinedit').getForm();
-		var record = form.getRecord();
-		var values = form.getValues();	
-		record.set(values);
+	
+		// write record from form to store	
 		console.log('Write data from form to store!');
+		
+		var form1 = Ext.getCmp('edit_allg').getForm();
+		var record1 = form1.getRecord();
+		var values1 = form1.getValues();	
+		record1.set(values1);
+		
+		var form2 = Ext.getCmp('edit_verf').getForm();
+		var record2 = form2.getRecord();
+		var values2 = form2.getValues();	
+		record2.set(values2);
 
-		var rec =  Ext.getStore('Allgemein').findRecord('id', nodeid);
-		var form = Ext.getCmp('disp_allgemein');
-		form.loadRecord(rec);
+		var form3 = Ext.getCmp('edit_arch').getForm();
+		var record3 = form3.getRecord();
+		var values3 = form3.getValues();	
+		record3.set(values3);
 
+
+		// display allgemein record in form			
+		var node = Aap.util.Tree.getSelectedNode();
+		
+		var allgemein_id = node.get('allgemein_id');
+		var reca = Ext.getStore('Allgemein').findRecord('id', allgemein_id);
+		var forma = Ext.getCmp('disp_allg');
+		forma.loadRecord(reca);
+		
+		var metaaap_id = node.get('metaaap_id');
+		var recm = Ext.getStore('MetaAap').findRecord('id', metaaap_id);
+		var formv = Ext.getCmp('disp_verf');
+		formv.loadRecord(recm);
+		var forma = Ext.getCmp('disp_arch');
+		forma.loadRecord(recm);
+
+		// close edite window
 		var win = button.up('window');
 		win.close();	
 	}
