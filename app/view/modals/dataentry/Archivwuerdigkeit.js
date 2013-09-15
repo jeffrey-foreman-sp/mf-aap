@@ -3,49 +3,50 @@ Ext.define('Aap.view.modals.dataentry.Archivwuerdigkeit',{
 	xtype: 'dataentryarchivwuerdigkeit',
 	bodyPadding: 10,
 	defaultType: 'textfield',
+	id: 'edit_arch',
 	items: [
 		{		
 			xtype: 'container',
 			html: '<h4>Zuständige Stelle</h4>'		
 		},{		
 			fieldLabel: 'Bewertung r+a',
-			name: 'bewertungra'
+			name: 'bewzs'
 		},{		
 			fieldLabel: 'Begründung',
-			name: 'begruendung'
+			name: 'begrzs'
 		},{		
 			fieldLabel: 'Input durch',
-			name: 'inputdurch'
+			name: 'inparch'
 		},{		
 			xtype: 'container',
 			html: '<h4>Weiter Stellen</h4>'		
 		},{		
 			fieldLabel: 'Bewertung r+a',
-			name: 'bewertungra'
+			name: 'bewws'
 		},{		
 			fieldLabel: 'Begründung',
-			name: 'begruendung'
+			name: 'begrws'
 		},{	
 			xtype: 'container',
 			html: '<h4>Bundesarchiv</h4>'		
 		},{		
 			fieldLabel: 'Bewertung h+s',
-			name: 'bewertunghs'
+			name: 'bewba'
 		},{		
 			fieldLabel: 'Begründung',
-			name: 'begruendung'
+			name: 'begrba'
 		},{	
 			fieldLabel: 'Art Sampling/Selektion',
-			name: 'artsamplingselektion'
+			name: 'artsampl'
 		},{	
 			fieldLabel: 'Entscheid Archivwuerdikeit',
-			name: 'enscheidarchivwuerdigkeit'
+			name: 'entsarch'
 		},{		
 			xtype: 'textareafield',
 			grow: true,
 			anchor: '100%',
 			fieldLabel: 'Bemerkungen',
-			name: 'bemerkungen'
+			name: 'bemerkarch'
 		}
 	]
 });

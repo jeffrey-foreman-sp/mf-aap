@@ -3,8 +3,8 @@ Ext.define('Aap.view.mainbody.Allgemein',{
 	store: 'Allgemein', 
 	xtype: 'allgemein',
 	alias: 'widget.displayallgemein',
-	id: 'displayallgemein',
 	bodyPadding: 10,
+	id: 'disp_allg',
 	defaultType: 'displayfield',
 	items: [
 		{		

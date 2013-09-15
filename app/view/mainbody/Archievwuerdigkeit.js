@@ -3,8 +3,8 @@ Ext.define('Aap.view.mainbody.Archievwuerdigkeit',{
 	xtype: 'archievwuerdigkeit',
 	store: 'MetaAap', 
 	alias: 'widget.archievwuerdigkeit',
-	id: 'displayarchievwuerdigkeit',
 	bodyPadding: 10,
+	id: 'disp_arch',
 	defaultType: 'displayfield',
 	items: [
 		{		

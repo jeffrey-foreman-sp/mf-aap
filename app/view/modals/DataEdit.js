@@ -9,11 +9,13 @@ Ext.define('Aap.view.modals.DataEdit', {
 	autoShow: true,
 	modal: true,
 	resizable: false,
+	id : 'dataedit',
 	initComponent: function () {
         this.items = [
             {
 				xtype: 'panel',
 				title: 'Metadaten Bearbeiten',
+				id: 'metabearbeiten',
 				layout: {
 					type: 'hbox',
 					align: 'stretch'

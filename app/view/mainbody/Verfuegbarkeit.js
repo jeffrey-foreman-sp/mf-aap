@@ -3,8 +3,8 @@ Ext.define('Aap.view.mainbody.Verfuegbarkeit',{
 	store: 'Allgemein', 
 	xtype: 'verfuegbarkeit',
 	alias: 'widget.verfuegbarkeit',
-	id: 'displayverfuegbarkeit',
 	bodyPadding: 10,
+	id: 'disp_verf',
 	defaultType: 'displayfield',
 	items: [
 		{		
