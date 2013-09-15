@@ -42,9 +42,6 @@ Ext.define('Aap.controller.DataEdit', {
    		    	field.setDisabled(true);  
 			}, form);
 		}
-		else {
-			
-		}	
     },
 
 	doEditData: function(button){

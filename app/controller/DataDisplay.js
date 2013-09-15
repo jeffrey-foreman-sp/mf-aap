@@ -1,8 +1,6 @@
 Ext.define('Aap.controller.DataDisplay', {
 	extend: 'Ext.app.Controller',
-	requires: [
-		'Aap.util.Tree'
- 	],
+	requires: ['Aap.util.Tree'],
 	stores: ['Allgemein'],
 	models: ['Allgemein'],
 	views: [

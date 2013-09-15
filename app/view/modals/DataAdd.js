@@ -11,15 +11,16 @@ Ext.define('Aap.view.modals.DataAdd', {
     autoShow: true,
 	modal: true,
 	resizable: false,
+	id: 'dataadd',
 	initComponent: function () {
         this.items = [
             {
 				xtype: 'panel',
 				title: 'Metadatensatz Erstellen',
+				id: 'metabearbeiten',
 				layout: {
 					type: 'hbox',
 					align: 'stretch'
-					//bodyPadding: 15,				
 				},
 				defaults: {
 					margin: 10
@@ -38,23 +39,8 @@ Ext.define('Aap.view.modals.DataAdd', {
 						title: 'Bewertung Archievwürdigkeit'
 					}
 				]
-
-/*                xtype: 'form',
-                bodyStyle: {
-                    background: 'none',
-                    padding: '10px',
-                    border: '0'
-                },
-                items: [
-                    {
-                        xtype: 'textfield',
-                        name: 'name',
-                        allowBlank: false,
-                        fieldLabel: 'Name'
-                    }
-                ]
-  */          }
-        ];
+    		}    
+		];
         this.buttons = [
             {
                 text: 'Speichern',

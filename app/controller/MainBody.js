@@ -20,9 +20,6 @@ Ext.define('Aap.controller.MainBody', {
 			'mainbody button[action=create]': {
 				click: this.onAddNode
 			},
-			'dataadd button[action=save]': {
-				click: this.doAddNode
-			},
 			'mainbody button[action=edit]': {
 				click: this.openDataEdit
 			},
@@ -47,33 +44,6 @@ Ext.define('Aap.controller.MainBody', {
 		if (selected == true ) {
 			var view = Ext.widget('dataadd');
 		}
-	},
-
-	doAddNode: function(button){
-		console.log('data add');
-
-		// get selected node
-		var store = Ext.getStore('TreeStore');
-       	var treeelement = Ext.getCmp('treestructure');
-		var selection = treeelement.getSelectionModel().getSelection()[0]; //not very pretty
-	
-/*		// create new node	
-		var newNode = Ext.create("Aap.model.TreeNode", {
-			name: "name", 
-			leaf: false
-		});
-	
-		// append new node	
-       	var nodeid = Aap.util.Tree.getSelectedNode().get('id');
-		var selectednode = store.getNodeById(nodeid); 
-       	console.log(selectednode);
-		selectednode.appendChild(newNode);
-		selectednode.expand();
-        
-		// close windows 
-		var win = button.up('window');
-    	win.close();
-*/
 	},
 
 	openDataEdit: function() {
