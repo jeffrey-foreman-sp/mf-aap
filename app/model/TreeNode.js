@@ -18,5 +18,12 @@ Ext.define('Aap.model.TreeNode', {
 			root: 'children',
             successProperty: 'success'
 		}
+	},
+
+	add: function() {
+		console.log('test');
+
+
 	}
+
 });
