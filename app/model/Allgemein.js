@@ -1,6 +1,7 @@
 Ext.define('Aap.model.Allgemein', {
  	extend: 'Ext.data.Model',
 	idgen: 'uuid',
+	
 	fields: [
         {name: "id", type: 'string'}, 
         {name: "name", type: 'string'}, 
@@ -15,6 +16,12 @@ Ext.define('Aap.model.Allgemein', {
 		{name: "datenzuw", type: 'float'}, 
 		{name: "bemerk", type: 'string'}
 	],
+	
+	validations: [
+//		{type: 'presence', field: 'name'}
+		
+	],
+			
 	proxy: {
 		type: 'ajax',
 		api: {
