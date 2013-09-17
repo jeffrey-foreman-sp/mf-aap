@@ -11,6 +11,7 @@ Ext.define('Aap.model.Allgemein', {
 		{name: "zugberech", type: 'string'}, 
 		{name: "echkateg", type: 'string'}, 
 		{name: "nachfzeitr", type: 'string'}, 
+		{name: "nachfrhythm", type: 'string'}, 
 		{name: "datenmenge", type: 'int'}, 
 		{name: "imjr", type: 'float'}, 
 		{name: "datenzuw", type: 'float'}, 

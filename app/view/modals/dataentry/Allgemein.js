@@ -40,10 +40,12 @@ Ext.define('Aap.view.modals.dataentry.Allgemein',{
 		},{		
 			xtype: 'zugberech', 
 			fieldLabel: 'Zugangsberechtigungsstufe',
+			emptyText: 'Auswahl',
 			name: 'zugberech'
 		},{		
 			xtype: 'echkateg', 
 			fieldLabel: 'eCH-Kategorie',
+			emptyText: 'Auswahl',
 			name: 'echkateg'
 		},{		
 			fieldLabel: 'Nachführungszeitraum',
