@@ -20,14 +20,12 @@ Ext.define('Aap.view.modals.dataentry.Allgemein',{
 			fieldLabel: 'Titel',
 			allowBlank: false,
 			blankText: 'Dieses Feld ist obligatorisch!',
-			emptyText: 'Text',
 			msgTarget: 'side',
 			name: 'name'
 		},{		
 			fieldLabel: 'Identifikator (Sammlung)',
 			regex: /\d\d\d\.\d\d/,
-			emptyText: 'z.B. 132.42',
-			regexText: 'Der Identifikator muss der Zahl mit dem Muster "XXX.XX" entsprechen! (Z.B. 153.23) ',
+			regexText: 'Der Identifikator muss der Zahl mit dem Muster "XXX.XX" entsprechen! (z.B. 153.23) ',
 			msgTarget: 'side',
 			name: 'ident'
 		},{		
@@ -35,25 +33,20 @@ Ext.define('Aap.view.modals.dataentry.Allgemein',{
 			width: 140,
 		},{		
 			fieldLabel: 'Fachhstelle des Bundes',
-			emptyText: 'Text',
 			name: 'fachst',
 		},{		
 			xtype: 'zugberech', 
 			fieldLabel: 'Zugangsberechtigungsstufe',
-			emptyText: 'Auswahl',
 			name: 'zugberech'
 		},{		
 			xtype: 'echkateg', 
 			fieldLabel: 'eCH-Kategorie',
-			emptyText: 'Auswahl',
 			name: 'echkateg'
 		},{		
 			fieldLabel: 'Nachführungszeitraum',
-			emptyText: 'Text oder Zahl',
 			name: 'nachfzeitr'
 		},{		
 			fieldLabel: 'Nachführungsrhythmus',
-			emptyText: 'Text oder Zahl',
 			name: 'nachfrhythm'
 		},{	
 
@@ -66,7 +59,7 @@ Ext.define('Aap.view.modals.dataentry.Allgemein',{
 					fieldLabel: 'Datenmenge (in GB)',
 					labelAlign: 'top',
 					labelStyle: 'margin-bottom: 5px;',
-					emptyText: 'Zahl',
+					minValue: 0,
 					name: 'datenmenge',
 					style: 'margin-right: 5px;',
 					flex: 4
@@ -75,7 +68,6 @@ Ext.define('Aap.view.modals.dataentry.Allgemein',{
 					fieldLabel: 'Jahr',
 					labelAlign: 'top',
 					labelStyle: 'margin-bottom: 5px;',
-					emptyText: 'Zahl',
 					minValue: 2000,
 					name: 'datenmenge',
 					name: 'imjr',
@@ -85,16 +77,13 @@ Ext.define('Aap.view.modals.dataentry.Allgemein',{
 		},{		
 			xtype: 'numberfield',
 			fieldLabel: 'Datenzuwachs (GB pro Jahr)',
-			emptyText: 'Zahl',
-			minValue: 0,
 			name: 'datenzuw'
 		},{		
 			xtype: 'textareafield',
-			emptyText: 'Text',
 			grow: true,
-			anchor: '100%',
 			defaultAlign: 'bl',
 			fieldLabel: 'Bemerkungen',
+			labelStyle: 'margin-bottom: 5px; margin-top: 60px;',
 			name: 'bemerk'
 		}
 	],
