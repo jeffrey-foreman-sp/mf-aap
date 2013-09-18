@@ -1,6 +1,21 @@
 {
     "success": true,
-    "children": [
+	"children": [
+         { 
+			"id":"0", 
+			"name":"-", 
+			"ident": "-", 
+			"georefdat":"-",
+			"fachst":"-", 
+			"zugberech":"-", 
+			"echkateg":"-", 
+			"nachfzeitr":"-", 
+			"nachfrhythm":"-", 
+			"datenmenge":"-", 
+			"imjr":"-", 
+			"datenzuw":"-", 
+			"bemerk":"-"
+		},
         { 
 			"id":"4f27a729-930c-40fb-8825-f84637bae338", 
 			"name":"swisstopo", 

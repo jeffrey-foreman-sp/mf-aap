@@ -4,8 +4,9 @@ Ext.define('Aap.store.TreeStore', {
     storeId:'TreeStore',
     autoLoad:true,
     root: {
-      name: 'Gesamtbestand',
-	  expandable: false 
+    	name: 'Gesamtbestand',
+		metaaap_id: '0',
+		allgemein_id: '0',
+		expandable: false 
 	}
-
 });
