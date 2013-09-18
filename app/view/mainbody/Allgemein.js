@@ -1,45 +1,21 @@
 Ext.define('Aap.view.mainbody.Allgemein',{
-	extend: 'Ext.form.Panel',
+	extend: 'Ext.panel.Panel',
 	store: 'Allgemein', 
 	xtype: 'allgemein',
 	alias: 'widget.displayallgemein',
-	bodyPadding: 10,
 	id: 'disp_allg',
-	defaultType: 'displayfield',
-	items: [
-		{		
-			fieldLabel: 'Titel',
-			name: 'name'
-		},{		
-			fieldLabel: 'Identifikator (Sammlung)',
-			name: 'ident'
-		},{		
-			fieldLabel: 'Georeferenzdaten',
-			name: 'georefdat'
-		},{		
-			fieldLabel: 'Fachhstelle des Bundes',
-			name: 'fachst'
-		},{		
-			fieldLabel: 'Zugangsberechtigungsstufe',
-			name: 'zugberech'
-		},{		
-			fieldLabel: 'eCH-Kategorie',
-			name: 'echkateg'
-		},{		
-			fieldLabel: 'Nachführungszeitraum',
-			name: 'nachfzeitr'
-		},{		
-			fieldLabel: 'Datenmenge (in GB)',
-			name: 'datenmenge'
-		},{		
-			fieldLabel: 'im Jahr',
-			name: 'imjr'
-		},{		
-			fieldLabel: 'Datenzuwachs jährl. (in GB)',
-			name: 'datenzuw'
-		},{		
-			fieldLabel: 'Bemerkungen',
-			name: 'bemerk'
-		}
-	]
+	bodyPadding: 10,
+	tpl: [
+		'<p>Name: {name}</p>',
+		'<p>Identifikator (Sammlugn): {ident}</p>',
+		'<p>Georeferenzdaten: {georefdat}</p>',
+		'<p>Fachstelle des Bundes: {fachst}</p>',
+		'<p>Zugangsberechtigungsstufe: {zugberech}</p>',
+		'<p>eCH-Kategorie: {echkateg}</p>',
+		'<p>Nachführungsrythmus: {nachfrhythm}</p>',
+		'<p>Nachführungszeitraum: {nachfzeitraum}</p>',
+		'<p>Datenmenge (in GB): {datenmenge}</p>',
+		'<p>im Jahr: {imjr}</p>',
+		'<p>Datenzuwachs (GB pro Jahr): {datenzuw}</p>'
+	]	
 });

@@ -5,52 +5,21 @@ Ext.define('Aap.view.mainbody.Archievwuerdigkeit',{
 	alias: 'widget.archievwuerdigkeit',
 	bodyPadding: 10,
 	id: 'disp_arch',
-	defaultType: 'displayfield',
-	items: [
-		{		
-			xtype: 'container',
-			html: '<h4>Zuständige Stelle</h4>'		
-		},{		
-			fieldLabel: 'Bewertung r+a',
-			name: 'bewzs'
-		},{		
-			fieldLabel: 'Begründung',
-			labelWidth: 200,
-			anchor: '-13',
-			name: 'begrzs'
-		},{		
-			fieldLabel: 'Input durch',
-			name: 'inparch'
-		},{		
-			xtype: 'container',
-			html: '<h4>Weiter Stellen</h4>'		
-		},{		
-			fieldLabel: 'Bewertung r+a',
-			name: 'bewws'
-		},{		
-			fieldLabel: 'Begründung',
-			name: 'begrws'
-		},{	
-			xtype: 'container',
-			html: '<h4>Bundesarchiv</h4>'		
-		},{		
-			fieldLabel: 'Bewertung h+s',
-			name: 'bewba'
-		},{		
-			fieldLabel: 'Begründung',
-			name: 'begrba'
-		},{	
-			fieldLabel: 'Art Sampling / Selektion',
-			name: 'artsampl'
-		},{	
-			fieldLabel: 'Entscheid Archivwuerdikeit',
-			name: 'entsarch'
-		},{		
-			grow: true,
-			fieldLabel: 'Bemerkungen',
-			name: 'bemerkarch'
-		}
-	]
+	tpl: [
+		'<p>Zuständige Stelle</p>',
+		'<p>Bewertung r+a: {bwezs}</p>',
+		'<p>Begründung: {begrzs}</p>',
+		'<p>Input durch: {inparch}</p>',
+		'<p>Weitere Stellen</p>',
+		'<p>Bewertung r+a: {bewws}</p>',
+		'<p>Begründung: {begrws}</p>',
+		'<p>Bundesarchiv</p>',
+		'<p>Bewertung h+s: {bewba}</p>',
+		'<p>Begründung: {begrba}</p>',
+		'<p>Art Sampling / Selektion: {artsampl}</p>',
+		'<p>Entscheid Archivwuerdigkeit: {entarch}</p>',
+		'<p>Bemerkungen: {bemerkarch}</p>'
+	]	
 });
 
 

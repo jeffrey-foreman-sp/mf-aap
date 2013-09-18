@@ -24,17 +24,17 @@ Ext.define('Aap.controller.DataDisplay', {
 
 			// display allgemein record in form			
 			var allgemein_id = node.get('allgemein_id');
-			var reca = Ext.getStore('Allgemein').findRecord('id', allgemein_id);
-			var forma = Ext.getCmp('disp_allg');
-			forma.loadRecord(reca);
+			reca = Ext.getStore('Allgemein').findRecord('id', allgemein_id).getData();
+			var allgemein = Ext.getCmp('disp_allg');
+			allgemein.update(reca);
 		
 			// display metaaap  record in form			
 			var metaaap_id = node.get('metaaap_id');
-			var recm = Ext.getStore('MetaAap').findRecord('id', metaaap_id);
+			var recm = Ext.getStore('MetaAap').findRecord('id', metaaap_id).getData();
 			var formv = Ext.getCmp('disp_verf');
-			formv.loadRecord(recm);
+			formv.update(recm);
 			var forma = Ext.getCmp('disp_arch');
-			forma.loadRecord(recm);
+			forma.update(recm);
 		}
   }
 

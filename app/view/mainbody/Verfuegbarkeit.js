@@ -5,37 +5,14 @@ Ext.define('Aap.view.mainbody.Verfuegbarkeit',{
 	alias: 'widget.verfuegbarkeit',
 	bodyPadding: 10,
 	id: 'disp_verf',
-	defaultType: 'displayfield',
-	items: [
-		{		
-			xtype: 'container',
-			html: '<h4>Zuständige Stelle</h4>'		
-		},{		
-			fieldLabel: 'Aufbewahrungsfrist',
-			name: 'aufbewzs'
-		},{		
-			fieldLabel: 'Begründung',
-			name: 'begrzs'
-		},{		
-			fieldLabel: 'Input durch',
-			name: 'inpaufb'
-		},{		
-			xtype: 'container',
-			html: '<h4>Weiter Stellen</h4>'		
-		},{		
-			fieldLabel: 'Aufbewahrungsfrist',
-			name: 'aufbewws'
-		},{		
-			fieldLabel: 'Begründung',
-			name: 'begrw'
-		},{		
-			fieldLabel: 'Entscheid Aufbewahrungsfrist',
-			name: 'entsaufbew'
-		},{		
-			grow: true,
-			anchor: '100%',
-			fieldLabel: 'Bemerkungen',
-			name: 'bemerkaufbew'
-		}
+	tpl: [
+		'<p>Zuständige Stelle</p>',
+		'<p>Begründung: {begrzs}</p>',
+		'<p>Input durch: {inpaufb}</p>',
+		'<p>Weitere Stellen</p>',
+		'<p>Aufbewahrungsfrist: aufbewws</p>',
+		'<p>Begründung: {begrw}</p>',
+		'<p>Entscheid Aufbewahrungsfrist: {entsaufbew}</p>',
+		'<p>Bemerkungen: {bemerkaufbew}</p>'
 	]
 });
