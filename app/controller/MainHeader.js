@@ -1,5 +1,6 @@
 Ext.define('Aap.controller.MainHeader', {
 	extend: 'Ext.app.Controller',
+//	requires: ['Aap.util.Google'],
 	views: [
 		'modals.Information'
 	],
@@ -10,8 +11,10 @@ Ext.define('Aap.controller.MainHeader', {
                 click: this.onInfoClick
 			},	
 			'mainheader button[action=toggleedit]': {
-       //         click: this.onToggleEdit,
                 toggle: this.onToggleEditButton
+			},	
+			'mainheader button[action=togglelogin]': {
+                click: this.onLogoutButtonClick
 			}	
 		});
     },
@@ -49,7 +52,26 @@ Ext.define('Aap.controller.MainHeader', {
 			// unlock drag&drop
 			Ext.getCmp('treestructure').getView().getPlugin().dragZone.unlock();
 		}
+	},
+
+	onLogoutButtonClick: function() {
+//		var button = Ext.ComponentQuery.query('button[action=togglelogin]')[0]; 
+//		console.log(button.getText());
+//			button.setText('Anmelden');
+//		if (button.getText() == 'Abmelden von Google') { 
+//			window.open('https://accounts.google.com/logout', '_blank');
+//			button.setText('Anmelden');
+//		}
+//			button.toggle();
+//  			button.setText('Anmelden');
+			
 	}
+
+
+
+
+
+
 
 });
 

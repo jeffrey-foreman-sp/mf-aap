@@ -5,7 +5,6 @@
 Ext.define('Aap.controller.Tree', {
 	extend: 'Ext.app.Controller',
 	requires: [	
-		'Aap.controller.tree.DragAndDrop',
 		'Aap.util.Tree'
 	],
 	stores: ['TreeStore'],
