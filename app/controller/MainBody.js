@@ -43,6 +43,7 @@ Ext.define('Aap.controller.MainBody', {
 		var selected = Aap.util.Tree.isSelectedNode(selection);		
 		if (selected == true ) {
 			var view = Ext.widget('dataadd');
+		console.log(view);
 		}
 	},
 

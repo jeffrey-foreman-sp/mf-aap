@@ -1,11 +1,9 @@
 Ext.define('Aap.controller.DataDisplay', {
 	extend: 'Ext.app.Controller',
 	requires: ['Aap.util.Tree'],
-	stores: ['Allgemein'],
-	models: ['Allgemein'],
-	views: [
-		'mainbody.Tree'
-	],
+	stores: ['AapStore'],
+	models: ['AapModel'],
+	views: ['mainbody.Tree'],
 
     init: function() {
         this.control({
@@ -16,30 +14,15 @@ Ext.define('Aap.controller.DataDisplay', {
     },
 
     selectionchange: function() {
-		var selectedTreeItem = Aap.util.Tree.getSelectedNode();
-		var nodeid = selectedTreeItem.getId();
+		var node_data = Aap.util.Tree.getSelectedNode().getData();
 	
-		if (selectedTreeItem.isRoot() == false) {
-			 node = Ext.getStore('TreeStore').getNodeById(nodeid);
-		}
-		else {
-			 node = Ext.getStore('TreeStore').getRootNode(nodeid);
-		}
-
-
-		// display allgemein record in form			
-		var allgemein_id = node.get('allgemein_id');
-		reca = Ext.getStore('Allgemein').findRecord('id', allgemein_id).getData();
+		// display record in form			
 		var allgemein = Ext.getCmp('disp_allg');
-		allgemein.update(reca);
-		
-		// display metaaap  record in form			
-		var metaaap_id = node.get('metaaap_id');
-		var recm = Ext.getStore('MetaAap').findRecord('id', metaaap_id).getData();
+		allgemein.update(node_data);
 		var formv = Ext.getCmp('disp_verf');
-		formv.update(recm);
+		formv.update(node_data);
 		var forma = Ext.getCmp('disp_arch');
-		forma.update(recm);
+		forma.update(node_data);
 	
   }
 

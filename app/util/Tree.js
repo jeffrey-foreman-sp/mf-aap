@@ -65,10 +65,6 @@ Ext.define('Aap.util.Tree', {
 			}
 			else {
 				node.bubble(function (resp) {
-//					console.log(this.get('name'));
-//					console.log(this.get('id'));
-//					console.log(this.get('metanode'));
-//					console.log(this.get('metaaap_id'));
 					if (this.get('metanode') == true){
 						response = true;
 					}
@@ -79,23 +75,63 @@ Ext.define('Aap.util.Tree', {
     
 		
 		//***********************************************************
-		// get the metaaap_id from the parents nodes
+		// get the metadata from from a parents nodes
 		// input: currentnode (Ext.data.Model): starting point of cascading
 		// output: parents_metaid (int): metaaap_id in one of the parent nodes 
 		//***********************************************************
-		getParentsMetaId: function(currentnode) { 
-			var parents_metaid = 0;
+		getParentsMetaMetadata: function(currentnode) { 
+			var parents_metadata = new Object0;
+			
 			currentnode.bubble(function (p_metaid) {
-//				console.log(this.get('name'));
-//				console.log(this.get('metanode'));
-//				console.log(this.get('metaaap_id'));
 				if (this.get('metanode') == true){
 					parents_metaid = this.get('metaaap_id');
+
+				this.get('aufbewzs', verf_values.aufbewzs); 
+				this.get('begrzs', verf_values.begrzs);
+				this.get('inpauf', verf_values.inpauf);
+				this.get('aufbeww', verf_values.aufbeww);
+				this.get('begrw', verf_values.begrw);		
+				this.get('entsaufbew', verf_values.entsaufbew);
+				this.get('bemerkaufbew', verf_values.bemerkaufbew);
+
+	      		this.get('bewzs', arch_values.bewzs);
+				this.get('begrzs', arch_values.begrzs);
+				this.get('inparch', arch_values.inparch);
+				this.get('bewws', arch_values.bewws);
+				this.get('begrw', arch_values.begrw);
+				this.get('bewb', arch_values.bewb);
+				this.get('begrba', arch_values.begrba);
+				this.get('artsampl', arch_values.artsampl);
+				this.get('entsarch', arch_values.entsarch);
+				this.get('bemerkarch', arch_values.bemerkarch);
+
+
+
+
+
+
 				}
 			}, null, [parents_metaid]);
 			return parents_metaid;
 		},
    
+		//***********************************************************
+		// get all nodes in children that are metanodes 
+		// input:
+		// 		currentnode (Ext.data.Model): starting point of cascading
+		//		nodes that are metanodes (Array)
+		//***********************************************************
+		getMetanodesInChildren: function(node) { 
+			var metanodes = new Array();		
+			node.cascadeBy(function () {
+				var ismetanode = this.get('metanode');
+				if (ismetanode == true) {
+					metanodes.push(this);
+				}
+			}, null, null)
+			return metanodes;
+		},
+	
 
 		//***********************************************************
 		// change the metaaap_id of all child nodes below the passed node

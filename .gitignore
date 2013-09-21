@@ -1,7 +1,6 @@
 
 *.swp
-
-
+.DS_Store
 
 # make git ignore white space differences, many different possibilites here
 # check http://www.kernel.org/pub/software/scm/git/docs/git-config.html#_variables

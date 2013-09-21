@@ -1,6 +1,6 @@
 Ext.define('Aap.view.mainbody.Allgemein',{
 	extend: 'Ext.panel.Panel',
-	store: 'Allgemein', 
+	store: 'AapStore', 
 	xtype: 'allgemein',
 	alias: 'widget.displayallgemein',
 	id: 'disp_allg',
@@ -16,6 +16,7 @@ Ext.define('Aap.view.mainbody.Allgemein',{
 		'<p>Nachführungszeitraum: {nachfzeitraum}</p>',
 		'<p>Datenmenge (in GB): {datenmenge}</p>',
 		'<p>im Jahr: {imjr}</p>',
-		'<p>Datenzuwachs (GB pro Jahr): {datenzuw}</p>'
+		'<p>Datenzuwachs (GB pro Jahr): {datenzuw}</p>',
+		'<p>Bemerkung: {bemerk}</p>'
 	]	
 });

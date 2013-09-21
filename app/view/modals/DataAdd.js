@@ -6,8 +6,6 @@ Ext.define('Aap.view.modals.DataAdd', {
 		'Aap.view.modals.dataentry.Archivwuerdigkeit'		
 	],
     alias: 'widget.dataadd',
-//  title: 'Neuer Knoten',
-//    layout: 'fit',
     autoShow: true,
 	modal: true,
 	resizable: false,

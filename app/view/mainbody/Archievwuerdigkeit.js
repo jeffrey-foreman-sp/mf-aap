@@ -1,7 +1,7 @@
 Ext.define('Aap.view.mainbody.Archievwuerdigkeit',{
 	extend: 'Ext.form.FormPanel',
 	xtype: 'archievwuerdigkeit',
-	store: 'MetaAap', 
+	store: 'AapStore', 
 	alias: 'widget.archievwuerdigkeit',
 	bodyPadding: 10,
 	id: 'disp_arch',

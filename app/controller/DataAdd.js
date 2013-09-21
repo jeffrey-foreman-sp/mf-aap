@@ -1,8 +1,8 @@
 Ext.define('Aap.controller.DataAdd', {
 	extend: 'Ext.app.Controller',
 	requires: ['Aap.util.Tree'],
-	stores: ['Allgemein'],
-	models: ['Allgemein'],
+	stores: ['AapStore'],
+	models: ['AapModel'],
 	views: ['modals.DataAdd'],
 
     init: function() {
@@ -40,15 +40,19 @@ Ext.define('Aap.controller.DataAdd', {
 
 	addData: function(button){
 		console.log('data add');
-		var selNode = Aap.util.Tree.getSelectedNode();
-
-		// ------------------------------------------------
 		
-		// get input from allgemein form
+		// get node
+		var node = Aap.util.Tree.getSelectedNode(); 
+	
+		var form2 = Ext.getCmp('edit_verf').getForm();
+		var verf_values = form2.getValues();	
+		var form3 = Ext.getCmp('edit_arch').getForm();
+		var arch_values = form3.getValues();	
+
+		// get input from allgemein form and add them to new node
 		var form1 = Ext.getCmp('edit_allg').getForm();
 		var allg_values = form1.getValues();	
 
-		// create new allgemein record with data from the form data and add it to the storand add it to the storee
 		var newAllgemein = ('Aap.model.Allgemein', {
 			name: allg_values.name, 
 			ident: allg_values.ident, 
@@ -60,46 +64,39 @@ Ext.define('Aap.controller.DataAdd', {
 			datenmente: allg_values.datenmenge, 
 			imjr: allg_values.imjr, 
 			datenzuw: allg_values.datenzuw, 
-			bemerk: allg_values.bemerk 
-		});
-		Ext.getStore('Allgemein').add(newAllgemein); 
+			bemerk: allg_values.bemerk,
 
-		// ------------------------------------------------
-		
-		// get input from verfuegbarkeit form
-		var form2 = Ext.getCmp('edit_verf').getForm();
-		var verf_values = form2.getValues();	
-		
-		// get input from metaaap form
-		var form3 = Ext.getCmp('edit_arch').getForm();
-		var arch_values = form3.getValues();	
-		
-		// create new metaaap record if the record not has to be inherited and add it to the store 
-		if (Aap.util.Tree.isInherited(selNode) == false && Aap.util.Tree.isMetanode(selNode) == false) {
-			var newMetaAap = ('Aap.model.MetaAap', {
-				aufbewzs: verf_values.aufbewzs, 
-				begrzs: verf_values.begrzs, 
-				inpauf: verf_values.inpauf,
-				aufbeww: verf_values.aufbeww,
-				begrw: verf_values.begrw,		
-				entsaufbew: verf_values.entsaufbew,
-				bemerkaufbew: verf_values.bemerkaufbew,
-      			bewzs: arch_values.bewzs,
-				begrzs: arch_values.begrzs,
-				inparch: arch_values.inparch,
-				bewws: arch_values.bewws,
-				begrw: arch_values.begrw,
-				bewb: arch_values.bewb,
-				begrba: arch_values.begrba,
-				artsampl: arch_values.artsampl,
-				entsarch: arch_values.entsarch,
-				bemerkarch: arch_values.bemerkarch
-			});
-		Ext.getStore('MetaAap').add(newMetaAap); 
+
+		if (Aap.util.Tree.isInherited(node) == false) {
+			node.cascadeBy(function () {
+				this.set('aufbewzs', verf_values.aufbewzs); 
+				this.set('begrzs', verf_values.begrzs);
+				this.set('inpauf', verf_values.inpauf);
+				this.set('aufbeww', verf_values.aufbeww);
+				this.set('begrw', verf_values.begrw);		
+				this.set('entsaufbew', verf_values.entsaufbew);
+				this.set('bemerkaufbew', verf_values.bemerkaufbew);
+
+	      		this.set('bewzs', arch_values.bewzs);
+				this.set('begrzs', arch_values.begrzs);
+				this.set('inparch', arch_values.inparch);
+				this.set('bewws', arch_values.bewws);
+				this.set('begrw', arch_values.begrw);
+				this.set('bewb', arch_values.bewb);
+				this.set('begrba', arch_values.begrba);
+				this.set('artsampl', arch_values.artsampl);
+				this.set('entsarch', arch_values.entsarch);
+				this.set('bemerkarch', arch_values.bemerkarch);
+
+				this.set('metanode', false);
+			}, null, null);
+		node.set('metanode', true);
 		}
+		});
+	//	Ext.getStore('Allgemein').add(newAllgemein); 
 
-		// ------------------------------------------------
 
+		
 		// get the id of the new allgmemein record in order to add it to the tree node
 		var newIdAllgemein = Ext.getStore('Allgemein').getNewRecords()[0].getId();  // not very pretty 
 		//Ext.getStore('Allgemein').getNewRecords()[0].internalId = newIdAllgemein;   //not very pretty 

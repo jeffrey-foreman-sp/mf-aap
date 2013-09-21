@@ -11,7 +11,6 @@ Ext.application({
 	controllers: [
 		'Tree',
 		'DataEdit',
-		'DataAdd',
 		'DataDisplay',
 		'MainBody',
 		'MainHeader'

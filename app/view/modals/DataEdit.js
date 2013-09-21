@@ -9,7 +9,7 @@ Ext.define('Aap.view.modals.DataEdit', {
 	autoShow: true,
 	modal: true,
 	resizable: false,
-	id : 'dataedit',
+	id: 'dataedit',
 	initComponent: function () {
         this.items = [
             {
