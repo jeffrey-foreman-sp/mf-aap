@@ -4,11 +4,13 @@ Ext.define('Aap.view.modals.Information', {
     layout: 'fit',
     autoShow: true,
 	modal: true,
+	width: 600,
+	height: 500,
     initComponent: function () {
         this.items = [
             {
                 xtype: 'panel',
-				html: '<h1>Informationen</h1><p>Hier infotext</p><iframe src="http://www.geo.admin.ch/"></p></iframe>'
+				html: '<iframe style="width: 100%; height: 100%;" src="https://sites.google.com/site/aapdokumentation/"></iframe>'
             }
         ];
         this.buttons = [
