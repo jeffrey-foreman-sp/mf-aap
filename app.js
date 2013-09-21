@@ -17,7 +17,7 @@ Ext.application({
 		'MainHeader'
 	],
 
-	stores: ['Allgemein', 'MetaAap'],
+	stores: ['AapStore'],
 
 
 	launch: function(){
