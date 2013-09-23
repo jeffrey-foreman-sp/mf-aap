@@ -18,7 +18,7 @@ Ext.application({
 
 
 	launch: function(){
-		handleClientLoad();
+//		handleClientLoad();
 
 	},
 	autoCreateViewport: true
