@@ -37,7 +37,6 @@ Ext.define('Aap.controller.DataAdd', {
 
 	},
 
-
 	addData: function(button){
 		console.log('data add');
 
@@ -93,7 +92,7 @@ Ext.define('Aap.controller.DataAdd', {
 			var arch_values = Ext.getCmp('edit_arch').getForm().getValues();
 			
 			newNode = ('Aap.model.AapModel',{
-				metanode: false,
+				metanode: true,
 				loaded: true,
 				leaf: false,
 

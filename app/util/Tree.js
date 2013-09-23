@@ -81,7 +81,6 @@ Ext.define('Aap.util.Tree', {
 		//***********************************************************
 		getParentsMetadataNode: function(currentnode) { 
 			var metadata_node;
-			
 			currentnode.bubble(function () {
 				if (this.get('metanode') == true){
 					metadata_node = this;
@@ -109,16 +108,33 @@ Ext.define('Aap.util.Tree', {
 	
 
 		//***********************************************************
-		// change the metaaap_id of all child nodes below the passed node
+		// change the metadata of all child nodes below the passed node
 		// input:
 		// 		currentnode (Ext.data.Model): starting point of cascading
-		//		new_metaid (int): new value for the metaaap_id property 
+		//		metadta (obj): new values for the metadata properties
 		//***********************************************************
-		setChildrensMetaId: function(currentnode, new_metaid) { 
-			currentnode.cascadeBy(function (new_id) {
-				this.set('metaaap_id', new_id);
+		setChildrensMetaData: function(currentnode, new_metadata) { 
+			currentnode.cascadeBy(function (new_metadata) {
+				this.set('aufbewzs', new_metadata.aufbewzs); 
+				this.set('begrzs', new_metadata.begrzs);
+				this.set('inpaufb', node_data.inpaufb);
+				this.set('aufbewws', node_data.aufbewws);
+				this.set('begrw', node_data.begrw);
+				this.set('entsaufbew', node_data.entsaufbew);
+				this.set('bemerkaufbew', node_data.bemerkaufbew);
+
+	      		this.set('bewzs', node_data.bewzs);
+				this.set('begrzs', node_data.begrzs);
+				this.set('inparch', node_data.inparch);
+				this.set('bewws', node_data.bewws);
+				this.set('begrws', node_data.begrws);
+				this.set('bewba', node_data.bewba);
+				this.set('begrba', node_data.begrba);
+				this.set('artsampl', node_data.artsampl);
+				this.set('entsarch', node_data.entsarch);
+				this.set('bemerkarch', node_data.bemerkarch);
 				this.set('metanode', false);
-			}, null, [new_metaid]);
+			}, null, [new_metadata]);
 		},
 	
 
@@ -128,9 +144,29 @@ Ext.define('Aap.util.Tree', {
 		// input:
 		// 		currentnode (Ext.data.Model): starting point of cascading
 		//***********************************************************
-		setChildrensMetaId2: function(currentnode) { 
+		setChildrensMetaMetaData: function(currentnode) { 
 			currentnode.cascadeBy(function () {
-				if (this.hasChildNodes == true) {this.set('metaaap_id', 0);}
+				if (this.hasChildNodes == true) {
+					this.set('aufbewzs', new_metadata.aufbewzs); 
+					this.set('begrzs', new_metadata.begrzs);
+					this.set('inpaufb', node_data.inpaufb);
+					this.set('aufbewws', node_data.aufbewws);
+					this.set('begrw', node_data.begrw);
+					this.set('entsaufbew', node_data.entsaufbew);
+					this.set('bemerkaufbew', node_data.bemerkaufbew);
+
+		      		this.set('bewzs', node_data.bewzs);
+					this.set('begrzs', node_data.begrzs);
+					this.set('inparch', node_data.inparch);
+					this.set('bewws', node_data.bewws);
+					this.set('begrws', node_data.begrws);
+					this.set('bewba', node_data.bewba);
+					this.set('begrba', node_data.begrba);
+					this.set('artsampl', node_data.artsampl);
+					this.set('entsarch', node_data.entsarch);
+					this.set('bemerkarch', node_data.bemerkarch);
+					this.set('metanode', false);
+				;}
 				else if (currentnode.get('metanode') == false) {this.set('metanode', true);}
 			}, null, null);
 		}

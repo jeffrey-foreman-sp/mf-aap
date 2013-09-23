@@ -8,11 +8,7 @@ Ext.define('Aap.model.AapModel', {
         {name: "erfass", type: 'date'}, 
         {name: "modif", type: 'date'}, 
         {name: "metanode", type: 'boolean'}, 
-        {name: "allgemein_id", type: 'string'}, 
-        {name: "metaaap_id", type: 'string'},
 		
-        {name: "id", type: 'string'}, 
-        {name: "name", type: 'string'}, 
 		{name: "ident", type: 'float'}, 
 		{name: "georefdat", type: 'boolean'},
 		{name: "fachst", type: 'string'}, 
@@ -25,7 +21,6 @@ Ext.define('Aap.model.AapModel', {
 		{name: "datenzuw", type: 'float'}, 
 		{name: "bemerk", type: 'string'},
 		
-        {name: "id", type: 'string'}, 
 		{name: "aufbewzs", type: 'int'}, 
 		{name: "begrzs", type: 'string'}, 
 		{name: "inpaufb", type: 'string'}, 

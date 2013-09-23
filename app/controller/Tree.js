@@ -58,16 +58,16 @@ Ext.define('Aap.controller.Tree', {
 			target_node = target_node.parentNode;
 			console.log('not append');
 		}
+
+		// if the node at the new position has to inherit the metadata
 		if (Aap.util.Tree.isInherited(target_node) == true || Aap.util.Tree.isMetanode(target_node) == true) {
-			meta_id = Aap.util.Tree.getParentsMetaId(target_node);
-			Aap.util.Tree.setChildrensMetaId(moved_node, meta_id);
-			if (Aap.util.Tree.isMetanode(moved_node) == true) {
-				moved_node.set('metanode', false);
-			}
-		}	
-		else {
-			Aap.util.Tree.setChildrensMetaId2(moved_node);
+			node_data = Aap.util.Tree.getParentsMetadataNode(target_node).getData();
+			Aap.util.Tree.setChildrensMetaData(moved_node, node_data);  
 		}
+		else {
+			Aap.util.Tree.setChildrensMetaData2(moved_node);
+		}
+
     }, 
 
 	initSelection:  function() {
