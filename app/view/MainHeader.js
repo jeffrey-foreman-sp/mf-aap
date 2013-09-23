@@ -44,9 +44,9 @@ Ext.define('Aap.view.MainHeader',{
 					enableToggle: true
 				},{
 					xtype: 'button',
-					id: 'togglelogin',
+					id: 'login',
 					text: 'Anmelden',
-					action: 'togglelogin',
+					action: 'login',
 					enableToggle: true
 				},{
 					xtype: 'button',

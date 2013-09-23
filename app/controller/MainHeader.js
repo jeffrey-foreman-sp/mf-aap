@@ -12,8 +12,8 @@ Ext.define('Aap.controller.MainHeader', {
 			'mainheader button[action=toggleedit]': {
                 toggle: this.onToggleEditButton
 			},	
-			'mainheader button[action=togglelogin]': {
-                click: this.onLogoutButtonClick
+			'mainheader button[action=login]': {
+                click: this.onLoginButtonClick
 			}	
 		});
     },
@@ -53,7 +53,11 @@ Ext.define('Aap.controller.MainHeader', {
 		}
 	},
 
-	onLogoutButtonClick: function() {
+	onLoginButtonClick: function() {
+
+		handleClientLoad();
+
+
 //		var button = Ext.ComponentQuery.query('button[action=togglelogin]')[0]; 
 //		console.log(button.getText());
 //			button.setText('Anmelden');

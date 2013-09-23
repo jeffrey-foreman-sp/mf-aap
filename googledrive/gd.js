@@ -1,9 +1,8 @@
 
 var editor, gpx, gapi, store, proxy;
 
-var CLIENT_ID = '170396995102.apps.googleusercontent.com'; //
+var CLIENT_ID = '170396995102.apps.googleusercontent.com';
 var SCOPES = 'https://www.googleapis.com/auth/drive';
-
 var FILE_ID = "0B4tksUtG91iOQmxQMWRmZzMxaWM";
 
 /*
@@ -12,9 +11,20 @@ if (window.location.protocol != 'https:') {
 }
 */
 
+
+
+/******************************************************************
+ * Check if the current user has authorized the application.
+*******************************************************************/
+
 function handleClientLoad() {
   window.setTimeout(checkAuth, 1);
 }
+
+
+/******************************************************************
+ * Check if the current user has authorized the application.
+*******************************************************************/
 
 function checkAuth() {
   gapi.client.load('drive', 'v2');
@@ -25,32 +35,37 @@ function checkAuth() {
   }, handleAuthResult);
 }
 
+
+/******************************************************************
+ * Called when authorization server replies.
+ * @param {Object} authResult Authorization result.
+*******************************************************************/
 function handleAuthResult(authResult) {
-    extAuthButton  = Ext.ComponentQuery.query('button[action=togglelogin]')[0]
-	authButton = Ext.getElementById('togglelogin');
+//    extAuthButton  = Ext.ComponentQuery.query('button[action=login]')[0]
+      authButton = Ext.getElementById('login');
 
   if (authResult && !authResult.error) {
 	// Access token has been successfully retrieved, requests can be sent to the API.
-	if (extAuthButton.getText() == 'Anmelden'){ 
-	  	extAuthButton.setText('Abmelden von Google');
-	}
-
-//  getFileById(FILE_ID);
 	console.log("Authentication successfull");
+//	if (extAuthButton.getText() == 'Anmelden'){ 
+//	  	extAuthButton.setText('Abmelden von Google');
+//	}
+//  getFileById(FILE_ID);
+  } 
 
-  } else  {
-
+  else  {
     // No access token could be retrieved, show the button to start the authorization flow.
-//    authButton.style.display = 'block';
-	console.log('authentication not successfull');
-	  authButton.onclick = function() {
+//  authButton.style.display = 'block';
+	console.log('Authentication not successfull');
+    authButton.onclick = function() {
 	    gapi.auth.authorize({
         'client_id': CLIENT_ID,
         'scope': SCOPES,
         'immediate': false
       }, handleAuthResult);
-    };
+    }; 
   }
+
 }
 
 
