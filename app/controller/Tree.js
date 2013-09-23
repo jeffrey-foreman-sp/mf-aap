@@ -4,11 +4,9 @@
 
 Ext.define('Aap.controller.Tree', {
 	extend: 'Ext.app.Controller',
-	requires: [	
-		'Aap.util.Tree'
-	],
-	stores: ['TreeStore'],
-	models: ['TreeNode'],
+	requires: ['Aap.util.Tree'],
+	stores: ['AapStore'],
+	models: ['AapModel'],
 	views: [
 		'mainbody.Tree'
 	],

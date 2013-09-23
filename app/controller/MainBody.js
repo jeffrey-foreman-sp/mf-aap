@@ -5,8 +5,8 @@
 Ext.define('Aap.controller.MainBody', {
 	extend: 'Ext.app.Controller',
 	requires: ['Aap.util.Tree'],
-	stores: ['TreeStore'],
-	models: ['TreeNode'],
+	stores: ['AapStore'],
+	models: ['AapModel'],
 	views: [
 		'modals.DataAdd',
 		'modals.DataEdit'
@@ -34,7 +34,7 @@ Ext.define('Aap.controller.MainBody', {
 
 	initSelection: function() {
 //		console.log('Root node selected after rendering of tree');
-		var rn = Ext.getStore('TreeStore').getRootNode();	
+		var rn = Ext.getStore('AapStore').getRootNode();	
 		Ext.getCmp('treestructure').getSelectionModel().select(rn);
 	},
 
@@ -76,7 +76,7 @@ Ext.define('Aap.controller.MainBody', {
         	    },
 				fn: function(btn){
     			    if (btn === 'yes') {
-						var store = Ext.getStore('TreeStore');
+						var store = Ext.getStore('AapStore');
 						var nodeid = Aap.util.Tree.getSelectedNode().get('id');
 						var selectednode = store.getNodeById(nodeid); 
 						selectednode.remove();

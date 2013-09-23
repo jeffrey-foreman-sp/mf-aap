@@ -1,6 +1,5 @@
 Ext.define('Aap.controller.MainHeader', {
 	extend: 'Ext.app.Controller',
-//	requires: ['Aap.util.Google'],
 	views: [
 		'modals.Information'
 	],
