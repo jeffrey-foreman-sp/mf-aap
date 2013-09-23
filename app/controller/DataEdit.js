@@ -17,7 +17,8 @@ Ext.define('Aap.controller.DataEdit', {
     },
 
     afterPanelRendered: function() {
-		
+		console.log("'Edit' window rendered!");
+			
 		var node = Aap.util.Tree.getSelectedNode(); 
 		
 		// load node data into forms

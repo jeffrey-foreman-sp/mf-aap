@@ -39,16 +39,16 @@ Ext.define('Aap.controller.MainBody', {
 	},
 
 	onAddNode: function() {
+		console.log('Clicked on "Erstellen" button!');
 		var selection = Aap.util.Tree.getTreeSelection();		
 		var selected = Aap.util.Tree.isSelectedNode(selection);		
 		if (selected == true ) {
 			var view = Ext.widget('dataadd');
-		console.log(view);
 		}
 	},
 
 	openDataEdit: function() {
-		console.log('Clicked on "Bearbeiten button!"');
+		console.log('Clicked on "Bearbeiten" button!');
 		var selection = Aap.util.Tree.getTreeSelection();		
 		var selected = Aap.util.Tree.isSelectedNode(selection);		
 		if (selected == true ) {

@@ -15,7 +15,7 @@ Ext.define('Aap.view.modals.DataAdd', {
             {
 				xtype: 'panel',
 				title: 'Metadatensatz Erstellen',
-				id: 'metabearbeiten',
+				id: 'metaerstellen',
 				layout: {
 					type: 'hbox',
 					align: 'stretch'

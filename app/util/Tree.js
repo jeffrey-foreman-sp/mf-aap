@@ -79,40 +79,15 @@ Ext.define('Aap.util.Tree', {
 		// input: currentnode (Ext.data.Model): starting point of cascading
 		// output: parents_metaid (int): metaaap_id in one of the parent nodes 
 		//***********************************************************
-		getParentsMetaMetadata: function(currentnode) { 
-			var parents_metadata = new Object0;
+		getParentsMetadataNode: function(currentnode) { 
+			var metadata_node;
 			
-			currentnode.bubble(function (p_metaid) {
+			currentnode.bubble(function () {
 				if (this.get('metanode') == true){
-					parents_metaid = this.get('metaaap_id');
-
-				this.get('aufbewzs', verf_values.aufbewzs); 
-				this.get('begrzs', verf_values.begrzs);
-				this.get('inpauf', verf_values.inpauf);
-				this.get('aufbeww', verf_values.aufbeww);
-				this.get('begrw', verf_values.begrw);		
-				this.get('entsaufbew', verf_values.entsaufbew);
-				this.get('bemerkaufbew', verf_values.bemerkaufbew);
-
-	      		this.get('bewzs', arch_values.bewzs);
-				this.get('begrzs', arch_values.begrzs);
-				this.get('inparch', arch_values.inparch);
-				this.get('bewws', arch_values.bewws);
-				this.get('begrw', arch_values.begrw);
-				this.get('bewb', arch_values.bewb);
-				this.get('begrba', arch_values.begrba);
-				this.get('artsampl', arch_values.artsampl);
-				this.get('entsarch', arch_values.entsarch);
-				this.get('bemerkarch', arch_values.bemerkarch);
-
-
-
-
-
-
+					metadata_node = this;
 				}
-			}, null, [parents_metaid]);
-			return parents_metaid;
+			}, null, null);
+			return metadata_node;
 		},
    
 		//***********************************************************

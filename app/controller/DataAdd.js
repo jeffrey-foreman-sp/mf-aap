@@ -8,7 +8,7 @@ Ext.define('Aap.controller.DataAdd', {
     init: function() {
         this.control({
             'dataadd':  {
-                afterrender: this.afterPanelRendered
+                afterrender: this.afterAddPanelRendered
             },
 			'dataadd button[action=save]': {
 				click: this.addData
@@ -16,17 +16,16 @@ Ext.define('Aap.controller.DataAdd', {
         });
     },
 
-    afterPanelRendered: function() {
-        console.log('The "data add" panel was rendered');
-		var selNode = Aap.util.Tree.getSelectedNode();
+    afterAddPanelRendered: function() {
+        console.log('"Erstellen" window rendered!');
+		var node = Aap.util.Tree.getSelectedNode();
 	
-		// display metaaap data, but disable edit, if node is inherited	
-		if (Aap.util.Tree.isInherited(selNode) == true || Aap.util.Tree.isMetanode(selNode)) {
-        	console.log('inherited or metanode');
-			var metaaap_id = Aap.util.Tree.getSelectedNode().get('metaaap_id');
-			var	recm = Ext.getStore('MetaAap').findRecord('id', metaaap_id);
-			Ext.getCmp('edit_verf').getForm().loadRecord(recm);
-			Ext.getCmp('edit_arch').loadRecord(recm);
+		var node = Aap.util.Tree.getSelectedNode(); 
+		
+		// disable edit, but display metaaap when node is inherited	
+		if (Aap.util.Tree.isInherited(node) == true || Aap.util.Tree.isMetanode(node) == true) {
+			Ext.getCmp('edit_verf').getForm().loadRecord(node);
+		 	Ext.getCmp('edit_arch').getForm().loadRecord(node);
 			
 			Ext.getCmp('edit_verf').getForm().getFields().each(function(field) {
    		    	field.setDisabled(true);  
@@ -34,37 +33,69 @@ Ext.define('Aap.controller.DataAdd', {
 			Ext.getCmp('edit_arch').getForm().getFields().each(function(field) {
    		    	field.setDisabled(true);  
 			});
-		}	
+		}
+
 	},
 
 
 	addData: function(button){
 		console.log('data add');
-		
-		// get node
-		var node = Aap.util.Tree.getSelectedNode(); 
+
+		var node = Aap.util.Tree.getSelectedNode()
+		// get values for allgmemein data
+
+		// data handling if meta data is inherited
+		if (Aap.util.Tree.isInherited(node) == true || Aap.util.Tree.isMetanode(node) == true) {
+			 allg_values = Ext.getCmp('edit_allg').getForm().getValues();
+			 node_data = Aap.util.Tree.getParentsMetadataNode(node).getData();
+
+
+			 newNode = ('Aap.model.AapModel',{
+				name: allg_values.name, 
+				ident: allg_values.ident, 
+				georefdat: allg_values.georefdat, 
+				fachst: allg_values.fachst, 
+				zugberech: allg_values.zugberech, 
+				echkateg: allg_values.echkateg, 
+				nachfzeitr: allg_values.nachfzeitr, 
+				datenmente: allg_values.datenmenge, 
+				imjr: allg_values.imjr, 
+				datenzuw: allg_values.datenzuw, 
+				bemerk: allg_values.bemerk,
+
+				aufbewzs: node_data.aufbewzs, 
+				begrzs: node_data.begrzs,
+				inpauf: node_data.inpaufb,
+				aufbeww: node_data.aufbewws,
+				begrw: node_data.begrw,		
+				entsaufbew: node_data.entsaufbew,
+				bemerkaufbew: node_data.bemerkaufbew,
+
+	      		bewzs: node_data.bewzs,
+				begrzs: node_data.begrzs,
+				inparch: node_data.inparch,
+				bewws: node_data.bewws,
+				begrw: node_data.begrw,
+				bewb: node_data.bewba,
+				begrba: node_data.begrba,
+				artsampl: node_data.artsampl,
+				entsarch: node_data.entsarch,
+				bemerkarch: node_data.bemerkarch,
+
+				metanode: false
+			});
+		}
+
 	
+/*		var node = Aap.util.Tree.getSelectedNode(); 
+	
+		// get input from forms 
+		var form1 = Ext.getCmp('edit_allg').getForm();
+		var allg_values = form1.getValues();	
 		var form2 = Ext.getCmp('edit_verf').getForm();
 		var verf_values = form2.getValues();	
 		var form3 = Ext.getCmp('edit_arch').getForm();
 		var arch_values = form3.getValues();	
-
-		// get input from allgemein form and add them to new node
-		var form1 = Ext.getCmp('edit_allg').getForm();
-		var allg_values = form1.getValues();	
-
-		var newAllgemein = ('Aap.model.Allgemein', {
-			name: allg_values.name, 
-			ident: allg_values.ident, 
-			georefdat: allg_values.georefdat, 
-			fachst: allg_values.fachst, 
-			zugberech: allg_values.zugberech, 
-			echkateg: allg_values.echkateg, 
-			nachfzeitr: allg_values.nachfzeitr, 
-			datenmente: allg_values.datenmenge, 
-			imjr: allg_values.imjr, 
-			datenzuw: allg_values.datenzuw, 
-			bemerk: allg_values.bemerk,
 
 
 		if (Aap.util.Tree.isInherited(node) == false) {
@@ -132,12 +163,12 @@ Ext.define('Aap.controller.DataAdd', {
 		var selectednode = Ext.getStore('TreeStore').getNodeById(nodeid); 
 		selectednode.appendChild(newTreeNode);
 		selectednode.expand();
-		var newTree = Ext.getStore('TreeStore').getNewRecords()[0]/*.getId()*/;  // not very pretty 
+		var newTree = Ext.getStore('TreeStore').getNewRecords()[0].getId();  // not very pretty 
 		console.log(newTree);
 		var newIdTree = Ext.getStore('TreeStore').getNewRecords()[0].getId();  // not very pretty 
 		console.log(newIdTree);
 
-
+*/
 
 
 		// close windows 

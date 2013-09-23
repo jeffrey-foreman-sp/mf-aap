@@ -19,7 +19,6 @@ Ext.define('Aap.view.modals.DataEdit', {
 				layout: {
 					type: 'hbox',
 					align: 'stretch'
-					//bodyPadding: 15,				
 				},
 				defaults: {
 					margin: 10
