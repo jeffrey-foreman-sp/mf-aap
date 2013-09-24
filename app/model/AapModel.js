@@ -39,16 +39,5 @@ Ext.define('Aap.model.AapModel', {
 		{name: "artsampl", type: 'string'}, 
 		{name: "entsarch", type: 'string'}, 
 		{name: "bemerkarch", type: 'string'} 
-    ],
-	
-	proxy: {
-		type: 'ajax',
-        url: 'data/aapdata.json',
-		reader: {
-			type: 'json',
-			root: 'children',
-            successProperty: 'success'
-		}
-	}
-
+    ]
 });
