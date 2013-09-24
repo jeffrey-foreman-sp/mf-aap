@@ -7,18 +7,18 @@ Ext.define('Aap.view.mainbody.Archievwuerdigkeit',{
 	id: 'disp_arch',
 	tpl: [
 		'<p>Zuständige Stelle</p>',
-		'<p>Bewertung r+a: {bwezs}</p>',
-		'<p>Begründung: {begrzs}</p>',
-		'<p>Input durch: {inparch}</p>',
+		'<p>Bewertung r+a: <strong>{bwezs}</strong></p>',
+		'<p>Begründung: <strong>{begrzs}</strong></p>',
+		'<p>Input durch: <strong>{inparch}</strong></p>',
 		'<p>Weitere Stellen</p>',
-		'<p>Bewertung r+a: {bewws}</p>',
-		'<p>Begründung: {begrws}</p>',
+		'<p>Bewertung r+a: <strong>{bewws}</strong></p>',
+		'<p>Begründung: <strong>{begrws}</strong></p>',
 		'<p>Bundesarchiv</p>',
-		'<p>Bewertung h+s: {bewba}</p>',
-		'<p>Begründung: {begrba}</p>',
-		'<p>Art Sampling / Selektion: {artsampl}</p>',
-		'<p>Entscheid Archivwuerdigkeit: {entarch}</p>',
-		'<p>Bemerkungen: {bemerkarch}</p>'
+		'<p>Bewertung h+s: <strong>{bewba}</strong></p>',
+		'<p>Begründung: <strong>{begrba}</strong></p>',
+		'<p>Art Sampling / Selektion: <strong>{artsampl}</strong></p>',
+		'<p>Entscheid Archivwuerdigkeit: <strong>{entarch}</strong></p>',
+		'<p>Bemerkungen: <strong>{bemerkarch}</strong></p>'
 	]	
 });
 

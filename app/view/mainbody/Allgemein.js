@@ -6,17 +6,17 @@ Ext.define('Aap.view.mainbody.Allgemein',{
 	id: 'disp_allg',
 	bodyPadding: 10,
 	tpl: [
-		'<p>Name: {name}</p>',
-		'<p>Identifikator (Sammlugn): {ident}</p>',
-		'<p>Georeferenzdaten: {georefdat}</p>',
-		'<p>Fachstelle des Bundes: {fachst}</p>',
-		'<p>Zugangsberechtigungsstufe: {zugberech}</p>',
-		'<p>eCH-Kategorie: {echkateg}</p>',
-		'<p>Nachführungsrythmus: {nachfrhythm}</p>',
-		'<p>Nachführungszeitraum: {nachfzeitraum}</p>',
-		'<p>Datenmenge (in GB): {datenmenge}</p>',
-		'<p>im Jahr: {imjr}</p>',
-		'<p>Datenzuwachs (GB pro Jahr): {datenzuw}</p>',
-		'<p>Bemerkung: {bemerk}</p>'
+		'<p>Name: <strong>{name}</strong></p>',
+		'<p>Identifikator (Sammlung): <strong>{ident}</strong></p>',
+		'<p>Georeferenzdaten: <strong>{georefdat}</strong></p>',
+		'<p>Fachstelle des Bundes: <strong>{fachst}</strong></p>',
+		'<p>Zugangsberechtigungsstufe: <strong>{zugberech}</strong></p>',
+		'<p>eCH-Kategorie: <strong>{echkateg}</strong></p>',
+		'<p>Nachführungsrythmus: <strong>{nachfrhythm}</strong></p>',
+		'<p>Nachführungszeitraum: <strong>{nachfzeitraum}</strong></p>',
+		'<p>Datenmenge (in GB): <strong>{datenmenge}</strong></p>',
+		'<p>im Jahr: <strong>{imjr}</strong></p>',
+		'<p>Datenzuwachs (GB pro Jahr): <strong>{datenzuw}</strong></p>',
+		'<p>Bemerkung: <strong>{bemerk}</strong></p>'
 	]	
 });

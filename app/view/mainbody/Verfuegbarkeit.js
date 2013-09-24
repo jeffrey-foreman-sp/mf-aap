@@ -7,13 +7,13 @@ Ext.define('Aap.view.mainbody.Verfuegbarkeit',{
 	id: 'disp_verf',
 	tpl: [
 		'<p>Zuständige Stelle</p>',
-		'<p>Aufbewahrungsfrist: {aufbewzs}</p>',
-		'<p>Begründung: {begrzs}</p>',
-		'<p>Input durch: {inpaufb}</p>',
+		'<p>Aufbewahrungsfrist: <strong>{aufbewzs}</strong></strong></p>',
+		'<p>Begründung: <strong>{begrzs}</strong></p>',
+		'<p>Input durch: <strong>{inpaufb}</strong></p>',
 		'<p>Weitere Stellen</p>',
-		'<p>Aufbewahrungsfrist: {aufbewws}</p>',
-		'<p>Begründung: {begrw}</p>',
-		'<p>Entscheid Aufbewahrungsfrist: {entsaufbew}</p>',
-		'<p>Bemerkungen: {bemerkaufbew}</p>'
+		'<p>Aufbewahrungsfrist: <strong>{aufbewws}</strong></p>',
+		'<p>Begründung: <strong>{begrw}</strong></p>',
+		'<p>Entscheid Aufbewahrungsfrist: <strong>{entsaufbew}</strong></p>',
+		'<p>Bemerkungen: <strong>{bemerkaufbew}</strong></p>'
 	]
 });
