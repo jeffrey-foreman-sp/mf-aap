@@ -1,5 +1,6 @@
 
 var editor, gpx, gapi, store, proxy;
+var filecontent;
 
 var CLIENT_ID = '170396995102.apps.googleusercontent.com';
 var SCOPES = 'https://www.googleapis.com/auth/drive';
@@ -12,13 +13,14 @@ if (window.location.protocol != 'https:') {
 */
 
 
-
 /******************************************************************
  * Check if the current user has authorized the application.
 *******************************************************************/
 
 function handleClientLoad() {
   window.setTimeout(checkAuth, 1);
+  console.log('handleClientLoad');
+
 }
 
 
@@ -28,10 +30,11 @@ function handleClientLoad() {
 
 function checkAuth() {
   gapi.client.load('drive', 'v2');
+  console.log('Authenyytication 1');
   gapi.auth.authorize({
     'client_id': CLIENT_ID,
     'scope': SCOPES,
-    'immediate': true
+    'immediate': false
   }, handleAuthResult);
 }
 
@@ -56,8 +59,9 @@ function handleAuthResult(authResult) {
   else  {
     // No access token could be retrieved, show the button to start the authorization flow.
 //  authButton.style.display = 'block';
-	console.log('Authentication not successfull');
+	console.log('Authenyytication not successfull');
     authButton.onclick = function() {
+    console.log('Authenyytication 2');
 	    gapi.auth.authorize({
         'client_id': CLIENT_ID,
         'scope': SCOPES,
@@ -115,12 +119,17 @@ function updateFile(fileId, fileMetadata, callback) {
 
 }
 
+/*************************************************
+ * Get file.
+ * @param {String} fileId ID of the file to get.
+************************************************/
 function getFileById(fileId) {
 
   var callback = function(file, callback) {
-      updateFileMetadata(file);
+//      updateFileMetadata(file);
       downloadFile(file.downloadUrl, function(content) {
-        editor.setValue(content);
+//        editor.setValue(content);
+		  filecontent = content;
       });
     }
 
@@ -131,10 +140,14 @@ function getFileById(fileId) {
 
   request = gapi.client.drive.files.get({
     'fileId': fileId
+	
   });
 
-  request.execute(callback);
+return(request.execute(callback));
+
 }
+
+
 
 function downloadFile(downloadUrl, callback) {
   if (downloadUrl) {
@@ -164,6 +177,6 @@ function init() {
   editor = ace.edit("editor");
   editor.getSession().setMode("ace/mode/javascript");
 
-  handleClientLoad();
+//  handleClientLoad();
 
 } 
