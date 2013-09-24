@@ -10,7 +10,7 @@ Ext.define('Aap.view.modals.dataentry.Verfuegbarkeit',{
 			labelAlign: 'top',
 			labelWidth: 40,
 			labelStyle: 'margin-bottom: 5px;',
-			width: 240,
+			width: 240
 	},
 	defaultType: 'textfield',
 	id: 'edit_verf',

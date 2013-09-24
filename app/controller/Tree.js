@@ -14,7 +14,7 @@ Ext.define('Aap.controller.Tree', {
 	init: function() {
 		this.control({
 			'tree': {
-				afterrender: this.initSelection,
+				afterrender: this.initSelection
 			},	
 			'tree dataview': {
 				beforedrop: this.beforedropNode,

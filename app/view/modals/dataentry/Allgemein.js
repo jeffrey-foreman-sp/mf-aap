@@ -12,7 +12,7 @@ Ext.define('Aap.view.modals.dataentry.Allgemein',{
 			labelAlign: 'top',
 			labelWidth: 40,
 			labelStyle: 'margin-bottom: 5px;',
-			width: 240,
+			width: 240
 	},
 	id: 'edit_allg',
 	items: [
@@ -30,10 +30,10 @@ Ext.define('Aap.view.modals.dataentry.Allgemein',{
 			name: 'ident'
 		},{		
 			xtype: 'georefdat', 
-			width: 140,
+			width: 140
 		},{		
 			fieldLabel: 'Fachhstelle des Bundes',
-			name: 'fachst',
+			name: 'fachst'
 		},{		
 			xtype: 'zugberech', 
 			fieldLabel: 'Zugangsberechtigungsstufe',
@@ -86,7 +86,7 @@ Ext.define('Aap.view.modals.dataentry.Allgemein',{
 			labelStyle: 'margin-bottom: 5px; margin-top: 60px;',
 			name: 'bemerk'
 		}
-	],
+	]
 
 	
 
