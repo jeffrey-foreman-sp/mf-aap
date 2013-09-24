@@ -1,5 +1,9 @@
+
+
 {
-    "success": true,
+	"name": "Gesamtbestand",	
+	"expanded": "true",
+
     "children": [
         {
 			"id": "e4e59411-a403-4e62-b098-a04690b29952",

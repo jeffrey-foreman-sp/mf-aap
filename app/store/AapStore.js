@@ -1,20 +1,17 @@
 Ext.define('Aap.store.AapStore', {
+
 	extend: 'Ext.data.TreeStore',
     model: 'Aap.model.AapModel',
     storeId: 'AapStore',
-    autoLoad: true,
-    root: {
-    	name: 'Gesamtbestand',
-		expandable: false 
-	},
-	
+//    autoLoad: true,
+
+    root: data,
+
 	proxy: {
-		type: 'ajax',
-        url: 'data/aapdata.json',
+		type: 'memory',
 		reader: {
 			type: 'json',
-			root: 'children',
-            successProperty: 'success'
+			root: 'children'
 		}
 	}
 

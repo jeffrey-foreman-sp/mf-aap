@@ -23,6 +23,11 @@ Ext.define('Aap.controller.Tree', {
 		});
 	}, 
 
+
+	initSelection:  function() {
+		Ext.getCmp('treestructure').getView().getPlugin().dragZone.lock();
+	},
+
  	beforedropNode: function(node, data, overModel, dropPosition, dropHandlers) {
     	console.log('beforedrop')
 		dropHandlers.wait = true;
@@ -66,11 +71,7 @@ Ext.define('Aap.controller.Tree', {
 			Aap.util.Tree.setChildrensMetaData2(moved_node);
 		}
 
-    }, 
-
-	initSelection:  function() {
-		Ext.getCmp('treestructure').getView().getPlugin().dragZone.lock();
-	}
+    } 
 
 });
 
