@@ -29,7 +29,7 @@ Ext.define('Aap.view.mainbody.TreeTools' ,{
 			action: 'edit',
 			id: 'editbutton',
 			hidden: true,	
-			text: 'Beartbeiten'
+			text: 'Bearbeiten'
 		},{
 			xtype: 'button',
 			action: 'remove',
