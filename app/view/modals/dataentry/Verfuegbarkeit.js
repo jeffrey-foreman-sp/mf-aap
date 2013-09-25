@@ -46,11 +46,8 @@ Ext.define('Aap.view.modals.dataentry.Verfuegbarkeit',{
 			xtype: 'container',
 			flex: 1	
 		},{		
-			fieldLabel: 'Entscheid Aufbewahrungsfrist',
-			margin: '200 0 0 0',
-			name: 'entsaufbew'
-		},{		
 			xtype: 'textareafield',
+			margin: '245 0 0 0',
 			fieldLabel: 'Bemerkungen',
 			name: 'bemerkaufbew'
 		}

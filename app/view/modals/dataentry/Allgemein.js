@@ -12,6 +12,7 @@ Ext.define('Aap.view.modals.dataentry.Allgemein',{
 			labelAlign: 'top',
 			labelWidth: 40,
 			labelStyle: 'margin-bottom: 5px;',
+			msgTarget: 'side',
 			width: 240
 	},
 	id: 'edit_allg',
@@ -20,13 +21,11 @@ Ext.define('Aap.view.modals.dataentry.Allgemein',{
 			fieldLabel: 'Titel',
 			allowBlank: false,
 			blankText: 'Dieses Feld ist obligatorisch!',
-			msgTarget: 'side',
 			name: 'name'
 		},{		
 			fieldLabel: 'Identifikator (Sammlung)',
 			regex: /^\d{3}\.\d{2}$/,
 			regexText: 'Der Identifikator muss der Zahl mit dem Muster "XXX.XX" entsprechen! (z.B. 153.23) ',
-			msgTarget: 'side',
 			name: 'ident'
 		},{		
 			xtype: 'georefdat', 

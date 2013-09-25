@@ -5,6 +5,10 @@ Ext.define('Aap.controller.DataEdit', {
 	models: ['AapModel'],
 	views: ['modals.DataEdit'],
 
+
+
+
+
     init: function() {
         this.control({
             'dataedit':  { 
@@ -49,10 +53,12 @@ Ext.define('Aap.controller.DataEdit', {
 		var values1 = form1.getValues();	
 
 		var form2 = Ext.getCmp('edit_verf').getForm();
+		
 		var verf_values = form2.getValues();	
 		var form3 = Ext.getCmp('edit_arch').getForm();
 		var arch_values = form3.getValues();	
 
+	
 		if (form1.isValid()==true && form2.isValid()==true && form3.isValid()==true) {	
 
 			record1.set(values1);
@@ -61,9 +67,9 @@ Ext.define('Aap.controller.DataEdit', {
 					this.set('aufbewzs', verf_values.aufbewzs); 
 					this.set('begrzs', verf_values.begrzs);
 					this.set('inpauf', verf_values.inpauf);
-					this.set('aufbeww', verf_values.aufbeww);
+					this.set('aufbewws', verf_values.aufbewws);
 					this.set('begrw', verf_values.begrw);		
-					this.set('entsaufbew', verf_values.entsaufbew);
+					this.set('entsaufbew', Math.max(verf_values.aufbewzs, verf_values.aufbewws));
 					this.set('bemerkaufbew', verf_values.bemerkaufbew);
 
 		      		this.set('bewzs', arch_values.bewzs);
