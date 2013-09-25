@@ -1,5 +1,16 @@
 Ext.define('Aap.util.Tree', {
     statics: {
+
+		//***********************************************************
+		// convert tree to JSON 
+		// input: tree (Ext.data.TreeStore instance) 
+		// output: selection object 
+		//***********************************************************
+		treeToJSON: function(store) {
+			var s = new Aap.util.TreeSerializer(store)
+			var serialized = JSON.stringify(s.toString());
+			return serialized;
+		},
 		
 		//***********************************************************
 		// get selection in tree

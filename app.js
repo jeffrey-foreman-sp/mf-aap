@@ -496,7 +496,7 @@ Ext.application({
 
 	launch: function(){
 //		handleClientLoad();
-
+		Ext.require('Aap.util.TreeSerializer');
 	},
 	autoCreateViewport: true
 });
