@@ -6,7 +6,8 @@ Ext.define('Aap.util.Tree', {
 		// input: tree (Ext.data.TreeStore instance) 
 		// output: selection object 
 		//***********************************************************
-		treeToJSON: function(store) {
+		treeToJSON: function() {
+			var store = Ext.getStore('AapStore');
 			var s = new Aap.util.TreeSerializer(store)
 			var serialized = JSON.stringify(s.toString());
 			return serialized;

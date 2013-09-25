@@ -4,7 +4,9 @@ var filecontent;
 
 var CLIENT_ID = '170396995102.apps.googleusercontent.com';
 var SCOPES = 'https://www.googleapis.com/auth/drive';
-var FILE_ID = "0B4tksUtG91iOQmxQMWRmZzMxaWM";
+//var FILE_ID = "0B4tksUtG91iOQmxQMWRmZzMxaWM";
+var FILE_ID = "0B4tksUtG91iOY0xIdUY2SmROSEk";
+var file_id = FILE_ID;
 
 /*
 if (window.location.protocol != 'https:') {
@@ -73,6 +75,14 @@ function handleAuthResult(authResult) {
 }
 
 
+/*************************************************
+ * Update an existing file's metadata and content.
+ * @param {String} fileId ID of the file to update.
+ * @param {Object} fileMetadata existing Drive file's metadata.
+ * @param {File} fileData File object to read data from.
+ * @param {Function} callback Callback function to call when the request is complete.
+************************************************/
+
 function updateFileMetadata(file) {
   var metadata = document.getElementById('metadata');
   var date = new Date(file.modifiedDate);
@@ -140,7 +150,6 @@ function getFileById(fileId) {
 
   request = gapi.client.drive.files.get({
     'fileId': fileId
-	
   });
 
 return(request.execute(callback));

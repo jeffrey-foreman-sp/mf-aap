@@ -1,7 +1,3 @@
-//------------------------------------------------------------------
-// tree controls
-//------------------------------------------------------------------
-
 Ext.define('Aap.controller.MainBody', {
 	extend: 'Ext.app.Controller',
 	requires: ['Aap.util.Tree'],
