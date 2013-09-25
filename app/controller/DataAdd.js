@@ -42,6 +42,7 @@ Ext.define('Aap.controller.DataAdd', {
 
 		var node = Aap.util.Tree.getSelectedNode()
 
+
 		// data handling if meta data is inherited
 		if (Aap.util.Tree.isInherited(node) == true || Aap.util.Tree.isMetanode(node) == true) {
 			var allg_values = Ext.getCmp('edit_allg').getForm().getValues();
@@ -80,7 +81,7 @@ Ext.define('Aap.controller.DataAdd', {
 					inparch: node_data.inparch,
 					bewws: node_data.bewws,
 					begrw: node_data.begrw,
-					bewb: node_data.bewba,
+					bewba: node_data.bewba,
 					begrba: node_data.begrba,
 					artsampl: node_data.artsampl,
 					entsarch: node_data.entsarch,
@@ -103,13 +104,24 @@ Ext.define('Aap.controller.DataAdd', {
 			var allg_values = Ext.getCmp('edit_allg').getForm().getValues();
 			var verf_values = Ext.getCmp('edit_verf').getForm().getValues();
 			var arch_values = Ext.getCmp('edit_arch').getForm().getValues();
-		
+	
+
 
 			if (
 				Ext.getCmp('edit_allg').getForm().isValid()==true 
 				&& Ext.getCmp('edit_verf').getForm().isValid()==true
 				&& Ext.getCmp('edit_arch').getForm().isValid()==true
 			) {	
+
+				function calcEntsarch(a,b,c) {
+					var e ;
+					if (a=='A' || b=='A' || c=='A') {e='A'}
+					else if (a=='S' || b=='S' || c=='S') {e='S'}
+					else if (a=='N' || b=='N' || c=='N') {e='N'}
+					return e
+				}
+				var entscheid_archivierung = calcEntsarch(arch_values.bewzs, arch_values.bewws, arch_values.bewba);
+				console.log(entscheid_archivierung);
 	
 				newNode = ('Aap.model.AapModel',{
 					metanode: true,
@@ -141,10 +153,10 @@ Ext.define('Aap.controller.DataAdd', {
 					inparch: arch_values.inparch,
 					bewws: arch_values.bewws,
 					begrw: arch_values.begrw,
-					bewb: arch_values.bewba,
+					bewba: arch_values.bewba,
 					begrba: arch_values.begrba,
 					artsampl: arch_values.artsampl,
-					entsarch: arch_values.entsarch,
+					entsarch: entscheid_archivierung,
 					bemerkarch: arch_values.bemerkarch
 				});
 

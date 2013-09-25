@@ -5,10 +5,6 @@ Ext.define('Aap.controller.DataEdit', {
 	models: ['AapModel'],
 	views: ['modals.DataEdit'],
 
-
-
-
-
     init: function() {
         this.control({
             'dataedit':  { 
@@ -58,6 +54,19 @@ Ext.define('Aap.controller.DataEdit', {
 		var form3 = Ext.getCmp('edit_arch').getForm();
 		var arch_values = form3.getValues();	
 
+
+		var a = arch_values.bewzs;
+		var b =  arch_values.bewws;
+		var c = arch_values.begrba;
+	
+		function calcEntsarch(a,b,c) {
+			var e ;
+			if (a=='A' || b=='A' || c=='A') {e='A'}
+			else if (a=='S' || b=='S' || c=='S') {e='S'}
+			else if (a=='N' || b=='N' || c=='N') {e='N'}
+			return e
+		}
+
 	
 		if (form1.isValid()==true && form2.isValid()==true && form3.isValid()==true) {	
 
@@ -77,10 +86,10 @@ Ext.define('Aap.controller.DataEdit', {
 					this.set('inparch', arch_values.inparch);
 					this.set('bewws', arch_values.bewws);
 					this.set('begrw', arch_values.begrw);
-					this.set('bewb', arch_values.bewb);
+					this.set('bewba', arch_values.bewba);
 					this.set('begrba', arch_values.begrba);
 					this.set('artsampl', arch_values.artsampl);
-					this.set('entsarch', arch_values.entsarch);
+					this.set('entsarch', calcEntsarch(arch_values.bewzs, arch_values.bewws, arch_values.bewba));
 					this.set('bemerkarch', arch_values.bemerkarch);
 
 					this.set('metanode', false);

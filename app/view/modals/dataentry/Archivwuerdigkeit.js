@@ -55,11 +55,8 @@ Ext.define('Aap.view.modals.dataentry.Archivwuerdigkeit',{
 			name: 'begrba'
 		},{	
 			fieldLabel: 'Art Sampling / Selektion',
-			margin: '30 0 0 0',
+			margin: '75 0 0 0',
 			name: 'artsampl'
-		},{	
-			fieldLabel: 'Entscheid Archivwürdikeit',
-			name: 'entsarch'
 		},{		
 			xtype: 'textareafield',
 			grow: true,
