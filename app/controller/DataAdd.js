@@ -132,8 +132,6 @@ Ext.define('Aap.controller.DataAdd', {
 		node.appendChild(newNode);
 		node.expand();
 
-
-
 		// close windows 
 		var win = button.up('window');
     	win.close();
