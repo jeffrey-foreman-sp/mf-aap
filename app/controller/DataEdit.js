@@ -44,7 +44,7 @@ Ext.define('Aap.controller.DataEdit', {
 		var node = Aap.util.Tree.getSelectedNode(); 
 	
 		// write allgemein from form to store	
-		 form1 = Ext.getCmp('edit_allg').getForm();
+		var form1 = Ext.getCmp('edit_allg').getForm();
 		var record1 = form1.getRecord();
 		var values1 = form1.getValues();	
 
@@ -53,7 +53,7 @@ Ext.define('Aap.controller.DataEdit', {
 		var form3 = Ext.getCmp('edit_arch').getForm();
 		var arch_values = form3.getValues();	
 
-		if (form1.isValid() == true) {	
+		if (form1.isValid()==true && form2.isValid()==true && form3.isValid()==true) {	
 
 			record1.set(values1);
 			if (Aap.util.Tree.isInherited(node) == false) {
