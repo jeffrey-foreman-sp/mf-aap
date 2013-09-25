@@ -24,7 +24,7 @@ Ext.define('Aap.view.modals.dataentry.Allgemein',{
 			name: 'name'
 		},{		
 			fieldLabel: 'Identifikator (Sammlung)',
-			regex: /\d\d\d\.\d\d/,
+			regex: /^\d{3}\.\d{2}$/,
 			regexText: 'Der Identifikator muss der Zahl mit dem Muster "XXX.XX" entsprechen! (z.B. 153.23) ',
 			msgTarget: 'side',
 			name: 'ident'
