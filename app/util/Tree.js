@@ -128,24 +128,25 @@ Ext.define('Aap.util.Tree', {
 		setChildrensMetaData: function(currentnode, new_metadata) { 
 			currentnode.cascadeBy(function (new_metadata) {
 				this.set('modif', new Date());
-				this.set('aufbewzs', new_metadata.aufbewzs); 
-				this.set('begrzs', new_metadata.begrzs);
-				this.set('inpaufb', node_data.inpaufb);
-				this.set('aufbewws', node_data.aufbewws);
-				this.set('begrw', node_data.begrw);
-				this.set('entsaufbew', node_data.entsaufbew);
-				this.set('bemerkaufbew', node_data.bemerkaufbew);
+				this.set('verf_zs_aufb', new_metadata.verf_zs_aufb); 
+				this.set('verf_zs_begr', new_metadata.verf_zs_begr);
+				this.set('verf_zs_inpu', node_data.verf_zs_inpu);
+				this.set('verf_ws_aufb', node_data.verf_ws_aufb);
+				this.set('verf_ws_begr', node_data.verf_ws_begr);
+				this.set('verf_ents', node_data.verf_ents);
+				this.set('verf_beme', node_data.verf_beme);
 
 	      		this.set('bewzs', node_data.bewzs);
-				this.set('begrzs', node_data.begrzs);
-				this.set('inparch', node_data.inparch);
-				this.set('bewws', node_data.bewws);
-				this.set('begrws', node_data.begrws);
-				this.set('bewba', node_data.bewba);
-				this.set('begrba', node_data.begrba);
-				this.set('artsampl', node_data.artsampl);
-				this.set('entsarch', node_data.entsarch);
-				this.set('bemerkarch', node_data.bemerkarch);
+				this.set('arch_zs_bewe', node_data.arch_zs_bewe);
+				this.set('arch_zs_begr', node_data.arch_zs_begr);
+				this.set('arch_zs_inpu', node_data.arch_zs_inpu);
+				this.set('arch_ws_bewe', node_data.arch_ws_bewe);
+				this.set('arch_ws_begr', node_data.arch_ws_begr);
+				this.set('arch_ba_bewe', node_data.arch_ba_bewe);
+				this.set('arch_ba_begr', node_data.arch_ba_begr);
+				this.set('arch_arts', node_data.arch_arts);
+				this.set('arch_ents', node_data.arch_ents);
+				this.set('arch_beme', node_data.arch_beme);
 				this.set('metanode', false);
 			}, null, [new_metadata]);
 		},
@@ -160,24 +161,25 @@ Ext.define('Aap.util.Tree', {
 		setChildrensMetaData2: function(currentnode) { 
 			currentnode.cascadeBy(function () {
 				if (this.hasChildNodes == true) {
-					this.set('aufbewzs', new_metadata.aufbewzs); 
-					this.set('begrzs', new_metadata.begrzs);
-					this.set('inpaufb', node_data.inpaufb);
-					this.set('aufbewws', node_data.aufbewws);
-					this.set('begrw', node_data.begrw);
-					this.set('entsaufbew', node_data.entsaufbew);
-					this.set('bemerkaufbew', node_data.bemerkaufbew);
+					this.set('verf_zs_aufb', new_metadata.verf_zs_aufb); 
+					this.set('verf_zs_begr', new_metadata.verf_zs_begr);
+					this.set('verf_zs_inpu', node_data.verf_zs_inpu);
+					this.set('verf_zs_aufb', node_data.verf_zs_aufb);
+					this.set('verf_zs_begr', node_data.verf_zs_begr);
+					this.set('verf_zs_ents', node_data.verf_zs_ents);
+					this.set('verf_zs_beme', node_data.verf_zs_beme);
 
 		      		this.set('bewzs', node_data.bewzs);
-					this.set('begrzs', node_data.begrzs);
-					this.set('inparch', node_data.inparch);
-					this.set('bewws', node_data.bewws);
-					this.set('begrws', node_data.begrws);
-					this.set('bewba', node_data.bewba);
-					this.set('begrba', node_data.begrba);
-					this.set('artsampl', node_data.artsampl);
-					this.set('entsarch', node_data.entsarch);
-					this.set('bemerkarch', node_data.bemerkarch);
+					this.set('arch_zs_bewe', node_data.arch_zs_bewe);
+					this.set('arch_zs_begr', node_data.arch_zs_begr);
+					this.set('arch_zs_inpu', node_data.arch_zs_inpu);
+					this.set('arch_ws_bewe', node_data.arch_ws_bewe);
+					this.set('arch_ws_begr', node_data.arch_ws_begr);
+					this.set('arch_ba_bewe', node_data.arch_ba_bewe);
+					this.set('arch_ba_begr', node_data.arch_ba_begr);
+					this.set('arch_arts', node_data.arch_arts);
+					this.set('arch_ents', node_data.arch_ents);
+					this.set('arch_beme', node_data.arch_beme);
 					this.set('metanode', false);
 				;}
 				else if (currentnode.get('metanode') == false) {this.set('metanode', true);}

@@ -20,49 +20,49 @@ Ext.define('Aap.view.mainbody.Archievwuerdigkeit',{
 			html: '<div style="margin-bottom: 10px; font-weight: bold;">Zuständige Stelle</div>'		
 		},{		
 			fieldLabel: 'Bewertung r+a',
-			name: 'bewzs'
+			name: 'arch_zs_bewe'
 		},{		
 			fieldLabel: 'Begründung',
-			name: 'begrzs'
+			name: 'arch_zs_begr'
 		},{		
 			fieldLabel: 'Input durch',
-			name: 'inparch'
+			name: 'arch_zs_inpu'
 		},{		
 			xtype: 'container',
 			style: 'margin-top: 20px; color: #606060 ',
 			html: '<div style="margin-bottom: 10px; font-weight: bold;">Weiter Stellen</div>'		
 		},{		
 			fieldLabel: 'Bewertung r+a',
-			name: 'bewws'
+			name: 'arch_ws_bewe'
 		},{		
 			fieldLabel: 'Begründung',
-			name: 'begrws'
+			name: 'arch_ws_begr'
 		},{	
 			xtype: 'container',
 			style: 'margin-top: 20px; color: #606060 ',
 			html: '<div style="margin-bottom: 10px; font-weight: bold;">Bundesarchiv</div>'		
 		},{		
 			fieldLabel: 'Bewertung h+s',
-			name: 'bewba'
+			name: 'arch_ba_bewe'
 		},{		
 			fieldLabel: 'Begründung',
-			name: 'begrba'
+			name: 'arch_ba_begr'
 		},{	
 			fieldLabel: 'Art Sampling / Selektion',
 			style: 'margin-top: 35px',
 			labelWidth: 180, 	
-			name: 'artsampl'
+			name: 'arch_arts'
 		},{	
 			fieldLabel: 'Entscheid Archivwürdikeit',
 			labelWidth: 180, 	
-			name: 'entsarch'
+			name: 'arch_ents'
 		},{		
 			labelAlign: 'top',
 			labelStyle: 'font-weight: bold; margin-bottom: 5px;',
 			fieldStyle: 'text-align: left;',
 			height: 100,
 			fieldLabel: 'Bemerkungen',
-			name: 'bemerkarch'
+			name: 'arch_beme'
 		}
 	]
 

@@ -21,23 +21,24 @@ Ext.define('Aap.model.AapModel', {
 		{name: "datenzuw", type: 'float'}, 
 		{name: "bemerk", type: 'string'},
 		
-		{name: "aufbewzs", type: 'int'}, 
-		{name: "begrzs", type: 'string'}, 
-		{name: "inpaufb", type: 'string'}, 
-		{name: "aufbewws", type: 'int'},
-		{name: "begrw", type: 'string'}, 
-		{name: "entsaufbew", type: 'int'}, 
-		{name: "bemerkaufbew", type: 'string'}, 
+		{name: "verf_zs_aufb", type: 'int'}, 
+		{name: "verf_zs_begr", type: 'string'}, 
+		{name: "verf_zs_inpu", type: 'string'}, 
+		{name: "verf_ws_aufb", type: 'int'},
+		{name: "verf_ws_begr", type: 'string'}, 
+		{name: "verf_ents", type: 'int'}, 
+		{name: "verf_beme", type: 'string'}, 
         
-        {name: "bewzs", type: 'string'}, 
-		{name: "begrzs", type: 'string'}, 
-		{name: "inparch", type: 'string'}, 
-		{name: "bewws", type: 'string'},
-		{name: "begrws", type: 'string'}, 
-		{name: "bewba", type: 'string'}, 
-		{name: "begrba", type: 'string'}, 
-		{name: "artsampl", type: 'string'}, 
-		{name: "entsarch", type: 'string'}, 
-		{name: "bemerkarch", type: 'string'} 
+      		{name: "arch_zs_bewe", type: 'string'}, 
+		{name: "arch_zs_begr", type: 'string'}, 
+		{name: "arch_zs_inpu", type: 'string'},
+		{name: "arch_ws_bewe", type: 'string'}, 
+		{name: "arch_ws_begr", type: 'string'}, 
+		{name: "arch_ba_bewe", type: 'string'}, 
+		{name: "arch_ba_begr", type: 'string'}, 
+
+		{name: "arch_arts", type: 'string'}, 
+		{name: "arch_ents", type: 'string'}, 
+		{name: "arch_beme", type: 'string'} 
     ]
 });

@@ -20,35 +20,35 @@ Ext.define('Aap.view.mainbody.Verfuegbarkeit',{
 			html: '<div style="margin-bottom: 10px; font-weight: bold;">Zuständige Stelle</div>'		
 		},{		
 			fieldLabel: 'Aufbewahrungsfrist',
-			name: 'aufbewzs'
+			name: 'verf_zs_aufb'
 		},{		
 			fieldLabel: 'Begründung',
-			name: 'begrzs'
+			name: 'verf_zs_begr'
 		},{		
 			fieldLabel: 'Input durch',
-			name: 'inpaufb'
+			name: 'verf_zs_inpu'
 		},{		
 			xtype: 'container',
 			style: 'margin-top: 22px; color: #606060 ',
 			html: '<div style="margin-bottom: 10px; font-weight: bold;">Weitere Stellen</div>'		
 		},{		
 			fieldLabel: 'Aufbewahrungsfrist',
-			name: 'aufbewws'
+			name: 'verf_ws_aufb'
 		},{		
 			fieldLabel: 'Begründung',
-			name: 'begrw'
+			name: 'verf_ws_begr'
 		},{		
 			fieldLabel: 'Entscheid Aufbewahrungsfrist',
 			labelWidth: 200,	
 			style: 'margin-top: 147px',
-			name: 'entsaufbew'
+			name: 'verf_ents'
 		},{		
 			labelAlign: 'top',
 			labelStyle: 'font-weight: bold; margin-bottom: 5px;',
 			fieldStyle: 'text-align: left;',
 			height: 100,
 			fieldLabel: 'Bemerkungen',
-			name: 'bemerkaufbew'
+			name: 'verf_beme'
 		}
 	]
 

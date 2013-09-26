@@ -60,7 +60,6 @@ Ext.define('Aap.controller.DataAdd', {
 					erfass: new Date(),
 
 					name: allg_values.name, 
-					name: allg_values.name, 
 					ident: allg_values.ident, 
 					georefdat: allg_values.georefdat, 
 					fachst: allg_values.fachst, 
@@ -72,24 +71,23 @@ Ext.define('Aap.controller.DataAdd', {
 					datenzuw: allg_values.datenzuw, 
 					bemerk: allg_values.bemerk,
 
-					aufbewzs: node_data.aufbewzs, 
-					begrzs: node_data.begrzs,
-					inpauf: node_data.inpaufb,
-					aufbewws: node_data.aufbewws,
-					begrw: node_data.begrw,		
-					entsaufbew: node_data.entsaufbew,
-					bemerkaufbew: node_data.bemerkaufbew,
+					verf_zs_aufb: node_data.verf_zs_aufb, 
+					verf_zs_begr: node_data.verf_zs_begr,
+					verf_zs_inpu: node_data.verf_zs_inpu,
+					verf_ws_aufb: node_data.verf_ws_aufb,
+					verf_ws_begr: node_data.verf_ws_begr,		
+					verf_ents: node_data.verf_ents,
+					verf_beme: node_data.verf_beme,
 
-	      			bewzs: node_data.bewzs,
-					begrzs: node_data.begrzs,
-					inparch: node_data.inparch,
-					bewws: node_data.bewws,
-					begrw: node_data.begrw,
-					bewba: node_data.bewba,
-					begrba: node_data.begrba,
-					artsampl: node_data.artsampl,
-					entsarch: node_data.entsarch,
-					bemerkarch: node_data.bemerkarch
+					arch_zs_bewe: node_data.arch_zs_bewe,
+					arch_zs_begr: node_data.arch_zs_begr,
+					arch_zs_inpu: node_data.arch_zs_inpu,
+					arch_ws_bewe: node_data.arch_ws_bewe,
+					arch_ws_begr: node_data.arch_ws_begr,
+					arch_ba_bewe: node_data.arch_ba_bewe,
+					arch_ba_begr: node_data.arch_ba_begr,
+					arch_ents: node_data.arch_ents,					
+					arch_beme: node_data.arch_beme,
 				});
 
 				node.appendChild(newNode);
@@ -146,24 +144,26 @@ Ext.define('Aap.controller.DataAdd', {
 					datenzuw: allg_values.datenzuw, 
 					bemerk: allg_values.bemerk,
 
-					aufbewzs: verf_values.aufbewzs, 
-					begrzs: verf_values.begrzs,
-					inpauf: verf_values.inpaufb,
-					aufbewws: verf_values.aufbewws,
-					begrw: verf_values.begrw,		
-					entsaufbew: Math.max(verf_values.aufbewzs, verf_values.aufbewws),
-					bemerkaufbew: verf_values.bemerkaufbew,
+					verf_zs_aufb: node_data.verf_zs_aufb, 
+					verf_zs_begr: node_data.verf_zs_begr,
+					verf_zs_inpu: node_data.verf_zs_inpu,
+					verf_ws_aufb: node_data.verf_ws_aufb,
+					verf_ws_begr: node_data.verf_ws_begr,		
+					verf_ents: Math.max(verf_values.verf_zs_aufb, verf_values.verf_ws_aufb),
+					verf_beme: node_data.verf_beme,
 	
-		      		bewzs: arch_values.bewzs,
-					begrzs: arch_values.begrzs,
-					inparch: arch_values.inparch,
-					bewws: arch_values.bewws,
-					begrw: arch_values.begrw,
-					bewba: arch_values.bewba,
-					begrba: arch_values.begrba,
-					artsampl: arch_values.artsampl,
-					entsarch: entscheid_archivierung,
-					bemerkarch: arch_values.bemerkarch
+	
+					arch_zs_bewe: node_data.arch_zs_bewe,
+					arch_zs_begr: node_data.arch_zs_begr,
+					arch_zs_inpu: node_data.arch_zs_inpu,
+					arch_ws_bewe: node_data.arch_ws_bewe,
+					arch_ws_begr: node_data.arch_ws_begr,
+					arch_ba_bewe: node_data.arch_ba_bewe,
+					arch_ba_begr: node_data.arch_ba_begr,
+					arch_arts: node_data.arch_arts,
+					arch_ents: entscheid_archivierung,					
+					arch_beme: node_data.arch_beme,
+
 				});
 	
 				node.appendChild(newNode);

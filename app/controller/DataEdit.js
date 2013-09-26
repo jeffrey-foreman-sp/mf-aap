@@ -73,25 +73,26 @@ Ext.define('Aap.controller.DataEdit', {
 			record1.set(values1);
 			if (Aap.util.Tree.isInherited(node) == false) {
 				node.cascadeBy(function () {
-					this.set('modif', new Date());
-					this.set('aufbewzs', verf_values.aufbewzs); 
-					this.set('begrzs', verf_values.begrzs);
-					this.set('inpauf', verf_values.inpauf);
-					this.set('aufbewws', verf_values.aufbewws);
-					this.set('begrw', verf_values.begrw);		
-					this.set('entsaufbew', Math.max(verf_values.aufbewzs, verf_values.aufbewws));
-					this.set('bemerkaufbew', verf_values.bemerkaufbew);
 
-		      		this.set('bewzs', arch_values.bewzs);
-					this.set('begrzs', arch_values.begrzs);
-					this.set('inparch', arch_values.inparch);
-					this.set('bewws', arch_values.bewws);
-					this.set('begrw', arch_values.begrw);
-					this.set('bewba', arch_values.bewba);
-					this.set('begrba', arch_values.begrba);
+					this.set('modif', new Date());
+					this.set('verf_zs_aufb', new_metadata.verf_zs_aufb); 
+					this.set('verf_zs_begr', new_metadata.verf_zs_begr);
+					this.set('verf_zs_inpu', node_data.verf_zs_inpu);
+					this.set('verf_ws_aufb', node_data.verf_ws_aufb);
+					this.set('verf_ws_begr', node_data.verf_ws_begr);
+					this.set('verf_ents', Math.max(verf_values.verf_zs_aufb, verf_values.verf_ws_begr));
+					this.set('verf_beme', node_data.verf_beme);
+
+		      			this.set('arch_zs_bewe', arch_values.arch_zs_bewe);
+					this.set('arch_zs_begr', arch_values.arch_zs_begr);
+					this.set('arch_zs_inpu', arch_values.arch_zs_inpu);
+					this.set('arch_ws_bewe', arch_values.arch_ws_bewe);
+					this.set('arch_ws_begr', arch_values.arch_ws_begr);
+					this.set('arch_ba_bewe', arch_values.arch_ba_bewe);
+					this.set('arch_ba_begr', arch_values.arch_ba_begr);
 					this.set('artsampl', arch_values.artsampl);
-					this.set('entsarch', calcEntsarch(arch_values.bewzs, arch_values.bewws, arch_values.bewba));
-					this.set('bemerkarch', arch_values.bemerkarch);
+					this.set('arch_ents', calcEntsarch(arch_values.arch_zs_begr, arch_values.arch_ws_begr, arch_values.arch_ba_begr));
+					this.set('arch_beme', arch_values.arch_beme);
 
 					this.set('metanode', false);
 				}, null, null);
