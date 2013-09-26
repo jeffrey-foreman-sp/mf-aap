@@ -2,7 +2,6 @@ Ext.define('Aap.view.modals.dataentry.Allgemein',{
 	extend: 'Ext.form.Panel',
 	requires: [
 		'Aap.view.formfields.ZugBerech',	
-		'Aap.view.formfields.GeoRefDat',	
 		'Aap.view.formfields.EChKateg'	
 	],
 	alias: 'widget.dataentryallgemein',
