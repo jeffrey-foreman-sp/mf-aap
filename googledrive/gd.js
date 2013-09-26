@@ -4,8 +4,7 @@ var filecontent;
 
 var CLIENT_ID = '170396995102.apps.googleusercontent.com';
 var SCOPES = 'https://www.googleapis.com/auth/drive';
-//var FILE_ID = "0B4tksUtG91iOQmxQMWRmZzMxaWM";
-var FILE_ID = "0B4tksUtG91iOY0xIdUY2SmROSEk";
+var FILE_ID = "0B4tksUtG91iOTUZUTXFMRFNYRVk";
 var file_id = FILE_ID;
 
 /*
@@ -13,6 +12,20 @@ if (window.location.protocol != 'https:') {
   window.location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
 }
 */
+
+
+//gapi.client.setApiKey('AIzaSyDdFle73cKd_ibyCRZgoxGtcGVFTpiKM48');
+
+
+
+
+/******************************************************************
+ * 
+*******************************************************************/
+function load() {
+  gapi.client.setApiKey('AIzaSyDdFle73cKd_ibyCRZgoxGtcGVFTpiKM48');
+  gapi.client.load('drive', 'v2');
+}
 
 
 /******************************************************************
@@ -33,11 +46,6 @@ function handleClientLoad() {
 function checkAuth() {
   gapi.client.load('drive', 'v2');
   console.log('Authenyytication 1');
-  gapi.auth.authorize({
-    'client_id': CLIENT_ID,
-    'scope': SCOPES,
-    'immediate': false
-  }, handleAuthResult);
 }
 
 

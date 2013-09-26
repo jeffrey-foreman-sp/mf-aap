@@ -28,8 +28,12 @@ Ext.define('Aap.view.modals.dataentry.Allgemein',{
 			regexText: 'Der Identifikator muss der Zahl mit dem Muster "XXX.XX" entsprechen! (z.B. 153.23) ',
 			name: 'ident'
 		},{		
-			xtype: 'georefdat', 
-			width: 140
+			xtype: 'checkboxfield',
+			checked: false,
+			boxLabel: 'Georeferenzdaten',
+			boxLabelAlign: 'before',
+			name: 'georefdat',
+			inputValue: 'X'
 		},{		
 			fieldLabel: 'Fachhstelle des Bundes',
 			name: 'fachst'

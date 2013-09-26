@@ -10,7 +10,7 @@ Ext.define('Aap.model.AapModel', {
         {name: "metanode", type: 'boolean'}, 
 		
 		{name: "ident", type: 'float'}, 
-		{name: "georefdat", type: 'boolean'},
+		{name: "georefdat", type: 'string'},
 		{name: "fachst", type: 'string'}, 
 		{name: "zugberech", type: 'string'}, 
 		{name: "echkateg", type: 'string'}, 
