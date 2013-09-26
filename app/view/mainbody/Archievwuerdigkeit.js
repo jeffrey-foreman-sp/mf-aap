@@ -5,21 +5,55 @@ Ext.define('Aap.view.mainbody.Archievwuerdigkeit',{
 	alias: 'widget.archievwuerdigkeit',
 	bodyPadding: 10,
 	id: 'disp_arch',
-	tpl: [
-		'<p>Zuständige Stelle</p>',
-		'<p>Bewertung r+a: <strong>{bewzs}</strong></p>',
-		'<p>Begründung: <strong>{begrzs}</strong></p>',
-		'<p>Input durch: <strong>{inparch}</strong></p>',
-		'<p>Weitere Stellen</p>',
-		'<p>Bewertung r+a: <strong>{bewws}</strong></p>',
-		'<p>Begründung: <strong>{begrws}</strong></p>',
-		'<p>Bundesarchiv</p>',
-		'<p>Bewertung h+s: <strong>{bewba}</strong></p>',
-		'<p>Begründung: <strong>{begrba}</strong></p>',
-		'<p>Art Sampling / Selektion: <strong>{artsampl}</strong></p>',
-		'<p>Entscheid Archivwuerdigkeit: <strong>{entsarch}</strong></p>',
-		'<p>Bemerkungen: <strong>{bemerkarch}</strong></p>'
-	]	
+	defaultType: 'textfield',
+	items: [
+		{		
+			xtype: 'container',
+			html: '<h4>Zuständige Stelle</h4>'		
+		},{		
+			fieldLabel: 'Bewertung r+a',
+			name: 'bewzs'
+		},{		
+			fieldLabel: 'Begründung',
+//			width: 20,
+			labelWidth: 200,
+			anchor: '-13',
+			name: 'begrzs'
+		},{		
+			fieldLabel: 'Input durch',
+			name: 'inparch'
+		},{		
+			xtype: 'container',
+			html: '<h4>Weiter Stellen</h4>'		
+		},{		
+			fieldLabel: 'Bewertung r+a',
+			name: 'bewws'
+		},{		
+			fieldLabel: 'Begründung',
+			name: 'begrws'
+		},{	
+			xtype: 'container',
+			html: '<h4>Bundesarchiv</h4>'		
+		},{		
+			fieldLabel: 'Bewertung h+s',
+			name: 'bewba'
+		},{		
+			fieldLabel: 'Begründung',
+			name: 'begrba'
+		},{	
+			fieldLabel: 'Art Sampling / Selektion',
+			name: 'artsampl'
+		},{	
+			fieldLabel: 'Entscheid Archivwuerdikeit',
+			name: 'entsarch'
+		},{		
+			xtype: 'textareafield',
+			grow: true,
+			fieldLabel: 'Bemerkungen',
+			name: 'bemerkarch'
+		}
+	]
+
 });
 
 

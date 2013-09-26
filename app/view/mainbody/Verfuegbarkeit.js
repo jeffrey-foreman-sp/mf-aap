@@ -5,15 +5,40 @@ Ext.define('Aap.view.mainbody.Verfuegbarkeit',{
 	alias: 'widget.verfuegbarkeit',
 	bodyPadding: 10,
 	id: 'disp_verf',
-	tpl: [
-		'<p>Zuständige Stelle</p>',
-		'<p>Aufbewahrungsfrist: <strong>{aufbewzs}</strong></strong></p>',
-		'<p>Begründung: <strong>{begrzs}</strong></p>',
-		'<p>Input durch: <strong>{inpaufb}</strong></p>',
-		'<p>Weitere Stellen</p>',
-		'<p>Aufbewahrungsfrist: <strong>{aufbewws}</strong></p>',
-		'<p>Begründung: <strong>{begrw}</strong></p>',
-		'<p>Entscheid Aufbewahrungsfrist: <strong>{entsaufbew}</strong></p>',
-		'<p>Bemerkungen: <strong>{bemerkaufbew}</strong></p>'
+	defaultType: 'textfield',
+	items: [
+		{		
+			xtype: 'container',
+			html: '<h4>Zuständige Stelle</h4>'		
+		},{		
+			fieldLabel: 'Aufbewahrungsfrist',
+			name: 'aufbewzs'
+		},{		
+			fieldLabel: 'Begründung',
+			name: 'begrzs'
+		},{		
+			fieldLabel: 'Input durch',
+			name: 'inpaufb'
+		},{		
+			xtype: 'container',
+			html: '<h4>Weiter Stellen</h4>'		
+		},{		
+			fieldLabel: 'Aufbewahrungsfrist',
+			name: 'aufbewws'
+		},{		
+			fieldLabel: 'Begründung',
+			name: 'begrw'
+		},{		
+			fieldLabel: 'Entscheid Aufbewahrungsfrist',
+			name: 'entsaufbew'
+		},{		
+			xtype: 'textareafield',
+			grow: true,
+			anchor: '100%',
+			fieldLabel: 'Bemerkungen',
+			name: 'bemerkaufbew'
+		}
 	]
+
+
 });

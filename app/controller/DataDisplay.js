@@ -14,18 +14,16 @@ Ext.define('Aap.controller.DataDisplay', {
     },
 
     selectionchange: function() {
-		var node_data = Aap.util.Tree.getSelectedNode().getData();
-	
-		// display record in form			
-		var allgemein = Ext.getCmp('disp_allg');
-		allgemein.update(node_data);
-		var formv = Ext.getCmp('disp_verf');
-		formv.update(node_data);
-		var forma = Ext.getCmp('disp_arch');
-		forma.update(node_data);
-	
-  }
 
+		var node = Aap.util.Tree.getSelectedNode(); 
+		
+		// load node data into forms
+		if (node != 'root') {
+		Ext.getCmp('disp_allg').getForm().loadRecord(node);
+		Ext.getCmp('disp_verf').getForm().loadRecord(node);
+	 	Ext.getCmp('disp_arch').getForm().loadRecord(node);
+		}
+    }
 
 });
 
