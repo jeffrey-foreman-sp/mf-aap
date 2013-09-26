@@ -5,11 +5,19 @@ Ext.define('Aap.view.mainbody.Verfuegbarkeit',{
 	alias: 'widget.verfuegbarkeit',
 	bodyPadding: 10,
 	id: 'disp_verf',
-	defaultType: 'textfield',
+	defaults: {
+		width: '100%',	
+		anchor: '100%',
+		labelStyle: 'font-weight: bold; margin-bottom: 5px;',
+		labelWidth: 140	
+	},
+	//defaultType: 'textfield',
+	defaultType: 'displayfield',
 	items: [
 		{		
 			xtype: 'container',
-			html: '<h4>Zuständige Stelle</h4>'		
+			style: 'margin-top: 0px; color: #606060 ',
+			html: '<div style="margin-bottom: 10px; font-weight: bold;">Zuständige Stelle</div>'		
 		},{		
 			fieldLabel: 'Aufbewahrungsfrist',
 			name: 'aufbewzs'
@@ -21,7 +29,8 @@ Ext.define('Aap.view.mainbody.Verfuegbarkeit',{
 			name: 'inpaufb'
 		},{		
 			xtype: 'container',
-			html: '<h4>Weiter Stellen</h4>'		
+			style: 'margin-top: 22px; color: #606060 ',
+			html: '<div style="margin-bottom: 10px; font-weight: bold;">Weitere Stellen</div>'		
 		},{		
 			fieldLabel: 'Aufbewahrungsfrist',
 			name: 'aufbewws'
@@ -30,11 +39,14 @@ Ext.define('Aap.view.mainbody.Verfuegbarkeit',{
 			name: 'begrw'
 		},{		
 			fieldLabel: 'Entscheid Aufbewahrungsfrist',
+			labelWidth: 200,	
+			style: 'margin-top: 147px',
 			name: 'entsaufbew'
 		},{		
-			xtype: 'textareafield',
-			grow: true,
-			anchor: '100%',
+			labelAlign: 'top',
+			labelStyle: 'font-weight: bold; margin-bottom: 5px;',
+			fieldStyle: 'text-align: left;',
+			height: 100,
 			fieldLabel: 'Bemerkungen',
 			name: 'bemerkaufbew'
 		}

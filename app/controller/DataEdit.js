@@ -98,13 +98,10 @@ Ext.define('Aap.controller.DataEdit', {
 			}
 
 			// display record in form			
-			var node_data = Aap.util.Tree.getSelectedNode().getData();
-			var allgemein = Ext.getCmp('disp_allg');
-			allgemein.update(node_data);
-			var formv = Ext.getCmp('disp_verf');
-			formv.update(node_data);
-			var forma = Ext.getCmp('disp_arch');
-			forma.update(node_data);
+			var node = Aap.util.Tree.getSelectedNode();
+			Ext.getCmp('disp_allg').getForm().loadRecord(node);
+			Ext.getCmp('disp_verf').getForm().loadRecord(node);
+		 	Ext.getCmp('disp_arch').getForm().loadRecord(node);
 	
 			// close edite window
 			var win = button.up('window');
