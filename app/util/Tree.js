@@ -127,6 +127,7 @@ Ext.define('Aap.util.Tree', {
 		//***********************************************************
 		setChildrensMetaData: function(currentnode, new_metadata) { 
 			currentnode.cascadeBy(function (new_metadata) {
+				this.set('modif', new Date());
 				this.set('aufbewzs', new_metadata.aufbewzs); 
 				this.set('begrzs', new_metadata.begrzs);
 				this.set('inpaufb', node_data.inpaufb);
@@ -156,7 +157,7 @@ Ext.define('Aap.util.Tree', {
 		// input:
 		// 		currentnode (Ext.data.Model): starting point of cascading
 		//***********************************************************
-		setChildrensMetaMetaData: function(currentnode) { 
+		setChildrensMetaData2: function(currentnode) { 
 			currentnode.cascadeBy(function () {
 				if (this.hasChildNodes == true) {
 					this.set('aufbewzs', new_metadata.aufbewzs); 

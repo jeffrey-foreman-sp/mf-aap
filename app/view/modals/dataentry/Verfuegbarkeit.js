@@ -21,7 +21,6 @@ Ext.define('Aap.view.modals.dataentry.Verfuegbarkeit',{
 		},{		
 			xtype: 'numberfield',
 			minValue: 0,	
-			fieldLabel: 'Aufbewahrungsfrist',
 			name: 'aufbewzs'
 		},{		
 			xtype: 'begrws',

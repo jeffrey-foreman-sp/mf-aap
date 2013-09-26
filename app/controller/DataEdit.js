@@ -73,6 +73,7 @@ Ext.define('Aap.controller.DataEdit', {
 			record1.set(values1);
 			if (Aap.util.Tree.isInherited(node) == false) {
 				node.cascadeBy(function () {
+					this.set('modif', new Date());
 					this.set('aufbewzs', verf_values.aufbewzs); 
 					this.set('begrzs', verf_values.begrzs);
 					this.set('inpauf', verf_values.inpauf);

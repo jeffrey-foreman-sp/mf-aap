@@ -55,7 +55,11 @@ Ext.define('Aap.controller.DataAdd', {
 					metanode: false,
 					loaded: true,
 					leaf: false,
-					
+	
+					modif: new Date(),
+					erfass: new Date(),
+
+					name: allg_values.name, 
 					name: allg_values.name, 
 					ident: allg_values.ident, 
 					georefdat: allg_values.georefdat, 
@@ -121,12 +125,14 @@ Ext.define('Aap.controller.DataAdd', {
 					return e
 				}
 				var entscheid_archivierung = calcEntsarch(arch_values.bewzs, arch_values.bewws, arch_values.bewba);
-				console.log(entscheid_archivierung);
 	
 				newNode = ('Aap.model.AapModel',{
 					metanode: true,
 					loaded: true,
 					leaf: false,
+
+					modif: new Date(),
+					erfass: new Date(),
 
 					name: allg_values.name, 
 					ident: allg_values.ident, 
@@ -159,7 +165,7 @@ Ext.define('Aap.controller.DataAdd', {
 					entsarch: entscheid_archivierung,
 					bemerkarch: arch_values.bemerkarch
 				});
-
+	
 				node.appendChild(newNode);
 				node.expand();
 

@@ -53,6 +53,7 @@ Ext.define('Aap.controller.Tree', {
 		var target_node = tree.getRecord(node);
 		var moved_node = data.records[0];
 		var meta_id;	
+		test = node;
 		if (dropPosition != 'append') {
 			target_node = target_node.parentNode;
 			console.log('not append');
@@ -66,6 +67,19 @@ Ext.define('Aap.controller.Tree', {
 		else {
 			Aap.util.Tree.setChildrensMetaData2(moved_node);
 		}
+	
+		// close folder if there are no more children nodes below
+		Ext.getStore('AapStore').getRootNode().cascadeBy(function () {
+			if (this.childNodes.length == 0) {
+				console.log(this);
+				this.collapse();
+			}
+		}, null, null);
+		
+	
+
+
+
 
     } 
 

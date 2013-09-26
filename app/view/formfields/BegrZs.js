@@ -14,7 +14,7 @@ Ext.define('Aap.view.formfields.BegrZs', {
 		]  
 	}),
 	valueField: 'full',
-    displayField: 'full',
+	displayField: 'full',
     triggerAction: 'all'
 
 
