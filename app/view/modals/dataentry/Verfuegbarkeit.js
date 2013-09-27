@@ -21,14 +21,14 @@ Ext.define('Aap.view.modals.dataentry.Verfuegbarkeit',{
 		},{		
 			xtype: 'numberfield',
 			minValue: 0,	
-			name: 'aufbewzs'
+			name: 'verf_zs_aufb'
 		},{		
 			xtype: 'begrws',
 			fieldLabel: 'Begründung',
-			name: 'begrzs'
+			name: 'verf_zs_begr'
 		},{		
 			fieldLabel: 'Input durch',
-			name: 'inpaufb'
+			name: 'verf_zs_inpu'
 		},{		
 			xtype: 'container',
 			html: '<p style="font-weight: bold; margin: 10 0 5 0;">Weitere Stellen</p>'		
@@ -36,11 +36,11 @@ Ext.define('Aap.view.modals.dataentry.Verfuegbarkeit',{
 			xtype: 'numberfield',
 			minValue: 0,	
 			fieldLabel: 'Aufbewahrungsfrist',
-			name: 'aufbewws'
+			name: 'verf_ws_aufb'
 		},{		
 			xtype: 'begrws',
 			fieldLabel: 'Begründung',
-			name: 'begrws'
+			name: 'verf_ws_begr'
 		},{		
 			xtype: 'container',
 			flex: 1	
@@ -48,7 +48,7 @@ Ext.define('Aap.view.modals.dataentry.Verfuegbarkeit',{
 			xtype: 'textareafield',
 			margin: '245 0 0 0',
 			fieldLabel: 'Bemerkungen',
-			name: 'bemerkaufbew'
+			name: 'verf_beme'
 		}
 	]
 });

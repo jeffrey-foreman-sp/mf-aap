@@ -75,15 +75,14 @@ Ext.define('Aap.controller.DataEdit', {
 				node.cascadeBy(function () {
 
 					this.set('modif', new Date());
-					this.set('verf_zs_aufb', new_metadata.verf_zs_aufb); 
-					this.set('verf_zs_begr', new_metadata.verf_zs_begr);
-					this.set('verf_zs_inpu', node_data.verf_zs_inpu);
-					this.set('verf_ws_aufb', node_data.verf_ws_aufb);
-					this.set('verf_ws_begr', node_data.verf_ws_begr);
-					this.set('verf_ents', Math.max(verf_values.verf_zs_aufb, verf_values.verf_ws_begr));
-					this.set('verf_beme', node_data.verf_beme);
-
-		      			this.set('arch_zs_bewe', arch_values.arch_zs_bewe);
+					this.set('verf_zs_aufb', verf_values.verf_zs_aufb); 
+					this.set('verf_zs_begr', verf_values.verf_zs_begr);
+					this.set('verf_zs_inpu', verf_values.verf_zs_inpu);
+					this.set('verf_ws_aufb', verf_values.verf_ws_aufb);
+					this.set('verf_ws_begr', verf_values.verf_ws_begr);
+					this.set('verf_ents', Math.max(verf_values.verf_zs_aufb, verf_values.verf_ws_aufb));
+					this.set('verf_beme', verf_values.verf_beme);
+	      			this.set('arch_zs_bewe', arch_values.arch_zs_bewe);
 					this.set('arch_zs_begr', arch_values.arch_zs_begr);
 					this.set('arch_zs_inpu', arch_values.arch_zs_inpu);
 					this.set('arch_ws_bewe', arch_values.arch_ws_bewe);

@@ -23,46 +23,46 @@ Ext.define('Aap.view.modals.dataentry.Archivwuerdigkeit',{
 		},{		
 			xtype: 'bewzs',
 			fieldLabel: 'Bewertung r+a',
-			name: 'bewzs'
+			name: 'arch_zs_bewe'
 		},{		
 			xtype: 'begrzs',
 			fieldLabel: 'Begründung',
-			name: 'begrzs'
+			name: 'arch_zs_begr'
 		},{		
 			fieldLabel: 'Input durch',
-			name: 'inparch'
+			name: 'arch_zs_inpu'
 		},{		
 			xtype: 'container',
 			html: '<p style="font-weight: bold; margin: 10 0 5 0;">Weitere Stellen</p>'		
 		},{		
 			xtype: 'bewzs',
 			fieldLabel: 'Bewertung r+a',
-			name: 'bewws'
+			name: 'arch_ws_bewe'
 		},{		
 			xtype: 'begrws',
 			fieldLabel: 'Begründung',
-			name: 'begrws'
+			name: 'arch_ws_begr'
 		},{	
 			xtype: 'container',
 			html: '<p style="font-weight: bold; margin: 10 0 5 0;">Bundesarchiv</p>'		
 		},{		
 			xtype: 'bewzs',
 			fieldLabel: 'Bewertung h+s',
-			name: 'bewba'
+			name: 'arch_ba_bewe'
 		},{		
 			xtype: 'begrba',
 			fieldLabel: 'Begründung',
-			name: 'begrba'
+			name: 'arch_ba_begr'
 		},{	
 			fieldLabel: 'Art Sampling / Selektion',
 			margin: '75 0 0 0',
-			name: 'artsampl'
+			name: 'arch_arts'
 		},{		
 			xtype: 'textareafield',
 			grow: true,
 			anchor: '100%',
 			fieldLabel: 'Bemerkungen',
-			name: 'bemerkarch'
+			name: 'arch_beme'
 		}
 	]
 });
