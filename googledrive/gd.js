@@ -87,8 +87,8 @@ function updateFileMetadata(file) {
   var metadata = document.getElementById('metadata');
   var date = new Date(file.modifiedDate);
 
-  metadata.innerHTML = "Last modified by: " + file.lastModifyingUserName;
-  metadata.innerHTML += "<br />on: " + date.toLocaleString();
+  console.log("Last modified by: " + file.lastModifyingUserName);
+  console.loge("on: " + date.toLocaleString());
 }
 
 function updateFile(fileId, fileMetadata, callback) {
@@ -98,7 +98,7 @@ function updateFile(fileId, fileMetadata, callback) {
 
   fileId = FILE_ID;
   var metadata = fileMetadata || {
-    'title': 'aaptest.txt',
+    'title': 'aapdata.json',
     'mimeType': contentType,
     'editedBy': 'roger'
   };
@@ -138,7 +138,6 @@ function getFileById(fileId) {
   var callback = function(file, callback) {
 //      updateFileMetadata(file);
       downloadFile(file.downloadUrl, function(content) {
-//        editor.setValue(content);
 		  filecontent = content;
       });
     }
