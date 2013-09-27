@@ -1,7 +1,7 @@
 
 var data =
 {
-	"name": "Gesamtbestand",	
+	"name": "GesSamtbestand",	
 	"expanded": "true",
 
     "children": [

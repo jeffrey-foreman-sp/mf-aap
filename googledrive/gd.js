@@ -55,7 +55,7 @@ function handleAuthResult(authResult) {
 //	if (extAuthButton.getText() == 'Anmelden'){ 
 //	  	extAuthButton.setText('Abmelden von Google');
 //	}
-//  getFileById(FILE_ID);
+  getFileById(FILE_ID);
   } 
 
   else  {
@@ -138,7 +138,8 @@ function getFileById(fileId) {
   var callback = function(file, callback) {
 //      updateFileMetadata(file);
       downloadFile(file.downloadUrl, function(content) {
-		  filecontent = content;
+		  storeData = JSON.parse(content);
+		  Aap.util.Data.loadNewData(storeData);
       });
     }
 
