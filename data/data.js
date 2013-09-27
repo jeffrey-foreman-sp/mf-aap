@@ -1,13 +1,13 @@
 
 var data =
 {
-	"name": "Gessamtbestand",	
+	"name": "Gesamtbestand",	
 	"expanded": "true",
 
     "children": [
         {
 			"id": "e4e59411-a403-4e62-b098-a04690b29952",
-			"name": "swisstopo",
+			"name": "swisstoposs",
 			"metanode": "false",
 			"loaded": "true",
 			
@@ -30,7 +30,6 @@ var data =
 			"arch_ents": "-", 
 			"arch_beme": "-", 
 			
-			"name":"swisstopo", 
 			"ident": "123.45", 
 			"georefdat":"swisstopogeorefdat",
 			"fachst":"swisstopofach", 

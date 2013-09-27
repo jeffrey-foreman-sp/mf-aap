@@ -27,6 +27,7 @@ Ext.application({
 	init: function(){
 //		handleClientLoad();
 		Ext.require('Aap.util.TreeSerializer');
+		Ext.require('Aap.util.Data');
 
 	},
 

@@ -4,7 +4,11 @@ Ext.define('Aap.store.AapStore', {
     model: 'Aap.model.AapModel',
     storeId: 'AapStore',
 
-    root: data,
+    root: {
+		title: 'Gesamtbestand',	
+		expandable: false,
+		expanded: false
+	},
 
 	proxy: {
 		type: 'memory',

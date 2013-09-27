@@ -7,6 +7,7 @@ Ext.define('Aap.util.TreeSerializer', {
 
   toString: function() {
     return this.nodeToString(this.tree.getRootNode());
+	console.log(this.getRootNode());
   },
 
   nodeToString: function(node) {
