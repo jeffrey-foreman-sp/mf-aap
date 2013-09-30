@@ -106,8 +106,7 @@ Ext.define('Aap.controller.DataAdd', {
 			var allg_values = Ext.getCmp('edit_allg').getForm().getValues();
 			var verf_values = Ext.getCmp('edit_verf').getForm().getValues();
 			var arch_values = Ext.getCmp('edit_arch').getForm().getValues();
-	
-
+			var node_data = Aap.util.Tree.getSelectedNode().getData();
 
 			if (
 				Ext.getCmp('edit_allg').getForm().isValid()==true 
