@@ -13,6 +13,9 @@ Ext.define('Aap.controller.Store', {
 
 	onAapStoreDataChange: function(me) {
 		console.log('data has been changed');
+		Aap.util.Data.updateAapData();
+		console.log('data has been updated');
+
 	} 
    
 	
