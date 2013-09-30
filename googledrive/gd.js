@@ -20,18 +20,15 @@ if (window.location.protocol != 'https:') {
 /******************************************************************
  * Check if the current user has authorized the application.
 *******************************************************************/
-
 function handleClientLoad() {
   window.setTimeout(checkAuth, 1);
   console.log('handleClientLoad');
-
 }
 
 
 /******************************************************************
  * Check if the current user has authorized the application.
 *******************************************************************/
-
 function checkAuth() {
   gapi.client.load('drive', 'v2');
   console.log('Authenyytication 1');
@@ -103,7 +100,6 @@ function printFile(fileId) {
  * @param {File} fileData File object to read data from.
  * @param {Function} callback Callback function to call when the request is complete.
 ************************************************/
-
 function updateFileMetadata(file) {
   var metadata = document.getElementById('metadata');
   var date = new Date(file.modifiedDate);
@@ -188,8 +184,11 @@ return(request.execute(callback));
 
 }
 
-
-
+/*************************************************
+ * Download a file's content.
+ * @param {File} file Drive File instance.
+ * @param {Function} callback Function to call when the request is complete.
+************************************************/
 function downloadFile(downloadUrl, callback) {
   if (downloadUrl) {
     var accessToken = gapi.auth.getToken().access_token;
@@ -213,11 +212,10 @@ function downloadFile(downloadUrl, callback) {
 }
 
 
-
+/*************************************************
+ * init function
+************************************************/
+/*
 function init() {
-  editor = ace.edit("editor");
-  editor.getSession().setMode("ace/mode/javascript");
-
-//  handleClientLoad();
-
-} 
+}
+*/

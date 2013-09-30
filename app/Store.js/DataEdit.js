@@ -97,8 +97,6 @@ Ext.define('Aap.controller.DataEdit', {
 				}, null, null);
 			node.set('metanode', true);
 			}
-			Ext.getStore('AapStore').update();
-
 
 			// display record in form			
 			var node = Aap.util.Tree.getSelectedNode();

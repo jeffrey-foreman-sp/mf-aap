@@ -18,6 +18,7 @@ Ext.application({
 		'DataEdit',
 		'DataDisplay',
 		'MainBody',
+		'Store',
 		'MainHeader'
 	],
 
