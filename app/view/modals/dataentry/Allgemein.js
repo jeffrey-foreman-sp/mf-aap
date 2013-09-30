@@ -23,7 +23,7 @@ Ext.define('Aap.view.modals.dataentry.Allgemein',{
 			name: 'name'
 		},{		
 			fieldLabel: 'Identifikator (Sammlung)',
-			regex: /^\d{3}\.\d{2}$/,
+	//		regex: /^\d\.\d$/,
 			regexText: 'Der Identifikator muss der Zahl mit dem Muster "XXX.XX" entsprechen! (z.B. 153.23) ',
 			name: 'ident'
 		},{		
@@ -70,7 +70,6 @@ Ext.define('Aap.view.modals.dataentry.Allgemein',{
 					fieldLabel: 'Jahr',
 					labelAlign: 'top',
 					labelStyle: 'margin-bottom: 5px;',
-					minValue: 2000,
 					name: 'datenmenge',
 					name: 'imjr',
 					flex: 2
