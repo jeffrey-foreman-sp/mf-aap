@@ -124,7 +124,7 @@ Ext.define('Aap.controller.DataAdd', {
 				var entscheid_archivierung = calcEntsarch(arch_values.bewzs, arch_values.bewws, arch_values.bewba);
 	
 				newNode = ('Aap.model.AapModel',{
-					metanode: true,
+					metanode: false,
 					loaded: true,
 					leaf: false,
 
@@ -164,6 +164,8 @@ Ext.define('Aap.controller.DataAdd', {
 					arch_beme: node_data.arch_beme,
 
 				});
+
+				// here function that inserts metanode = true
 	
 				node.appendChild(newNode);
 				node.expand();
