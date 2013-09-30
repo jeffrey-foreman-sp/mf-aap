@@ -7,6 +7,7 @@ var FILE_ID = "0B4tksUtG91iOY0xIdUY2SmROSEk";
 var file_id = FILE_ID;
 var apiKey = 'AIzaSyDdFle73cKd_ibyCRZgoxGtcGVFTpiKM48'; 
 
+var downloadUrl = 'https://docs.google.com/uc?id=0B4tksUtG91iOY0xIdUY2SmROSEk&export=download'; 
 
 /*
 if (window.location.protocol != 'https:') {
@@ -14,6 +15,7 @@ if (window.location.protocol != 'https:') {
 }
 */
 
+//gapi.client.setApiKey(apiKey);
 
 /******************************************************************
  * Check if the current user has authorized the application.
@@ -74,6 +76,25 @@ function handleAuthResult(authResult) {
 
 }
 
+/*************************************************
+ * Print a file's metadata.
+ * @param {String} fileId ID of the file to print metadata for.
+************************************************/
+function printFile(fileId) {
+  var request = gapi.client.drive.files.get({
+    'fileId': fileId
+	});
+  request.execute(function(resp) {
+    console.log('Title: ' + resp.title);
+    console.log('ID: ' + resp.id);
+    console.log('Description: ' + resp.description);
+    console.log('MIME type: ' + resp.mimeType);
+    console.log('Download URL: ' + resp.downloadUrl);
+    console.log('Web Content Link: ' + resp.webContentLink);
+    console.log("Last modified by: " + resp.lastModifyingUserName);
+  });
+}
+
 
 /*************************************************
  * Update an existing file's metadata and content.
@@ -86,27 +107,37 @@ function handleAuthResult(authResult) {
 function updateFileMetadata(file) {
   var metadata = document.getElementById('metadata');
   var date = new Date(file.modifiedDate);
-
-  console.log("Last modified by: " + file.lastModifyingUserName);
-  console.loge("on: " + date.toLocaleString());
 }
 
-function updateFile(fileId, fileMetadata, callback) {
+function updateFile(fileId, /* fileMetadata,*/ fileData, callback) {
   const boundary = '-------314159265358979323846';
   const delimiter = "\r\n--" + boundary + "\r\n";
   const close_delim = "\r\n--" + boundary + "--";
 
+
   fileId = FILE_ID;
-  var metadata = fileMetadata || {
+  var  metadata = /*fileMetadata ||*/ {
     'title': 'aapdata.json',
     'mimeType': contentType,
     'editedBy': 'roger'
   };
 
+
   var contentType = 'application/octect-stream';
   // Updating the metadata is optional and you can instead use the value from drive.files.get.
-  var base64Data = btoa(editor.getValue()); //btoa(reader.result);
-  var multipartRequestBody = delimiter + 'Content-Type: application/json\r\n\r\n' + JSON.stringify(metadata) + delimiter + 'Content-Type: ' + contentType + '\r\n' + 'Content-Transfer-Encoding: base64\r\n' + '\r\n' + base64Data + close_delim;
+  var base64Data = btoa(fileData); //btoa(reader.result);
+  var multipartRequestBody = 
+	delimiter 
+	+ 'Content-Type: application/json\r\n\r\n' 
+	+ JSON.stringify(metadata) 
+	+ delimiter 
+	+ 'Content-Type: ' 
+	+ contentType 
+	+ '\r\n' 
+	+ 'Content-Transfer-Encoding: base64\r\n' 
+	+ '\r\n' 
+	+ base64Data 
+	+ close_delim;
 
   var request = gapi.client.request({
     'path': '/upload/drive/v2/files/' + fileId,
@@ -137,7 +168,8 @@ function getFileById(fileId) {
 
   var callback = function(file, callback) {
 //      updateFileMetadata(file);
-      downloadFile(file.downloadUrl, function(content) {
+  		downloadedFile = file;
+	    downloadFile(file.downloadUrl, function(content) {
 		  storeData = JSON.parse(content);
 		  Aap.util.Data.loadNewData(storeData);
       });
