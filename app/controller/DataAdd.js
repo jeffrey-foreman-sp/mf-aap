@@ -87,7 +87,7 @@ Ext.define('Aap.controller.DataAdd', {
 					arch_ba_bewe: node_data.arch_ba_bewe,
 					arch_ba_begr: node_data.arch_ba_begr,
 					arch_ents: node_data.arch_ents,					
-					arch_beme: node_data.arch_beme,
+					arch_beme: node_data.arch_beme
 				});
 
 				node.appendChild(newNode);
@@ -161,7 +161,7 @@ Ext.define('Aap.controller.DataAdd', {
 					arch_ba_begr: node_data.arch_ba_begr,
 					arch_arts: node_data.arch_arts,
 					arch_ents: entscheid_archivierung,					
-					arch_beme: node_data.arch_beme,
+					arch_beme: node_data.arch_beme
 
 				});
 
