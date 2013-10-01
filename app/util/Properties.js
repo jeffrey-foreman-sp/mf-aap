@@ -31,7 +31,8 @@ Ext.define('Aap.util.Properties', {
 			var response = false;
 			var mi = Aap.util.Properties.hasMetaInput(node);
 			var ii = Aap.util.Tree.isInherited(node);
-			if (mi == true && ii == false) {response = true}
+			var ir = node.isRoot();	
+			if (mi==true && ii==false && ir==false) {response = true}
 			node.set('metanode', response)
 		},		
 

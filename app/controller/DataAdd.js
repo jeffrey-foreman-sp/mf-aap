@@ -87,6 +87,7 @@ Ext.define('Aap.controller.DataAdd', {
 					arch_beme: node_data.arch_beme
 				});
 
+				Aap.util.Properties.setMetanodeProperty(node);
 				node.appendChild(newNode);
 				node.expand();
 	
@@ -162,8 +163,7 @@ Ext.define('Aap.controller.DataAdd', {
 
 				});
 
-				// here function that inserts metanode = true
-	
+				Aap.util.Properties.setMetanodeProperty(node);
 				node.appendChild(newNode);
 				node.expand();
 

@@ -94,7 +94,7 @@ Ext.define('Aap.controller.DataEdit', {
 
 					this.set('metanode', false);
 				}, null, null);
-			node.set('metanode', true);
+			Aap.util.Properties.setMetanodeProperty(node);
 			}
 			Ext.getStore('AapStore').update();
 
