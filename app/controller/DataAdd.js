@@ -66,7 +66,7 @@ Ext.define('Aap.controller.DataAdd', {
 					zugberech: allg_values.zugberech, 
 					echkateg: allg_values.echkateg, 
 					nachfzeitr: allg_values.nachfzeitr, 
-					datenmente: allg_values.datenmenge, 
+					datenmenge: allg_values.datenmenge, 
 					imjr: allg_values.imjr, 
 					datenzuw: allg_values.datenzuw, 
 					bemerk: allg_values.bemerk,
@@ -115,7 +115,7 @@ Ext.define('Aap.controller.DataAdd', {
 			) {	
 
 				function calcEntsarch(a,b,c) {
-					var e ;
+					var e = '';
 					if (a=='A' || b=='A' || c=='A') {e='A'}
 					else if (a=='S' || b=='S' || c=='S') {e='S'}
 					else if (a=='N' || b=='N' || c=='N') {e='N'}
@@ -138,7 +138,7 @@ Ext.define('Aap.controller.DataAdd', {
 					zugberech: allg_values.zugberech, 
 					echkateg: allg_values.echkateg, 
 					nachfzeitr: allg_values.nachfzeitr, 
-					datenmente: allg_values.datenmenge, 
+					datenmenge: allg_values.datenmenge, 
 					imjr: allg_values.imjr, 
 					datenzuw: allg_values.datenzuw, 
 					bemerk: allg_values.bemerk,

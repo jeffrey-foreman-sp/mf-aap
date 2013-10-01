@@ -60,10 +60,11 @@ Ext.define('Aap.controller.DataEdit', {
 		var c = arch_values.begrba;
 	
 		function calcEntsarch(a,b,c) {
-			var e ;
+			var e  ;
 			if (a=='A' || b=='A' || c=='A') {e='A'}
 			else if (a=='S' || b=='S' || c=='S') {e='S'}
 			else if (a=='N' || b=='N' || c=='N') {e='N'}
+			else {e=''}
 			return e
 		}
 

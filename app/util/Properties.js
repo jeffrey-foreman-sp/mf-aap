@@ -33,7 +33,27 @@ Ext.define('Aap.util.Data', {
 				case 'T': out = 'Wirtschaftliche Aktivitäten'; break;  
 			}
 			return out;
+		},
+
+		chooseZugangsberech: function(inp){
+			var out = 'unbekannt';
+			switch (inp){
+				case 'A': out = 'öffentlich zugängliche Geobasisdataen'; break;
+				case 'B': out = 'beschränkt öffentlich zugängliche Geobasisdaten'; break;
+				case 'C': out = 'nicht öffentlich zugängliche Geobasisdatenicht'; break;
+			return out;
+		},
+	
+		chooseBewertung: function(inp){
+			var out = 'unbekannt';
+			switch (inp){
+				case 'N': out = 'nicht archievwürdig'; break;
+				case 'S': out = 'Sampling / Selektion'; break;
+				case 'A': out = 'archievwürdig'; break;
+			return out;
 		}
+
+
 		
 	}
 });

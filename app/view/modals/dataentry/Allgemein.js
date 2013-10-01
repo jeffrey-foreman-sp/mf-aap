@@ -57,29 +57,26 @@ Ext.define('Aap.view.modals.dataentry.Allgemein',{
 			columnWidth: 0.4,
 			items: [
 				{
-					xtype: 'textfield',
+					xtype: 'numberfield',
 					fieldLabel: 'Datenmenge (in GB)',
 					labelAlign: 'top',
 					labelStyle: 'margin-bottom: 5px;',
-					minValue: 0,
 					name: 'datenmenge',
+					minValue: 0,
 					style: 'margin-right: 5px;',
-					regex: /^-?\d*\.?\d*$/,
-					regexText: 'Die Eingabe muss aus einer Ganzzahl bestehen',
 					flex: 4
 				}, {
-					xtype: 'textfield',
+					xtype: 'numberfield',
 					fieldLabel: 'Jahr',
 					labelAlign: 'top',
 					labelStyle: 'margin-bottom: 5px;',
-					name: 'datenmenge',
+					minValue: 0,
 					name: 'imjr',
-					regex: /^-?\d*\.?\d*$/,
-					regexText: 'Die Eingabe muss aus einer Ganzzahl bestehen',
 					flex: 2
 				}
 			]
 		},{		
+			xtype: 'numberfield',
 			fieldLabel: 'Datenzuwachs (GB pro Jahr)',
 			regex: /^-?\d*\.?\d*$/,
 			regexText: 'Die Eingabe muss aus einer Ganzzahl bestehen',
