@@ -29,13 +29,11 @@ Ext.define('Aap.controller.MainBody', {
 	}, 
 
 	initSelection: function() {
-//		console.log('Root node selected after rendering of tree');
 		var rn = Ext.getStore('AapStore').getRootNode();	
 		Ext.getCmp('treestructure').getSelectionModel().select(rn);
 	},
 
 	onAddNode: function() {
-		console.log('Clicked on "Erstellen" button!');
 		var selection = Aap.util.Tree.getTreeSelection();		
 		var selected = Aap.util.Tree.isSelectedNode(selection);		
 		if (selected == true ) {
@@ -44,7 +42,6 @@ Ext.define('Aap.controller.MainBody', {
 	},
 
 	openDataEdit: function() {
-		console.log('Clicked on "Bearbeiten" button!');
 		var selection = Aap.util.Tree.getTreeSelection();		
 		var selected = Aap.util.Tree.isSelectedNode(selection);		
 		if (selected == true ) {

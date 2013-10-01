@@ -48,7 +48,6 @@ Ext.define('Aap.controller.Tree', {
  	},  
 
     dropNode: function(node, data, overModel, dropPosition, eOpts) {
-   		console.log('drop');
 		var tree = Ext.getCmp('treestructure').getView();
 		var target_node = tree.getRecord(node);
 		var moved_node = data.records[0];

@@ -1,5 +1,27 @@
-Ext.define('Aap.util.Data', {
+Ext.define('Aap.util.Properties', {
     statics: {
+
+		//***********************************************************
+		// check whether any metadata has been set in the form
+		// input: tree node (object)
+		// output: true or false (boolean) 
+		//***********************************************************
+		hasMetaInput: function() {
+			var out1 = false;	
+			Ext.getCmp('edit_verf').getForm().getFields().each(function(){
+				if (this.getValue()!=null && this.getValue()!="")  {out1 = true; console.log(this)}
+			});	
+	
+			var out2 = false;	
+			Ext.getCmp('edit_arch').getForm().getFields().each(function(){
+				if (this.getValue()!=null && this.getValue()!="")  {out2 = true; console.log(this)}
+			});	
+
+			var  out = false;
+			if (out1 == true || out2 == true) {out = true}
+			return out;
+		},
+
 
 		chooseEchkateg: function(inp){
 			var out = 'unbekannt';
@@ -41,6 +63,7 @@ Ext.define('Aap.util.Data', {
 				case 'A': out = 'öffentlich zugängliche Geobasisdataen'; break;
 				case 'B': out = 'beschränkt öffentlich zugängliche Geobasisdaten'; break;
 				case 'C': out = 'nicht öffentlich zugängliche Geobasisdatenicht'; break;
+			}	
 			return out;
 		},
 	
@@ -50,6 +73,7 @@ Ext.define('Aap.util.Data', {
 				case 'N': out = 'nicht archievwürdig'; break;
 				case 'S': out = 'Sampling / Selektion'; break;
 				case 'A': out = 'archievwürdig'; break;
+			}
 			return out;
 		}
 

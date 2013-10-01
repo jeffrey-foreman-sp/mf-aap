@@ -17,7 +17,6 @@ Ext.define('Aap.controller.DataEdit', {
     },
 
     afterPanelRendered: function() {
-		console.log("'Edit' window rendered!");
 			
 		var node = Aap.util.Tree.getSelectedNode(); 
 		
@@ -38,7 +37,6 @@ Ext.define('Aap.controller.DataEdit', {
     },
 
 	doEditData: function(button){
-		console.log("Clicked save button!");
 		
 		// get node
 		var node = Aap.util.Tree.getSelectedNode(); 

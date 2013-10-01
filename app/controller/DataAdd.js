@@ -17,7 +17,6 @@ Ext.define('Aap.controller.DataAdd', {
     },
 
     afterAddPanelRendered: function() {
-        console.log('"Erstellen" window rendered!');
 		var node = Aap.util.Tree.getSelectedNode();
 	
 		var node = Aap.util.Tree.getSelectedNode(); 
@@ -38,10 +37,8 @@ Ext.define('Aap.controller.DataAdd', {
 	},
 
 	addData: function(button){
-		console.log('data add');
 
 		var node = Aap.util.Tree.getSelectedNode()
-
 
 		// data handling if meta data is inherited
 		if (Aap.util.Tree.isInherited(node) == true || Aap.util.Tree.isMetanode(node) == true) {
