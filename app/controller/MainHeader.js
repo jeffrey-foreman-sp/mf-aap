@@ -13,7 +13,9 @@ Ext.define('Aap.controller.MainHeader', {
                 toggle: this.onToggleEditButton
 			},	
 			'mainheader button[action=login]': {
-                click: this.onLoginButtonClick
+           	// 	render: this.renderLoginButton,
+              	toggle: this.toggleLoginButton ,
+				click: this.onLoginButtonClick
 			}	
 		});
     },
@@ -23,7 +25,7 @@ Ext.define('Aap.controller.MainHeader', {
 	},
   
 	onToggleEditButton: function(button, pressed) {
-    	if(!pressed){
+		if(!pressed){
 		
 			// toggle header button
   	 		button.setText('Bearbeiten');
@@ -53,28 +55,27 @@ Ext.define('Aap.controller.MainHeader', {
 		}
 	},
 
+
+
 	onLoginButtonClick: function() {
+		if (Ext.getCmp('login').pressed == true) {
+			Ext.getCmp('login').onClick = googleLogout();
+		}
+		else {
+			Ext.getCmp('login').onClick = handleClientLoad(); 
+		}
+	},
 
-		handleClientLoad();
+  	toggleLoginButton: function() {
+		if (Ext.getCmp('login').pressed == true) {
+			Ext.getCmp('login').setText('Abmelden');
+		}	  		
+		else {
+			Ext.getCmp('login').setText('Anmelden');
+		}
 
-
-//		var button = Ext.ComponentQuery.query('button[action=togglelogin]')[0]; 
-//		console.log(button.getText());
-//			button.setText('Anmelden');
-//		if (button.getText() == 'Abmelden von Google') { 
-//			window.open('https://accounts.google.com/logout', '_blank');
-//			button.setText('Anmelden');
-//		}
-//			button.toggle();
-//  			button.setText('Anmelden');
-			
+		
 	}
-
-
-
-
-
-
 
 });
 

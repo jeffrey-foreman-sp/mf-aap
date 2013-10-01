@@ -17,26 +17,78 @@ if (window.location.protocol != 'https:') {
 
 //gapi.client.setApiKey(apiKey);
 
+
+
+
+/*************************************************
+* Load the Drive API client.
+* @param {Function} callback Function to call when the client is loaded.
+************************************************/
+/*
+function loadClient(callback) {
+gapi.client.load('drive', 'v2', callback);
+}
+*/
+
+
 /******************************************************************
  * Check if the current user has authorized the application.
 *******************************************************************/
 function handleClientLoad() {
-  window.setTimeout(checkAuth, 1);
   console.log('handleClientLoad');
+  window.setTimeout(checkAuth(handleAuthResult), 1);
 }
 
 
 /******************************************************************
  * Check if the current user has authorized the application.
 *******************************************************************/
-function checkAuth() {
+function checkAuth(callback) {
   gapi.client.load('drive', 'v2');
   console.log('Authenyytication 1');
   gapi.auth.authorize({
     'client_id': CLIENT_ID,
     'scope': SCOPES,
     'immediate': false
-  }, handleAuthResult);
+  }, callback);
+}
+
+
+/******************************************************************
+ * Check if the current user has authorized the application without showing UI.
+*******************************************************************/
+function checkAuthImmediate(callback) {
+  gapi.client.load('drive', 'v2');
+  console.log('Authenyytication 1');
+  gapi.auth.authorize({
+    'client_id': CLIENT_ID,
+    'scope': SCOPES,
+    'immediate': true
+  }, callback);
+}
+
+
+/*************************************************
+ * Print a file's metadata.
+ * @param {String} fileId ID of the file to print metadata for.
+************************************************/
+function googleLogout() {
+/*	function newWindow(newContent)  {
+		winContent = window.open(
+			newContent,
+			'nextWin',
+			width=150,
+			height=150,
+			toolbar=1,
+			scrollbars=1,
+			resizable=1
+		);
+		winContent.focus();
+	}
+	newWindow("https://accounts.google.com/Logout?&continue=http://www.google.com/");
+*/
+	window.open("https://accounts.google.com/Logout?&continue=http://www.google.com/", '_blank');
+	Ext.getCmp('login').toggle(false);
 }
 
 
@@ -45,33 +97,30 @@ function checkAuth() {
  * @param {Object} authResult Authorization result.
 *******************************************************************/
 function handleAuthResult(authResult) {
-//    extAuthButton  = Ext.ComponentQuery.query('button[action=login]')[0]
-      authButton = Ext.getElementById('login');
+	extAuthButton  = Ext.ComponentQuery.query('button[action=login]')[0]
+	authButton = Ext.getElementById('login');
 
-  if (authResult && !authResult.error) {
-	// Access token has been successfully retrieved, requests can be sent to the API.
-	console.log("Authentication successfull");
-//	if (extAuthButton.getText() == 'Anmelden'){ 
-//	  	extAuthButton.setText('Abmelden von Google');
-//	}
-  getFileById(FILE_ID);
-  } 
+	if (authResult && !authResult.error) {
+		// Access token has been successfully retrieved, requests can be sent to the API.
+		console.log("Authentication successfull");
+		Ext.getCmp('login').toggle(true);
+ 	} 
 
-  else  {
-    // No access token could be retrieved, show the button to start the authorization flow.
-//  authButton.style.display = 'block';
-	console.log('Authenyytication not successfull');
-    authButton.onclick = function() {
-    console.log('Authenyytication 2');
-	    gapi.auth.authorize({
-        'client_id': CLIENT_ID,
-        'scope': SCOPES,
-        'immediate': false
-      }, handleAuthResult);
-    }; 
-  }
+	else  {
+	    // No access token could be retrieved, show the button to start the authorization flow.
+		console.log('Authenyytication not successfull');
+	    authButton.onclick = function() {
+	  		console.log('Authenyytication 2');
+		    gapi.auth.authorize({
+	    	    'client_id': CLIENT_ID,
+	    	    'scope': SCOPES,
+	 		    'immediate': false
+  	    	}, handleAuthResult);
+  		}; 
+	}
 
 }
+
 
 /*************************************************
  * Print a file's metadata.

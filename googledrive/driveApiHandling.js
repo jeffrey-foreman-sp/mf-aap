@@ -78,8 +78,6 @@ function getMetadata(fileId) {
 	});
 }
 	
-
-
 var dta;
 function getLocalFile() {
     xhr = new XMLHttpRequest();
