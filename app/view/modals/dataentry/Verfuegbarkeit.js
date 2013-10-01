@@ -19,10 +19,9 @@ Ext.define('Aap.view.modals.dataentry.Verfuegbarkeit',{
 			xtype: 'container',
 			html: '<p style="font-weight: bold; margin: 10 0 5 0;">Zuständige Stelle</p>'		
 		},{		
-			xtype: 'numberfield',
-			minValue: 0,	
-			defaltValue: '',
 			fieldLabel: 'Aufbewahrungsfrist',
+			regex: /^-?\d*\.?\d*$/,
+			regexText: 'Die Eingabe muss aus einer Ganzzahl bestehen',
 			name: 'verf_zs_aufb'
 		},{		
 			xtype: 'begrws',
@@ -35,9 +34,9 @@ Ext.define('Aap.view.modals.dataentry.Verfuegbarkeit',{
 			xtype: 'container',
 			html: '<p style="font-weight: bold; margin: 10 0 5 0;">Weitere Stellen</p>'		
 		},{		
-			xtype: 'numberfield',
-			minValue: 0,	
 			fieldLabel: 'Aufbewahrungsfrist',
+			regex: /^-?\d*\.?\d*$/,
+			regexText: 'Die Eingabe muss aus einer Ganzzahl bestehen',
 			name: 'verf_ws_aufb'
 		},{		
 			xtype: 'begrws',

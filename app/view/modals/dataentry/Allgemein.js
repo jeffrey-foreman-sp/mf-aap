@@ -23,7 +23,7 @@ Ext.define('Aap.view.modals.dataentry.Allgemein',{
 			name: 'name'
 		},{		
 			fieldLabel: 'Identifikator (Sammlung)',
-	//		regex: /^\d\.\d$/,
+			regex: /^\d{0,100}\.\d{0,100}$/,
 			regexText: 'Der Identifikator muss der Zahl mit dem Muster "XXX.XX" entsprechen! (z.B. 153.23) ',
 			name: 'ident'
 		},{		
@@ -57,34 +57,39 @@ Ext.define('Aap.view.modals.dataentry.Allgemein',{
 			columnWidth: 0.4,
 			items: [
 				{
-					xtype: 'numberfield',
+					xtype: 'textfield',
 					fieldLabel: 'Datenmenge (in GB)',
 					labelAlign: 'top',
 					labelStyle: 'margin-bottom: 5px;',
 					minValue: 0,
 					name: 'datenmenge',
 					style: 'margin-right: 5px;',
+					regex: /^-?\d*\.?\d*$/,
+					regexText: 'Die Eingabe muss aus einer Ganzzahl bestehen',
 					flex: 4
 				}, {
-					xtype: 'numberfield',
+					xtype: 'textfield',
 					fieldLabel: 'Jahr',
 					labelAlign: 'top',
 					labelStyle: 'margin-bottom: 5px;',
 					name: 'datenmenge',
 					name: 'imjr',
+					regex: /^-?\d*\.?\d*$/,
+					regexText: 'Die Eingabe muss aus einer Ganzzahl bestehen',
 					flex: 2
 				}
 			]
 		},{		
-			xtype: 'numberfield',
 			fieldLabel: 'Datenzuwachs (GB pro Jahr)',
+			regex: /^-?\d*\.?\d*$/,
+			regexText: 'Die Eingabe muss aus einer Ganzzahl bestehen',
 			name: 'datenzuw'
 		},{		
 			xtype: 'textareafield',
 			grow: true,
 			defaultAlign: 'bl',
 			fieldLabel: 'Bemerkungen',
-			labelStyle: 'margin-bottom: 5px; margin-top: 60px;',
+			labelStyle: 'margin-bottom: 5px; margin-top: 82px;',
 			name: 'bemerk'
 		}
 	]
