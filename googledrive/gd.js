@@ -3,7 +3,9 @@ var filecontent;
 
 var CLIENT_ID = '170396995102.apps.googleusercontent.com';
 var SCOPES = 'https://www.googleapis.com/auth/drive';
-var FILE_ID = "0B4tksUtG91iOVHVaSFZQQ2VfOW8";
+//var FILE_ID = "0B4tksUtG91iOVHVaSFZQQ2VfOW8";
+var FILE_ID = '0B4tksUtG91iON3lLSFpZQU1BdVk';
+
 var file_id = FILE_ID;
 var apiKey = 'AIzaSyDdFle73cKd_ibyCRZgoxGtcGVFTpiKM48'; 
 
@@ -104,6 +106,7 @@ function handleAuthResult(authResult) {
 		// Access token has been successfully retrieved, requests can be sent to the API.
 		console.log("Authentication successfull");
 		Ext.getCmp('login').toggle(true);
+		downloadFileById(file_id) 
  	} 
 
 	else  {
@@ -209,7 +212,7 @@ function updateFile(fileId, /* fileMetadata,*/ fileData, callback) {
  * Get file.
  * @param {String} fileId ID of the file to get.
 ************************************************/
-function getFileById(fileId) {
+function downloadFileById(fileId) {
 
   var callback = function(file, callback) {
 //      updateFileMetadata(file);
