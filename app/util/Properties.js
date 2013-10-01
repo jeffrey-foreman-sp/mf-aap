@@ -23,6 +23,19 @@ Ext.define('Aap.util.Properties', {
 		},
 
 
+		//***********************************************************
+		// set the metanode property
+		// input: node (object)
+		//***********************************************************
+		setMetanodeProperty: function(node) {
+			var response = false;
+			var mi = Aap.util.Properties.hasMetaInput(node);
+			var ii = Aap.util.Tree.isInherited(node);
+			if (mi == true && ii == false) {response = true}
+			node.set('metanode', response)
+		},		
+
+
 		chooseEchkateg: function(inp){
 			var out = 'unbekannt';
 			switch (inp){

@@ -17,15 +17,16 @@ Ext.define('Aap.controller.DataAdd', {
     },
 
     afterAddPanelRendered: function() {
-		var node = Aap.util.Tree.getSelectedNode();
-	
 		var node = Aap.util.Tree.getSelectedNode(); 
 		
 		// disable edit, but display metaaap when node is inherited	
 		if (Aap.util.Tree.isInherited(node) == true || Aap.util.Tree.isMetanode(node) == true) {
+
+			//load (that are inherited) records into form
 			Ext.getCmp('edit_verf').getForm().loadRecord(node);
 		 	Ext.getCmp('edit_arch').getForm().loadRecord(node);
-			
+
+			// disable the form fiels in order to prevent editing
 			Ext.getCmp('edit_verf').getForm().getFields().each(function(field) {
    		    	field.setDisabled(true);  
 			});
@@ -49,7 +50,6 @@ Ext.define('Aap.controller.DataAdd', {
 			if (Ext.getCmp('edit_allg').getForm().isValid()==true) {	
 
 				newNode = ('Aap.model.AapModel',{
-					metanode: false,
 					loaded: true,
 					leaf: false,
 	
