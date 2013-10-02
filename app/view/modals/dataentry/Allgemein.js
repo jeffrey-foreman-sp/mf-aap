@@ -20,6 +20,8 @@ Ext.define('Aap.view.modals.dataentry.Allgemein',{
 			fieldLabel: 'Titel',
 			allowBlank: false,
 			blankText: 'Dieses Feld ist obligatorisch!',
+			regex: /^(?!\s*$|\s).*$/,
+			regexText: 'Eingabe nicht mit Leerschlag beginnen! ',
 			name: 'name'
 		},{		
 			xtype: 'checkboxfield',
