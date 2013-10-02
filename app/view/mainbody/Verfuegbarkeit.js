@@ -25,9 +25,6 @@ Ext.define('Aap.view.mainbody.Verfuegbarkeit',{
 			fieldLabel: 'Begründung',
 			name: 'verf_zs_begr'
 		},{		
-			fieldLabel: 'Input durch',
-			name: 'verf_zs_inpu'
-		},{		
 			xtype: 'container',
 			style: 'margin-top: 22px; color: #606060 ',
 			html: '<div style="margin-bottom: 10px; font-weight: bold;">Weitere Stellen</div>'		
@@ -37,6 +34,9 @@ Ext.define('Aap.view.mainbody.Verfuegbarkeit',{
 		},{		
 			fieldLabel: 'Begründung',
 			name: 'verf_ws_begr'
+		},{		
+			fieldLabel: 'Input durch',
+			name: 'verf_ws_inpu'
 		},{		
 			fieldLabel: 'Entscheid Aufbewahrungsfrist',
 			labelWidth: 200,	

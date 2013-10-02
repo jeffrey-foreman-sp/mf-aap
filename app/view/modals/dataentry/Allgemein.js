@@ -96,7 +96,7 @@ Ext.define('Aap.view.modals.dataentry.Allgemein',{
 			grow: true,
 			defaultAlign: 'bl',
 			fieldLabel: 'Bemerkungen',
-			labelStyle: 'margin-bottom: 5px; margin-top: 82px;',
+			labelStyle: 'margin-bottom: 5px; margin-top: 52px;',
 			name: 'bemerk'
 		}
 	]

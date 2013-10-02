@@ -25,9 +25,6 @@ Ext.define('Aap.view.mainbody.Archievwuerdigkeit',{
 			fieldLabel: 'Begründung',
 			name: 'arch_zs_begr'
 		},{		
-			fieldLabel: 'Input durch',
-			name: 'arch_zs_inpu'
-		},{		
 			xtype: 'container',
 			style: 'margin-top: 20px; color: #606060 ',
 			html: '<div style="margin-bottom: 10px; font-weight: bold;">Weiter Stellen</div>'		
@@ -37,6 +34,9 @@ Ext.define('Aap.view.mainbody.Archievwuerdigkeit',{
 		},{		
 			fieldLabel: 'Begründung',
 			name: 'arch_ws_begr'
+		},{		
+			fieldLabel: 'Input durch',
+			name: 'arch_ws_inpu'
 		},{	
 			xtype: 'container',
 			style: 'margin-top: 20px; color: #606060 ',

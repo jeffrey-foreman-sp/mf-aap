@@ -29,9 +29,6 @@ Ext.define('Aap.view.modals.dataentry.Archivwuerdigkeit',{
 			fieldLabel: 'Begründung',
 			name: 'arch_zs_begr'
 		},{		
-			fieldLabel: 'Input durch',
-			name: 'arch_zs_inpu'
-		},{		
 			xtype: 'container',
 			html: '<p style="font-weight: bold; margin: 10 0 5 0;">Weitere Stellen</p>'		
 		},{		
@@ -42,6 +39,9 @@ Ext.define('Aap.view.modals.dataentry.Archivwuerdigkeit',{
 			xtype: 'begrws',
 			fieldLabel: 'Begründung',
 			name: 'arch_ws_begr'
+		},{		
+			fieldLabel: 'Input durch',
+			name: 'arch_ws_inpu'
 		},{	
 			xtype: 'container',
 			html: '<p style="font-weight: bold; margin: 10 0 5 0;">Bundesarchiv</p>'		

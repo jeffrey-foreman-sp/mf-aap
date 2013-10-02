@@ -28,9 +28,6 @@ Ext.define('Aap.view.modals.dataentry.Verfuegbarkeit',{
 			fieldLabel: 'Begründung',
 			name: 'verf_zs_begr'
 		},{		
-			fieldLabel: 'Input durch',
-			name: 'verf_zs_inpu'
-		},{		
 			xtype: 'container',
 			html: '<p style="font-weight: bold; margin: 10 0 5 0;">Weitere Stellen</p>'		
 		},{		
@@ -42,6 +39,9 @@ Ext.define('Aap.view.modals.dataentry.Verfuegbarkeit',{
 			xtype: 'begrws',
 			fieldLabel: 'Begründung',
 			name: 'verf_ws_begr'
+		},{		
+			fieldLabel: 'Input durch',
+			name: 'verf_ws_inpu'
 		},{		
 			xtype: 'container',
 			flex: 1	

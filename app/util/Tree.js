@@ -134,9 +134,9 @@ Ext.define('Aap.util.Tree', {
 				this.set('inherited', true);
 				this.set('verf_zs_aufb', new_metadata.verf_zs_aufb); 
 				this.set('verf_zs_begr', new_metadata.verf_zs_begr);
-				this.set('verf_zs_inpu', node_data.verf_zs_inpu);
 				this.set('verf_ws_aufb', node_data.verf_ws_aufb);
 				this.set('verf_ws_begr', node_data.verf_ws_begr);
+				this.set('verf_ws_inpu', node_data.verf_ws_inpu);
 				this.set('verf_ents', node_data.verf_ents);
 				this.set('verf_beme', node_data.verf_beme);
 
@@ -144,10 +144,10 @@ Ext.define('Aap.util.Tree', {
 				this.set('arch_zs_bewe', node_data.arch_zs_bewe);
 				this.set('arch_zs_bewe_text', node_data.arch_zs_bewe_text);
 				this.set('arch_zs_begr', node_data.arch_zs_begr);
-				this.set('arch_zs_inpu', node_data.arch_zs_inpu);
 				this.set('arch_ws_bewe', node_data.arch_ws_bewe);
 				this.set('arch_ws_bewe_text', node_data.arch_ws_bewe_text);
 				this.set('arch_ws_begr', node_data.arch_ws_begr);
+				this.set('arch_ws_inpu', node_data.arch_ws_inpu);
 				this.set('arch_ba_bewe', node_data.arch_ba_bewe);
 				this.set('arch_ba_bewe_text', node_data.arch_ba_bewe_text);
 				this.set('arch_ba_begr', node_data.arch_ba_begr);
@@ -168,22 +168,21 @@ Ext.define('Aap.util.Tree', {
 		setChildrensMetaData2: function(movednode) { 
 				
 			movednode.cascadeBy(function () {
-					this.set('verf_zs_aufb', new_metadata.verf_zs_aufb); 
-					this.set('verf_zs_begr', new_metadata.verf_zs_begr);
-					this.set('verf_zs_inpu', node_data.verf_zs_inpu);
-					this.set('verf_zs_aufb', node_data.verf_zs_aufb);
+					this.set('verf_zs_aufb', node_data.verf_zs_aufb); 
 					this.set('verf_zs_begr', node_data.verf_zs_begr);
-					this.set('verf_zs_ents', node_data.verf_zs_ents);
-					this.set('verf_zs_beme', node_data.verf_zs_beme);
+					this.set('verf_ws_aufb', node_data.verf_ws_aufb);
+					this.set('verf_ws_begr', node_data.verf_ws_begr);
+					this.set('verf_ws_inpu', node_data.verf_ws_inpu);
+					this.set('verf_ents', node_data.verf_ents);
+					this.set('verf_beme', node_data.verf_beme);
 
-		      		this.set('bewzs', node_data.bewzs);
 					this.set('arch_zs_bewe', node_data.arch_zs_bewe);
 					this.set('arch_zs_bewe_text', node_data.arch_zs_bewe_text);
 					this.set('arch_zs_begr', node_data.arch_zs_begr);
-					this.set('arch_zs_inpu', node_data.arch_zs_inpu);
 					this.set('arch_ws_bewe', node_data.arch_ws_bewe);
 					this.set('arch_ws_bewe_text', node_data.arch_ws_bewe_text);
 					this.set('arch_ws_begr', node_data.arch_ws_begr);
+					this.set('arch_ws_inpu', node_data.arch_ws_inpu);
 					this.set('arch_ba_bewe', node_data.arch_ba_bewe);
 					this.set('arch_ba_bewe_text', node_data.arch_ba_bewe_text);
 					this.set('arch_ba_begr', node_data.arch_ba_begr);
@@ -202,19 +201,19 @@ Ext.define('Aap.util.Tree', {
 		setMetanodeFalse: function(node) {
 			node.set('verf_zs_aufb', ''); 
 			node.set('verf_zs_begr', '');
-			node.set('verf_zs_inpu', '');
 			node.set('verf_ws_aufb', '');
-			node.set('verf_zs_begr', '');
-			node.set('verf_zs_ents', '');
-			node.set('verf_zs_beme', '');
+			node.set('verf_ws_begr', '');
+			node.set('verf_ws_inpu', '');
+			node.set('verf_ents', '');
+			node.set('verf_beme', '');
 
 			node.set('arch_zs_bewe', '');
 			node.set('arch_zs_bewe_text', '');
 			node.set('arch_zs_begr', '');
-			node.set('arch_zs_inpu', '');
 			node.set('arch_ws_bewe', '');
 			node.set('arch_ws_bewe_text', '');
 			node.set('arch_ws_begr', '');
+			node.set('arch_ws_inpu', '');
 			node.set('arch_ba_bewe', '');
 			node.set('arch_ba_bewe_text', '');
 			node.set('arch_ba_begr', '');
