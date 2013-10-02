@@ -44,7 +44,7 @@ Ext.define('Aap.controller.DataEdit', {
 		// write allgemein from form to store	
 		var form1 = Ext.getCmp('edit_allg').getForm();
 		var record1 = form1.getRecord();
-		var values1 = form1.getValues();	
+		var allg_values = form1.getValues();	
 
 		var form2 = Ext.getCmp('edit_verf').getForm();
 		
@@ -57,19 +57,12 @@ Ext.define('Aap.controller.DataEdit', {
 		var b =  arch_values.bewws;
 		var c = arch_values.begrba;
 	
-		function calcEntsarch(a,b,c) {
-			var e  ;
-			if (a=='A' || b=='A' || c=='A') {e='A'}
-			else if (a=='S' || b=='S' || c=='S') {e='S'}
-			else if (a=='N' || b=='N' || c=='N') {e='N'}
-			else {e=''}
-			return e
-		}
-
-	
 		if (form1.isValid()==true && form2.isValid()==true && form3.isValid()==true) {	
 
-			record1.set(values1);
+			record1.set(allg_values);
+			node.set('zugberech_text',Aap.util.Properties.chooseZugangsberech(allg_values.zugberech));
+			node.set('echkateg_text',Aap.util.Properties.chooseEchkateg(allg_values.echkateg));
+
 			if (Aap.util.Tree.isInherited(node) == false) {
 				node.cascadeBy(function () {
 
@@ -82,19 +75,21 @@ Ext.define('Aap.controller.DataEdit', {
 					this.set('verf_ents', Math.max(verf_values.verf_zs_aufb, verf_values.verf_ws_aufb));
 					this.set('verf_beme', verf_values.verf_beme);
 	      			this.set('arch_zs_bewe', arch_values.arch_zs_bewe);
+					this.set('arch_zs_bewe_text', Aap.util.Properties.chooseBewertung(arch_values.arch_zs_bewe));
 					this.set('arch_zs_begr', arch_values.arch_zs_begr);
 					this.set('arch_zs_inpu', arch_values.arch_zs_inpu);
 					this.set('arch_ws_bewe', arch_values.arch_ws_bewe);
+					this.set('arch_ws_bewe_text', Aap.util.Properties.chooseBewertung(arch_values.arch_ws_bewe));
 					this.set('arch_ws_begr', arch_values.arch_ws_begr);
 					this.set('arch_ba_bewe', arch_values.arch_ba_bewe);
+					this.set('arch_ba_bewe_text', Aap.util.Properties.chooseBewertung(arch_values.arch_ba_bewe));
 					this.set('arch_ba_begr', arch_values.arch_ba_begr);
 					this.set('artsampl', arch_values.artsampl);
-					this.set('arch_ents', calcEntsarch(arch_values.arch_zs_begr, arch_values.arch_ws_begr, arch_values.arch_ba_begr));
+					this.set('arch_ents', Aap.util.Properties.calcEntsarch(arch_values.arch_zs_bewe, arch_values.arch_ws_bewe, arch_values.arch_ba_bewe));
+					this.set('arch_ents_text', Aap.util.Properties.chooseBewertung(arch_values.arch_zs_bewe, arch_values.arch_ws_bewe, arch_values.arch_ba_bewe));
 					this.set('arch_beme', arch_values.arch_beme);
-
-					this.set('metanode', false);
 				}, null, null);
-			Aap.util.Properties.setMetanodeProperty(node);
+			Aap.util.Properties.setMetanodeProperty(node, node);
 			}
 			Ext.getStore('AapStore').update();
 

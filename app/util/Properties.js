@@ -25,20 +25,46 @@ Ext.define('Aap.util.Properties', {
 
 		//***********************************************************
 		// set the metanode property
-		// input: node (object)
+		// input: node to modify (object), node to check for inheritance (object)
 		//***********************************************************
-		setMetanodeProperty: function(node) {
+		setMetanodeProperty: function(node, node_to_check) {
+//		setMetanodeProperty: function(node) {
 			var response = false;
 			var mi = Aap.util.Properties.hasMetaInput(node);
-			var ii = Aap.util.Tree.isInherited(node);
-			var ir = node.isRoot();	
-			if (mi==true && ii==false && ir==false) {response = true}
+			console.log(mi);
+			var ii = Aap.util.Tree.isInherited(node_to_check);
+			console.log(ii);
+			var im = Aap.util.Tree.isMetanode(node_to_check);
+			console.log(im);
+			if (mi==true && ii==false && im==false) {response = true}
+			console.log(response);
 			node.set('metanode', response)
 		},		
 
 
+
+		//***********************************************************
+		// calculate the value for the "entsch_arch" property 
+		// input: 'A', 'S' or 'N' (string)
+		// output:  'A', 'S' or 'N'  (string)
+		//***********************************************************
+		calcEntsarch: function(a,b,c) {
+			var e = '';
+			if (a=='A' || b=='A' || c=='A') {e='A'}
+			else if (a=='S' || b=='S' || c=='S') {e='S'}
+			else if (a=='N' || b=='N' || c=='N') {e='N'}
+			else {e=''}
+			return e
+		},
+
+
+		//***********************************************************
+		// get full description of eCHKategorie 
+		// input: form input (string)
+		// output: corresponding description (string)
+		//***********************************************************
 		chooseEchkateg: function(inp){
-			var out = 'unbekannt';
+			var out = '';
 			switch (inp){
 				case 'A1': out = 'Basiskarten, Landschaftsmodelle'; break;
 				case 'A2': out = 'Bodenbedekung, Bodennutzung'; break;
@@ -71,8 +97,14 @@ Ext.define('Aap.util.Properties', {
 			return out;
 		},
 
+
+		//***********************************************************
+		// calculate the value for the "entsch_arch" property 
+		// input: 'A', 'B' or 'C' (string)
+		// output:  Coressponidng description  (string)
+		//***********************************************************
 		chooseZugangsberech: function(inp){
-			var out = 'unbekannt';
+			var out = '';
 			switch (inp){
 				case 'A': out = 'öffentlich zugängliche Geobasisdataen'; break;
 				case 'B': out = 'beschränkt öffentlich zugängliche Geobasisdaten'; break;
@@ -80,9 +112,15 @@ Ext.define('Aap.util.Properties', {
 			}	
 			return out;
 		},
+
 	
+		//***********************************************************
+		// calculate the value for the "arch_zs_bewe", "arch_w_bewe" and "arch_ba_bewe" property 
+		// input: 'N', 'S' or 'A' (string)
+		// output:  Corresponidng description  (string)
+		//***********************************************************
 		chooseBewertung: function(inp){
-			var out = 'unbekannt';
+			var out = '';
 			switch (inp){
 				case 'N': out = 'nicht archievwürdig'; break;
 				case 'S': out = 'Sampling / Selektion'; break;

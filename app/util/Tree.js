@@ -72,15 +72,17 @@ Ext.define('Aap.util.Tree', {
 		//***********************************************************
 		isInherited: function(node) { 
 			var response = false;
-			if (node.get('metanode') == true) {
-				response = false;
-			}
-			else {
-				node.bubble(function (resp) {
-					if (this.get('metanode') == true){
-						response = true;
-					}
-				}, null, [response]);
+			if (node.isRoot() == false) {
+				if (node.get('metanode') == true) {
+					response = false;
+				}
+				else {
+					node.bubble(function (resp) {
+						if (this.get('metanode') == true){
+							response = true;
+						}
+					}, null, [response]);
+				}
 			}
 			return response;
 		},

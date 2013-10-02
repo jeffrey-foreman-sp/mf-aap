@@ -49,9 +49,10 @@ Ext.define('Aap.controller.DataAdd', {
 				
 			if (Ext.getCmp('edit_allg').getForm().isValid()==true) {	
 
-				newNode = ('Aap.model.AapModel',{
+				var newNode = Aap.model.AapModel.create({
 					loaded: true,
 					leaf: false,
+					metanode: false,
 	
 					modif: new Date(),
 					erfass: new Date(),
@@ -61,7 +62,9 @@ Ext.define('Aap.controller.DataAdd', {
 					georefdat: allg_values.georefdat, 
 					fachst: allg_values.fachst, 
 					zugberech: allg_values.zugberech, 
+					zugberech_text: Aap.util.Properties.chooseZugangsberech(allg_values.zugberech), 
 					echkateg: allg_values.echkateg, 
+					echkateg_text: Aap.util.Properties.chooseEchkateg(allg_values.echkateg), 
 					nachfzeitr: allg_values.nachfzeitr, 
 					datenmenge: allg_values.datenmenge, 
 					imjr: allg_values.imjr, 
@@ -77,17 +80,20 @@ Ext.define('Aap.controller.DataAdd', {
 					verf_beme: node_data.verf_beme,
 
 					arch_zs_bewe: node_data.arch_zs_bewe,
+					arch_zs_bewe_text: node_data.arch_zs_bewe_text,
 					arch_zs_begr: node_data.arch_zs_begr,
 					arch_zs_inpu: node_data.arch_zs_inpu,
-					arch_ws_bewe: node_data.arch_ws_bewe,
+					arch_ws_bewe_text: node_data.arch_ws_bewe_text,
 					arch_ws_begr: node_data.arch_ws_begr,
-					arch_ba_bewe: node_data.arch_ba_bewe,
+					arch_ba_bewe_text: node_data.arch_ba_bewe_text,
 					arch_ba_begr: node_data.arch_ba_begr,
 					arch_ents: node_data.arch_ents,					
+					arch_ents_text: node_data.arch_ents_text,					
 					arch_beme: node_data.arch_beme
 				});
 
-				Aap.util.Properties.setMetanodeProperty(node);
+				Aap.util.Properties.setMetanodeProperty(newNode, node);
+//				Aap.util.Properties.setMetanodeProperty(newNode);
 				node.appendChild(newNode);
 				node.expand();
 	
@@ -104,7 +110,6 @@ Ext.define('Aap.controller.DataAdd', {
 			var allg_values = Ext.getCmp('edit_allg').getForm().getValues();
 			var verf_values = Ext.getCmp('edit_verf').getForm().getValues();
 			var arch_values = Ext.getCmp('edit_arch').getForm().getValues();
-			var node_data = Aap.util.Tree.getSelectedNode().getData();
 
 			if (
 				Ext.getCmp('edit_allg').getForm().isValid()==true 
@@ -112,19 +117,11 @@ Ext.define('Aap.controller.DataAdd', {
 				&& Ext.getCmp('edit_arch').getForm().isValid()==true
 			) {	
 
-				function calcEntsarch(a,b,c) {
-					var e = '';
-					if (a=='A' || b=='A' || c=='A') {e='A'}
-					else if (a=='S' || b=='S' || c=='S') {e='S'}
-					else if (a=='N' || b=='N' || c=='N') {e='N'}
-					return e
-				}
-				var entscheid_archivierung = calcEntsarch(arch_values.bewzs, arch_values.bewws, arch_values.bewba);
-	
-				newNode = ('Aap.model.AapModel',{
+				var newNode = Aap.model.AapModel.create({
 					metanode: false,
 					loaded: true,
 					leaf: false,
+					metanode: false,
 
 					modif: new Date(),
 					erfass: new Date(),
@@ -134,36 +131,43 @@ Ext.define('Aap.controller.DataAdd', {
 					georefdat: allg_values.georefdat, 
 					fachst: allg_values.fachst, 
 					zugberech: allg_values.zugberech, 
+					zugberech_text: Aap.util.Properties.chooseZugangsberech(allg_values.zugberech), 
 					echkateg: allg_values.echkateg, 
+					echkateg_text: Aap.util.Properties.chooseEchkateg(allg_values.echkateg), 
 					nachfzeitr: allg_values.nachfzeitr, 
 					datenmenge: allg_values.datenmenge, 
 					imjr: allg_values.imjr, 
 					datenzuw: allg_values.datenzuw, 
 					bemerk: allg_values.bemerk,
 
-					verf_zs_aufb: node_data.verf_zs_aufb, 
-					verf_zs_begr: node_data.verf_zs_begr,
-					verf_zs_inpu: node_data.verf_zs_inpu,
-					verf_ws_aufb: node_data.verf_ws_aufb,
-					verf_ws_begr: node_data.verf_ws_begr,		
+					verf_zs_aufb: verf_values.verf_zs_aufb, 
+					verf_zs_begr: verf_values.verf_zs_begr,
+					verf_zs_inpu: verf_values.verf_zs_inpu,
+					verf_ws_aufb: verf_values.verf_ws_aufb,
+					verf_ws_begr: verf_values.verf_ws_begr,		
 					verf_ents: Math.max(verf_values.verf_zs_aufb, verf_values.verf_ws_aufb),
-					verf_beme: node_data.verf_beme,
+					verf_beme: verf_values.verf_beme,
 	
 	
-					arch_zs_bewe: node_data.arch_zs_bewe,
-					arch_zs_begr: node_data.arch_zs_begr,
-					arch_zs_inpu: node_data.arch_zs_inpu,
-					arch_ws_bewe: node_data.arch_ws_bewe,
-					arch_ws_begr: node_data.arch_ws_begr,
-					arch_ba_bewe: node_data.arch_ba_bewe,
-					arch_ba_begr: node_data.arch_ba_begr,
-					arch_arts: node_data.arch_arts,
-					arch_ents: entscheid_archivierung,					
-					arch_beme: node_data.arch_beme
+					arch_zs_bewe: arch_values.arch_zs_bewe,
+					arch_zs_bewe_text: Aap.util.Properties.chooseBewertung(arch_values.arch_zs_bewe),
+					arch_zs_begr: arch_values.arch_zs_begr,
+					arch_zs_inpu: arch_values.arch_zs_inpu,
+					arch_ws_bewe: arch_values.arch_ws_bewe,
+					arch_ws_bewe_text: Aap.util.Properties.chooseBewertung(arch_values.arch_ws_bewe),
+					arch_ws_begr: arch_values.arch_ws_begr,
+					arch_ba_bewe: arch_values.arch_ba_bewe,
+					arch_ba_bewe_text: Aap.util.Properties.chooseBewertung(arch_values.arch_ba_bewe),
+					arch_ba_begr: arch_values.arch_ba_begr,
+					arch_arts: arch_values.arch_arts,
+					arch_ents: Aap.util.Properties.calcEntsarch(arch_values.arch_zs_bewe, arch_values.arch_zs_bewe, arch_values.arch_ba_bewe),
+					arch_ents_text: Aap.util.Properties.chooseBewertung(Aap.util.Properties.calcEntsarch(arch_values.arch_zs_bewe, arch_values.arch_zs_bewe, arch_values.arch_ba_bewe)),
+					arch_beme: arch_values.arch_beme
 
 				});
 
-				Aap.util.Properties.setMetanodeProperty(node);
+				Aap.util.Properties.setMetanodeProperty(newNode, node);
+//				Aap.util.Properties.setMetanodeProperty(newNode);
 				node.appendChild(newNode);
 				node.expand();
 
