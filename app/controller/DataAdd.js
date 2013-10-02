@@ -7,7 +7,7 @@ Ext.define('Aap.controller.DataAdd', {
 
     init: function() {
         this.control({
-			'#metanode_field': {
+			'dataadd  dataentryallgemein checkboxfield[name=metanode]': {
 				change: this.metanodeDeclarationChange
 			},
             'dataadd':  {
@@ -20,7 +20,7 @@ Ext.define('Aap.controller.DataAdd', {
     },
 
 	metanodeDeclarationChange: function() {
-		var mn_value = Ext.ComponentQuery.query('#metanode_field')[0].getValue()
+		var mn_value = Ext.ComponentQuery.query('dataadd  dataentryallgemein checkboxfield[name=metanode]')[0].getValue();
 		if (mn_value == true) {
 			Ext.getCmp('edit_verf').getForm().getFields().each(function(field) {
    		    	field.setDisabled(false);  

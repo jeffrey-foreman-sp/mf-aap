@@ -7,6 +7,9 @@ Ext.define('Aap.controller.DataEdit', {
 
     init: function() {
         this.control({
+			'dataedit  dataentryallgemein checkboxfield[name=metanode]': {
+				change: this.metanodeDeclarationChange
+			},
             'dataedit':  { 
                 afterrender: this.afterPanelRendered
             },
@@ -16,8 +19,39 @@ Ext.define('Aap.controller.DataEdit', {
         });
     },
 
+
+	metanodeDeclarationChange: function() {
+		var mn_value = Ext.ComponentQuery.query('dataedit dataentryallgemein checkboxfield[name=metanode]')[0].getValue();
+		if (mn_value == true) {
+			Ext.getCmp('edit_verf').getForm().getFields().each(function(field) {
+   		    	field.setDisabled(false);  
+			});
+			Ext.getCmp('edit_arch').getForm().getFields().each(function(field) {
+   		    	field.setDisabled(false);  
+			});
+			var node = Aap.util.Tree.getSelectedNode(); 
+			Ext.getCmp('edit_verf').getForm().loadRecord(node);
+	 		Ext.getCmp('edit_arch').getForm().loadRecord(node);
+		} 
+		else { 	
+			Ext.getCmp('edit_verf').getForm().getFields().each(function(field) {
+   		    	field.setDisabled(true);  
+			});
+			Ext.getCmp('edit_arch').getForm().getFields().each(function(field) {
+   		    	field.setDisabled(true);  
+			});
+			Ext.getCmp('edit_verf').getForm().getFields().each(function(field) {
+   		    	field.setValue('');  
+			});
+			Ext.getCmp('edit_arch').getForm().getFields().each(function(field) {
+   		    	field.setValue('');  
+			});
+		} 
+	
+	},
+
+
     afterPanelRendered: function() {
-			
 		var node = Aap.util.Tree.getSelectedNode(); 
 		
 		// load node data into forms
@@ -27,7 +61,7 @@ Ext.define('Aap.controller.DataEdit', {
 
 		// disable edit of metaaap when nodde is inherited	
 		if (Aap.util.Tree.isInherited(node) == true) {
-			Ext.ComponentQuery.query('#metanode_field')[0].setDisabled(true);
+			Ext.ComponentQuery.query('dataedit dataentryallgemein checkboxfield[name=metanode]')[0].setDisabled(true);
 			Ext.getCmp('edit_verf').getForm().getFields().each(function(field) {
    		    	field.setDisabled(true);  
 			});
@@ -35,12 +69,15 @@ Ext.define('Aap.controller.DataEdit', {
    		    	field.setDisabled(true);  
 			});
 		}
+
+
     },
 
+	
 	doEditData: function(button){
 		
 		// get node
-		var node = Aap.util.Tree.getSelectedNode(); 
+		node = Aap.util.Tree.getSelectedNode(); 
 	
 		// write allgemein from form to store	
 		var form1 = Ext.getCmp('edit_allg').getForm();
@@ -60,13 +97,20 @@ Ext.define('Aap.controller.DataEdit', {
 	
 		if (form1.isValid()==true && form2.isValid()==true && form3.isValid()==true) {	
 
+
+
+			if (allg_values.metanode==false) { 
+				console.log(node);
+				Aap.util.Tree.setMetanodeFalse(node);
+			}
 			record1.set(allg_values);
 			node.set('zugberech_text',Aap.util.Properties.chooseZugangsberech(allg_values.zugberech));
 			node.set('echkateg_text',Aap.util.Properties.chooseEchkateg(allg_values.echkateg));
 			node.set('ident_prefix', Aap.util.Properties.getPrefix(allg_values.ident)) ;
 			node.set('ident_suffix', Aap.util.Properties.getSuffix(allg_values.ident)) ;
-
-			if (Aap.util.Tree.isInherited(node) == false) {
+	
+		
+			if (allg_values.metanode==true) {
 				node.cascadeBy(function () {
 					this.set('modif', new Date());
 					this.set('metanode', false);
@@ -92,7 +136,7 @@ Ext.define('Aap.controller.DataEdit', {
 					this.set('arch_ents_text', Aap.util.Properties.chooseBewertung(arch_values.arch_zs_bewe, arch_values.arch_ws_bewe, arch_values.arch_ba_bewe));
 					this.set('arch_beme', arch_values.arch_beme);
 				}, null, null);
-				node.set('metanode', allg_values.metanode);
+				node.set('metanode', true);
 			}
 			Ext.getStore('AapStore').update();
 

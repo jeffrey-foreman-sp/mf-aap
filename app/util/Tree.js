@@ -194,8 +194,40 @@ Ext.define('Aap.util.Tree', {
 				;}
 //				else if (currentnode.get('metanode') == false) {this.set('metanode', true);}
 			}, null, null);
-		}
-	
+		},
+
+
+		//***********************************************************
+		// change the attribut of the node to not inheriting
+		// input: node which is going to be edited (node object)
+		//********************************************************
+		setMetanodeFalse: function(node) {
+		
+			node.set('arch_zs_bewe', '');
+			node.set('arch_zs_bewe_text', '');
+			node.set('arch_zs_begr', '');
+			node.set('arch_zs_inpu', '');
+			node.set('arch_ws_bewe', '');
+			node.set('arch_ws_bewe_text', '');
+			node.set('arch_ws_begr', '');
+			node.set('arch_ba_bewe', '');
+			node.set('arch_ba_bewe_text', '');
+			node.set('arch_ba_begr', '');
+			node.set('arch_arts', '');
+			node.set('arch_ents', '');
+			node.set('arch_ents_text', '');
+			node.set('arch_beme', '');
+				
+			if (node.hasChildNodes() == true) {
+				if (Aap.util.Tree.isInherited(node.childNodes[0])==true) {
+		  			for (var i=0; i<node.childNodes.length; i++) {node.childNodes[i].set('metanode', true)}
+				}
+			}	
+			
+			node.set('metanode', false);
+		}	
+		
+
 	}
 });
 
