@@ -10,6 +10,8 @@ Ext.define('Aap.model.AapModel', {
         {name: "metanode", type: 'boolean'}, 
 		
 		{name: "ident"}, 
+		{name: "ident_prefix"}, 
+		{name: "ident_suffix"}, 
 		{name: "georefdat", type: 'string'},
 		{name: "fachst", type: 'string'}, 
 		{name: "zugberech", type: 'string'}, 

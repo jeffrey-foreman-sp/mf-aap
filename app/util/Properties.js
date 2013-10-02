@@ -127,8 +127,31 @@ Ext.define('Aap.util.Properties', {
 				case 'A': out = 'archievwürdig'; break;
 			}
 			return out;
+		},
+
+	
+		//***********************************************************
+		// extract id prefix from identificator 
+		// input: identificator attribut (string)
+		// output:  prefix (string)
+		//***********************************************************
+		getPrefix: function(ident) {
+			var pref = ident.substring(0, ident.indexOf('.'))
+			return pref;;
+		},
+
+
+		//***********************************************************
+		// extract id prefix from identificator 
+		// input: identificator attribut (string)
+		// output:  prefix (string)
+		//***********************************************************
+		getSuffix: function(ident) {
+			var suff = ident.substring(ident.indexOf('.')+1, ident.length)
+			return suff;;
 		}
 
+	
 
 		
 	}

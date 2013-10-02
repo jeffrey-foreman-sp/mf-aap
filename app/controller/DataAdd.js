@@ -59,6 +59,8 @@ Ext.define('Aap.controller.DataAdd', {
 
 					name: allg_values.name, 
 					ident: allg_values.ident, 
+					ident_prefix: Aap.util.Properties.getPrefix(allg_values.ident), 
+					ident_suffix: Aap.util.Properties.getSuffix(allg_values.ident), 
 					georefdat: allg_values.georefdat, 
 					fachst: allg_values.fachst, 
 					zugberech: allg_values.zugberech, 
@@ -128,6 +130,8 @@ Ext.define('Aap.controller.DataAdd', {
 
 					name: allg_values.name, 
 					ident: allg_values.ident, 
+					ident_prefix: Aap.util.Properties.getPrefix(allg_values.ident), 
+					ident_suffix: Aap.util.Properties.getSuffix(allg_values.ident), 
 					georefdat: allg_values.georefdat, 
 					fachst: allg_values.fachst, 
 					zugberech: allg_values.zugberech, 

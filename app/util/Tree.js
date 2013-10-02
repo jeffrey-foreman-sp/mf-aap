@@ -140,16 +140,21 @@ Ext.define('Aap.util.Tree', {
 
 	      		this.set('bewzs', node_data.bewzs);
 				this.set('arch_zs_bewe', node_data.arch_zs_bewe);
+				this.set('arch_zs_bewe_text', node_data.arch_zs_bewe_text);
 				this.set('arch_zs_begr', node_data.arch_zs_begr);
 				this.set('arch_zs_inpu', node_data.arch_zs_inpu);
 				this.set('arch_ws_bewe', node_data.arch_ws_bewe);
+				this.set('arch_ws_bewe_text', node_data.arch_ws_bewe_text);
 				this.set('arch_ws_begr', node_data.arch_ws_begr);
 				this.set('arch_ba_bewe', node_data.arch_ba_bewe);
+				this.set('arch_ba_bewe_text', node_data.arch_ba_bewe_text);
 				this.set('arch_ba_begr', node_data.arch_ba_begr);
 				this.set('arch_arts', node_data.arch_arts);
 				this.set('arch_ents', node_data.arch_ents);
+				this.set('arch_ents_text', node_data.arch_ents_text);
 				this.set('arch_beme', node_data.arch_beme);
-				this.set('metanode', false);
+
+//				this.set('metanode', Aap.util.Properties.setMetanodeProperty(this, this));
 			}, null, [new_metadata]);
 		},
 	
@@ -173,18 +178,22 @@ Ext.define('Aap.util.Tree', {
 
 		      		this.set('bewzs', node_data.bewzs);
 					this.set('arch_zs_bewe', node_data.arch_zs_bewe);
+					this.set('arch_zs_bewe_text', node_data.arch_zs_bewe_text);
 					this.set('arch_zs_begr', node_data.arch_zs_begr);
 					this.set('arch_zs_inpu', node_data.arch_zs_inpu);
 					this.set('arch_ws_bewe', node_data.arch_ws_bewe);
+					this.set('arch_ws_bewe_text', node_data.arch_ws_bewe_text);
 					this.set('arch_ws_begr', node_data.arch_ws_begr);
 					this.set('arch_ba_bewe', node_data.arch_ba_bewe);
+					this.set('arch_ba_bewe_text', node_data.arch_ba_bewe_text);
 					this.set('arch_ba_begr', node_data.arch_ba_begr);
 					this.set('arch_arts', node_data.arch_arts);
 					this.set('arch_ents', node_data.arch_ents);
+					this.set('arch_ents_text', node_data.arch_ents_text);
 					this.set('arch_beme', node_data.arch_beme);
-					this.set('metanode', false);
+//					this.set('metanode', Aap.util.Properties.setMetanodeProperty(this, this));
 				;}
-				else if (currentnode.get('metanode') == false) {this.set('metanode', true);}
+//				else if (currentnode.get('metanode') == false) {this.set('metanode', true);}
 			}, null, null);
 		}
 	

@@ -62,6 +62,8 @@ Ext.define('Aap.controller.DataEdit', {
 			record1.set(allg_values);
 			node.set('zugberech_text',Aap.util.Properties.chooseZugangsberech(allg_values.zugberech));
 			node.set('echkateg_text',Aap.util.Properties.chooseEchkateg(allg_values.echkateg));
+			node.set('ident_prefix', Aap.util.Properties.getPrefix(allg_values.ident)) ;
+			node.set('ident_suffix', Aap.util.Properties.getSuffix(allg_values.ident)) ;
 
 			if (Aap.util.Tree.isInherited(node) == false) {
 				node.cascadeBy(function () {
