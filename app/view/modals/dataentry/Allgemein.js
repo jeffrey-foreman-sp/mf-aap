@@ -22,6 +22,13 @@ Ext.define('Aap.view.modals.dataentry.Allgemein',{
 			blankText: 'Dieses Feld ist obligatorisch!',
 			name: 'name'
 		},{		
+			xtype: 'checkboxfield',
+			checked: false,
+			boxLabel: 'Bewertungsknoten: ',
+			boxLabelAlign: 'before',
+			name: 'metanode',
+			inputValue: true,
+		},{		
 			fieldLabel: 'Identifikator (Sammlung)',
 			regex: /^\d{0,100}\.\d{0,100}$/,
 			regexText: 'Der Identifikator muss der Zahl mit dem Muster "XXX.XX" entsprechen! (z.B. 153.23) ',
@@ -29,7 +36,7 @@ Ext.define('Aap.view.modals.dataentry.Allgemein',{
 		},{		
 			xtype: 'checkboxfield',
 			checked: false,
-			boxLabel: 'Georeferenzdaten',
+			boxLabel: 'Georeferenzdaten: ',
 			boxLabelAlign: 'before',
 			name: 'georefdat',
 			inputValue: 'X'

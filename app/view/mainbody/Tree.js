@@ -27,10 +27,10 @@ Ext.define('Aap.view.mainbody.Tree' ,{
 		{
         	xtype: 'booleancolumn', 
             text: '  ',
-            trueText: 'Vererbt',
+            trueText: 'Vererbungsknoten',
             falseText: '', 
 			menuDisabled: true,
-			width: 55, 
+			width: 105, 
             dataIndex: 'metanode'
 		}
     ]

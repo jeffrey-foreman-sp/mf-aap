@@ -52,12 +52,12 @@ Ext.define('Aap.controller.DataAdd', {
 				var newNode = Aap.model.AapModel.create({
 					loaded: true,
 					leaf: false,
-					metanode: false,
 	
 					modif: new Date(),
 					erfass: new Date(),
 
 					name: allg_values.name, 
+					metanode: allg_values.metanode,
 					ident: allg_values.ident, 
 					ident_prefix: Aap.util.Properties.getPrefix(allg_values.ident), 
 					ident_suffix: Aap.util.Properties.getSuffix(allg_values.ident), 
@@ -94,7 +94,7 @@ Ext.define('Aap.controller.DataAdd', {
 					arch_beme: node_data.arch_beme
 				});
 
-				Aap.util.Properties.setMetanodeProperty(newNode, node);
+//				Aap.util.Properties.setMetanodeProperty(newNode, node);
 //				Aap.util.Properties.setMetanodeProperty(newNode);
 				node.appendChild(newNode);
 				node.expand();
@@ -120,15 +120,14 @@ Ext.define('Aap.controller.DataAdd', {
 			) {	
 
 				var newNode = Aap.model.AapModel.create({
-					metanode: false,
 					loaded: true,
 					leaf: false,
-					metanode: false,
 
 					modif: new Date(),
 					erfass: new Date(),
 
 					name: allg_values.name, 
+					metanode: allg_values.metanode,
 					ident: allg_values.ident, 
 					ident_prefix: Aap.util.Properties.getPrefix(allg_values.ident), 
 					ident_suffix: Aap.util.Properties.getSuffix(allg_values.ident), 
@@ -170,7 +169,7 @@ Ext.define('Aap.controller.DataAdd', {
 
 				});
 
-				Aap.util.Properties.setMetanodeProperty(newNode, node);
+//				Aap.util.Properties.setMetanodeProperty(newNode, node);
 //				Aap.util.Properties.setMetanodeProperty(newNode);
 				node.appendChild(newNode);
 				node.expand();

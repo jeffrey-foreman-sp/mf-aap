@@ -91,7 +91,7 @@ Ext.define('Aap.controller.DataEdit', {
 					this.set('arch_ents_text', Aap.util.Properties.chooseBewertung(arch_values.arch_zs_bewe, arch_values.arch_ws_bewe, arch_values.arch_ba_bewe));
 					this.set('arch_beme', arch_values.arch_beme);
 				}, null, null);
-			Aap.util.Properties.setMetanodeProperty(node, node);
+//			Aap.util.Properties.setMetanodeProperty(node, node);
 			}
 			Ext.getStore('AapStore').update();
 
