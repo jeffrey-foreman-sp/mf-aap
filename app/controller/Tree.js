@@ -23,9 +23,9 @@ Ext.define('Aap.controller.Tree', {
 	initSelection:  function() {
 		Ext.getCmp('treestructure').getView().getPlugin().dragZone.lock();
 	},
-
+	
  	beforedropNode: function(node, data, overModel, dropPosition, dropHandlers) {
-    	console.log('beforedrop')
+    	console.log('beforedrop');
 		dropHandlers.wait = true;
 		Ext.MessageBox.show({
 			title: 'Warnung!',
@@ -63,14 +63,13 @@ Ext.define('Aap.controller.Tree', {
 			node_data = Aap.util.Tree.getParentsMetadataNode(target_node).getData();
 			Aap.util.Tree.setChildrensMetaData(moved_node, node_data);  
 		}
-		else {
-			Aap.util.Tree.setChildrensMetaData2(moved_node);
+		else if (moved_node.get('isnherited')==true) {
+			moved_node.set('metanode', true);
 		}
 	
 		// close folder if there are no more children nodes below
 		Ext.getStore('AapStore').getRootNode().cascadeBy(function () {
 			if (this.childNodes.length == 0) {
-				console.log(this);
 				this.collapse();
 			}
 		}, null, null);

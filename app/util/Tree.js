@@ -130,6 +130,8 @@ Ext.define('Aap.util.Tree', {
 		setChildrensMetaData: function(currentnode, new_metadata) { 
 			currentnode.cascadeBy(function (new_metadata) {
 				this.set('modif', new Date());
+				this.set('metanode', false);
+				this.set('inherited', true);
 				this.set('verf_zs_aufb', new_metadata.verf_zs_aufb); 
 				this.set('verf_zs_begr', new_metadata.verf_zs_begr);
 				this.set('verf_zs_inpu', node_data.verf_zs_inpu);
@@ -153,20 +155,19 @@ Ext.define('Aap.util.Tree', {
 				this.set('arch_ents', node_data.arch_ents);
 				this.set('arch_ents_text', node_data.arch_ents_text);
 				this.set('arch_beme', node_data.arch_beme);
-				this.set('metanode', false);
 			}, null, [new_metadata]);
 		},
 	
 
 		//***********************************************************
-		// change the metaaap_id to 0 on all child nodes below the passed node
+		// change 
 		// 	exept on the last children
 		// input:
 		// 		currentnode (Ext.data.Model): starting point of cascading
 		//***********************************************************
-		setChildrensMetaData2: function(currentnode) { 
-			currentnode.cascadeBy(function () {
-				if (this.hasChildNodes == true) {
+		setChildrensMetaData2: function(movednode) { 
+				
+			movednode.cascadeBy(function () {
 					this.set('verf_zs_aufb', new_metadata.verf_zs_aufb); 
 					this.set('verf_zs_begr', new_metadata.verf_zs_begr);
 					this.set('verf_zs_inpu', node_data.verf_zs_inpu);
@@ -190,9 +191,6 @@ Ext.define('Aap.util.Tree', {
 					this.set('arch_ents', node_data.arch_ents);
 					this.set('arch_ents_text', node_data.arch_ents_text);
 					this.set('arch_beme', node_data.arch_beme);
-//					this.set('metanode', Aap.util.Properties.setMetanodeProperty(this, this));
-				;}
-//				else if (currentnode.get('metanode') == false) {this.set('metanode', true);}
 			}, null, null);
 		},
 
@@ -202,7 +200,14 @@ Ext.define('Aap.util.Tree', {
 		// input: node which is going to be edited (node object)
 		//********************************************************
 		setMetanodeFalse: function(node) {
-		
+			node.set('verf_zs_aufb', ''); 
+			node.set('verf_zs_begr', '');
+			node.set('verf_zs_inpu', '');
+			node.set('verf_ws_aufb', '');
+			node.set('verf_zs_begr', '');
+			node.set('verf_zs_ents', '');
+			node.set('verf_zs_beme', '');
+
 			node.set('arch_zs_bewe', '');
 			node.set('arch_zs_bewe_text', '');
 			node.set('arch_zs_begr', '');
@@ -220,10 +225,12 @@ Ext.define('Aap.util.Tree', {
 				
 			if (node.hasChildNodes() == true) {
 				if (Aap.util.Tree.isInherited(node.childNodes[0])==true) {
-		  			for (var i=0; i<node.childNodes.length; i++) {node.childNodes[i].set('metanode', true)}
+		  			for (var i=0; i<node.childNodes.length; i++) {
+						node.childNodes[i].set('metanode', true)
+						node.childNodes[i].set('inherited', false)
+					}
 				}
 			}	
-			
 			node.set('metanode', false);
 		}	
 		
