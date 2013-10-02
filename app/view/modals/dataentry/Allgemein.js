@@ -26,8 +26,10 @@ Ext.define('Aap.view.modals.dataentry.Allgemein',{
 			checked: false,
 			boxLabel: 'Bewertungsknoten: ',
 			boxLabelAlign: 'before',
+			id: 'metanode_field',
 			name: 'metanode',
 			inputValue: true,
+			uncheckedValue: false
 		},{		
 			fieldLabel: 'Identifikator (Sammlung)',
 			regex: /^\d{0,100}\.\d{0,100}$/,
@@ -39,7 +41,8 @@ Ext.define('Aap.view.modals.dataentry.Allgemein',{
 			boxLabel: 'Georeferenzdaten: ',
 			boxLabelAlign: 'before',
 			name: 'georefdat',
-			inputValue: 'X'
+			inputValue: 'Ja',
+			uncheckedValue: 'Nein'
 		},{		
 			fieldLabel: 'Fachhstelle des Bundes',
 			name: 'fachst'

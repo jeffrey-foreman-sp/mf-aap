@@ -27,6 +27,7 @@ Ext.define('Aap.controller.DataEdit', {
 
 		// disable edit of metaaap when nodde is inherited	
 		if (Aap.util.Tree.isInherited(node) == true) {
+			Ext.ComponentQuery.query('#metanode_field')[0].setDisabled(true);
 			Ext.getCmp('edit_verf').getForm().getFields().each(function(field) {
    		    	field.setDisabled(true);  
 			});
@@ -67,8 +68,8 @@ Ext.define('Aap.controller.DataEdit', {
 
 			if (Aap.util.Tree.isInherited(node) == false) {
 				node.cascadeBy(function () {
-
 					this.set('modif', new Date());
+					this.set('metanode', false);
 					this.set('verf_zs_aufb', verf_values.verf_zs_aufb); 
 					this.set('verf_zs_begr', verf_values.verf_zs_begr);
 					this.set('verf_zs_inpu', verf_values.verf_zs_inpu);
@@ -91,7 +92,7 @@ Ext.define('Aap.controller.DataEdit', {
 					this.set('arch_ents_text', Aap.util.Properties.chooseBewertung(arch_values.arch_zs_bewe, arch_values.arch_ws_bewe, arch_values.arch_ba_bewe));
 					this.set('arch_beme', arch_values.arch_beme);
 				}, null, null);
-//			Aap.util.Properties.setMetanodeProperty(node, node);
+				node.set('metanode', allg_values.metanode);
 			}
 			Ext.getStore('AapStore').update();
 

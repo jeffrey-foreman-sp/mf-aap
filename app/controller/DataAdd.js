@@ -7,6 +7,9 @@ Ext.define('Aap.controller.DataAdd', {
 
     init: function() {
         this.control({
+			'#metanode_field': {
+				change: this.metanodeDeclarationChange
+			},
             'dataadd':  {
                 afterrender: this.afterAddPanelRendered
             },
@@ -16,25 +19,51 @@ Ext.define('Aap.controller.DataAdd', {
         });
     },
 
-    afterAddPanelRendered: function() {
-		var node = Aap.util.Tree.getSelectedNode(); 
-		
-		// disable edit, but display metaaap when node is inherited	
-		if (Aap.util.Tree.isInherited(node) == true || Aap.util.Tree.isMetanode(node) == true) {
-
-			//load (that are inherited) records into form
-			Ext.getCmp('edit_verf').getForm().loadRecord(node);
-		 	Ext.getCmp('edit_arch').getForm().loadRecord(node);
-
-			// disable the form fiels in order to prevent editing
+	metanodeDeclarationChange: function() {
+		var mn_value = Ext.ComponentQuery.query('#metanode_field')[0].getValue()
+		if (mn_value == true) {
+			Ext.getCmp('edit_verf').getForm().getFields().each(function(field) {
+   		    	field.setDisabled(false);  
+			});
+			Ext.getCmp('edit_arch').getForm().getFields().each(function(field) {
+   		    	field.setDisabled(false);  
+			});
+		} 
+		else { 	
 			Ext.getCmp('edit_verf').getForm().getFields().each(function(field) {
    		    	field.setDisabled(true);  
 			});
 			Ext.getCmp('edit_arch').getForm().getFields().each(function(field) {
    		    	field.setDisabled(true);  
 			});
-		}
+			Ext.getCmp('edit_verf').getForm().getFields().each(function(field) {
+   		    	field.setValue('');  
+			});
+			Ext.getCmp('edit_arch').getForm().getFields().each(function(field) {
+   		    	field.setValue('');  
+			});
+		} 
+	
+	},
 
+
+    afterAddPanelRendered: function() {
+		var node = Aap.util.Tree.getSelectedNode(); 
+
+		// disable the form fiels in order to prevent editing
+		Ext.getCmp('edit_verf').getForm().getFields().each(function(field) {
+   	    	field.setDisabled(true);  
+		});
+		Ext.getCmp('edit_arch').getForm().getFields().each(function(field) {
+   	    	field.setDisabled(true);  
+		});
+
+		if (Aap.util.Tree.isInherited(node) == true || Aap.util.Tree.isMetanode(node) == true) {
+			Ext.ComponentQuery.query('#metanode_field')[0].setDisabled(true);
+			//load records (that are inherited) into form
+			Ext.getCmp('edit_verf').getForm().loadRecord(node);
+		 	Ext.getCmp('edit_arch').getForm().loadRecord(node);
+		}
 	},
 
 	addData: function(button){
@@ -55,9 +84,9 @@ Ext.define('Aap.controller.DataAdd', {
 	
 					modif: new Date(),
 					erfass: new Date(),
+					metanode: false,
 
 					name: allg_values.name, 
-					metanode: allg_values.metanode,
 					ident: allg_values.ident, 
 					ident_prefix: Aap.util.Properties.getPrefix(allg_values.ident), 
 					ident_suffix: Aap.util.Properties.getSuffix(allg_values.ident), 
@@ -94,8 +123,6 @@ Ext.define('Aap.controller.DataAdd', {
 					arch_beme: node_data.arch_beme
 				});
 
-//				Aap.util.Properties.setMetanodeProperty(newNode, node);
-//				Aap.util.Properties.setMetanodeProperty(newNode);
 				node.appendChild(newNode);
 				node.expand();
 	
@@ -169,8 +196,6 @@ Ext.define('Aap.controller.DataAdd', {
 
 				});
 
-//				Aap.util.Properties.setMetanodeProperty(newNode, node);
-//				Aap.util.Properties.setMetanodeProperty(newNode);
 				node.appendChild(newNode);
 				node.expand();
 

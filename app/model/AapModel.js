@@ -7,7 +7,7 @@ Ext.define('Aap.model.AapModel', {
         {name: "name", type: 'string'}, 
         {name: "erfass", type: 'date'}, 
         {name: "modif", type: 'date'}, 
-        {name: "metanode", type: 'boolean', defaultValue: false}, 
+        {name: "metanode", type: 'boolean'}, 
 		
 		{name: "ident"}, 
 		{name: "ident_prefix"}, 

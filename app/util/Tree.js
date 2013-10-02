@@ -153,8 +153,7 @@ Ext.define('Aap.util.Tree', {
 				this.set('arch_ents', node_data.arch_ents);
 				this.set('arch_ents_text', node_data.arch_ents_text);
 				this.set('arch_beme', node_data.arch_beme);
-
-//				this.set('metanode', Aap.util.Properties.setMetanodeProperty(this, this));
+				this.set('metanode', false);
 			}, null, [new_metadata]);
 		},
 	
