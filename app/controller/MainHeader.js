@@ -10,7 +10,7 @@ Ext.define('Aap.controller.MainHeader', {
                 click: this.onInfoClick
 			},	
 			'mainheader button[action=toggleedit]': {
-                toggle: this.onToggleEditButton
+                click: this.onEditButtonClick
 			},	
 			'mainheader button[action=login]': {
            	// 	render: this.renderLoginButton,
@@ -24,11 +24,12 @@ Ext.define('Aap.controller.MainHeader', {
 		Ext.widget('information');
 	},
   
-	onToggleEditButton: function(button, pressed) {
-		if(!pressed){
+	onEditButtonClick: function(button, pressed) {
+		if(button.pressed==true){
 		
 			// toggle header button
   	 		button.setText('Bearbeiten');
+			button.toggle(false);
 
 			// toggle tree buttons
    			Ext.getCmp('createbutton').hide();
@@ -40,31 +41,72 @@ Ext.define('Aap.controller.MainHeader', {
 			Ext.getCmp('treestructure').getView().getPlugin().dragZone.lock();
 		}	
     	else {
-		
-			// toggle header button
-  		  	button.setText('Bearbeiten abschliessen');
-			
-			// toggle tree buttons
-   			Ext.getCmp('createbutton').show();
-			Ext.getCmp('editbutton').show();
-			Ext.getCmp('removebutton').show();
-			Ext.getCmp('exportbutton').hide();
+			checkAuthImmediate(enableEdit);
 
-			// unlock drag&drop
-			Ext.getCmp('treestructure').getView().getPlugin().dragZone.unlock();
+			function enableEdit(authResult) {
+				console.log(authResult);
+				if (authResult && !authResult.error) {
+					// Access token has been successfully retrieved, requests can be sent to the API.
+					console.log('Authentication successfull');
+				
+					// toggle header button
+	  		  		button.setText('Bearbeiten abschliessen');
+					button.toggle(true);
+
+
+				
+					// toggle tree buttons
+	   				Ext.getCmp('createbutton').show();
+					Ext.getCmp('editbutton').show();
+					Ext.getCmp('removebutton').show();
+					Ext.getCmp('exportbutton').hide();
+				
+					// unlock drag&drop
+					Ext.getCmp('treestructure').getView().getPlugin().dragZone.unlock();
+			 	
+				} 
+				else  {
+				    // No access token could be retrieved, show the button to start the authorization flow.
+					console.log('Authentication not successfull');
+						
+					Ext.Msg.show({
+						title:'Hinweis!',
+						msg: '<p>Sie können die Daten nicht bearbeiten!</p><p> Melden sie an und stellen sie sicher, dass Sie über eine Bearbeitungsberechtigung verfügen!</p>',
+						buttons: Ext.Msg.CANCEL,
+						buttonText:{cancel: 'Schliessen'}
+					});
+				}
+
+			}
 		}
-	},
 
+	},
 
 
 	onLoginButtonClick: function() {
 		if (Ext.getCmp('login').pressed == true) {
 			Ext.getCmp('login').onClick = googleLogout();
+
+            var  button = Ext.ComponentQuery.query('mainheader button[action=toggleedit]')[0]
+	
+			// toggle header button
+  	 		button.setText('Bearbeiten');
+			button.toggle(false);
+
+			// toggle tree buttons
+   			Ext.getCmp('createbutton').hide();
+			Ext.getCmp('editbutton').hide();
+			Ext.getCmp('removebutton').hide();
+			Ext.getCmp('exportbutton').show();
+		
+			// unlock drag&drop
+			Ext.getCmp('treestructure').getView().getPlugin().dragZone.lock();
 		}
 		else {
 			Ext.getCmp('login').onClick = handleClientLoad(); 
 		}
 	},
+
 
   	toggleLoginButton: function() {
 		if (Ext.getCmp('login').pressed == true) {

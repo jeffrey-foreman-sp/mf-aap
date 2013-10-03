@@ -63,7 +63,7 @@ Ext.define('Aap.controller.Tree', {
 			node_data = Aap.util.Tree.getParentsMetadataNode(target_node).getData();
 			Aap.util.Tree.setChildrensMetaData(moved_node, node_data);  
 		}
-		else if (moved_node.get('isnherited')==true) {
+		else if (moved_node.get('inherited')==true) {
 			moved_node.set('metanode', true);
 		}
 	

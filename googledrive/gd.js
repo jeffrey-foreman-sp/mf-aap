@@ -61,7 +61,7 @@ function checkAuth(callback) {
 *******************************************************************/
 function checkAuthImmediate(callback) {
   gapi.client.load('drive', 'v2');
-  console.log('Authenyytication 1');
+  console.log('Authenyytication 2');
   gapi.auth.authorize({
     'client_id': CLIENT_ID,
     'scope': SCOPES,

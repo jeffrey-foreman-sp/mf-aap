@@ -69,10 +69,6 @@ Ext.define('Aap.controller.MainBody', {
         	    },
 				fn: function(btn){
     			    if (btn === 'yes') {
-					//	var store = Ext.getStore('AapStore');
-					//	var nodeid = Aap.util.Tree.getSelectedNode().get('id');
-					//	var selectednode = store.getNodeById(nodeid); 
-					//	selectednode.remove();
 					var parentNode = Aap.util.Tree.getSelectedNode().parentNode;
 					var childrenOfParent = Aap.util.Tree.getSelectedNode().parentNode.childNodes.length
 					Aap.util.Tree.getSelectedNode().remove();
