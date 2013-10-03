@@ -38,7 +38,7 @@ gapi.client.load('drive', 'v2', callback);
 *******************************************************************/
 function handleClientLoad() {
   console.log('handleClientLoad');
-  window.setTimeout('checkAuth(handleAuthResult)', 1);
+  window.setTimeout('checkAuthImmediate(handleAuthResult)', 1);
 }
 
 
@@ -144,6 +144,8 @@ function printFile(fileId) {
 }
 
 
+
+
 /*************************************************
  * Update an existing file's metadata and content.
  * @param {String} fileId ID of the file to update.
@@ -206,6 +208,44 @@ function updateFile(fileId, /* fileMetadata,*/ fileData, callback) {
   request.execute(callback);
 
 }
+
+
+/*************************************************
+ * Load file for view (no login needed).
+ * .
+************************************************/
+
+
+
+
+function downloadFile2(downloadUrl, callback) {
+ 
+	var request2 = gapi.client.request({
+   		'path': 'http://docs.google.com/uc?id=0B4tksUtG91iON3lLSFpZQU1BdVk&export=download',
+    	'method': 'GET',
+	});
+   request2.execute(function() {
+      callback(xhr.responseText);
+    });
+}
+
+
+function downloadFile3(downloadUrl, callback) {
+ 
+  var url = 'http://docs.google.com/uc?id=0B4tksUtG91iON3lLSFpZQU1BdVk&export=download';
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', url);
+  xhr.withCredentials = true;
+  xhr.onload = function() {
+    callback(xhr.responseText);
+  };
+  xhr.onerror = function() {
+    callback(null);
+  };
+  xhr.send();
+
+}
+
 
 /*************************************************
  * Get file.

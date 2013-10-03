@@ -14,7 +14,7 @@ Ext.define('Aap.controller.MainHeader', {
 			},	
 			'mainheader button[action=login]': {
            	// 	render: this.renderLoginButton,
-              	toggle: this.toggleLoginButton ,
+         //     	toggle: this.toggleLoginButton ,
 				click: this.onLoginButtonClick
 			}	
 		});
@@ -43,7 +43,6 @@ Ext.define('Aap.controller.MainHeader', {
     	else {
 
 			function enableEdit(authResult) {
-				console.log(authResult);
 				if (authResult && !authResult.error) {
 					// Access token has been successfully retrieved, requests can be sent to the API.
 					console.log('Authentication successfull');
@@ -51,8 +50,6 @@ Ext.define('Aap.controller.MainHeader', {
 					// toggle header button
 	  		  		button.setText('Bearbeiten abschliessen');
 					button.toggle(true);
-
-
 				
 					// toggle tree buttons
 	   				Ext.getCmp('createbutton').show();
@@ -97,20 +94,8 @@ Ext.define('Aap.controller.MainHeader', {
 			Ext.getCmp('treestructure').getView().getPlugin().dragZone.lock();
 		}
 		else {
-			Ext.getCmp('login').onClick = handleClientLoad(); 
+			Ext.getCmp('login').onClick = checkAuth(handleAuthResult);
 		}
-	},
-
-
-  	toggleLoginButton: function() {
-		if (Ext.getCmp('login').pressed == true) {
-			Ext.getCmp('login').setText('Abmelden');
-		}	  		
-		else {
-			Ext.getCmp('login').setText('Anmelden');
-		}
-
-		
 	}
 
 });
