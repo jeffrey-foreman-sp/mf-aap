@@ -38,7 +38,7 @@ gapi.client.load('drive', 'v2', callback);
 *******************************************************************/
 function handleClientLoad() {
   console.log('handleClientLoad');
-  window.setTimeout(checkAuth(handleAuthResult), 1);
+  window.setTimeout('checkAuth(handleAuthResult)', 1);
 }
 
 

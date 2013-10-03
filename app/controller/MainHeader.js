@@ -41,7 +41,6 @@ Ext.define('Aap.controller.MainHeader', {
 			Ext.getCmp('treestructure').getView().getPlugin().dragZone.lock();
 		}	
     	else {
-			checkAuthImmediate(enableEdit);
 
 			function enableEdit(authResult) {
 				console.log(authResult);
@@ -71,6 +70,7 @@ Ext.define('Aap.controller.MainHeader', {
 				}
 
 			}
+			checkAuthImmediate(enableEdit);
 		}
 
 	},
