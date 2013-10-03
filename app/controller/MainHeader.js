@@ -75,14 +75,14 @@ Ext.define('Aap.controller.MainHeader', {
 
 	onLoginButtonClick: function() {
 		if (Ext.getCmp('login').pressed == true) {
-			Ext.getCmp('login').onClick = googleLogout();
-			Ext.getCmp('login').onClick = Ext.getCmp('toggleedit').hide();
 
-            var  button = Ext.ComponentQuery.query('mainheader button[action=toggleedit]')[0]
-	
-			// toggle header button
-  	 		button.setText('Bearbeiten');
-			button.toggle(false);
+			googleLogout();
+			Ext.getCmp('login').setText('Anmelden');
+            
+			var  editButton = Ext.ComponentQuery.query('mainheader button[action=toggleedit]')[0]
+	 		editButton.setText('Bearbeiten');
+			editButton.toggle(false);
+			editButton.hide();
 
 			// toggle tree buttons
    			Ext.getCmp('createbutton').hide();
@@ -94,7 +94,7 @@ Ext.define('Aap.controller.MainHeader', {
 			Ext.getCmp('treestructure').getView().getPlugin().dragZone.lock();
 		}
 		else {
-			Ext.getCmp('login').onClick = checkAuth(handleAuthResult);
+			checkAuth(handleAuthResult);
 		}
 	}
 

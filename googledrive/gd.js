@@ -104,6 +104,7 @@ function handleAuthResult(authResult) {
 		// Access token has been successfully retrieved, requests can be sent to the API.
 		console.log("Authentication successfull");
 		Ext.getCmp('login').toggle(true);
+		Ext.getCmp('login').setText('Abmelden');
 		Ext.getCmp('toggleedit').show(true);
 		downloadFileById(file_id) 
  	} 
@@ -111,14 +112,16 @@ function handleAuthResult(authResult) {
 	else  {
 	    // No access token could be retrieved, show the button to start the authorization flow.
 		console.log('Authenyytication not successfull');
-	    authButton.onclick = function() {
-	  		console.log('Authenyytication 2');
-		    gapi.auth.authorize({
-	    	    'client_id': CLIENT_ID,
-	    	    'scope': SCOPES,
-	 		    'immediate': false
-  	    	}, handleAuthResult);
-  		}; 
+	   	if (Ext.getCmp('login').pressed==true){
+			authButton.onclick = function() {
+	  			console.log('Authenyytication 2');
+			    gapi.auth.authorize({
+	    			'client_id': CLIENT_ID,
+	    	  		'scope': SCOPES,
+	 			    'immediate': false
+  	    		}, handleAuthResult);
+  			}; 
+		}	
 	}
 
 }
