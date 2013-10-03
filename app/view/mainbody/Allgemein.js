@@ -6,7 +6,6 @@ Ext.define('Aap.view.mainbody.Allgemein',{
 	id: 'disp_allg',
 
 	bodyPadding: 10,
-//	defaultType: 'textfield',
 	defaultType: 'displayfield',
 	defaults: {
 		width: '100%',	

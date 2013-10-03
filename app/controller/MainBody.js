@@ -10,6 +10,9 @@ Ext.define('Aap.controller.MainBody', {
 	
 	init: function() {
 		this.control({
+			'mainbody': {
+				afterrender: this.afterAppLoad
+			},
 			'tree': {
 				afterrender: this.initSelection
 			},
@@ -27,6 +30,12 @@ Ext.define('Aap.controller.MainBody', {
 			}
 		});
 	}, 
+
+	
+	afterAppLoad: function() {
+		handleClientLoad();	
+	},
+
 
 	initSelection: function() {
 		var rn = Ext.getStore('AapStore').getRootNode();	

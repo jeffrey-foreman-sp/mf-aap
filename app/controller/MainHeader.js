@@ -68,13 +68,6 @@ Ext.define('Aap.controller.MainHeader', {
 				else  {
 				    // No access token could be retrieved, show the button to start the authorization flow.
 					console.log('Authentication not successfull');
-						
-					Ext.Msg.show({
-						title:'Hinweis!',
-						msg: '<p>Sie können die Daten nicht bearbeiten!</p><p> Melden sie an und stellen sie sicher, dass Sie über eine Bearbeitungsberechtigung verfügen!</p>',
-						buttons: Ext.Msg.CANCEL,
-						buttonText:{cancel: 'Schliessen'}
-					});
 				}
 
 			}
@@ -86,6 +79,7 @@ Ext.define('Aap.controller.MainHeader', {
 	onLoginButtonClick: function() {
 		if (Ext.getCmp('login').pressed == true) {
 			Ext.getCmp('login').onClick = googleLogout();
+			Ext.getCmp('login').onClick = Ext.getCmp('toggleedit').hide();
 
             var  button = Ext.ComponentQuery.query('mainheader button[action=toggleedit]')[0]
 	

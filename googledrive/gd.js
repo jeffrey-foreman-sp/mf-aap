@@ -106,6 +106,7 @@ function handleAuthResult(authResult) {
 		// Access token has been successfully retrieved, requests can be sent to the API.
 		console.log("Authentication successfull");
 		Ext.getCmp('login').toggle(true);
+		Ext.getCmp('toggleedit').show(true);
 		downloadFileById(file_id) 
  	} 
 
