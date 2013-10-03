@@ -46,7 +46,6 @@ function handleClientLoad() {
  * Check if the current user has authorized the application.
 *******************************************************************/
 function checkAuth(callback) {
-  gapi.client.load('drive', 'v2');
   console.log('Authenyytication 1');
   gapi.auth.authorize({
     'client_id': CLIENT_ID,
@@ -60,7 +59,6 @@ function checkAuth(callback) {
  * Check if the current user has authorized the application without showing UI.
 *******************************************************************/
 function checkAuthImmediate(callback) {
-  gapi.client.load('drive', 'v2');
   console.log('Authenyytication 2');
   gapi.auth.authorize({
     'client_id': CLIENT_ID,
