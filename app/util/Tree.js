@@ -140,7 +140,6 @@ Ext.define('Aap.util.Tree', {
 				this.set('verf_ents', node_data.verf_ents);
 				this.set('verf_beme', node_data.verf_beme);
 
-	      		this.set('bewzs', node_data.bewzs);
 				this.set('arch_zs_bewe', node_data.arch_zs_bewe);
 				this.set('arch_zs_bewe_text', node_data.arch_zs_bewe_text);
 				this.set('arch_zs_begr', node_data.arch_zs_begr);
