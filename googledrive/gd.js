@@ -1,14 +1,10 @@
 var editor, gpx, gapi, store, proxy;
 var filecontent;
-
 var CLIENT_ID = '170396995102.apps.googleusercontent.com';
 var SCOPES = 'https://www.googleapis.com/auth/drive';
-//var FILE_ID = "0B4tksUtG91iOVHVaSFZQQ2VfOW8";
 var FILE_ID = '0B4tksUtG91iON3lLSFpZQU1BdVk';
-
 var file_id = FILE_ID;
 var apiKey = 'AIzaSyDdFle73cKd_ibyCRZgoxGtcGVFTpiKM48'; 
-
 var downloadUrl = 'https://docs.google.com/uc?id=0B4tksUtG91iOY0xIdUY2SmROSEk&export=download'; 
 
 /*
@@ -17,27 +13,11 @@ if (window.location.protocol != 'https:') {
 }
 */
 
-//gapi.client.setApiKey(apiKey);
-
-
-
-
-/*************************************************
-* Load the Drive API client.
-* @param {Function} callback Function to call when the client is loaded.
-************************************************/
-/*
-function loadClient(callback) {
-gapi.client.load('drive', 'v2', callback);
-}
-*/
-
 
 /******************************************************************
  * Check if the current user has authorized the application.
 *******************************************************************/
 function handleClientLoad() {
-  console.log('handleClientLoad');
   window.setTimeout('checkAuthImmediate(handleAuthResult)', 1);
 }
 
@@ -46,7 +26,6 @@ function handleClientLoad() {
  * Check if the current user has authorized the application.
 *******************************************************************/
 function checkAuth(callback) {
-  console.log('Authenyytication 1');
   gapi.auth.authorize({
     'client_id': CLIENT_ID,
     'scope': SCOPES,
@@ -59,7 +38,6 @@ function checkAuth(callback) {
  * Check if the current user has authorized the application without showing UI.
 *******************************************************************/
 function checkAuthImmediate(callback) {
-  console.log('Authenyytication 2');
   gapi.auth.authorize({
     'client_id': CLIENT_ID,
     'scope': SCOPES,
@@ -69,24 +47,10 @@ function checkAuthImmediate(callback) {
 
 
 /*************************************************
- * Print a file's metadata.
+ * Logout from google account
  * @param {String} fileId ID of the file to print metadata for.
 ************************************************/
 function googleLogout() {
-/*	function newWindow(newContent)  {
-		winContent = window.open(
-			newContent,
-			'nextWin',
-			width=150,
-			height=150,
-			toolbar=1,
-			scrollbars=1,
-			resizable=1
-		);
-		winContent.focus();
-	}
-	newWindow("https://accounts.google.com/Logout?&continue=http://www.google.com/");
-*/
 	window.open("https://accounts.google.com/Logout?&continue=http://www.google.com/", '_blank');
 	Ext.getCmp('login').toggle(false);
 }
@@ -97,24 +61,18 @@ function googleLogout() {
  * @param {Object} authResult Authorization result.
 *******************************************************************/
 function handleAuthResult(authResult) {
-	extAuthButton  = Ext.ComponentQuery.query('button[action=login]')[0]
-	authButton = Ext.getElementById('login');
-
 	if (authResult && !authResult.error) {
 		// Access token has been successfully retrieved, requests can be sent to the API.
-		console.log("Authentication successfull");
 		Ext.getCmp('login').toggle(true);
 		Ext.getCmp('login').setText('Abmelden');
 		Ext.getCmp('toggleedit').show(true);
-		downloadFileById(file_id) 
+		downloadFileById(file_id);	
  	} 
-
 	else  {
 	    // No access token could be retrieved, show the button to start the authorization flow.
 		console.log('Authenyytication not successfull');
 	   	if (Ext.getCmp('login').pressed==true){
-			authButton.onclick = function() {
-	  			console.log('Authenyytication 2');
+			Ext.getElementById('login') = function() {
 			    gapi.auth.authorize({
 	    			'client_id': CLIENT_ID,
 	    	  		'scope': SCOPES,
@@ -123,53 +81,27 @@ function handleAuthResult(authResult) {
   			}; 
 		}	
 	}
-
-}
-
-
-/*************************************************
- * Print a file's metadata.
- * @param {String} fileId ID of the file to print metadata for.
-************************************************/
-function printFile(fileId) {
-  var request = gapi.client.drive.files.get({
-    'fileId': fileId
-	});
-  request.execute(function(resp) {
-    console.log('Title: ' + resp.title);
-    console.log('ID: ' + resp.id);
-    console.log('Description: ' + resp.description);
-    console.log('MIME type: ' + resp.mimeType);
-    console.log('Download URL: ' + resp.downloadUrl);
-    console.log('Web Content Link: ' + resp.webContentLink);
-    console.log("Last modified by: " + resp.lastModifyingUserName);
-  });
 }
 
 
 /*************************************************
  * Retrieve a list of permissions.
- *
  * @param {String} fileId ID of the file to retrieve permissions for.
  * @param {Function} callback Function to call when the request is complete.
 ************************************************/
 function retrievePermissions(fileId, callback) {
-  var request = gapi.client.drive.permissions.list({
-    'fileId': fileId
-  });
-  r3 = request.execute(function(resp) {
-   r2 = callback(resp.items);
-  console.log(r2);
-  return r3	
-  });
-  console.log(r3);
+	var request = gapi.client.drive.permissions.list({
+		'fileId': fileId
+	});
+	request.execute(function(resp) {
+		r2 = callback(resp.items);
+	});
+	console.log(r3);
 }
-
 
 function storePermissions(r)  {
 	return r;
 }
-
 
 
 /*************************************************
@@ -189,7 +121,6 @@ function printAbout() {
 }    
 
 
-
 /*************************************************
  * Update an existing file's metadata and content.
  * @param {String} fileId ID of the file to update.
@@ -198,7 +129,6 @@ function printAbout() {
  * @param {Function} callback Callback function to call when the request is complete.
 ************************************************/
 function updateFileMetadata(file) {
-  var metadata = document.getElementById('metadata');
   var date = new Date(file.modifiedDate);
 }
 
@@ -207,14 +137,12 @@ function updateFile(fileId, /* fileMetadata,*/ fileData, callback) {
   var delimiter = "\r\n--" + boundary + "\r\n";
   var close_delim = "\r\n--" + boundary + "--";
 
-
   fileId = FILE_ID;
   var  metadata = /*fileMetadata ||*/ {
     'title': 'aapdata.json',
-    'mimeType': contentType,
-    'editedBy': 'roger'
+    'editedBy': '',
+    'mimeType': contentType
   };
-
 
   var contentType = 'application/octect-stream';
   // Updating the metadata is optional and you can instead use the value from drive.files.get.
@@ -249,6 +177,7 @@ function updateFile(fileId, /* fileMetadata,*/ fileData, callback) {
       updateFileMetadata(file);
     };
   }
+
   request.execute(callback);
 
 }
@@ -265,20 +194,14 @@ function downloadFileById(fileId) {
   		downloadedFile = file;
 	    downloadFile(file.downloadUrl, function(content) {
 		  storeData = JSON.parse(content);
-		  Aap.util.Data.loadNewData(storeData);
-      });
+//		  Aap.util.Data.loadNewData(storeData);
+        });
     }
-
-  var request = gapi.client.request({
-    'path': '/drive/v2/files/' + fileId,
-    'method': 'GET'
-  });
-
-  request = gapi.client.drive.files.get({
+  var request = gapi.client.drive.files.get({
     'fileId': fileId
   });
 
-return(request.execute(callback));
+  return(request.execute(callback));
 }
 
 
@@ -311,9 +234,22 @@ function downloadFile(downloadUrl, callback) {
 
 
 /*************************************************
- * init function
+ * Print a file's metadata.
+ * @param {String} fileId ID of the file to print metadata for.
 ************************************************/
-/*
-function init() {
+function printFile(fileId) {
+  var request = gapi.client.drive.files.get({
+    'fileId': fileId
+	});
+  request.execute(function(resp) {
+    console.log('Title: ' + resp.title);
+    console.log('ID: ' + resp.id);
+    console.log('Description: ' + resp.description);
+    console.log('MIME type: ' + resp.mimeType);
+    console.log('Download URL: ' + resp.downloadUrl);
+    console.log('Web Content Link: ' + resp.webContentLink);
+    console.log("Last modified by: " + resp.lastModifyingUserName);
+  });
 }
-*/
+
+

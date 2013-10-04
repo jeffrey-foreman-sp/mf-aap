@@ -10,7 +10,7 @@ Ext.define('Aap.controller.Tree', {
 	init: function() {
 		this.control({
 			'tree': {
-				afterrender: this.initSelection
+				afterrender: this.afterRenderTree
 			},	
 			'tree dataview': {
 				beforedrop: this.beforedropNode,
@@ -20,9 +20,10 @@ Ext.define('Aap.controller.Tree', {
 	}, 
 
 
-	initSelection:  function() {
+	afterRenderTree:  function() {
 		Ext.getCmp('treestructure').getView().getPlugin().dragZone.lock();
 	},
+
 	
  	beforedropNode: function(node, data, overModel, dropPosition, dropHandlers) {
     	console.log('beforedrop');
@@ -55,7 +56,6 @@ Ext.define('Aap.controller.Tree', {
 		test = node;
 		if (dropPosition != 'append') {
 			target_node = target_node.parentNode;
-			console.log('not append');
 		}
 
 		// if the node at the new position has to inherit the metadata
@@ -63,6 +63,7 @@ Ext.define('Aap.controller.Tree', {
 			node_data = Aap.util.Tree.getParentsMetadataNode(target_node).getData();
 			Aap.util.Tree.setChildrensMetaData(moved_node, node_data);  
 		}
+		// if the node at the new position does not inherit the metadata, but was inherided at the old position
 		else if (moved_node.get('inherited')==true) {
 			moved_node.set('metanode', true);
 		}
@@ -73,13 +74,8 @@ Ext.define('Aap.controller.Tree', {
 				this.collapse();
 			}
 		}, null, null);
-		
-	
+   } 
 
-
-
-
-    } 
 
 });
 
