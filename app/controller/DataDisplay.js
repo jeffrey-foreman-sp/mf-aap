@@ -13,15 +13,13 @@ Ext.define('Aap.controller.DataDisplay', {
         });
     },
 
+	// load data into forms when clicking on a node in tree
     selectionchange: function() {
-
 		var node = Aap.util.Tree.getSelectedNode(); 
-		
-		// load node data into forms
 		if (node != 'root') {
-		Ext.getCmp('disp_allg').getForm().loadRecord(node);
-		Ext.getCmp('disp_verf').getForm().loadRecord(node);
-	 	Ext.getCmp('disp_arch').getForm().loadRecord(node);
+			Ext.getCmp('disp_allg').getForm().loadRecord(node);
+			Ext.getCmp('disp_verf').getForm().loadRecord(node);
+		 	Ext.getCmp('disp_arch').getForm().loadRecord(node);
 		}
     }
 

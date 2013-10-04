@@ -84,7 +84,6 @@ Ext.define('Aap.controller.DataEdit', {
 	
 	doEditData: function(button){
 		
-		// get node
 		node = Aap.util.Tree.getSelectedNode(); 
 	
 		// write allgemein from form to store	
@@ -98,14 +97,11 @@ Ext.define('Aap.controller.DataEdit', {
 		var form3 = Ext.getCmp('edit_arch').getForm();
 		var arch_values = form3.getValues();	
 
-
 		var a = arch_values.bewzs;
 		var b =  arch_values.bewws;
 		var c = arch_values.begrba;
 	
 		if (form1.isValid()==true && form2.isValid()==true && form3.isValid()==true) {	
-
-
 
 			if (allg_values.metanode==false) { 
 				console.log(node);

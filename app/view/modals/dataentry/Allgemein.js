@@ -2,6 +2,7 @@ Ext.define('Aap.view.modals.dataentry.Allgemein',{
 	extend: 'Ext.form.Panel',
 	requires: [
 		'Aap.view.formfields.ZugBerech',	
+		'Aap.view.formfields.GeoRefDat',	
 		'Aap.view.formfields.EChKateg'	
 	],
 	alias: 'widget.dataentryallgemein',
@@ -38,13 +39,9 @@ Ext.define('Aap.view.modals.dataentry.Allgemein',{
 			regexText: 'Der Identifikator muss der Zahl mit dem Muster "XXX.XX" entsprechen! (z.B. 153.23) ',
 			name: 'ident'
 		},{		
-			xtype: 'checkboxfield',
-			checked: false,
-			boxLabel: 'Georeferenzdaten: ',
-			boxLabelAlign: 'before',
-			name: 'georefdat',
-			inputValue: 'Ja',
-			uncheckedValue: 'Nein'
+			xtype: 'georefdat',
+			fieldLabel: 'Georeferenzdaten',
+			name: 'georefdat'
 		},{		
 			fieldLabel: 'Fachhstelle des Bundes',
 			name: 'fachst'
@@ -98,7 +95,7 @@ Ext.define('Aap.view.modals.dataentry.Allgemein',{
 			grow: true,
 			defaultAlign: 'bl',
 			fieldLabel: 'Bemerkungen',
-			labelStyle: 'margin-bottom: 5px; margin-top: 52px;',
+			labelStyle: 'margin-bottom: 5px; margin-top: 32px;',
 			name: 'bemerk'
 		}
 	]

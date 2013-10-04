@@ -11,7 +11,6 @@ Ext.define('Aap.view.mainbody.Verfuegbarkeit',{
 		labelStyle: 'font-weight: bold; margin-bottom: 5px;',
 		labelWidth: 140	
 	},
-	//defaultType: 'textfield',
 	defaultType: 'displayfield',
 	items: [
 		{		
