@@ -6,7 +6,7 @@ Ext.define('Aap.controller.Store', {
     init: function() {
         Ext.getStore('AapStore').addListener(
 			'datachanged',
-			this. onAapStoreDataChange,
+			this.onAapStoreDataChange,
 			this
 		);
 	},

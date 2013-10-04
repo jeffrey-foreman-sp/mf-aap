@@ -144,7 +144,7 @@ Ext.define('Aap.controller.DataEdit', {
 				node.set('metanode', true);
 				node.set('inherited', false);
 			}
-//			Ext.getStore('AapStore').update();
+			Ext.getStore('AapStore').sync();
 
 
 			// display record in form			

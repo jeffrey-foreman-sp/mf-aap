@@ -19,12 +19,13 @@ Ext.define('Aap.controller.Tree', {
 		});
 	}, 
 
-
+	// disable drag and drop when initially render the tree
 	afterRenderTree:  function() {
 		Ext.getCmp('treestructure').getView().getPlugin().dragZone.lock();
 	},
 
-	
+
+	// open window asking for confirming the node drop
  	beforedropNode: function(node, data, overModel, dropPosition, dropHandlers) {
     	console.log('beforedrop');
 		dropHandlers.wait = true;
@@ -48,24 +49,27 @@ Ext.define('Aap.controller.Tree', {
 		});
  	},  
 
+
+	// drop the node a new position
     dropNode: function(node, data, overModel, dropPosition, eOpts) {
 		var tree = Ext.getCmp('treestructure').getView();
 		var target_node = tree.getRecord(node);
 		var moved_node = data.records[0];
 		var meta_id;	
-		test = node;
 		if (dropPosition != 'append') {
 			target_node = target_node.parentNode;
 		}
 
 		// if the node at the new position has to inherit the metadata
 		if (Aap.util.Tree.isInherited(target_node) == true || Aap.util.Tree.isMetanode(target_node) == true) {
-			node_data = Aap.util.Tree.getParentsMetadataNode(target_node).getData();
+			var node_data = Aap.util.Tree.getParentsMetadataNode(target_node).getData();
 			Aap.util.Tree.setChildrensMetaData(moved_node, node_data);  
+			Ext.getStore('AapStore').sync()
 		}
 		// if the node at the new position does not inherit the metadata, but was inherided at the old position
 		else if (moved_node.get('inherited')==true) {
 			moved_node.set('metanode', true);
+			Ext.getStore('AapStore').sync()
 		}
 	
 		// close folder if there are no more children nodes below

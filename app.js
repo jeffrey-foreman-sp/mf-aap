@@ -29,9 +29,6 @@ Ext.application({
 		Ext.require('Aap.util.TreeSerializer');
 		Ext.require('Aap.util.Data');
 		Ext.require('Aap.util.Properties');
-		gapi.client.load('drive', 'v2');
-		var apiKey = 'AIzaSyDdFle73cKd_ibyCRZgoxGtcGVFTpiKM48'; 
-		gapi.client.setApiKey(apiKey);
 
 	},
 

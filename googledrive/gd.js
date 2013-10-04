@@ -17,9 +17,20 @@ if (window.location.protocol != 'https:') {
 /******************************************************************
  * Check if the current user has authorized the application.
 *******************************************************************/
+function gapiLoad() {
+	gapi.client.load('drive', 'v2');
+	gapi.client.setApiKey(apiKey);
+
+
+}
+
+
+/******************************************************************
+ * Check if the current user has authorized the application.
+*******************************************************************/
 function handleClientLoad() {
-  window.setTimeout('checkAuthImmediate(handleAuthResult)', 1);
-//  window.setTimeout('checkAuthImmediate(getHandleFunction("log"))', 1);
+//  window.setTimeout('checkAuthImmediate(handleAuthResult)', 1);
+  window.setTimeout('checkAuthImmediate(getHandleFunction("download"))', 1);
 }
 
 
@@ -60,19 +71,18 @@ function googleLogout() {
 /******************************************************************
  * Called when authorization server replies 
  * @param {Object} authResult Authorization result.
+ * @param {Object} type name of the function that should be called.
 *******************************************************************/
 function getHandleFunction(type) {
 	var postSuccess = function() {};
-	if (type === 'log') {
+	if (type === 'download') {
 		postSuccess = function() {
-			downloadFileById(file_id);	
-			console.log('testx');
+			loadFile(file_id);	
 		};
 	}
 	
 	return function(authResult) {
 			if (authResult && !authResult.error) {
-				console.log('Authenyytication successfull');
 				// Access token has been successfully retrieved, requests can be sent to the API.
 				Ext.getCmp('login').toggle(true);
 				Ext.getCmp('login').setText('Abmelden');
@@ -81,7 +91,6 @@ function getHandleFunction(type) {
 			} 
 			else  {
 				// No access token could be retrieved, show the button to start the authorization flow.
-				console.log('Authenyytication not successfull');
 				if (Ext.getCmp('login').pressed==true){
 					Ext.getElementById('login') = function() {
 						gapi.auth.authorize({
@@ -101,16 +110,13 @@ function getHandleFunction(type) {
 *******************************************************************/
 function handleAuthResult(authResult) {
 	if (authResult && !authResult.error) {
-		console.log('Authentication successfull');
 		// Access token has been successfully retrieved, requests can be sent to the API.
 		Ext.getCmp('login').toggle(true);
 		Ext.getCmp('login').setText('Abmelden');
 		Ext.getCmp('toggleedit').show(true);
-//		downloadFileById(file_id);	
  	} 
 	else  {
 	    // No access token could be retrieved, show the button to start the authorization flow.
-		console.log('Authenyytication not successfull');
 	   	if (Ext.getCmp('login').pressed==true){
 			Ext.getElementById('login').onclick  = function() {
 			    gapi.auth.authorize({
@@ -165,6 +171,15 @@ function printAbout() {
     console.log('Additional role info: type: ' + resp.additionalRoleInfo.type);
   });
 }    
+
+
+/*************************************************
+ * Get file for view only
+ *  (does not require login)
+************************************************/
+function getDataLoggedIn() {
+	console.log('It should now load the data');
+}
 
 
 /*************************************************
@@ -233,14 +248,14 @@ function updateFile(fileId, /* fileMetadata,*/ fileData, callback) {
  * Get file.
  * @param {String} fileId ID of the file to get.
 ************************************************/
-function downloadFileById(fileId) {
+function loadFile(fileId) {
 
   var callback = function(file, callback) {
 //      updateFileMetadata(file);
   		downloadedFile = file;
 	    downloadFile(file.downloadUrl, function(content) {
-		  storeData = JSON.parse(content);
-//		  Aap.util.Data.loadNewData(storeData);
+		  var storeData = JSON.parse(content);
+		  Aap.util.Data.loadDataToTree(storeData);
         });
     }
   var request = gapi.client.drive.files.get({

@@ -1,7 +1,7 @@
 Ext.define('Aap.util.Data', {
     statics: {
 
-		loadNewData: function(data) {
+		loadDataToTree: function(data) {
 			Ext.getStore('AapStore').setRootNode(data);
 		},
 
