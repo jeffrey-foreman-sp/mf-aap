@@ -19,6 +19,7 @@ if (window.location.protocol != 'https:') {
 *******************************************************************/
 function handleClientLoad() {
   window.setTimeout('checkAuthImmediate(handleAuthResult)', 1);
+//  window.setTimeout('checkAuthImmediate(getHandleFunction("log"))', 1);
 }
 
 
@@ -57,22 +58,61 @@ function googleLogout() {
 
 
 /******************************************************************
+ * Called when authorization server replies 
+ * @param {Object} authResult Authorization result.
+*******************************************************************/
+function getHandleFunction(type) {
+	var postSuccess = function() {};
+	if (type === 'log') {
+		postSuccess = function() {
+			downloadFileById(file_id);	
+			console.log('testx');
+		};
+	}
+	
+	return function(authResult) {
+			if (authResult && !authResult.error) {
+				console.log('Authenyytication successfull');
+				// Access token has been successfully retrieved, requests can be sent to the API.
+				Ext.getCmp('login').toggle(true);
+				Ext.getCmp('login').setText('Abmelden');
+				Ext.getCmp('toggleedit').show(true);
+				postSuccess();
+			} 
+			else  {
+				// No access token could be retrieved, show the button to start the authorization flow.
+				console.log('Authenyytication not successfull');
+				if (Ext.getCmp('login').pressed==true){
+					Ext.getElementById('login') = function() {
+						gapi.auth.authorize({
+							'client_id': CLIENT_ID,
+							'scope': SCOPES,
+							'immediate': false
+						}, handleAuthResult);
+					}; 
+				}	
+			}
+	}
+}
+
+/******************************************************************
  * Called when authorization server replies.
  * @param {Object} authResult Authorization result.
 *******************************************************************/
 function handleAuthResult(authResult) {
 	if (authResult && !authResult.error) {
+		console.log('Authentication successfull');
 		// Access token has been successfully retrieved, requests can be sent to the API.
 		Ext.getCmp('login').toggle(true);
 		Ext.getCmp('login').setText('Abmelden');
 		Ext.getCmp('toggleedit').show(true);
-		downloadFileById(file_id);	
+//		downloadFileById(file_id);	
  	} 
 	else  {
 	    // No access token could be retrieved, show the button to start the authorization flow.
 		console.log('Authenyytication not successfull');
 	   	if (Ext.getCmp('login').pressed==true){
-			Ext.getElementById('login') = function() {
+			Ext.getElementById('login').onclick  = function() {
 			    gapi.auth.authorize({
 	    			'client_id': CLIENT_ID,
 	    	  		'scope': SCOPES,
@@ -85,21 +125,27 @@ function handleAuthResult(authResult) {
 
 
 /*************************************************
- * Retrieve a list of permissions.
- * @param {String} fileId ID of the file to retrieve permissions for.
- * @param {Function} callback Function to call when the request is complete.
+* Retrieve a list of permissions.
+* @param {String} fileId ID of the file to retrieve permissions for.
+* @param {Function} callback Function to call when the request is complete.
 ************************************************/
 function retrievePermissions(fileId, callback) {
 	var request = gapi.client.drive.permissions.list({
 		'fileId': fileId
 	});
+	var test;
 	request.execute(function(resp) {
-		r2 = callback(resp.items);
+		test = resp.items;
+		callback(resp.items);
+		console.log(resp.items);
 	});
 	console.log(r3);
+	return test;
 }
 
 function storePermissions(r)  {
+	testvar = r;
+	console.log(r);
 	return r;
 }
 
