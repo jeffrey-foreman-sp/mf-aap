@@ -147,6 +147,47 @@ function printFile(fileId) {
 }
 
 
+/*************************************************
+ * Retrieve a list of permissions.
+ *
+ * @param {String} fileId ID of the file to retrieve permissions for.
+ * @param {Function} callback Function to call when the request is complete.
+************************************************/
+function retrievePermissions(fileId, callback) {
+  var request = gapi.client.drive.permissions.list({
+    'fileId': fileId
+  });
+  r3 = request.execute(function(resp) {
+   r2 = callback(resp.items);
+  console.log(r2);
+  return r3	
+  });
+  console.log(r3);
+}
+
+
+function storePermissions(r)  {
+	return r;
+}
+
+
+
+/*************************************************
+ * Print information about the current user along with the Drive API
+ * settings.
+/*************************************************/
+function printAbout() {
+  var request = gapi.client.drive.about.get();
+  request.execute(function(resp) {
+    console.log('Current user name: ' + resp.name);
+    console.log('Root folder ID: ' + resp.rootFolderId);
+    console.log('Total quota (bytes): ' + resp.quotaBytesTotal);
+    console.log('Used quota (bytes): ' + resp.quotaBytesUsed);
+    console.log('Is authenticated user: ' + resp.user.isAuthenticatedUser);
+    console.log('Additional role info: type: ' + resp.additionalRoleInfo.type);
+  });
+}    
+
 
 
 /*************************************************
@@ -214,43 +255,6 @@ function updateFile(fileId, /* fileMetadata,*/ fileData, callback) {
 
 
 /*************************************************
- * Load file for view (no login needed).
- * .
-************************************************/
-
-
-
-
-function downloadFile2(downloadUrl, callback) {
- 
-	var request2 = gapi.client.request({
-   		'path': 'http://docs.google.com/uc?id=0B4tksUtG91iON3lLSFpZQU1BdVk&export=download',
-    	'method': 'GET',
-	});
-   request2.execute(function() {
-      callback(xhr.responseText);
-    });
-}
-
-
-function downloadFile3(downloadUrl, callback) {
- 
-  var url = 'http://docs.google.com/uc?id=0B4tksUtG91iON3lLSFpZQU1BdVk&export=download';
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', url);
-  xhr.withCredentials = true;
-  xhr.onload = function() {
-    callback(xhr.responseText);
-  };
-  xhr.onerror = function() {
-    callback(null);
-  };
-  xhr.send();
-
-}
-
-
-/*************************************************
  * Get file.
  * @param {String} fileId ID of the file to get.
 ************************************************/
@@ -275,8 +279,8 @@ function downloadFileById(fileId) {
   });
 
 return(request.execute(callback));
-
 }
+
 
 /*************************************************
  * Download a file's content.
