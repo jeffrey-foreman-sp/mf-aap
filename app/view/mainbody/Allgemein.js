@@ -54,9 +54,9 @@ Ext.define('Aap.view.mainbody.Allgemein',{
 		},{		
 			fieldLabel: 'Bemerkungen',
 			labelAlign: 'top',
-			labelStyle: 'font-weight: bold; margin-bottom: 5px; margin-top: 21px;',
+			labelStyle: 'font-weight: bold; margin-bottom: 5px; margin-top: 63px;',
 			fieldStyle: 'text-align: left;',
-			height: 100,
+			height: 60,
 			name: 'bemerk'
 		}
 	]

@@ -18,7 +18,7 @@ Ext.define('Aap.view.MainBody',{
 	items: [
 		{
 			xtype: 'panel',
-			flex: 1,
+			flex: 14,
 			padding: 5,
 			layout: {
 				type:  'vbox',
@@ -40,7 +40,7 @@ Ext.define('Aap.view.MainBody',{
 			]
 		},{
 			xtype: 'panel',
-			flex: 1,
+			flex: 11,
 			padding: 5,
 			border: 0, 
 			layout: {
@@ -61,7 +61,7 @@ Ext.define('Aap.view.MainBody',{
 			]
 		},{
 			xtype: 'panel',
-			flex: 2,
+			flex: 20,
 			padding: 5,
 			border: 0, 
 			layout: {

@@ -5,6 +5,7 @@ Ext.define('Aap.view.mainbody.Archievwuerdigkeit',{
 	alias: 'widget.archievwuerdigkeit',
 	bodyPadding: 10,
 	id: 'disp_arch',
+	autoScroll: true,
 	defaults: {
 		width: '100%',	
 		anchor: '100%',
@@ -19,9 +20,12 @@ Ext.define('Aap.view.mainbody.Archievwuerdigkeit',{
 			html: '<div style="margin-bottom: 10px; font-weight: bold;">Zuständige Stelle</div>'		
 		},{		
 			fieldLabel: 'Bewertung r+a',
+			labelWidth: 100, 	
 			name: 'arch_zs_bewe'
 		},{		
 			fieldLabel: 'Begründung',
+			height: 46,
+			labelWidth: 100, 	
 			name: 'arch_zs_begr'
 		},{		
 			xtype: 'container',
@@ -29,12 +33,16 @@ Ext.define('Aap.view.mainbody.Archievwuerdigkeit',{
 			html: '<div style="margin-bottom: 10px; font-weight: bold;">Weiter Stellen</div>'		
 		},{		
 			fieldLabel: 'Bewertung r+a',
+			labelWidth: 100, 	
 			name: 'arch_ws_bewe'
 		},{		
 			fieldLabel: 'Begründung',
+			height: 46,
+			labelWidth: 100, 	
 			name: 'arch_ws_begr'
 		},{		
 			fieldLabel: 'Input durch',
+			labelWidth: 100, 	
 			name: 'arch_ws_inpu'
 		},{	
 			xtype: 'container',
@@ -42,24 +50,27 @@ Ext.define('Aap.view.mainbody.Archievwuerdigkeit',{
 			html: '<div style="margin-bottom: 10px; font-weight: bold;">Bundesarchiv</div>'		
 		},{		
 			fieldLabel: 'Bewertung h+s',
+			labelWidth: 100, 	
 			name: 'arch_ba_bewe'
 		},{		
 			fieldLabel: 'Begründung',
+			height: 46,
+			labelWidth: 100, 	
 			name: 'arch_ba_begr'
 		},{	
 			fieldLabel: 'Art Sampling / Selektion',
-			style: 'margin-top: 35px',
-			labelWidth: 180, 	
+			style: 'margin-top: 5px',
+			labelWidth: 160, 	
 			name: 'arch_arts'
 		},{	
 			fieldLabel: 'Entscheid Archivwürdikeit',
-			labelWidth: 180, 	
+			labelWidth: 170, 	
 			name: 'arch_ents'
 		},{		
 			labelAlign: 'top',
 			labelStyle: 'font-weight: bold; margin-bottom: 5px;',
 			fieldStyle: 'text-align: left;',
-			height: 100,
+			height: 60,
 			fieldLabel: 'Bemerkungen',
 			name: 'arch_beme'
 		}

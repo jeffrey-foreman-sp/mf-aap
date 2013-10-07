@@ -5,6 +5,7 @@ Ext.define('Aap.view.mainbody.Verfuegbarkeit',{
 	alias: 'widget.verfuegbarkeit',
 	bodyPadding: 10,
 	id: 'disp_verf',
+	autoScroll: true,
 	defaults: {
 		width: '100%',	
 		anchor: '100%',
@@ -22,6 +23,8 @@ Ext.define('Aap.view.mainbody.Verfuegbarkeit',{
 			name: 'verf_zs_aufb'
 		},{		
 			fieldLabel: 'Begründung',
+			height: 46,
+			labelWidth: 80, 	
 			name: 'verf_zs_begr'
 		},{		
 			xtype: 'container',
@@ -32,20 +35,23 @@ Ext.define('Aap.view.mainbody.Verfuegbarkeit',{
 			name: 'verf_ws_aufb'
 		},{		
 			fieldLabel: 'Begründung',
+			height: 46,
+			labelWidth: 80, 	
 			name: 'verf_ws_begr'
 		},{		
 			fieldLabel: 'Input durch',
+			height: 46,
 			name: 'verf_ws_inpu'
 		},{		
 			fieldLabel: 'Entscheid Aufbewahrungsfrist',
 			labelWidth: 200,	
-			style: 'margin-top: 147px',
+			style: 'margin-top: 125px',
 			name: 'verf_ents'
 		},{		
 			labelAlign: 'top',
 			labelStyle: 'font-weight: bold; margin-bottom: 5px;',
 			fieldStyle: 'text-align: left;',
-			height: 100,
+			height: 60,
 			fieldLabel: 'Bemerkungen',
 			name: 'verf_beme'
 		}
