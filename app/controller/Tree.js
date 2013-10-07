@@ -65,23 +65,26 @@ Ext.define('Aap.controller.Tree', {
 		if (dropPosition != 'append') {
 			target_node = target_node.parentNode;
 		}
+		target_node.set('expandable', true); 
 
 		// if the node at the new position has to inherit the metadata
 		if (Aap.util.Tree.isInherited(target_node) == true || Aap.util.Tree.isMetanode(target_node) == true) {
 			var node_data = Aap.util.Tree.getParentsMetadataNode(target_node).getData();
-			Aap.util.Tree.setChildrensMetaData(moved_node, node_data);  
+			Aap.util.Tree.setChildrensMetaData(moved_node, node_data); 
 			Ext.getStore('AapStore').sync()
 		}
 		// if the node at the new position does not inherit the metadata, but was inherided at the old position
 		else if (moved_node.get('inherited')==true) {
 			moved_node.set('metanode', true);
+			console.log(targed_node);
 			Ext.getStore('AapStore').sync()
 		}
 	
-		// close folder if there are no more children nodes below
+		// closee folder that are at the extremeties of the tree and make them not expanable anymore
 		Ext.getStore('AapStore').getRootNode().cascadeBy(function () {
 			if (this.childNodes.length == 0) {
 				this.collapse();
+				this.set('expandable', false);
 			}
 		}, null, null);
    } 

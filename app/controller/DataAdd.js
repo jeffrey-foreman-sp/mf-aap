@@ -98,6 +98,7 @@ Ext.define('Aap.controller.DataAdd', {
 					modif: new Date(),
 					erfass: new Date(),
 					metanode: false,
+					expandable: false,
 					inherited: true,
 
 					name: allg_values.name, 
@@ -138,6 +139,7 @@ Ext.define('Aap.controller.DataAdd', {
 				});
 
 				node.appendChild(newNode);
+				node.set('expandable', true);
 				node.expand();
 	
 				// close windows 
@@ -166,6 +168,7 @@ Ext.define('Aap.controller.DataAdd', {
 
 					modif: new Date(),
 					erfass: new Date(),
+					expandable: false,
 
 					name: allg_values.name, 
 					metanode: allg_values.metanode,
@@ -212,6 +215,7 @@ Ext.define('Aap.controller.DataAdd', {
 				});
 
 				node.appendChild(newNode);
+				node.set('expandable', true);
 				node.expand();
 
 				// close windows 

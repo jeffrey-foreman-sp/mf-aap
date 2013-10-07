@@ -4,7 +4,7 @@ var CLIENT_ID = '979206817784.apps.googleusercontent.com';
 var SCOPES = 'https://www.googleapis.com/auth/drive';
 var FILE_ID = '0B4g6WzbdesdQWnA3c0xza0N5a2c';
 var file_id = FILE_ID;
-var apiKey = 'AIzaSyAJvc8kG5CyJkeFAA1OM5X874rN8VmE-mY'; 
+var apiKey = 'AIzaSyBlbPfP25SnjA_M18fQP-3SOFKeeNJJBqc'; 
 var downloadUrl = 'https://docs.google.com/uc?id=0B4tksUtG91iOY0xIdUY2SmROSEk&export=download'; 
 
 /*

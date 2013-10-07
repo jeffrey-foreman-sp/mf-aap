@@ -93,10 +93,13 @@ Ext.define('Aap.controller.MainBody', {
         	    },
 				fn: function(btn){
     			    if (btn === 'yes') {
-					var parentNode = Aap.util.Tree.getSelectedNode().parentNode;
-					var childrenOfParent = Aap.util.Tree.getSelectedNode().parentNode.childNodes.length
-					Aap.util.Tree.getSelectedNode().remove();
-					if (childrenOfParent == 1) (parentNode.collapse())
+						var parentNode = Aap.util.Tree.getSelectedNode().parentNode;
+						var childrenOfParent = Aap.util.Tree.getSelectedNode().parentNode.childNodes.length
+						Aap.util.Tree.getSelectedNode().remove();
+						if (childrenOfParent == 1) {
+							parentNode.collapse();
+							parentNode.set('expandable', false);
+						}
 					} 
 				}
 			})
