@@ -10,7 +10,7 @@ Ext.define('Aap.view.modals.Information', {
         this.items = [
             {
                 xtype: 'panel',
-				html: '<iframe style="width: 100%; height: 100%;" src="https://sites.google.com/site/aapdokumentation/"></iframe>'
+				html: '<iframe style="width: 100%; height: 100%;" src="https://sites.google.com/site/aaplanung/"></iframe>'
             }
         ];
         this.buttons = [
