@@ -31,5 +31,4 @@ Ext.define('Aap.view.formfields.ZugBerech', {
     )
 
 
-
 });

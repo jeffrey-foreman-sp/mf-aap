@@ -11,14 +11,14 @@ Ext.define('Aap.controller.Store', {
 		);
 	},
 
+	// ******************************************************************************
+	// function in order update the store
+	// ******************************************************************************
 	onAapStoreDataChange: function(me) {
 		//Aap.util.Data.updateAapData();
-		console.log('sdata has been updated');
-
+		console.log('should be updated here');
 	} 
    
-	
-
 
 });
 

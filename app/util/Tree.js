@@ -198,6 +198,8 @@ Ext.define('Aap.util.Tree', {
 		// input: node which is going to be edited (node object)
 		//********************************************************
 		setMetanodeFalse: function(node) {
+			
+			// remove the inherited values of the node
 			node.set('verf_zs_aufb', ''); 
 			node.set('verf_zs_begr', '');
 			node.set('verf_ws_aufb', '');
@@ -221,6 +223,7 @@ Ext.define('Aap.util.Tree', {
 			node.set('arch_ents_text', '');
 			node.set('arch_beme', '');
 				
+			//declare childnodes as metanodes if they where inherited before	
 			if (node.hasChildNodes() == true) {
 				if (Aap.util.Tree.isInherited(node.childNodes[0])==true) {
 		  			for (var i=0; i<node.childNodes.length; i++) {
@@ -228,7 +231,9 @@ Ext.define('Aap.util.Tree', {
 						node.childNodes[i].set('inherited', false)
 					}
 				}
-			}	
+			}
+			
+			// set metanode to true	
 			node.set('metanode', false);
 		}	
 		

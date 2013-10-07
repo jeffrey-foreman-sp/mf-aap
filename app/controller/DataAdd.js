@@ -5,6 +5,7 @@ Ext.define('Aap.controller.DataAdd', {
 	models: ['AapModel'],
 	views: ['modals.DataAdd'],
 
+
     init: function() {
         this.control({
 			'dataadd  dataentryallgemein checkboxfield[name=metanode]': {
@@ -19,8 +20,13 @@ Ext.define('Aap.controller.DataAdd', {
         });
     },
 
+
+	// ******************************************************************************
+	// allow field entry only if the "bewertungsknoten" box is checked
+	// ******************************************************************************
 	metanodeDeclarationChange: function() {
 		var mn_value = Ext.ComponentQuery.query('dataadd  dataentryallgemein checkboxfield[name=metanode]')[0].getValue();
+
 		if (mn_value == true) {
 			Ext.getCmp('edit_verf').getForm().getFields().each(function(field) {
    		    	field.setDisabled(false);  
@@ -46,7 +52,10 @@ Ext.define('Aap.controller.DataAdd', {
 	
 	},
 
-
+		
+	// ******************************************************************************
+	// load data into desabled formfields when the panel has been rendered
+	// ******************************************************************************
     afterAddPanelRendered: function() {
 		var node = Aap.util.Tree.getSelectedNode(); 
 
@@ -66,11 +75,15 @@ Ext.define('Aap.controller.DataAdd', {
 		}
 	},
 
+
+	// ******************************************************************************
+	// Add new tree node to the store
+	// ******************************************************************************
 	addData: function(button){
 
 		var node = Aap.util.Tree.getSelectedNode()
 
-		// data handling if meta data is inherited
+		// data handling if meta data is inherited *********************************************
 		if (Aap.util.Tree.isInherited(node) == true || Aap.util.Tree.isMetanode(node) == true) {
 			var allg_values = Ext.getCmp('edit_allg').getForm().getValues();
 			var node_data = Aap.util.Tree.getParentsMetadataNode(node).getData();
@@ -135,7 +148,7 @@ Ext.define('Aap.controller.DataAdd', {
 
 		}
 	
-		// data handling if meta data is not inherited
+		// data handling if meta data is not inherited **************************************
 		else {
 			var allg_values = Ext.getCmp('edit_allg').getForm().getValues();
 			var verf_values = Ext.getCmp('edit_verf').getForm().getValues();

@@ -13,7 +13,10 @@ Ext.define('Aap.controller.DataDisplay', {
         });
     },
 
-	// load data into forms when clicking on a node in tree
+
+	// ******************************************************************************
+	// load data into forms when clicking on a node in tree (exept the node tree)
+	// ******************************************************************************
     selectionchange: function() {
 		var node = Aap.util.Tree.getSelectedNode(); 
 		if (node != 'root') {

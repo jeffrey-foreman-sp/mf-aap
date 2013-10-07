@@ -18,14 +18,19 @@ Ext.define('Aap.controller.Tree', {
 			}
 		});
 	}, 
+	
 
+	// ******************************************************************
 	// disable drag and drop when initially render the tree
+	// ******************************************************************
 	afterRenderTree:  function() {
 		Ext.getCmp('treestructure').getView().getPlugin().dragZone.lock();
 	},
 
 
+	// ******************************************************************
 	// open window asking for confirming the node drop
+	// ******************************************************************
  	beforedropNode: function(node, data, overModel, dropPosition, dropHandlers) {
     	console.log('beforedrop');
 		dropHandlers.wait = true;
@@ -50,7 +55,9 @@ Ext.define('Aap.controller.Tree', {
  	},  
 
 
-	// drop the node a new position
+	// ******************************************************************
+	// drop the node a new position and change the meta attributes accordingly  they are inherited
+	// ******************************************************************
     dropNode: function(node, data, overModel, dropPosition, eOpts) {
 		var tree = Ext.getCmp('treestructure').getView();
 		var target_node = tree.getRecord(node);

@@ -52,5 +52,4 @@ Ext.define('Aap.view.modals.DataAdd', {
         ];
         this.callParent(arguments);
     }
-
 });

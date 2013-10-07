@@ -1,8 +1,3 @@
-var data;
-//data = {"name": "Gesamtbestand","expanded": "true"	};
-		
-//data = getFileById('0B4tksUtG91iOY0xIdUY2SmROSEk');
-//handleClientLoad();
 
 Ext.Loader.setConfig({
 	enabled: true, // Allows dynamc loading of JavaSCript files
@@ -21,9 +16,6 @@ Ext.application({
 		'Store',
 		'MainHeader'
 	],
-
-//	stores: ['AapStore'],
-
 
 	init: function(){
 		Ext.require('Aap.util.TreeSerializer');

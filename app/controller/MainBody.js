@@ -32,16 +32,26 @@ Ext.define('Aap.controller.MainBody', {
 	}, 
 
 	
+	// ******************************************************************************
+	// handle the google client load after rendering the main body
+	// ******************************************************************************
 	afterAppLoad: function() {
 		handleClientLoad();	
 	},
 
 
+	// ******************************************************************************
+	// handle the google client load after rendering the main body
+	// ******************************************************************************
 	initSelection: function() {
 		var rn = Ext.getStore('AapStore').getRootNode();	
 		Ext.getCmp('treestructure').getSelectionModel().select(rn);
 	},
 
+
+	// ******************************************************************************
+	// open the "add node" window if a node is selected
+	// ******************************************************************************
 	onAddNode: function() {
 		var selection = Aap.util.Tree.getTreeSelection();		
 		var selected = Aap.util.Tree.isSelectedNode(selection);		
@@ -50,6 +60,10 @@ Ext.define('Aap.controller.MainBody', {
 		}
 	},
 
+
+	// ******************************************************************************
+	// open the "edit" window if a node is selected (which is not the root node)
+	// ******************************************************************************
 	openDataEdit: function() {
 		var selection = Aap.util.Tree.getTreeSelection();		
 		var selected = Aap.util.Tree.isSelectedNode(selection);		
@@ -57,12 +71,13 @@ Ext.define('Aap.controller.MainBody', {
 			var nodeid = Aap.util.Tree.getSelectedNode().get('id');
 			if (nodeid != "root"){
 				var view = Ext.widget('dataedit');
-			} else {
-       	   		console.log('Editing the root node is impossible!\nClick on a different item in the data tree!');
-			}
+			} 
 		}
 	},
 
+	// ******************************************************************************
+	// open message window asking for confirmation before deleting the selected node 
+	// ******************************************************************************
 	onDataRemove: function() {
 		var selection = Aap.util.Tree.getTreeSelection();
 		var selected = Aap.util.Tree.isSelectedNode(selection);		
@@ -87,6 +102,7 @@ Ext.define('Aap.controller.MainBody', {
 			})
 		}
 	}
+
 
 });
 

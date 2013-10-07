@@ -1,10 +1,10 @@
 var editor, gpx, gapi, store, proxy;
 var filecontent;
-var CLIENT_ID = '170396995102.apps.googleusercontent.com';
+var CLIENT_ID = '979206817784.apps.googleusercontent.com';
 var SCOPES = 'https://www.googleapis.com/auth/drive';
 var FILE_ID = '0B4tksUtG91iON3lLSFpZQU1BdVk';
 var file_id = FILE_ID;
-var apiKey = 'AIzaSyDdFle73cKd_ibyCRZgoxGtcGVFTpiKM48'; 
+var apiKey = 'AIzaSyAJvc8kG5CyJkeFAA1OM5X874rN8VmE-mY'; 
 var downloadUrl = 'https://docs.google.com/uc?id=0B4tksUtG91iOY0xIdUY2SmROSEk&export=download'; 
 
 /*

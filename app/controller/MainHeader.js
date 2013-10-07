@@ -20,11 +20,20 @@ Ext.define('Aap.controller.MainHeader', {
 		});
     },
 
+
+	// ******************************************************************************
+	// open the information window
+	// ******************************************************************************
     onInfoClick: function() {
 		Ext.widget('information');
 	},
+
   
+	// ******************************************************************************
+	// enabel and disable the edit buttons
+	// ******************************************************************************
 	onEditButtonClick: function(button, pressed) {
+
 		if(button.pressed==true){
 		
 			// toggle header button
@@ -39,9 +48,9 @@ Ext.define('Aap.controller.MainHeader', {
 		
 			// unlock drag&drop
 			Ext.getCmp('treestructure').getView().getPlugin().dragZone.lock();
-		}	
+		}
+	
     	else {
-
 			function enableEdit(authResult) {
 				if (authResult && !authResult.error) {
 					// Access token has been successfully retrieved, requests can be sent to the API.
@@ -59,20 +68,18 @@ Ext.define('Aap.controller.MainHeader', {
 				
 					// unlock drag&drop
 					Ext.getCmp('treestructure').getView().getPlugin().dragZone.unlock();
-			 	
-				} 
-				else  {
-				    // No access token could be retrieved, show the button to start the authorization flow.
-					console.log('Authentication not successfull');
-				}
-
+			 	}
 			}
+			// check wherter the user is logged in
 			checkAuthImmediate(enableEdit);
 		}
 
 	},
 
 
+	// ******************************************************************************
+	// login or logout into google
+	// ******************************************************************************
 	onLoginButtonClick: function() {
 		if (Ext.getCmp('login').pressed == true) {
 
@@ -99,4 +106,9 @@ Ext.define('Aap.controller.MainHeader', {
 	}
 
 });
+
+
+
+
+
 

@@ -20,6 +20,9 @@ Ext.define('Aap.controller.DataEdit', {
     },
 
 
+	// ******************************************************************************
+	// enable form fields and load data into it if the "bewertungsknoten" box is checeked
+	// ******************************************************************************
 	metanodeDeclarationChange: function() {
 		var mn_value = Ext.ComponentQuery.query('dataedit dataentryallgemein checkboxfield[name=metanode]')[0].getValue();
 		if (mn_value == true) {
@@ -51,6 +54,11 @@ Ext.define('Aap.controller.DataEdit', {
 	},
 
 
+	// ******************************************************************************
+	//  load data into form fields afte the panel has been rendered
+	//  - disable the form fields if the meta data is inherited from superiour tree node 
+	//  - enable the form fields if the node is a metanode itself
+	// ******************************************************************************
     afterPanelRendered: function() {
 		var node = Aap.util.Tree.getSelectedNode(); 
 		
@@ -82,6 +90,10 @@ Ext.define('Aap.controller.DataEdit', {
     },
 
 	
+	// ******************************************************************************
+	//  load data into form fields afte the panel has been rendered
+	//  - disable the form if the meta data is inherited from superiour tree node 
+	// ******************************************************************************
 	doEditData: function(button){
 		
 		node = Aap.util.Tree.getSelectedNode(); 
@@ -97,23 +109,20 @@ Ext.define('Aap.controller.DataEdit', {
 		var form3 = Ext.getCmp('edit_arch').getForm();
 		var arch_values = form3.getValues();	
 
-		var a = arch_values.bewzs;
-		var b =  arch_values.bewws;
-		var c = arch_values.begrba;
-	
+		// write values to attributes if the form validation has been accepted ***********************
 		if (form1.isValid()==true && form2.isValid()==true && form3.isValid()==true) {	
 
-			if (allg_values.metanode==false) { 
-				console.log(node);
-				Aap.util.Tree.setMetanodeFalse(node);
-			}
+			// set all metadata to empty if the node has changed to not to be a metanode anymore , 
+			if (allg_values.metanode==false) { Aap.util.Tree.setMetanodeFalse(node); }
+
+			// set the values of the allemein attributes	
 			record1.set(allg_values);
 			node.set('zugberech_text',Aap.util.Properties.chooseZugangsberech(allg_values.zugberech));
 			node.set('echkateg_text',Aap.util.Properties.chooseEchkateg(allg_values.echkateg));
 			node.set('ident_prefix', Aap.util.Properties.getPrefix(allg_values.ident)) ;
 			node.set('ident_suffix', Aap.util.Properties.getSuffix(allg_values.ident)) ;
 	
-		
+			//set the values for the metadata attributes	
 			if (allg_values.metanode==true) {
 				node.cascadeBy(function () {
 					this.set('modif', new Date());
