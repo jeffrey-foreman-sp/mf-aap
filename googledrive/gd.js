@@ -20,8 +20,6 @@ if (window.location.protocol != 'https:') {
 function gapiLoad() {
 	gapi.client.load('drive', 'v2');
 	gapi.client.setApiKey(apiKey);
-
-
 }
 
 

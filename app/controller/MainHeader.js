@@ -54,7 +54,6 @@ Ext.define('Aap.controller.MainHeader', {
 			function enableEdit(authResult) {
 				if (authResult && !authResult.error) {
 					// Access token has been successfully retrieved, requests can be sent to the API.
-					console.log('Authentication successfull');
 				
 					// toggle header button
 	  		  		button.setText('Bearbeiten abschliessen');

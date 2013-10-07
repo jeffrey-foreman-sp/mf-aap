@@ -32,7 +32,6 @@ Ext.define('Aap.controller.Tree', {
 	// open window asking for confirming the node drop
 	// ******************************************************************
  	beforedropNode: function(node, data, overModel, dropPosition, dropHandlers) {
-    	console.log('beforedrop');
 		dropHandlers.wait = true;
 		Ext.MessageBox.show({
 			title: 'Warnung!',
