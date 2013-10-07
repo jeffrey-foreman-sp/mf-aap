@@ -134,26 +134,26 @@ Ext.define('Aap.util.Tree', {
 				this.set('inherited', true);
 				this.set('verf_zs_aufb', new_metadata.verf_zs_aufb); 
 				this.set('verf_zs_begr', new_metadata.verf_zs_begr);
-				this.set('verf_ws_aufb', node_data.verf_ws_aufb);
-				this.set('verf_ws_begr', node_data.verf_ws_begr);
-				this.set('verf_ws_inpu', node_data.verf_ws_inpu);
-				this.set('verf_ents', node_data.verf_ents);
-				this.set('verf_beme', node_data.verf_beme);
+				this.set('verf_ws_aufb', new_metadata.verf_ws_aufb);
+				this.set('verf_ws_begr', new_metadata.verf_ws_begr);
+				this.set('verf_ws_inpu', new_metadata.verf_ws_inpu);
+				this.set('verf_ents', new_metadata.verf_ents);
+				this.set('verf_beme', new_metadata.verf_beme);
 
-				this.set('arch_zs_bewe', node_data.arch_zs_bewe);
-				this.set('arch_zs_bewe_text', node_data.arch_zs_bewe_text);
-				this.set('arch_zs_begr', node_data.arch_zs_begr);
-				this.set('arch_ws_bewe', node_data.arch_ws_bewe);
-				this.set('arch_ws_bewe_text', node_data.arch_ws_bewe_text);
-				this.set('arch_ws_begr', node_data.arch_ws_begr);
-				this.set('arch_ws_inpu', node_data.arch_ws_inpu);
-				this.set('arch_ba_bewe', node_data.arch_ba_bewe);
-				this.set('arch_ba_bewe_text', node_data.arch_ba_bewe_text);
-				this.set('arch_ba_begr', node_data.arch_ba_begr);
-				this.set('arch_arts', node_data.arch_arts);
-				this.set('arch_ents', node_data.arch_ents);
-				this.set('arch_ents_text', node_data.arch_ents_text);
-				this.set('arch_beme', node_data.arch_beme);
+				this.set('arch_zs_bewe', new_metadata.arch_zs_bewe);
+				this.set('arch_zs_bewe_text', new_metadata.arch_zs_bewe_text);
+				this.set('arch_zs_begr', new_metadata.arch_zs_begr);
+				this.set('arch_ws_bewe', new_metadata.arch_ws_bewe);
+				this.set('arch_ws_bewe_text', new_metadata.arch_ws_bewe_text);
+				this.set('arch_ws_begr', new_metadata.arch_ws_begr);
+				this.set('arch_ws_inpu', new_metadata.arch_ws_inpu);
+				this.set('arch_ba_bewe', new_metadata.arch_ba_bewe);
+				this.set('arch_ba_bewe_text', new_metadata.arch_ba_bewe_text);
+				this.set('arch_ba_begr', new_metadata.arch_ba_begr);
+				this.set('arch_arts', new_metadata.arch_arts);
+				this.set('arch_ents', new_metadata.arch_ents);
+				this.set('arch_ents_text', new_metadata.arch_ents_text);
+				this.set('arch_beme', new_metadata.arch_beme);
 			}, null, [new_metadata]);
 		},
 	
