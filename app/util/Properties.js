@@ -9,12 +9,12 @@ Ext.define('Aap.util.Properties', {
 		hasMetaInput: function() {
 			var out1 = false;	
 			Ext.getCmp('edit_verf').getForm().getFields().each(function(){
-				if (this.getValue()!=null && this.getValue()!="")  {out1 = true; console.log(this)}
+				if (this.getValue()!=null && this.getValue()!="")  {out1 = true;}
 			});	
 	
 			var out2 = false;	
 			Ext.getCmp('edit_arch').getForm().getFields().each(function(){
-				if (this.getValue()!=null && this.getValue()!="")  {out2 = true; console.log(this)}
+				if (this.getValue()!=null && this.getValue()!="")  {out2 = true;}
 			});	
 
 			var  out = false;
@@ -28,16 +28,11 @@ Ext.define('Aap.util.Properties', {
 		// input: node to modify (object), node to check for inheritance (object)
 		//***********************************************************
 		setMetanodeProperty: function(node, node_to_check) {
-//		setMetanodeProperty: function(node) {
 			var response = false;
 			var mi = Aap.util.Properties.hasMetaInput(node);
-			console.log(mi);
 			var ii = Aap.util.Tree.isInherited(node_to_check);
-			console.log(ii);
 			var im = Aap.util.Tree.isMetanode(node_to_check);
-			console.log(im);
 			if (mi==true && ii==false && im==false) {response = true}
-			console.log(response);
 			node.set('metanode', response)
 		},		
 
