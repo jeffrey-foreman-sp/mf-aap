@@ -28,7 +28,7 @@ function gapiLoad() {
 *******************************************************************/
 function handleClientLoad() {
 //  window.setTimeout('checkAuthImmediate(handleAuthResult)', 1);
-  window.setTimeout('checkAuthImmediate(getHandleFunction("download"))', 1);
+  window.setTimeout('checkAuthImmediate(getHandleFunction())', 1);
 }
 
 

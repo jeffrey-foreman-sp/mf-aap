@@ -117,6 +117,7 @@ Ext.define('Aap.controller.DataEdit', {
 
 			// set the values of the allemein attributes	
 			record1.set(allg_values);
+			node.set('qtip',allg_values.name);
 			node.set('zugberech_text',Aap.util.Properties.chooseZugangsberech(allg_values.zugberech));
 			node.set('echkateg_text',Aap.util.Properties.chooseEchkateg(allg_values.echkateg));
 			node.set('ident_prefix', Aap.util.Properties.getPrefix(allg_values.ident)) ;

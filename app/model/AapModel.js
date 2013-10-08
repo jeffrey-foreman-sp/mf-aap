@@ -5,6 +5,7 @@ Ext.define('Aap.model.AapModel', {
 	fields: [
         {name: "id", type: 'string'}, 
         {name: "name", type: 'string'}, 
+        {name: "qtip", type: 'string'}, 
         {name: "erfass", type: 'date'}, 
         {name: "modif", type: 'date'}, 
         {name: "metanode", type: 'boolean'}, 

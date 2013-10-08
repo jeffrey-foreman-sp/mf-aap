@@ -102,6 +102,7 @@ Ext.define('Aap.controller.DataAdd', {
 					inherited: true,
 
 					name: allg_values.name, 
+					qtip: allg_values.name, 
 					ident: allg_values.ident, 
 					ident_prefix: Aap.util.Properties.getPrefix(allg_values.ident), 
 					ident_suffix: Aap.util.Properties.getSuffix(allg_values.ident), 
@@ -171,6 +172,7 @@ Ext.define('Aap.controller.DataAdd', {
 					expandable: false,
 
 					name: allg_values.name, 
+					qtip: allg_values.name, 
 					metanode: allg_values.metanode,
 					inherited: false,
 					ident: allg_values.ident, 
