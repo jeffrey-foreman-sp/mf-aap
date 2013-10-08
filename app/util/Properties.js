@@ -11,7 +11,7 @@ Ext.define('Aap.util.Properties', {
 			Ext.getCmp('edit_verf').getForm().getFields().each(function(){
 				if (this.getValue()!=null && this.getValue()!="")  {out1 = true;}
 			});	
-	
+
 			var out2 = false;	
 			Ext.getCmp('edit_arch').getForm().getFields().each(function(){
 				if (this.getValue()!=null && this.getValue()!="")  {out2 = true;}
