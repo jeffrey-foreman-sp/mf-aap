@@ -5,9 +5,9 @@ Ext.define('Aap.store.AapStore', {
     storeId: 'AapStore',
 
     root: {
-		title: 'Gesamtbestand'//,	
-//		expandable: false,
-//		expanded: false
+		expanded: true,
+		name: 'Gesamtbestand',	
+		expandable: false
 	},
 
 	proxy: {
