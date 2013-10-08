@@ -75,6 +75,7 @@ Ext.define('Aap.controller.Tree', {
 		// if the node at the new position does not inherit the metadata, but was inherided at the old position
 		else if (moved_node.get('inherited')==true) {
 			moved_node.set('metanode', true);
+			Ext.getStore('AapStore').sync();
 		}
 	
 		// closee folder that are at the extremeties of the tree and make them not expanable anymore
