@@ -26,7 +26,8 @@ Ext.define('Aap.util.Data', {
 		updateAapData: function() {
 			var store = Ext.getStore('AapStore');
 			var dta = Aap.util.Data.storeToJson(store);
-			updateFile(file_id, dta); // update function using the google drive api
+//			updateFile(file_id, dta); // update function using the google drive api
+			console.log('here the execution of the update function');
 
 		}	
 
