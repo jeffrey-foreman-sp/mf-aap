@@ -6,7 +6,7 @@ Ext.define('Aap.util.Data', {
 		// load the new data by setting a new root node
 		//***********************************************************
 		loadDataToTree: function(data) {
-			Ext.getStore('AapStore').setRootNode(data);
+			Ext.getStore('AapStore').getRootNode().appendChild(data);
 		},
 
 
