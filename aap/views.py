@@ -4,6 +4,22 @@ from pyramid.view import view_config
 from authomatic import Authomatic
 from authomatic.adapters import WebObAdapter
 
+from pyramid.security import Everyone
+from pyramid.security import Authenticated
+
+from pyramid.security import ALL_PERMISSIONS
+from pyramid.security import Allow
+from pyramid.security import Authenticated
+from pyramid.security import authenticated_userid,unauthenticated_userid
+from pyramid.security import forget
+from pyramid.security import remember
+
+from pyramid.httpexceptions import HTTPForbidden
+from pyramid.httpexceptions import HTTPFound
+from pyramid.httpexceptions import HTTPNotFound
+
+# https://github.com/Pylons/shootout/
+
 
 from config import CONFIG
 
@@ -14,6 +30,13 @@ authomatic = Authomatic(config=CONFIG, secret='some random secret string')
 def hello_world(request):
     
     return Response('Hello')'''
+
+@view_config(route_name='hello')
+def hello(request):
+    logged_in = authenticated_userid(request)
+    
+    return Response("Logged in as %s " % logged_in)
+    
 
 @view_config(route_name='login')
 def login(request):
@@ -39,12 +62,21 @@ def login(request):
         elif result.user:
             # Hooray, we have the user!
 
-
+            
             # OAuth 2.0 and OAuth 1.0a provide only limited user data on login,
             # We need to update the user to get more info.
             if not (result.user.name and result.user.id):
                 result.user.update()
 
+            request.session['id'] = result.user.id
+
+
+            main_view = request.route_url('hello')
+            came_from = request.params.get('came_from', main_view)
+            headers = remember(request, result.user.email)
+            request.session.flash(u'Logged in successfully.')
+            return HTTPFound(location=came_from, headers=headers)
+            
             # Welcome the user.
             response.write(u'<h1>Hi {}</h1>'.format(result.user.name))
             response.write(u'<h2>Your id is: {}</h2>'.format(result.user.id))
@@ -118,22 +150,36 @@ def login(request):
     # It won't work if you don't return the response
     return response
 
-@view_config(route_name='authorized')
+    
+from pyramid.view import forbidden_view_config
+
+'''@forbidden_view_config()
+def forbidden(request):
+    return Response('forbidden')'''
+
+    
+@view_config(route_name='authorized', permission='post')
 def authorized(request):
-    owner = authenticated_userid(request) or 'anonymous'
+    '''owner = authenticated_userid(request) or 'anonymous'
     session = request.session
     if 'procrastinatio' in session:
         session['procrastinatio'] = 'yes'
     session['abc'] = '123'
 
-    username = session.get('username')
-    if username:
-        return Response('%s was in the session') % username
-    else:
-        return Response('%s was not in the session') % owner
+    username = session.get('username')'''
+    
+    owner = authenticated_userid(request)
+    userid = unauthenticated_userid(request)
+    
+    ''''if userid is None:
+        raise HTTPForbidden()
+    '''
+    return Response('User %s has permision "post"' % owner)
 
 @view_config(route_name='home')
 def home(request):
+
+    request.session['token'] = 123
     return Response('''
         Login with <a href="login/fb">Facebook</a>.<br />
         Login with <a href="login/tw">Twitter</a>.<br />
