@@ -8,6 +8,7 @@
 .installed.cfg
 apache/wsgi.conf
 apache/tomcat-print.conf
+aap.egg-info/
 buildout/bin/
 buildout/develop-eggs/
 buildout/eggs/
