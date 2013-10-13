@@ -9,9 +9,6 @@ class User(object):
 
     @classmethod
     def is_known(cls, username):
-
-        
-        
         return username in ['procrastinatio@gmail.com']
 
 class RootFactory(object):
