@@ -6,6 +6,7 @@ from authomatic.adapters import WebObAdapter
 
 from pyramid.security import Everyone
 from pyramid.security import Authenticated
+from pyramid.security import has_permission,view_execution_permitted, Allowed,ACLAllowed
 
 from pyramid.security import ALL_PERMISSIONS
 from pyramid.security import Allow
@@ -19,6 +20,8 @@ from pyramid.httpexceptions import HTTPFound
 from pyramid.httpexceptions import HTTPNotFound
 
 # https://github.com/Pylons/shootout/
+
+# http://docs.pylonsproject.org/projects/pyramid/en/1.5-branch/tutorials/wiki2/authorization.html
 
 
 from config import CONFIG
@@ -38,13 +41,14 @@ def hello(request):
     logged_in = authenticated_userid(request)
     
     return Response("""Logged in as %s <br>
-    <a href="../authorized">Protected ressource</a>""" % logged_in)
+    <a href="../authorized">Try accessing a protected ressource</a>""" % logged_in)
     
 @view_config(permission='post', route_name='logout')
 def logout(request):
     request.session.invalidate()
     request.session.flash(u'Logged out successfully.')
     headers = forget(request)
+    
     return HTTPFound(location=request.route_url('home'), headers=headers)
     
 @view_config(route_name='login')
@@ -179,6 +183,28 @@ from pyramid.view import forbidden_view_config
 def forbidden(request):
     return Response('forbidden')'''
 
+@view_config(route_name='tree', request_method='GET', renderer='json')
+def get_tree(request):
+      return {'content':'Hello!'}
+
+
+        
+@view_config(route_name='tree', request_method='POST',renderer='json')
+def post_tree(request):
+    acl = has_permission('post', request.context, request)
+
+    post_data = request.POST
+
+    if isinstance(acl, (ACLAllowed,Allowed)):
+        # update authoried
+        
+        return {'result':'ok'}
+
+    else:
+        return {'error':'forbidden'}
+   
+    
+    
     
 @view_config(route_name='authorized', permission='post')
 def authorized(request):
@@ -190,8 +216,20 @@ def authorized(request):
 @view_config(route_name='home')
 def home(request):
 
-    request.session['token'] = 123
-    return Response('''
+    userid = authenticated_userid(request) 
+    if userid:
+        txt ='''
+        Logged in as %s <br>
+        Try accessing a <a href="authorized">protected ressource</a> or <br />
+         <a href="logout">logout</a><br />
+        ''' % userid
+
+    else:
+        txt ='''
+        <h1>Home</h1>
+        You are not logged in<br />
+        Try accessing a <a href="authorized">protected ressource</a><br />
+        <br>
         Login with <a href="login/fb">Facebook</a>.<br />
         Login with <a href="login/tw">Twitter</a>.<br />
         Login with <a href="login/google">Google</a>.<br />
@@ -199,4 +237,5 @@ def home(request):
             <input type="text" name="id" value="me.yahoo.com" />
             <input type="submit" value="Authenticate With OpenID">
         </form>
-    ''')
+    '''
+    return Response(txt)

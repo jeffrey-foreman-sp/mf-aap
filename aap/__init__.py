@@ -28,6 +28,7 @@ def main(global_config, **settings):
     config.add_route('home', '/')
     config.add_route('hello', '/hello')
     #config.add_view(home, route_name='home')
+    config.add_route('tree', '/tree')
 
     config.add_route('authorized', '/authorized')
     #config.add_view(authorized, route_name='authorized')
