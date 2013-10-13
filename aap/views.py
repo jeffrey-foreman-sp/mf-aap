@@ -23,6 +23,8 @@ from pyramid.httpexceptions import HTTPNotFound
 
 from config import CONFIG
 
+from .models import (User,)
+
 authomatic = Authomatic(config=CONFIG, secret='some random secret string')
 
 '''
@@ -35,11 +37,21 @@ def hello_world(request):
 def hello(request):
     logged_in = authenticated_userid(request)
     
-    return Response("Logged in as %s " % logged_in)
+    return Response("""Logged in as %s <br>
+    <a href="../authorized">Protected ressource</a>""" % logged_in)
     
-
+@view_config(permission='post', route_name='logout')
+def logout(request):
+    request.session.invalidate()
+    request.session.flash(u'Logged out successfully.')
+    headers = forget(request)
+    return HTTPFound(location=request.route_url('home'), headers=headers)
+    
 @view_config(route_name='login')
 def login(request):
+
+    main_view = request.route_url('hello')
+    came_from = request.params.get('came_from', main_view)
 
     # We will need the response to pass it to the WebObAdapter.
     response = Response()
@@ -70,13 +82,20 @@ def login(request):
 
             request.session['id'] = result.user.id
 
-
-            main_view = request.route_url('hello')
-            came_from = request.params.get('came_from', main_view)
-            headers = remember(request, result.user.email)
-            request.session.flash(u'Logged in successfully.')
-            return HTTPFound(location=came_from, headers=headers)
+            login = result.user.email
             
+            if User.is_known(login):
+                
+                headers = remember(request, result.user.email)
+                request.session.flash(u'Logged in successfully.')
+                return HTTPFound(location=came_from, headers=headers)
+
+                
+
+    #request.session.flash(u'Failed to login.')
+    #return HTTPFound(location=came_from)
+            
+    ''''
             # Welcome the user.
             response.write(u'<h1>Hi {}</h1>'.format(result.user.name))
             response.write(u'<h2>Your id is: {}</h2>'.format(result.user.id))
@@ -147,6 +166,9 @@ def login(request):
                         response.write('Damn that unknown error!<br />')
                         response.write(u'Status: {}'.format(response.status))
 
+
+
+    '''
     # It won't work if you don't return the response
     return response
 
@@ -160,21 +182,10 @@ def forbidden(request):
     
 @view_config(route_name='authorized', permission='post')
 def authorized(request):
-    '''owner = authenticated_userid(request) or 'anonymous'
-    session = request.session
-    if 'procrastinatio' in session:
-        session['procrastinatio'] = 'yes'
-    session['abc'] = '123'
+    
+    userid = authenticated_userid(request)
 
-    username = session.get('username')'''
-    
-    owner = authenticated_userid(request)
-    userid = unauthenticated_userid(request)
-    
-    ''''if userid is None:
-        raise HTTPForbidden()
-    '''
-    return Response('User %s has permision "post"' % owner)
+    return Response('User %s has permision "post"' % userid)
 
 @view_config(route_name='home')
 def home(request):
