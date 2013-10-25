@@ -9,7 +9,7 @@ requires = [
     'webtest',
     'pyramid',
     'pyramid_debugtoolbar',
-    'waitress'
+    'waitress',
     'authomatic',
     'psycopg2',
     'SQLAlchemy',
