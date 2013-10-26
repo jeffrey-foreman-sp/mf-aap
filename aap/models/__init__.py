@@ -1,4 +1,3 @@
-
 from pyramid.security import (
     Everyone,
     Authenticated,

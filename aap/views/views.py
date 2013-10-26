@@ -9,6 +9,8 @@ from pyramid.security import Everyone
 from pyramid.security import Authenticated
 from pyramid.security import has_permission,view_execution_permitted, Allowed,ACLAllowed
 
+from pyramid.renderers import render_to_response
+
 from pyramid.security import ALL_PERMISSIONS
 from pyramid.security import Allow
 from pyramid.security import Authenticated
@@ -29,7 +31,7 @@ from pyramid.httpexceptions import HTTPNotFound
 
 from config import CONFIG
 
-from .models import (User,)
+from aap.models import (User,)
 
 authomatic = Authomatic(config=CONFIG, secret='some random secret string')
 
@@ -37,9 +39,11 @@ authomatic = Authomatic(config=CONFIG, secret='some random secret string')
 @view_config(route_name='hello')
 def hello(request):
     logged_in = authenticated_userid(request)
+
+    return render_to_response('aap:templates/hello.mako',
+                              {'login':logged_in},
+                              request=request)
     
-    return Response("""Logged in as %s <br>
-    <a href="../authorized">Try accessing a protected ressource</a>""" % logged_in)
     
 @view_config(permission='post', route_name='logout')
 def logout(request):
@@ -140,25 +144,7 @@ def authorized(request):
 def home(request):
 
     userid = authenticated_userid(request) 
-    if userid:
-        txt ='''
-        Logged in as %s <br>
-        Try accessing a <a href="authorized">protected ressource</a> or <br />
-         <a href="logout">logout</a><br />
-        ''' % userid
 
-    else:
-        txt ='''
-        <h1>Home</h1>
-        You are not logged in<br />
-        Try accessing a <a href="authorized">protected ressource</a><br />
-        <br>
-        Login with <a href="login/fb">Facebook</a>.<br />
-        Login with <a href="login/tw">Twitter</a>.<br />
-        Login with <a href="login/google">Google</a>.<br />
-        <form action="login/oi">
-            <input type="text" name="id" value="me.yahoo.com" />
-            <input type="submit" value="Authenticate With OpenID">
-        </form>
-    '''
-    return Response(txt)
+    return render_to_response('aap:templates/home.mako',
+                              {'userid':userid},
+                              request=request)
