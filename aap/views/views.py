@@ -52,11 +52,21 @@ def logout(request):
     headers = forget(request)
     
     return HTTPFound(location=request.route_url('home'), headers=headers)
-    
+
+
+
 @view_config(route_name='login')
 def login(request):
+    logged_in = authenticated_userid(request)
 
-    main_view = request.route_url('hello')
+    return render_to_response('aap:templates/login.mako',
+                              {},
+                              request=request)
+                              
+@view_config(route_name='auth')
+def auth(request):
+
+    main_view = request.route_url('home')
     came_from = request.params.get('came_from', main_view)
 
     # We will need the response to pass it to the WebObAdapter.

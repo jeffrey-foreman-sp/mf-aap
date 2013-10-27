@@ -33,9 +33,10 @@ def main(global_config, **settings):
     config.add_route('authorized', '/authorized')
     #config.add_view(authorized, route_name='authorized')
 
-    config.add_route('login', '/login/{provider_name}')
+    config.add_route('login', '/login')
+    config.add_route('auth', '/auth/{provider_name}')
     config.add_route('logout', '/logout')
-    #config.add_view(login, route_name='login')
+   
     
     config.scan()
     return config.make_wsgi_app()
