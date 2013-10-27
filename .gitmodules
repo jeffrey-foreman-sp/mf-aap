@@ -1,0 +1,3 @@
+[submodule "aap/static/web-aap"]
+	path = aap/static/web-aap
+	url = git@github.com:geoadmin/web-aap.git
