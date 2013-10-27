@@ -9,17 +9,33 @@
          <a href="logout">logout</a><br />
 
 % else:
-    <h1>Home</h1>
-        You are not logged in<br />
-        Try accessing a <a href="authorized">protected ressource</a><br />
-        <br>
-        Login with <a href="login/fb">Facebook</a>.<br />
-        Login with <a href="login/tw">Twitter</a>.<br />
-        Login with <a href="login/google">Google</a>.<br />
-        <form action="login/oi">
-            <input type="text" name="id" value="me.yahoo.com" />
-            <input type="submit" value="Authenticate With OpenID">
-        </form>
+   <a href="login">login</a><br />
 % endif
+
+
+<h1>Welcome to AAP-Tools</h1>
+
+
+<link href="http://www.swisstopo.admin.ch/internet/swisstopo.ConfigFavicon.ico" type="image/x-icon" rel="Shortcut Icon">
+
+
+
+        <link rel="stylesheet" type="text/css" href="client/ext-4.2.1/resources/css/ext-all.css">
+
+    <script type="text/javascript" src="client/ext-4.2.1/ext-all-debug.js"></script>
+
+    <script type="text/javascript" src="client/app.js"></script>
+
+     <script src="client/googledrive/gd.js"> </script>
+
+        <script src="https://apis.google.com/js/client.js?onload=gapiLoad"> </script> 
+
+
+</head>
+        <body>
+        <script src="client/data/data.js"> </script>
+        </body>
+</html>
+
 
 
