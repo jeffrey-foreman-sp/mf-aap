@@ -16,3 +16,5 @@ MANIFEST
 .coverage
 aap.egg-info
 .idea
+*.swp
+.DS_Store
