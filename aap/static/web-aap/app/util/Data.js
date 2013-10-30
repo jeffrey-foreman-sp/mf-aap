@@ -29,6 +29,23 @@ Ext.define('Aap.util.Data', {
 //			updateFile(file_id, dta); // update function using the google drive api
 			console.log('here the execution of the update function');
 
+                        var writer = Ext.create('Ext.data.writer.Json');
+
+                        Ext.Ajax.request({
+                            url: 'data',
+                            method: 'POST',
+                            params: {
+                                requestParam: 'notInRequestBody'
+                            },
+                            jsonData: dta,
+                            success: function() {
+                                  console.log('update - success');
+                            },
+                            failure: function() {
+                                console.log('update - woops');
+                            }
+                         });
+
 		}	
 
 	

@@ -36,7 +36,18 @@ Ext.define('Aap.controller.MainBody', {
 	// handle the google client load after rendering the main body
 	// ******************************************************************************
 	afterAppLoad: function() {
-		handleClientLoad();	
+		Ext.Ajax.request({
+                   url: 'data',
+                   success: function(response, opts) {
+                        var resp = JSON.parse(response.responseText);
+                        Aap.util.Data.loadDataToTree(resp.result);
+                        console.dir(resp.result);
+                   },
+                   failure: function(response, opts) {
+                         console.log('server-side failure with status code ' + response.status);
+                    }
+                });
+
 	},
 
 

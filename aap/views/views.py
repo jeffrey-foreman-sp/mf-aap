@@ -145,11 +145,21 @@ def get_tree(request):
 def post_tree(request):
     acl = has_permission('post', request.context, request)
 
-    post_data = request.POST
+    json_data = request.json
 
     if isinstance(acl, (ACLAllowed,Allowed)):
         # update authorized
         # FIXME save the file!
+        content = ''
+        try:
+            conn = S3Connection(os.environ['AAPTOOLS_ACCESS_KEY_ID'],
+                            os.environ['AAPTOOLS_SECRET_KEY'])
+            bucket = conn.get_bucket('aaptools')
+            k = Key(bucket)
+            k.key = 'data.js'
+            k.set_contents_from_string(json.dumps(json_data))
+        except:
+            return HTTPBadGateway('Cannot connect or get data from backend')
         return {'result':'ok'}
 
     else:
@@ -166,9 +176,9 @@ def authorized(request):
 
 @view_config(route_name='home')
 def home(request):
-
+    debug = True if request.params.get('debug') is not None else False
     userid = authenticated_userid(request) 
 
     return render_to_response('aap:templates/home.mako',
-                              {'userid':userid},
+                              {'userid':userid, 'debug': debug},
                               request=request)
