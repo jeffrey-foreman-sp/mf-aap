@@ -1,3 +1,5 @@
+
+import os
 from pyramid.response import Response
 from pyramid.view import view_config
 from pyramid.view import forbidden_view_config
@@ -18,10 +20,11 @@ from pyramid.security import authenticated_userid,unauthenticated_userid
 from pyramid.security import forget
 from pyramid.security import remember
 
-from pyramid.httpexceptions import HTTPForbidden
-from pyramid.httpexceptions import HTTPFound
-from pyramid.httpexceptions import HTTPNotFound
+from pyramid.httpexceptions import HTTPForbidden, HTTPFound, HTTPNotFound, HTTPInternalServerError
 
+import json
+from boto.s3.connection import S3Connection
+from boto.s3.key import Key
 
 # Some interesting doc/project using security
 #
@@ -122,7 +125,20 @@ def forbidden(request):
 
 @view_config(route_name='data', request_method='GET', renderer='json')
 def get_tree(request):
-      return {'content':'Hello!'}
+   
+    try:
+        conn = S3Connection(os.environ['AAPTOOLS_ACCESS_KEY_ID'],
+                            os.environ['AAPTOOLS_SECRET_KEY'])
+ 
+        bucket = conn.get_bucket('aaptools') 
+        k = Key(bucket)
+        k.key = 'data.js'
+        content = k.get_contents_as_string()
+    except:
+        return HTTPInternalServerError()
+
+    return {"result": json.loads(content)}
+    
 
 # FIXME This is ugly, depending if the user is logged or not, this method
 # returns an error or success. How to do it better ?
