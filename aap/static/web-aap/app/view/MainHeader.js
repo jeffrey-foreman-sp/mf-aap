@@ -41,8 +41,7 @@ Ext.define('Aap.view.MainHeader',{
 					text: 'Bearbeiten',
 					id: 'toggleedit',
 					action: 'toggleedit',
-					hidden: true,
-					hidden: true,
+					hidden: false,
 					pressed: false
 				},{
 					xtype: 'button',
