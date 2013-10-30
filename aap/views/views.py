@@ -166,9 +166,9 @@ def authorized(request):
 
 @view_config(route_name='home')
 def home(request):
-
+    debug = True if request.params.get('debug') is not None else False
     userid = authenticated_userid(request) 
 
     return render_to_response('aap:templates/home.mako',
-                              {'userid':userid},
+                              {'userid':userid, 'debug': debug},
                               request=request)
