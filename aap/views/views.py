@@ -120,14 +120,14 @@ def auth(request):
 def forbidden(request):
     return Response('forbidden')
 
-@view_config(route_name='tree', request_method='GET', renderer='json')
+@view_config(route_name='data', request_method='GET', renderer='json')
 def get_tree(request):
       return {'content':'Hello!'}
 
 # FIXME This is ugly, depending if the user is logged or not, this method
 # returns an error or success. How to do it better ?
 
-@view_config(route_name='tree', request_method='POST',renderer='json')
+@view_config(route_name='data', request_method='POST',renderer='json')
 def post_tree(request):
     acl = has_permission('post', request.context, request)
 
