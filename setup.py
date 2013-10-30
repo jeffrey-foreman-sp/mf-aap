@@ -12,6 +12,8 @@ requires = [
     'waitress',
     'authomatic',
     'psycopg2',
+    'boto',
+    'python-openid',
     'SQLAlchemy',
     'transaction',
     'pyramid_tm',
