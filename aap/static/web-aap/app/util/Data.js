@@ -15,8 +15,9 @@ Ext.define('Aap.util.Data', {
 		//***********************************************************
 		storeToJson: function(iTreeStore) {
 			var s =	new Aap.util.TreeSerializer(iTreeStore)
-			var serialized = JSON.stringify(s.toString());	
-			return serialized;
+                        var root = s.tree.getRootNode();
+
+                        return root.serialize().children;
 		},
 
 
@@ -25,24 +26,18 @@ Ext.define('Aap.util.Data', {
 		//***********************************************************
 		updateAapData: function() {
 			var store = Ext.getStore('AapStore');
-			var dta = Aap.util.Data.storeToJson(store);
-//			updateFile(file_id, dta); // update function using the google drive api
-			console.log('here the execution of the update function');
-
-                        var writer = Ext.create('Ext.data.writer.Json');
+			var json = Aap.util.Data.storeToJson(store);
+			//console.log('here the execution of the update function');
 
                         Ext.Ajax.request({
                             url: 'data',
                             method: 'POST',
-                            params: {
-                                requestParam: 'notInRequestBody'
-                            },
-                            jsonData: dta,
+                            jsonData: json,
                             success: function() {
-                                  console.log('update - success');
+                                  console.log('upadateAapDate - success');
                             },
                             failure: function() {
-                                console.log('update - woops');
+                                console.log('updateAapData - error');
                             }
                          });
 

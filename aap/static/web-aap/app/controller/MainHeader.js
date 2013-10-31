@@ -35,7 +35,8 @@ Ext.define('Aap.controller.MainHeader', {
 	onEditButtonClick: function(button, pressed) {
 
 		if(button.pressed==true){
-		
+		         // saving
+                         Aap.util.Data.updateAapData();
 			// toggle header button
   	 		button.setText('Bearbeiten');
 			button.toggle(false);
