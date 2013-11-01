@@ -6,18 +6,35 @@ Ext.define('Aap.controller.MainHeader', {
 
     init: function() {
         this.control({
-			'mainheader button[action=openinfo]': {
-                click: this.onInfoClick
-			},	
-			'mainheader button[action=toggleedit]': {
-                click: this.onEditButtonClick
-			},	
-			'mainheader button[action=login]': {
+		'mainheader button[action=openinfo]': {
+                    click: this.onInfoClick
+		},	
+		'mainheader button[action=toggleedit]': {
+                    click: this.onEditButtonClick
+		},	
+		'mainheader button[action=login]': {
            	// 	render: this.renderLoginButton,
-         //     	toggle: this.toggleLoginButton ,
-				click: this.onLoginButtonClick
-			}	
-		});
+                //     	toggle: this.toggleLoginButton ,
+                    afterrender: this.onEditButtonBeforeRender,
+		    click: this.onLoginButtonClick
+		}	
+	});
+    },
+    onEditButtonBeforeRender: function(button) {
+        console.log('user', userid, button);
+        if (userid) {
+            Ext.getCmp('login').setText('Abmelden');
+            var  editButton = Ext.ComponentQuery.query('mainheader button[action=toggleedit]')[0]
+            editButton.setText('Bearbeiten');
+            editButton.toggle(false);
+            editButton.show();
+
+            Ext.getCmp('createbutton').show();
+            Ext.getCmp('editbutton').show();
+            Ext.getCmp('removebutton').show();
+            Ext.getCmp('exportbutton').hide();
+       }
+
     },
 
 
@@ -53,8 +70,10 @@ Ext.define('Aap.controller.MainHeader', {
 	
     	else {
 			function enableEdit(authResult) {
-                            console.log('enable edit');
+                            console.log('enable edit for '+ userid);
 				//if (authResult && !authResult.error) {
+                                if (userid) {
+                                        console.log('found userid', userid);
 					// Access token has been successfully retrieved, requests can be sent to the API.
 				
 					// toggle header button
@@ -69,11 +88,13 @@ Ext.define('Aap.controller.MainHeader', {
 				
 					// unlock drag&drop
 					Ext.getCmp('treestructure').getView().getPlugin().dragZone.unlock();
-			 //	}
+			 	}
 			}
 			// check wherter the user is logged in
 			//checkAuthImmediate(enableEdit);
-			enableEdit();
+                        if (userid) {
+			    enableEdit();
+                       }
 		}
 
 	},
@@ -87,7 +108,7 @@ Ext.define('Aap.controller.MainHeader', {
                         console.log('go to logout');
 			//googleLogout();
                         window.location.href='/logout';
-			Ext.getCmp('login').setText('Anmelden');
+			Ext.getCmp('login').setText('Abmelden');
             
 			var  editButton = Ext.ComponentQuery.query('mainheader button[action=toggleedit]')[0]
 	 		editButton.setText('Bearbeiten');
@@ -106,7 +127,7 @@ Ext.define('Aap.controller.MainHeader', {
 		else {
 			//checkAuth(handleAuthResult);
 			console.log('go to login');
-                        //window.location.href='/auth/google';
+                        window.location.href='/auth/google';
 		}
 	}
 
