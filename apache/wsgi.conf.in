@@ -26,21 +26,13 @@ AddOutputFilterByType DEFLATE text/html text/plain text/xml
 # http://code.google.com/p/modwsgi/wiki/FrequentlyAskedQuestions#Access_Control_Mechanisms
 WSGIPassAuthorization On
 
-# Static files with aggressive cache:
-RewriteRule ^/${vars:instanceid}/wsgi/[0-9a-fA-F]*/(static)/(.*)$  ${buildout:directory/chsdi/$1/$2}
-RewriteRule ^/${vars:instanceid}/wsgi/(static)/(.*)$  ${buildout:directory/chsdi/$1/$2}
-<LocationMatch "/${vars:instanceid}/wsgi/[0-9a-fA-F]*/(static)/">
-    ExpiresDefault "now plus 1 year"
-    Header merge Cache-Control "public"
-    Header unset Etag
-</LocationMatch>
 
 RewriteRule ^${vars:apache-entry-point}$ /${vars:instanceid}/wsgi/ [PT]
 
 
 # define a process group
 # WSGIDaemonProcess must be commented/removed when running the project on windows
-WSGIDaemonProcess mf-chsdi3:${vars:instanceid} display-name=%{GROUP} user=${vars:modwsgi_user}
+WSGIDaemonProcess mf-app:${vars:instanceid} display-name=%{GROUP} user=${vars:modwsgi_user}
 
 # define the path to the WSGI app
 WSGIScriptAlias /${vars:instanceid}/wsgi ${buildout:directory/buildout/parts/modwsgi/wsgi}
@@ -50,10 +42,10 @@ WSGIScriptAlias /${vars:instanceid}/wsgi ${buildout:directory/buildout/parts/mod
 # the main interpreter
 <Location /${vars:instanceid}/wsgi>
     # WSGIProcessGroup must be commented/removed when running the project on windows
-    WSGIProcessGroup mf-chsdi3:${vars:instanceid}
+    WSGIProcessGroup mf-app:${vars:instanceid}
     WSGIApplicationGroup %{GLOBAL}
 </Location>
 
-RewriteRule ^${vars:apache-entry-point}(login|logout)(.*)$ /${vars:instanceid}/wsgi/$1$2 [PT]
+RewriteRule ^${vars:apache-entry-point}(login|logout|client|data|auth)(.*)$ /${vars:instanceid}/wsgi/$1$2 [PT]
 
 
