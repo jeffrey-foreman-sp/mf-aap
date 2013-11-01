@@ -10,7 +10,6 @@ requires = [
     'pyramid',
     'pyramid_debugtoolbar',
     'waitress',
-    'authomatic',
     'psycopg2',
     'boto',
     'python-openid',

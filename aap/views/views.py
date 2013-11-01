@@ -1,3 +1,4 @@
+from __future__ import print_function
 import os
 from pyramid.response import Response
 from pyramid.view import view_config
@@ -87,7 +88,6 @@ def auth(request):
         if result.error:
             # Login procedure finished with an error.
             response.write(u'<h2>Damn that error: {}</h2>'.format(result.error.message))
-            response.status_int = result.status
 
         elif result.user:
             # Find a user!

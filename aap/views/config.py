@@ -2,8 +2,8 @@
 
 from authomatic.providers import oauth2, oauth1, openid
 
-CLIENT_ID = '940625885159-orn5jk7gtd350r8987ku7jonm3h0tmkp.apps.googleusercontent.com'
-CLIENT_SECRET = 'ieIHEjaALUhm51c1561BgNa3'
+CLIENT_ID = '940625885159-jpaugeutvv8fidjrs1r4in0hqnsi1mvd.apps.googleusercontent.com'
+CLIENT_SECRET = '7_OztzFGvc2i-wyIDgMZyVyl'
 
 CONFIG = {
     'google': {
