@@ -23,16 +23,13 @@
 
 </head>
 <body>
+<script>
 % if userid:
-    Logged in as ${userid} <br>
-    Try accessing a <a href="authorized">protected ressource</a> or <br />
-    <a href="logout">logout</a><br />
+   var userid =  "${userid}";
 % else:
-   <a href="login">login</a><br />
+   var userid;
 % endif
-
-
-<h1>Welcome to AAP-Tools</h1>
+</script>
         
 </body>
 </html>

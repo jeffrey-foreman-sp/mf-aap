@@ -15,7 +15,7 @@ Ext.define('Aap.controller.Store', {
 	// function in order update the store
 	// ******************************************************************************
 	onAapStoreDataChange: function(me) {
-		Aap.util.Data.updateAapData();
+		// Aap.util.Data.updateAapData();
 	} 
    
 

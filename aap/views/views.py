@@ -19,11 +19,9 @@ from pyramid.security import authenticated_userid,unauthenticated_userid
 from pyramid.security import forget
 from pyramid.security import remember
 
-from pyramid.httpexceptions import HTTPForbidden, HTTPFound, HTTPNotFound, HTTPBadGateway, HTTPInternalServerError
+from pyramid.httpexceptions import HTTPForbidden, HTTPFound, HTTPOk, HTTPBadRequest, HTTPNotFound, HTTPBadGateway, HTTPInternalServerError
 
 import json
-from boto.s3.connection import S3Connection
-from boto.s3.key import Key
 
 # Some interesting doc/project using security
 #
@@ -33,7 +31,7 @@ from boto.s3.key import Key
 
 from config import CONFIG
 
-from aap.models import (User,)
+from aap.models import (User, S3Storage,)
 
 authomatic = Authomatic(config=CONFIG, secret='some random secret string')
 
@@ -68,6 +66,7 @@ def login(request):
 @view_config(route_name='auth')
 def auth(request):
 
+    # return to this after auth
     main_view = request.route_url('home')
     came_from = request.params.get('came_from', main_view)
 
@@ -88,9 +87,10 @@ def auth(request):
         if result.error:
             # Login procedure finished with an error.
             response.write(u'<h2>Damn that error: {}</h2>'.format(result.error.message))
+            response.status_int = result.status
 
         elif result.user:
-            # Hooray, we have the user!
+            # Find a user!
 
             
             # OAuth 2.0 and OAuth 1.0a provide only limited user data on login,
@@ -124,15 +124,11 @@ def forbidden(request):
 
 @view_config(route_name='data', request_method='GET', renderer='json')
 def get_tree(request):
-    
-    content = ''
+
+    s3 = S3Storage()
+
     try:
-        conn = S3Connection(os.environ['AAPTOOLS_ACCESS_KEY_ID'],
-                            os.environ['AAPTOOLS_SECRET_KEY'])
-        bucket = conn.get_bucket('aaptools') 
-        k = Key(bucket)
-        k.key = 'data.js'
-        content = k.get_contents_as_string()
+        content = s3.read()
     except:
         return HTTPBadGateway('Cannot connect or get data from backend')
     return {"result": json.loads(content)}
@@ -145,25 +141,21 @@ def get_tree(request):
 def post_tree(request):
     acl = has_permission('post', request.context, request)
 
-    json_data = request.json
-
     if isinstance(acl, (ACLAllowed,Allowed)):
-        # update authorized
-        # FIXME save the file!
-        content = ''
-        try:
-            conn = S3Connection(os.environ['AAPTOOLS_ACCESS_KEY_ID'],
-                            os.environ['AAPTOOLS_SECRET_KEY'])
-            bucket = conn.get_bucket('aaptools')
-            k = Key(bucket)
-            k.key = 'data.js'
-            k.set_contents_from_string(json.dumps(json_data))
+        try: 
+            data = request.json
+            json_data = json.dumps(data)
         except:
-            return HTTPBadGateway('Cannot connect or get data from backend')
-        return {'result':'ok'}
+            return HTTPBadRequest() 
+        try:
+            s3 = S3Storage()
+            s3.write(json_data)
+        except:
+            return HTTPBadGateway('Cannot connect or write data to backend')
+        return HTTPOk()
 
     else:
-        return {'error':'forbidden'}
+        return HTTPForbidden()
    
   
 # Dummy method, to check authorization    
