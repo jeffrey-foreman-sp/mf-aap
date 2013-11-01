@@ -46,6 +46,6 @@ WSGIScriptAlias /${vars:instanceid}/wsgi ${buildout:directory/buildout/parts/mod
     WSGIApplicationGroup %{GLOBAL}
 </Location>
 
-RewriteRule ^${vars:apache-entry-point}(login|logout|client|data|auth)(.*)$ /${vars:instanceid}/wsgi/$1$2 [PT]
+RewriteRule ^${vars:apache-entry-point}(.*)$ /${vars:instanceid}/wsgi/$1 [PT] 
 
 
