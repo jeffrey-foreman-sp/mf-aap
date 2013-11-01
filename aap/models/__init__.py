@@ -4,7 +4,7 @@ from pyramid.security import (
     Authenticated,
     Allow,
     )
-
+from boto import config
 from boto.s3.connection import S3Connection
 from boto.s3.key import Key
 
@@ -12,8 +12,7 @@ from boto.s3.key import Key
 class S3Storage(object):
 
     def __init__(self,key='data.js'):
-       conn =  S3Connection(os.environ['AAPTOOLS_ACCESS_KEY_ID'],
-                            os.environ['AAPTOOLS_SECRET_KEY'])
+       conn =  S3Connection(config.get('Credentials','aws_access_key_id'), config.get('Credentials','aws_secret_key')) 
        bucket = conn.get_bucket('aaptools')
        k = Key(bucket)
        k.key = 'data.js'

@@ -18,3 +18,4 @@ aap.egg-info
 .idea
 *.swp
 .DS_Store
+boto.cfg

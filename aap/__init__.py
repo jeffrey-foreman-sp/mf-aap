@@ -3,6 +3,8 @@ from pyramid.authorization import ACLAuthorizationPolicy
 from pyramid.session import UnencryptedCookieSessionFactoryConfig
 from pyramid.config import Configurator
 
+import boto
+
 from .models import (
     RootFactory,
     )
@@ -11,6 +13,8 @@ from .models import (
 def main(global_config, **settings):
 
     session_factory = UnencryptedCookieSessionFactoryConfig('itsaseekreet')
+
+    boto.config.load_credential_file(settings['boto_cfg'])
 
     authn_policy = SessionAuthenticationPolicy()
     authz_policy = ACLAuthorizationPolicy()
