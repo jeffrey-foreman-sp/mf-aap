@@ -11,11 +11,11 @@ from boto.s3.key import Key
 
 class S3Storage(object):
 
-    def __init__(self,key='data.js'):
+    def __init__(self,keyname='dev/data.js', bucketname='mf-aap'):
        conn =  S3Connection(config.get('Credentials','aws_access_key_id'), config.get('Credentials','aws_secret_key')) 
-       bucket = conn.get_bucket('aaptools')
+       bucket = conn.get_bucket(bucketname)
        k = Key(bucket)
-       k.key = 'data.js'
+       k.key = keyname
        self._key = k
 
     def read(self):

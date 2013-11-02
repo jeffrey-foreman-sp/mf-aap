@@ -3,6 +3,8 @@ from pyramid.authorization import ACLAuthorizationPolicy
 from pyramid.session import UnencryptedCookieSessionFactoryConfig
 from pyramid.config import Configurator
 
+from aap.lib.helpers import parse_credentials
+
 import boto
 
 from .models import (
@@ -12,9 +14,18 @@ from .models import (
 
 def main(global_config, **settings):
 
-    session_factory = UnencryptedCookieSessionFactoryConfig('itsaseekreet')
+    session_factory = UnencryptedCookieSessionFactoryConfig('48323cea93b8455b91f10f760d033688')
 
-    boto.config.load_credential_file(settings['boto_cfg'])
+    credentials = parse_credentials()
+
+    import ConfigParser
+    if not boto.config.has_section('Credentials'):
+        boto.config.add_section('Credentials')
+
+    
+    boto.config.set('Credentials','aws_access_key_id',credentials['Access Key Id'])
+    boto.config.set('Credentials','aws_secret_key',credentials['Secret Access Key'])
+    boto.config.set('Credentials','username',credentials['User Name'])
 
     authn_policy = SessionAuthenticationPolicy()
     authz_policy = ACLAuthorizationPolicy()

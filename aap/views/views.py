@@ -120,8 +120,8 @@ def forbidden(request):
 @view_config(route_name='data', request_method='GET', renderer='json')
 def get_tree(request):
 
-    s3 = S3Storage()
-
+    s3 = S3Storage(keyname=request.registry.settings['data_js'],
+                   bucketname=request.registry.settings['bucket'])
     try:
         content = s3.read()
     except:
@@ -143,7 +143,8 @@ def post_tree(request):
         except:
             return HTTPBadRequest() 
         try:
-            s3 = S3Storage()
+            s3 = S3Storage(keyname=request.registry.settings['data_js'],
+                           bucketname=request.registry.settings['bucket'] )
             s3.write(json_data)
         except:
             return HTTPBadGateway('Cannot connect or write data to backend')
