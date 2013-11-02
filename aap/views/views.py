@@ -30,8 +30,6 @@ import json
 # http://docs.pylonsproject.org/projects/pyramid/en/1.5-branch/tutorials/wiki2/authorization.html
 
 
-from config import CONFIG
-
 from aap.models import (User, S3Storage,)
 
 
