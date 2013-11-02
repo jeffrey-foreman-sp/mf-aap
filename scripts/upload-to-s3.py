@@ -27,13 +27,14 @@ def upload(data_file, stagging='dev'):
     conn =  S3Connection(config.get('Credentials','aws_access_key_id'), config.get('Credentials','aws_secret_key'))
     
     bucket = conn.get_bucket('mf-aap')
+    bucket.configure_versioning(True)
     k = Key(bucket)
     k.key = '%s/data.js' % stagging
 
-    #print len(k.get_contents_as_string())
 
 
-    with open(data_file) as file:   # Use file to refer to the file object
+
+    with open(data_file) as file:  
         data = file.read()
         k.set_contents_from_string(data)
 
