@@ -21,3 +21,4 @@ aap.egg-info
 .DS_Store
 boto.cfg
 client_secrets.json
+credentials.csv
