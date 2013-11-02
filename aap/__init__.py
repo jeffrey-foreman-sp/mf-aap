@@ -11,21 +11,19 @@ from .models import (
     RootFactory,
     )
 
+credentials = parse_credentials()
 
 def main(global_config, **settings):
 
     session_factory = UnencryptedCookieSessionFactoryConfig('48323cea93b8455b91f10f760d033688')
 
-    credentials = parse_credentials()
-
-    import ConfigParser
+    boto.config.load_credential_file(settings['boto_cfg'])
     if not boto.config.has_section('Credentials'):
         boto.config.add_section('Credentials')
 
-    
-    boto.config.set('Credentials','aws_access_key_id',credentials['Access Key Id'])
-    boto.config.set('Credentials','aws_secret_key',credentials['Secret Access Key'])
-    boto.config.set('Credentials','username',credentials['User Name'])
+    #boto.config.set('Credentials','aws_access_key_id',credentials['Access Key Id'])
+    #boto.config.set('Credentials','aws_secret_key',credentials['Secret Access Key'])
+    #boto.config.set('Credentials','username',credentials['User Name'])
 
     authn_policy = SessionAuthenticationPolicy()
     authz_policy = ACLAuthorizationPolicy()
