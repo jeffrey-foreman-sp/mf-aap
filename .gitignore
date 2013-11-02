@@ -1,4 +1,5 @@
 *.pyc
+*.pyo
 *.war
 *.ini
 *.mo
@@ -19,3 +20,4 @@ aap.egg-info
 *.swp
 .DS_Store
 boto.cfg
+client_secrets.json

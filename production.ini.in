@@ -2,6 +2,7 @@
 use = egg:aap
 
 boto_cfg = ${buildout:directory}/boto.cfg
+client_secrets.json = ${buildout:directory}/client_secrets.json
 
 
 [server:main]

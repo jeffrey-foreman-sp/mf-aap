@@ -1,10 +1,11 @@
+from __future__ import print_function
 import os
 from pyramid.response import Response
 from pyramid.view import view_config
 from pyramid.view import forbidden_view_config
 
-from authomatic import Authomatic
-from authomatic.adapters import WebObAdapter
+from oauth2client.client import flow_from_clientsecrets
+
 
 from pyramid.security import Everyone
 from pyramid.security import Authenticated
@@ -32,8 +33,6 @@ import json
 from config import CONFIG
 
 from aap.models import (User, S3Storage,)
-
-authomatic = Authomatic(config=CONFIG, secret='some random secret string')
 
 
 @view_config(route_name='hello')
@@ -72,39 +71,35 @@ def auth(request):
 
     # We will need the response to pass it to the WebObAdapter.
     response = Response()
+    code = request.params.get('code', None)
 
-    # Get the internal provider name URL variable.
-    provider_name = request.matchdict.get('provider_name')
+    user_info_scope = ['https://www.googleapis.com/auth/userinfo.profile',
+                                       'https://www.googleapis.com/auth/userinfo.email']
 
-    # Start the login procedure.
-    result = authomatic.login(WebObAdapter(request, response), provider_name)
+    flow = flow_from_clientsecrets(request.registry.settings['client_secrets.json'],
+                                   scope=user_info_scope,
+                                   redirect_uri=request.path_url)
 
-    # Do not write anything to the response if there is no result!
-    if result:
-        # If there is result, the login procedure is over and we can write to response.
+    if code is None:
+        # Get the internal provider name URL variable.
+        provider_name = request.matchdict.get('provider_name')
+
+        auth_uri = flow.step1_get_authorize_url()
+                
+        return HTTPFound(location=auth_uri)
+    else:
+        credentials = flow.step2_exchange(code)
         response.write('<a href="..">Home</a>')
 
-        if result.error:
-            # Login procedure finished with an error.
-            response.write(u'<h2>Damn that error: {}</h2>'.format(result.error.message))
-            response.status_int = result.status
-
-        elif result.user:
-            # Find a user!
-
+        if credentials.id_token:
             
-            # OAuth 2.0 and OAuth 1.0a provide only limited user data on login,
-            # We need to update the user to get more info.
-            if not (result.user.name and result.user.id):
-                result.user.update()
+            request.session['id'] = credentials.id_token.get('id')
 
-            request.session['id'] = result.user.id
-
-            login = result.user.email
+            login = credentials.id_token.get('email')
             
             if User.is_known(login):
                 
-                headers = remember(request, result.user.email)
+                headers = remember(request, login)
                 request.session.flash(u'Logged in successfully.')
                 return HTTPFound(location=came_from, headers=headers)
 
