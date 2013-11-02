@@ -4,7 +4,7 @@ from pyramid.response import Response
 from pyramid.view import view_config
 from pyramid.view import forbidden_view_config
 
-from oauth2client.client import flow_from_clientsecrets
+from oauth2client.client import flow_from_clientsecrets, FlowExchangeError
 
 
 from pyramid.security import Everyone
@@ -20,7 +20,7 @@ from pyramid.security import authenticated_userid,unauthenticated_userid
 from pyramid.security import forget
 from pyramid.security import remember
 
-from pyramid.httpexceptions import HTTPForbidden, HTTPFound, HTTPOk, HTTPBadRequest, HTTPNotFound, HTTPBadGateway, HTTPInternalServerError
+from pyramid.httpexceptions import HTTPForbidden, HTTPUnauthorized, HTTPFound, HTTPOk, HTTPBadRequest, HTTPNotFound, HTTPBadGateway, HTTPInternalServerError
 
 import json
 
@@ -72,6 +72,7 @@ def auth(request):
     # We will need the response to pass it to the WebObAdapter.
     response = Response()
     code = request.params.get('code', None)
+    credentials = None
 
     user_info_scope = ['https://www.googleapis.com/auth/userinfo.profile',
                                        'https://www.googleapis.com/auth/userinfo.email']
@@ -88,10 +89,12 @@ def auth(request):
                 
         return HTTPFound(location=auth_uri)
     else:
-        credentials = flow.step2_exchange(code)
-        response.write('<a href="..">Home</a>')
+        try:
+            credentials = flow.step2_exchange(code)
+        except FlowExchangeError:
+            return HTTPUnauthorized(location=came_from)
 
-        if credentials.id_token:
+        if credentials is not None and credentials.id_token:
             
             request.session['id'] = credentials.id_token.get('id')
 
@@ -102,6 +105,8 @@ def auth(request):
                 headers = remember(request, login)
                 request.session.flash(u'Logged in successfully.')
                 return HTTPFound(location=came_from, headers=headers)
+            else:
+                return Response(body='<h1>401 Unauthorized</h1>You may not edit. Return to <a href="/">home</a>',status='401 Unauthorized', status_code=401)
 
                 
     # FIXME 
