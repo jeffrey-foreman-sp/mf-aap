@@ -3,7 +3,8 @@ use = egg:aap
 
 boto_cfg = ${buildout:directory}/boto.cfg
 client_secrets.json = ${buildout:directory}/client_secrets.json
-
+data_js=${vars:stagging}/data.js
+bucket=mf-aap
 
 [server:main]
 use = egg:pyramid#wsgiref
