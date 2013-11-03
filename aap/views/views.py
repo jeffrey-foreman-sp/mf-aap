@@ -42,13 +42,14 @@ def hello(request):
                               request=request)
     
     
-@view_config(permission='post', route_name='logout')
+@view_config(route_name='logout')
 def logout(request):
     request.session.invalidate()
     request.session.flash(u'Logged out successfully.')
     headers = forget(request)
     
-    return HTTPFound(location=request.route_url('home'), headers=headers)
+    return HTTPFound(location=request.route_url('home').replace(request.registry.settings['wsgi_path'],''), 
+               headers=headers)
 
 
 
@@ -65,23 +66,24 @@ def auth(request):
 
     # return to this after auth
     main_view = request.route_url('home')
-    came_from = request.params.get('came_from', main_view)
+    came_from = request.params.get('came_from', main_view).replace(request.registry.settings['wsgi_path'],'')
+    provider_name = request.matchdict.get('provider_name')
 
     # We will need the response to pass it to the WebObAdapter.
     response = Response()
     code = request.params.get('code', None)
     credentials = None
+    redirect_to = request.route_url('auth', provider_name=provider_name).replace(request.registry.settings['wsgi_path'],'')
 
     user_info_scope = ['https://www.googleapis.com/auth/userinfo.profile',
                                        'https://www.googleapis.com/auth/userinfo.email']
 
     flow = flow_from_clientsecrets(request.registry.settings['client_secrets.json'],
                                    scope=user_info_scope,
-                                   redirect_uri=request.path_url)
+                                   redirect_uri=redirect_to)
 
     if code is None:
         # Get the internal provider name URL variable.
-        provider_name = request.matchdict.get('provider_name')
 
         auth_uri = flow.step1_get_authorize_url()
                 
@@ -173,3 +175,4 @@ def home(request):
     return render_to_response('aap:templates/home.mako',
                               {'userid':userid, 'debug': debug},
                               request=request)
+
