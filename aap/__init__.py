@@ -1,6 +1,6 @@
 from pyramid.authentication import SessionAuthenticationPolicy
 from pyramid.authorization import ACLAuthorizationPolicy
-from pyramid.session import UnencryptedCookieSessionFactoryConfig
+from pyramid_beaker import session_factory_from_settings
 from pyramid.config import Configurator
 
 from aap.lib.helpers import parse_credentials
@@ -15,8 +15,8 @@ credentials = parse_credentials()
 
 def main(global_config, **settings):
 
-    session_factory = UnencryptedCookieSessionFactoryConfig('48323cea93b8455b91f10f760d033688')
-
+    session_factory = session_factory_from_settings(settings)
+    
     boto.config.load_credential_file(settings['boto_cfg'])
     if not boto.config.has_section('Credentials'):
         boto.config.add_section('Credentials')

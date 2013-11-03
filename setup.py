@@ -9,6 +9,7 @@ requires = [
     'webtest',
     'pyramid',
     'pyramid_debugtoolbar',
+    'pyramid_beaker',
     'google-api-python-client',
     'waitress',
     'boto',
