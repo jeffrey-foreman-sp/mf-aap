@@ -34,7 +34,6 @@ RewriteRule ^${vars:apache-entry-point}(.*)$ /${vars:instanceid}/wsgi/$1 [PT]
 # Main entry
 RewriteRule ^${vars:apache-entry-point}$ /${vars:instanceid}/wsgi/ [PT]
 
-
 # define a process group
 # WSGIDaemonProcess must be commented/removed when running the project on windows
 WSGIDaemonProcess mf-app:${vars:instanceid} display-name=%{GROUP} user=${vars:modwsgi_user}
