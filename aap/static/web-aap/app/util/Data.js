@@ -34,10 +34,16 @@ Ext.define('Aap.util.Data', {
                             method: 'POST',
                             jsonData: json,
                             success: function() {
-                                  console.log('upadateAapDate - success');
+                                  Ext.MessageBox.alert('Status', 'Datei wurden erfolgreich gespeichert.');
                             },
                             failure: function() {
-                                console.log('updateAapData - error');
+                                Ext.MessageBox.show({
+                                    title: 'Fehler beim Uploaden',
+                                    msg: 'Die Dateien konnten nicht gespeichert werden',
+                                    buttons: Ext.MessageBox.OK,
+                                    animateTarget: 'mb9',
+                                    icon: Ext.MessageBox.ERROR
+                                });
                             }
                          });
 
