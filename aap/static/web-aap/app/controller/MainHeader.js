@@ -21,7 +21,6 @@ Ext.define('Aap.controller.MainHeader', {
 	});
     },
     onEditButtonBeforeRender: function(button) {
-        console.log('user', userid, button);
         if (userid) {
             Ext.getCmp('login').setText('Abmelden');
             var  editButton = Ext.ComponentQuery.query('mainheader button[action=toggleedit]')[0]
@@ -70,10 +69,8 @@ Ext.define('Aap.controller.MainHeader', {
 	
     	else {
 			function enableEdit(authResult) {
-                            console.log('enable edit for '+ userid);
 				//if (authResult && !authResult.error) {
                                 if (userid) {
-                                        console.log('found userid', userid);
 					// Access token has been successfully retrieved, requests can be sent to the API.
 				
 					// toggle header button
@@ -105,7 +102,6 @@ Ext.define('Aap.controller.MainHeader', {
 	// ******************************************************************************
 	onLoginButtonClick: function() {
 		if (Ext.getCmp('login').pressed == true) {
-                        console.log('go to logout');
 			//googleLogout();
                         window.location.href='/logout';
 			Ext.getCmp('login').setText('Abmelden');
@@ -126,7 +122,6 @@ Ext.define('Aap.controller.MainHeader', {
 		}
 		else {
 			//checkAuth(handleAuthResult);
-			console.log('go to login');
                         window.location.href='/auth/google';
 		}
 	}
