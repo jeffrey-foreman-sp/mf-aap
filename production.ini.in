@@ -5,6 +5,7 @@ boto_cfg = ${buildout:directory}/boto.cfg
 client_secrets.json = ${buildout:directory}/client_secrets.json
 data_js=${vars:stagging}/data.js
 bucket=mf-aap
+wsgi_path=/${vars:instanceid}/wsgi
 
 [server:main]
 use = egg:pyramid#wsgiref
