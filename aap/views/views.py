@@ -30,7 +30,7 @@ import json
 # http://docs.pylonsproject.org/projects/pyramid/en/1.5-branch/tutorials/wiki2/authorization.html
 
 
-from aap.models import (User, S3Storage,)
+from aap.models import (DBSession, User, S3Storage,)
 
 
 @view_config(route_name='hello')
@@ -100,7 +100,7 @@ def auth(request):
 
             login = credentials.id_token.get('email')
             
-            if User.is_known(login):
+            if DBSession.query(User).get(login) is not None:
                 
                 headers = remember(request, login)
                 request.session.flash(u'Logged in successfully.')
