@@ -22,3 +22,5 @@ aap.egg-info
 boto.cfg
 client_secrets.json
 credentials.csv
+data/*
+data/sessions/*
