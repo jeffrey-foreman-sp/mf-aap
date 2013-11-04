@@ -9,11 +9,22 @@ import boto
 
 from .models import (
     RootFactory,
+    DBSession,
+    Base,
     )
+
+
+from sqlalchemy import engine_from_config
+
 
 credentials = parse_credentials()
 
 def main(global_config, **settings):
+
+    # SQL
+    engine = engine_from_config(settings, 'sqlalchemy.')
+    DBSession.configure(bind=engine)
+    Base.metadata.bind = engine
 
     session_factory = session_factory_from_settings(settings)
     
