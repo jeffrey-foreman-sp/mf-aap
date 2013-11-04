@@ -11,6 +11,9 @@ requires = [
     'pyramid_debugtoolbar',
     'pyramid_beaker',
     'google-api-python-client',
+    'SQLAlchemy',
+    'transaction',
+    'zope.sqlalchemy',
     'waitress',
     'boto',
     'python-openid',
@@ -49,6 +52,8 @@ setup(name='aap',
       entry_points="""\
       [paste.app_factory]
       main = aap:main
+      [console_scripts]
+      initialize_aap_db = aap.scripts.initializedb:main
       """,
       )
 
