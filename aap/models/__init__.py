@@ -48,8 +48,10 @@ class Lock(object):
                aws_secret_access_key=config.get('Credentials','aws_secret_key'))
        self.domain = self.db.create_domain('mf-aap')
 
-
-    def acquireLock(self,id , lockDurationSeconds=900, acquireTimeoutSeconds=0.2,username=None):
+    def is_locked(self,id):
+        return self.db.get_attributes(self.domain, id, consistent_read=True)
+        
+    def acquire(self,id , lockDurationSeconds=900, acquireTimeoutSeconds=0.2,username=None):
         
         lockId         = uuid.uuid4()
         acquireTimeout = time.time() + acquireTimeoutSeconds
@@ -72,11 +74,11 @@ class Lock(object):
         #raise SystemError("Unable to obtain lock for: %s" % id)
         return None
 
-    def releaseLock(self, id, lockId):
+    def release(self, id, username):
         """ Releases previously acquired lock. id - ID of object to lock.  lockId - Lock ID returned from acquireLock() """
-        print "releaseLock(%s, %s)" % (id, lockId)
+        #print "releaseLock(%s, %s)" % (id, lockId)
         try:
-            return self.db.delete_attributes(self.domain, id, [ 'timeout', 'lockId','username' ], expected_value=['lockId', lockId])
+            return self.db.delete_attributes(self.domain, id, [ 'timeout', 'lockId','username' ], expected_value=['username', username])
         except boto.exception.SDBResponseError, e:
             if e.status == 404 or e.status == 409:
                 return False
