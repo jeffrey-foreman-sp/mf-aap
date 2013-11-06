@@ -41,7 +41,8 @@ def main(global_config, **settings):
     config.add_route('home', '/')
     config.add_route('hello', '/hello')
     #config.add_view(home, route_name='home')
-    config.add_route('data', '/data')
+    config.add_route('view_data', '/data')
+    config.add_route('edit_data', '/data/edit')
 
     config.add_route('authorized', '/authorized')
     #config.add_view(authorized, route_name='authorized')
@@ -49,7 +50,7 @@ def main(global_config, **settings):
     config.add_route('login', '/login')
     config.add_route('auth', '/auth/{provider_name}')
     config.add_route('logout', '/logout')
-    config.add_route('lock', '/lock')
+    config.add_route('is_locked', '/is_locked')
     config.add_route('unlock', '/unlock')
     config.add_static_view('client', 'aap:static/web-aap', cache_max_age=0)
     config.add_static_view('app', 'aap:static/web-aap/app', cache_max_age=0)

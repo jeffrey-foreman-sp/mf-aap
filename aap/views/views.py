@@ -17,20 +17,15 @@ from pyramid.security import ALL_PERMISSIONS
 from pyramid.security import Allow
 from pyramid.security import Authenticated
 from pyramid.security import authenticated_userid,unauthenticated_userid
-from pyramid.security import forget
-from pyramid.security import remember
+from pyramid.security import forget, remember
 
-from pyramid.httpexceptions import HTTPForbidden, HTTPUnauthorized, HTTPFound, HTTPOk, HTTPBadRequest, HTTPNotFound, HTTPBadGateway, HTTPInternalServerError
+
+from pyramid.httpexceptions import HTTPForbidden, HTTPUnauthorized, HTTPFound, HTTPOk, HTTPBadRequest, HTTPNotFound, HTTPBadGateway, HTTPInternalServerError, HTTPConflict
 
 import json
 
-# Some interesting doc/project using security
-#
-# https://github.com/Pylons/shootout/
-# http://docs.pylonsproject.org/projects/pyramid/en/1.5-branch/tutorials/wiki2/authorization.html
 
-
-from aap.models import (User, S3Storage,)
+from aap.models import (User, S3Storage,Lock,)
 
 
 @view_config(route_name='hello')
@@ -121,8 +116,8 @@ def auth(request):
 def forbidden(request):
     return Response('forbidden')
 
-@view_config(route_name='data', request_method='GET', renderer='json')
-def get_tree(request):
+@view_config(route_name='view_data', request_method='GET', renderer='json')
+def view_data(request):
 
     s3 = S3Storage(keyname=request.registry.settings['data_js'],
                    bucketname=request.registry.settings['bucket'])
@@ -136,27 +131,63 @@ def get_tree(request):
 # FIXME This is ugly, depending if the user is logged or not, this method
 # returns an error or success. How to do it better ?
 
-@view_config(route_name='data', request_method='POST',renderer='json')
-def post_tree(request):
-    acl = has_permission('post', request.context, request)
+@view_config(route_name='edit_data', permission='post',renderer='json')
+def edit_tree(request):
+    logged_in = authenticated_userid(request)
+    keyname = request.registry.settings['data_js']
+    lock = Lock()
+    
+    if request.method == 'GET':
+        
+        s3 = S3Storage(keyname=keyname,
+                   bucketname=request.registry.settings['bucket'])
+        
+        lock_id = lock.acquire(keyname , lockDurationSeconds=900, acquireTimeoutSeconds=0.2,username=logged_in)
+        if lock_id:
+            try:
+                content = s3.read()
+            except:
+                return HTTPBadGateway('Cannot connect or get data from backend')
+            return {"result": json.loads(content)}
+        else:
+            return HTTPConflict('Resource is already locked')
 
-    if isinstance(acl, (ACLAllowed,Allowed)):
-        try: 
+    elif request.method == 'POST':
+        try:
             data = request.json
             json_data = json.dumps(data)
         except:
-            return HTTPBadRequest() 
+            return HTTPBadRequest()
         try:
             s3 = S3Storage(keyname=request.registry.settings['data_js'],
                            bucketname=request.registry.settings['bucket'] )
             s3.write(json_data)
+            lock_id = lock.release(keyname,username=logged_in)
         except:
             return HTTPBadGateway('Cannot connect or write data to backend')
         return HTTPOk()
 
     else:
-        return HTTPForbidden()
-   
+        return HTTPBadRequest() 
+       
+@view_config(route_name='is_locked', permission='post', renderer='json')
+def is_locked(request):
+    keyname = request.registry.settings['data_js']
+    lock = Lock()
+
+    return lock.is_locked(keyname)
+
+@view_config(route_name='unlock', permission='post')
+def unlock(request):
+    logged_in = authenticated_userid(request)
+    keyname = request.registry.settings['data_js']
+    lock = Lock()
+
+    lock.release(keyname,logged_in)
+
+    return HTTPNotFound()
+
+       
   
 # Dummy method, to check authorization    
 @view_config(route_name='authorized', permission='post')
