@@ -99,8 +99,7 @@ def auth(request):
             request.session['id'] = credentials.id_token.get('id')
 
             login = credentials.id_token.get('email')
-            
-            if User.is_known(login):
+            if User.is_known(login,request.registry.settings['authorized_users']):
                 
                 headers = remember(request, login)
                 request.session.flash(u'Logged in successfully.')
