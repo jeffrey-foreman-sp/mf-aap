@@ -1,4 +1,5 @@
 import os
+import csv
 from pyramid.security import (
     Everyone,
     Authenticated,
@@ -32,10 +33,26 @@ class S3Storage(object):
 
 
 class User(object):
+    @staticmethod
+    def _get_users(filename='users.txt'):
+        if os.path.exists(filename):
+            f = open(filename, 'rw')
+            try:
+                reader = csv.DictReader(f)
+                return reader
+            except:
+                f.close()
+                return None
+        return None 
 
     @classmethod
-    def is_known(cls, username):
-        return username in ['procrastinatio@gmail.com']
+    def is_known(cls, username, filename):
+        users = cls._get_users(filename)
+        if users is not None:
+            for user in users:
+                if username == user.get('email'):
+                    return True
+        return False
 
 class RootFactory(object):
     __acl__ = [
