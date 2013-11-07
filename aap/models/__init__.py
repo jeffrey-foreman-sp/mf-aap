@@ -59,6 +59,7 @@ class Lock(object):
             # Create the lock if it doesn't exist
             lockTimeout    = time.time() + duration
             if self.db.put_attributes(self.domain, id, { 'timeout' : lockTimeout, 'lockId' : lockId,'username':username }, replace=False, expected_value=['lockId', False]):
+                log.debug("New lock - id: %s" % lockId)
                 return lockId
         except boto.exception.SDBResponseError, e:
             if e.status != 404 and e.status != 409:
@@ -66,7 +67,7 @@ class Lock(object):
         # Check for stale lock
         attribs = self.db.get_attributes(self.domain, id, consistent_read=True)
         if attribs.has_key('timeout') and float(attribs['timeout']) < time.time():
-            print "lock timed out - releasing with id: %s" % attribs['lockId']
+            log.debug("Lock timed out - releasing with id: %s" % attribs['lockId'])
             # Lock has timeout
             self.release(id, attribs['lockId'])  
 
@@ -74,7 +75,7 @@ class Lock(object):
 
     def release(self, id, username):
         """ Releases previously acquired lock. id - ID of object to lock.  lockId - Lock ID returned from acquireLock() """
-        #print "releaseLock(%s, %s)" % (id, lockId)
+        log.debug("Lock release (%s, %s)" % (id, lockId))
         try:
             return self.db.delete_attributes(self.domain, id, [ 'timeout', 'lockId','username' ], expected_value=['username', username])
         except boto.exception.SDBResponseError, e:
