@@ -22,19 +22,22 @@ Ext.define('Aap.util.Data', {
 
 
         editAapData: function() {
+            var editable = false;
 
             Ext.Ajax.request({
                url: 'data/edit',
+               async: false,
                success: function(response, opts) {
+                   editable = true;
                    var resp = JSON.parse(response.responseText);
                    Aap.util.Data.loadDataToTree(resp.result);
-                   return true;
                },
                failure: function(response, opts) {
                    console.log('server-side failure with status code ' + response.status);
-                   return false;
+                   editable = false;
                }
             });
+            return editable;
         },
 		//***********************************************************
 		// update the data (on google drive / the server) 
