@@ -51,8 +51,8 @@ Ext.define('Aap.controller.MainHeader', {
 	onEditButtonClick: function(button, pressed) {
 
 		if(button.pressed==true){
-		         // saving
-                         Aap.util.Data.updateAapData();
+		     // saving
+             Aap.util.Data.saveAapData();
 			// toggle header button
   	 		button.setText('Bearbeiten');
 			button.toggle(false);
@@ -69,9 +69,10 @@ Ext.define('Aap.controller.MainHeader', {
 	
     	else {
 			function enableEdit(authResult) {
-				//if (authResult && !authResult.error) {
-                                if (userid) {
-					// Access token has been successfully retrieved, requests can be sent to the API.
+                // Note: 'userid' is only to display the right buttons, authorization is done server-side.
+                if (userid) {
+		            // reload and lock data
+                    Aap.util.Data.editAapData();
 				
 					// toggle header button
 	  		  		button.setText('Bearbeiten abschliessen');
@@ -89,9 +90,9 @@ Ext.define('Aap.controller.MainHeader', {
 			}
 			// check wherter the user is logged in
 			//checkAuthImmediate(enableEdit);
-                        if (userid) {
+            if (userid) {
 			    enableEdit();
-                       }
+            }
 		}
 
 	},
