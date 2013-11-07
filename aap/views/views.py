@@ -142,7 +142,7 @@ def edit_tree(request):
         s3 = S3Storage(keyname=keyname,
                    bucketname=request.registry.settings['bucket'])
         
-        lock_id = lock.acquire(keyname , lockDurationSeconds=900, acquireTimeoutSeconds=0.2,username=logged_in)
+        lock_id = lock.acquire(keyname , duration=900, username=logged_in)
         if lock_id:
             try:
                 content = s3.read()
