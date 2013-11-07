@@ -6,6 +6,7 @@ Ext.define('Aap.view.mainbody.Tree' ,{
 	id: 'tree',
 
 	viewConfig: {
+        markDirty: false,
 		plugins: {
 			ptype: 'treeviewdragdrop',
 			dragText: 'Verschieben und Metadaten anpassen'
