@@ -162,7 +162,7 @@ def edit_tree(request):
             s3 = S3Storage(keyname=request.registry.settings['data_js'],
                            bucketname=request.registry.settings['bucket'] )
             s3.write(json_data)
-            lock_id = lock.release(keyname,username=logged_in)
+            lock_id = lock.release(keyname)
         except:
             return HTTPBadGateway('Cannot connect or write data to backend')
         return HTTPOk()
@@ -183,7 +183,7 @@ def unlock(request):
     keyname = request.registry.settings['data_js']
     lock = Lock()
 
-    lock.release(keyname,logged_in)
+    lock.release(keyname)
 
     return HTTPNotFound()
 
