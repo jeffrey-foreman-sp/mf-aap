@@ -1,10 +1,10 @@
-mf-aap
+mfa-aap
 =====
 Tool for "Aufbewahrungs- und Archivierungsplanung"
 
 # Getting started
 
-Checkout the source code:
+1. Checkout the source code:
 
     git clone https://github.com/geoadmin/mf-aap.git
 
@@ -13,14 +13,20 @@ or when you're using ssh key (see https://help.github.com/articles/generating-ss
     git clone git@github.com:geoadmin/mf-aap.git
 
 
-Bootstrap your build environment:
+2. Bootstrap your build environment:
 
-    python bootstrap.py --version 1.5.2 --distribute --download-base http://pypi.camptocamp.net/distribute-0.6.22_fix-issue-227/ --setup-source http://pypi.camptocamp.net/distribute-0.6.22_fix-issue-227/distribute_setup.py
+    python bootstrap.py --version 1.5.2 --distribute --download-base http://pypi.camptocamp.net/distribute-0.6.22_fix-issue-227/ \
+                 --setup-source http://pypi.camptocamp.net/distribute-0.6.22_fix-issue-227/distribute_setup.py
 
-Create a developer specific build configuration:
+3. Copy the credentials and personal files which are not stored in git
 
-    cp buildout_ltgal.cfg buildout_<username>.cfg 
+- boto.cfg AWS credentials for user "mf-aap" (S3 and SDB)
+- client_secrets.json Google Auth linked to the webgis@swisstopo.ch GMail account
+- users.txt List of users entitled to edit 
 
+4. Create a developer specific build configuration:
+
+    cp buildout_ltmom.cfg buildout_<username>.cfg 
 
 Where "username" is your specific buildout configuration. Don't forget to add this to git. To create the specific build:
 
