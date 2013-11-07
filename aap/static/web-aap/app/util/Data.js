@@ -21,16 +21,30 @@ Ext.define('Aap.util.Data', {
 		},
 
 
+        editAapData: function() {
+
+            Ext.Ajax.request({
+               url: 'data/edit',
+               success: function(response, opts) {
+                   var resp = JSON.parse(response.responseText);
+                   Aap.util.Data.loadDataToTree(resp.result);
+               },
+               failure: function(response, opts) {
+                   console.log('server-side failure with status code ' + response.status);
+               }
+            });
+        },
 		//***********************************************************
 		// update the data (on google drive / the server) 
 		//***********************************************************
-		updateAapData: function() {
+
+		saveAapData: function() {
 			var store = Ext.getStore('AapStore');
 			var json = Aap.util.Data.storeToJson(store);
 			//console.log('here the execution of the update function');
 
                         Ext.Ajax.request({
-                            url: 'data',
+                            url: 'data/edit',
                             method: 'POST',
                             jsonData: json,
                             success: function() {
