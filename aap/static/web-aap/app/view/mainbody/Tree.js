@@ -20,7 +20,7 @@ Ext.define('Aap.view.mainbody.Tree' ,{
 			sortable: false,
 			groupable: false,
 			hidable: false,
-			draggabel: false,
+			draggable: true,
 			menuDisabled: true, 
 			flex: 1 
 		},
