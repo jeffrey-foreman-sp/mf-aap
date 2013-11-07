@@ -28,9 +28,11 @@ Ext.define('Aap.util.Data', {
                success: function(response, opts) {
                    var resp = JSON.parse(response.responseText);
                    Aap.util.Data.loadDataToTree(resp.result);
+                   return true;
                },
                failure: function(response, opts) {
                    console.log('server-side failure with status code ' + response.status);
+                   return false;
                }
             });
         },

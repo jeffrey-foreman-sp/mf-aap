@@ -72,7 +72,9 @@ Ext.define('Aap.controller.MainHeader', {
                 // Note: 'userid' is only to display the right buttons, authorization is done server-side.
                 if (userid) {
 		            // reload and lock data
-                    Aap.util.Data.editAapData();
+                    if (!Aap.util.Data.editAapData()) {
+                        return false;
+                    }
 				
 					// toggle header button
 	  		  		button.setText('Bearbeiten abschliessen');
