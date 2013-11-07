@@ -13,7 +13,8 @@ import boto.sdb
 from boto.s3.connection import S3Connection
 from boto.s3.key import Key
 
-S3Lock = {}
+import logging
+log = logging.getLogger(__name__)
 
 
 
@@ -51,27 +52,24 @@ class Lock(object):
     def is_locked(self,id):
         return self.db.get_attributes(self.domain, id, consistent_read=True)
         
-    def acquire(self,id , lockDurationSeconds=900, acquireTimeoutSeconds=0.2,username=None):
+    def acquire(self,id , duration=900, username=None):
         
-        lockId         = uuid.uuid4()
-        acquireTimeout = time.time() + acquireTimeoutSeconds
-        while time.time() < acquireTimeout:
-            try:
-                # try to create the lock if it doesn't exist
-                lockTimeout    = time.time() + lockDurationSeconds
-                if self.db.put_attributes(self.domain, id, { 'timeout' : lockTimeout, 'lockId' : lockId,'username':username }, replace=False, expected_value=['lockId', False]):
-                    return lockId
-            except boto.exception.SDBResponseError, e:
-                if e.status != 404 and e.status != 409:
-                    raise e
-            # couldn't create lock - check for stale lock
-            attribs = self.db.get_attributes(self.domain, id, consistent_read=True)
-            if attribs.has_key('timeout') and float(attribs['timeout']) < time.time():
-                print "lock timed out - releasing with id: %s" % attribs['lockId']
-                self.releaseLock(id, attribs['lockId'])  # lock has timed out, so delete it
-            time.sleep(0.05)  # sleep and retry
-        # couldn't acquire lock - throw error
-        #raise SystemError("Unable to obtain lock for: %s" % id)
+        lockId = uuid.uuid4()
+        try:
+            # Create the lock if it doesn't exist
+            lockTimeout    = time.time() + duration
+            if self.db.put_attributes(self.domain, id, { 'timeout' : lockTimeout, 'lockId' : lockId,'username':username }, replace=False, expected_value=['lockId', False]):
+                return lockId
+        except boto.exception.SDBResponseError, e:
+            if e.status != 404 and e.status != 409:
+                raise e
+        # Check for stale lock
+        attribs = self.db.get_attributes(self.domain, id, consistent_read=True)
+        if attribs.has_key('timeout') and float(attribs['timeout']) < time.time():
+            print "lock timed out - releasing with id: %s" % attribs['lockId']
+            # Lock has timeout
+            self.release(id, attribs['lockId'])  
+
         return None
 
     def release(self, id, username):
