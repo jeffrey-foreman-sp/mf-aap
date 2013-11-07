@@ -183,9 +183,11 @@ def unlock(request):
     keyname = request.registry.settings['data_js']
     lock = Lock()
 
-    lock.release(keyname)
-
-    return HTTPNotFound()
+    res = lock.release(keyname)
+    if res != False:
+        return HTTPOk('unloked')
+    else:
+        return HTTPNotFound('lock not found')
 
        
   
