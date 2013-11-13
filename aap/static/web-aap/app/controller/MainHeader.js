@@ -27,11 +27,6 @@ Ext.define('Aap.controller.MainHeader', {
             editButton.setText('Bearbeiten');
             editButton.toggle(false);
             editButton.show();
-
-            Ext.getCmp('createbutton').show();
-            Ext.getCmp('editbutton').show();
-            Ext.getCmp('removebutton').show();
-            Ext.getCmp('exportbutton').hide();
        }
 
     },
