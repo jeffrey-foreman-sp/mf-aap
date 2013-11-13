@@ -23,15 +23,16 @@ Ext.define('Aap.view.mainbody.Tree' ,{
 			hidable: false,
 			draggable: false,
 			menuDisabled: true, 
-			flex: 1 
+			flex: 3 
 		},
 		{
         	xtype: 'booleancolumn', 
+            header: 'Vererbungsknoten',
             text: '  ',
-            trueText: 'Vererbungsknoten',
+            trueText: 'Ja',
             falseText: '', 
 			menuDisabled: true,
-			width: 105, 
+			width: 40, 
             dataIndex: 'metanode'
 		}
     ]
