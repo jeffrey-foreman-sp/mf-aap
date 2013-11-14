@@ -43,7 +43,7 @@ Ext.define('Aap.view.modals.dataentry.Allgemein',{
 			fieldLabel: 'Georeferenzdaten',
 			name: 'georefdat'
 		},{		
-			fieldLabel: 'Fachhstelle des Bundes',
+			fieldLabel: 'Fachstelle des Bundes',
 			name: 'fachst'
 		},{		
 			xtype: 'zugberech', 
