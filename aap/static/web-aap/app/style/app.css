@@ -2,3 +2,23 @@
     height: auto !important;
     white-space: normal !important;
 } */
+
+
+.x-dd-drop-ok-add .x-dd-drop-icon {
+      background-image: url(images/dd/drop-between.gif) !important;
+}
+
+.x-tree-drop-ok-append .x-dd-drop-icon {
+     background-image: url(images/tree/drop-between.gif) !important;
+ }
+
+.x-tree-drop-ok-above .x-dd-drop-icon {
+      background-image: url(images/tree/drop-between.gif) !important;
+}
+
+.x-tree-drop-ok-below .x-dd-drop-icon {
+     background-image: url(images/tree/drop-between.gif) !important;
+}
+
+
+
