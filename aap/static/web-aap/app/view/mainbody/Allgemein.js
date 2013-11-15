@@ -30,7 +30,7 @@ Ext.define('Aap.view.mainbody.Allgemein',{
 			fieldLabel: 'Georeferenzdaten',
 			name: 'georefdat'
 		},{		
-			fieldLabel: 'Fachhstelle des Bundes',
+			fieldLabel: 'Fachstelle des Bundes',
 			name: 'fachst'
 		},{		
 			fieldLabel: 'Zugangsberechtigungsstufe',

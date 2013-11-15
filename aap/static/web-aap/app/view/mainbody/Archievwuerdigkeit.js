@@ -63,7 +63,7 @@ Ext.define('Aap.view.mainbody.Archievwuerdigkeit',{
 			labelWidth: 160, 	
 			name: 'arch_arts'
 		},{	
-			fieldLabel: 'Entscheid Archivwürdikeit',
+			fieldLabel: 'Entscheid Archivwürdigkeit',
 			labelWidth: 170, 	
 			name: 'arch_ents'
 		},{		
