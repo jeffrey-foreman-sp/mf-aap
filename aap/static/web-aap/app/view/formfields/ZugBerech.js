@@ -10,7 +10,7 @@ Ext.define('Aap.view.formfields.ZugBerech', {
         ],
         data: [
             ['',  ''],
-			['A', 'öffentlich zugängliche Geobasisdataen'], 
+			['A', 'öffentlich zugängliche Geobasisdaten'], 
 			['B', 'beschränkt öffentlich zugängliche Geobasisdaten'], 
 			['C', 'nicht öffentlich zugängliche Geobasisdaten'] 
 		]  

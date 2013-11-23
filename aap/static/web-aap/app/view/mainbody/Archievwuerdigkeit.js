@@ -30,7 +30,7 @@ Ext.define('Aap.view.mainbody.Archievwuerdigkeit',{
 		},{		
 			xtype: 'container',
 			style: 'margin-top: 20px; color: #606060 ',
-			html: '<div style="margin-bottom: 10px; font-weight: bold;">Weiter Stellen</div>'		
+			html: '<div style="margin-bottom: 10px; font-weight: bold;">Weitere Stellen</div>'		
 		},{		
 			fieldLabel: 'Bewertung r+a',
 			labelWidth: 100, 	
