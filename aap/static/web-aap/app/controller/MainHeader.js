@@ -22,7 +22,7 @@ Ext.define('Aap.controller.MainHeader', {
     },
     onEditButtonBeforeRender: function(button) {
         if (userid) {
-            Ext.getCmp('login').setText('Abmelden ohne Daten speichern');
+            Ext.getCmp('login').setText('Abmelden');
             var  editButton = Ext.ComponentQuery.query('mainheader button[action=toggleedit]')[0]
             editButton.setText('Bearbeiten');
             editButton.toggle(false);
@@ -38,7 +38,6 @@ Ext.define('Aap.controller.MainHeader', {
                          success: function (xhr) {
                              var response = JSON.parse(xhr.responseText);
                              var  editButton = Ext.ComponentQuery.query('mainheader button[action=toggleedit]')[0]
-                              console.log(response.username);
                              if (userid !== undefined && response.username !== undefined && userid !== response.username) {
                                  var lockedLabel = Ext.getCmp('is_locked')
                                  lockedLabel.setText('Gesperrt durch: '  +response.username)
@@ -105,6 +104,7 @@ Ext.define('Aap.controller.MainHeader', {
 					// toggle header button
 	  		  		button.setText('Bearbeiten abschliessen');
 					button.toggle(true);
+                    Ext.getCmp('login').setText('Abmelden ohne Daten speichern');
 				
 					// toggle tree buttons
 	   				Ext.getCmp('createbutton').show();
