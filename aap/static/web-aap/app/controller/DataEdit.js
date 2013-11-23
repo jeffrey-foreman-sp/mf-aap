@@ -8,7 +8,7 @@ Ext.define('Aap.controller.DataEdit', {
     init: function() {
         this.control({
 			'dataedit  dataentryallgemein checkboxfield[name=metanode]': {
-				change: this.metanodeDeclarationChange
+				change: this.metanodeWarning //metanodeDeclarationChange
 			},
             'dataedit':  { 
                 afterrender: this.afterPanelRendered
@@ -19,11 +19,22 @@ Ext.define('Aap.controller.DataEdit', {
         });
     },
 
-
+    metanodeWarning: function() {
+        Ext.create('Ext.window.MessageBox',{
+                buttonText: {
+                    yes : 'Knoteneinstellung wechseln',
+                    no : 'Abbrechen'
+                }
+        }).confirm('Warnung', 'Durch das Wechseln der Knoteneinstellung werden Metadaten gelöscht!<br>Was möchten Sie tun?', function (button) {
+                if (button==='no') return; 
+                    this.metanodeDeclarationChange();
+        }, this);
+    },
 	// ******************************************************************************
 	// enable form fields and load data into it if the "bewertungsknoten" box is checeked
 	// ******************************************************************************
 	metanodeDeclarationChange: function() {
+        console.log('metanodeDeclarationChange');
 		var mn_value = Ext.ComponentQuery.query('dataedit dataentryallgemein checkboxfield[name=metanode]')[0].getValue();
 		if (mn_value == true) {
 			Ext.getCmp('edit_verf').getForm().getFields().each(function(field) {
