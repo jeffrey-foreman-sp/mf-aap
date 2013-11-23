@@ -9,9 +9,9 @@ Ext.define('Aap.view.formfields.BewZs', {
             'full'
         ],
         data: [
-			['N', 'nicht archievwürdig'], 
+			['N', 'nicht archivwürdig'], 
 			['S', 'Sampling / Selektion'], 
-			['A', 'archievwürdig'] 
+			['A', 'archivwürdig'] 
 		]  
 	}),
 	valueField: 'abbr',

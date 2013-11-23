@@ -117,9 +117,9 @@ Ext.define('Aap.util.Properties', {
 		chooseBewertung: function(inp){
 			var out = '';
 			switch (inp){
-				case 'N': out = 'nicht archievwürdig'; break;
+				case 'N': out = 'nicht archivwürdig'; break;
 				case 'S': out = 'Sampling / Selektion'; break;
-				case 'A': out = 'archievwürdig'; break;
+				case 'A': out = 'archivwürdig'; break;
 			}
 			return out;
 		},
