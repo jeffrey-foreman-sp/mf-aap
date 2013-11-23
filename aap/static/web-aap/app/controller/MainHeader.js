@@ -22,7 +22,7 @@ Ext.define('Aap.controller.MainHeader', {
     },
     onEditButtonBeforeRender: function(button) {
         if (userid) {
-            Ext.getCmp('login').setText('Abmelden');
+            Ext.getCmp('login').setText('Abmelden ohne Daten speichern');
             var  editButton = Ext.ComponentQuery.query('mainheader button[action=toggleedit]')[0]
             editButton.setText('Bearbeiten');
             editButton.toggle(false);

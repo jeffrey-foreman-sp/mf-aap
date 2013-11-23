@@ -9,6 +9,7 @@ Ext.define('Aap.view.formfields.EChKateg', {
             'full'
         ],
         data: [
+            ['',   ''],
 			['A1', 'Basiskarten, Landschaftsmodelle'], 
 			['A2', 'Bodenbedekung, Bodennutzung'], 
 			['A3', 'Luft-, Satellitenbilder'], 
@@ -38,6 +39,7 @@ Ext.define('Aap.view.formfields.EChKateg', {
 			['T', 'Wirtschaftliche Aktivitäten'] 
 		]  
 	}),
+    editable: false,
 	valueField: 'abbr',
     displayField: 'full',
     triggerAction: 'all',

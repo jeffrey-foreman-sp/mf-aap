@@ -8,10 +8,12 @@ Ext.define('Aap.view.formfields.GeoRefDat', {
             'full'
         ],
         data: [
+            [''],
 			['Ja'], 
 			['Nein'] 
 		]  
 	}),
+    editable: false,
 	valueField: 'full',
 	displayField: 'full',
     triggerAction: 'all'
