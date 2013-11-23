@@ -1,9 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
     <title>AAP-Tools</title>
 
     <style type="text/css">
