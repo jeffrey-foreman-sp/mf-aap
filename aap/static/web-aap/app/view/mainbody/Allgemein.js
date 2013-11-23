@@ -41,6 +41,9 @@ Ext.define('Aap.view.mainbody.Allgemein',{
 		},{		
 			fieldLabel: 'Nachführungszeitraum',
 			name: 'nachfzeitr'
+        },{
+           fieldLabel: 'Nachführungsrhythmus',
+           name: 'nachfrhythm'
 		},{		
 			fieldLabel: 'Datenmenge (GB)',
 			name: 'datenmenge'
