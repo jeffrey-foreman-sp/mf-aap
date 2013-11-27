@@ -54,6 +54,7 @@ Ext.define('Aap.util.Data', {
                             jsonData: json,
                             success: function() {
                                   Ext.MessageBox.alert('Status', 'Datei wurden erfolgreich gespeichert.');
+                                  Ext.getCmp('login').setText('Abmelden');
                             },
                             failure: function() {
                                 Ext.MessageBox.show({

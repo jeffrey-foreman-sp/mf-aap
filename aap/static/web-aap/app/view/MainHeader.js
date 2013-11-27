@@ -36,6 +36,11 @@ Ext.define('Aap.view.MainHeader',{
 				margin: '0 20 0 0'
 			},
 			items: [
+                {  xtype: 'label',
+                   text: '',
+                   id: 'is_locked',
+                   hidden: true
+                },
 				{
 					xtype: 'button',
 					text: 'Bearbeiten',

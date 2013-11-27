@@ -14,7 +14,7 @@ Ext.define('Aap.view.modals.DataAdd', {
         this.items = [
             {
 				xtype: 'panel',
-				title: 'Metadatensatz Erstellen',
+				title: 'Metadatensatz erstellen',
 				id: 'metaerstellen',
 				layout: {
 					type: 'hbox',
@@ -34,7 +34,7 @@ Ext.define('Aap.view.modals.DataAdd', {
 					},
 					{
 						xtype: 'dataentryarchivwuerdigkeit',
-						title: 'Bewertung Archievwürdigkeit'
+						title: 'Bewertung Archivwürdigkeit'
 					}
 				]
     		}    

@@ -34,7 +34,7 @@ Ext.define('Aap.view.modals.DataEdit', {
 					},
 					{
 						xtype: 'dataentryarchivwuerdigkeit',
-						title: 'Bewertung Archievwürdigkeit'
+						title: 'Bewertung Archivwürdigkeit'
 					}
 				]
           }

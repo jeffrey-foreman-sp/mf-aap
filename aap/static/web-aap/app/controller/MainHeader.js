@@ -27,6 +27,37 @@ Ext.define('Aap.controller.MainHeader', {
             editButton.setText('Bearbeiten');
             editButton.toggle(false);
             editButton.show();
+            // enabling polling
+    	    var poll = new Ext.direct.PollingProvider({
+                 type: 'polling',
+                 id: 'is_locked-provider',
+                 url: function () {
+                     Ext.Ajax.request({
+                         url: '/is_locked',
+                         qualifier: 'Keep Alive',
+                         success: function (xhr) {
+                             var response = JSON.parse(xhr.responseText);
+                             var  editButton = Ext.ComponentQuery.query('mainheader button[action=toggleedit]')[0]
+                             if (userid !== undefined && response.username !== undefined && userid !== response.username) {
+                                 var lockedLabel = Ext.getCmp('is_locked')
+                                 lockedLabel.setText('Gesperrt durch: '  +response.username)
+                                 lockedLabel.show();
+                                 editButton.hide();
+                             } else {
+                                 var lockedLabel = Ext.getCmp('is_locked')
+                                 lockedLabel.setText('')
+                                 lockedLabel.hide();
+                                 editButton.show();
+                             }
+                         },
+                         failure: function () {
+                         }
+                     });
+                 },
+                 interval: 15000
+             });
+                     
+            Ext.Direct.addProvider(poll);
        }
 
     },
@@ -70,10 +101,10 @@ Ext.define('Aap.controller.MainHeader', {
                     if (!Aap.util.Data.editAapData()) {
                         return false;
                     }
-				
 					// toggle header button
 	  		  		button.setText('Bearbeiten abschliessen');
 					button.toggle(true);
+                    Ext.getCmp('login').setText('Abmelden ohne Daten speichern');
 				
 					// toggle tree buttons
 	   				Ext.getCmp('createbutton').show();

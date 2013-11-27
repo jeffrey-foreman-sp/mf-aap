@@ -101,7 +101,7 @@ Ext.define('Aap.util.Properties', {
 		chooseZugangsberech: function(inp){
 			var out = '';
 			switch (inp){
-				case 'A': out = 'öffentlich zugängliche Geobasisdataen'; break;
+				case 'A': out = 'öffentlich zugängliche Geobasisdaten'; break;
 				case 'B': out = 'beschränkt öffentlich zugängliche Geobasisdaten'; break;
 				case 'C': out = 'nicht öffentlich zugängliche Geobasisdatenicht'; break;
 			}	
@@ -117,9 +117,9 @@ Ext.define('Aap.util.Properties', {
 		chooseBewertung: function(inp){
 			var out = '';
 			switch (inp){
-				case 'N': out = 'nicht archievwürdig'; break;
+				case 'N': out = 'nicht archivwürdig'; break;
 				case 'S': out = 'Sampling / Selektion'; break;
-				case 'A': out = 'archievwürdig'; break;
+				case 'A': out = 'archivwürdig'; break;
 			}
 			return out;
 		},

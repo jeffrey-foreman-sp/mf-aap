@@ -8,6 +8,7 @@ Ext.define('Aap.view.formfields.BegrBa', {
             'full'
         ],
         data: [
+            [''],
 			['Nutzen für die Forschung'], 
 			['Zeitgenössisches Interesse'], 
 			['Brisanz'], 
@@ -15,6 +16,7 @@ Ext.define('Aap.view.formfields.BegrBa', {
 			['Definitionsmacht'] 
 		]  
 	}),
+    editable: false,
 	valueField: 'full',
     displayField: 'full',
     triggerAction: 'all'
