@@ -102,7 +102,7 @@ Ext.define('Aap.controller.MainHeader', {
                         return false;
                     }
 					// toggle header button
-	  		  		button.setText('Bearbeiten abschliessen');
+	  		  		button.setText('Bearbeitung  abschliessen<br>und Daten speichern');
 					button.toggle(true);
                     Ext.getCmp('login').setText('Abmelden ohne Daten speichern');
 				
