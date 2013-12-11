@@ -4,10 +4,9 @@
 
 
 <script>
-var loc = window.location;
-if (loc.protocol ==='http://'){
-        window.location.href = loc.replace('http://','https://');
-}
+/*if (window.location.protocol != 'https:') {
+          location.href = location.href.replace("http://", "https://");
+} */
 </script>
 
 

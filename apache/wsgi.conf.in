@@ -26,6 +26,9 @@ AddOutputFilterByType DEFLATE text/html text/plain text/xml
 # http://code.google.com/p/modwsgi/wiki/FrequentlyAskedQuestions#Access_Control_Mechanisms
 WSGIPassAuthorization On
 
+# Forcing HTTPS (ELB!)
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^/(.*) https://%{HTTP_HOST}/$1 [L,R]
 
 # Export redirect
 RewriteRule ^${vars:apache-entry-point}export  ${vars:export_doc} [R,L]
