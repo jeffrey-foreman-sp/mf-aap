@@ -45,7 +45,7 @@ def main(global_config, **settings):
     #config.add_view(home, route_name='home')
     config.add_route('view_data', '/data')
     config.add_route('edit_data', '/data/edit')
-    config.add_route('export_data', '/export')
+    config.add_route('export_data', '/data/export')
 
     config.add_route('authorized', '/authorized')
     #config.add_view(authorized, route_name='authorized')
