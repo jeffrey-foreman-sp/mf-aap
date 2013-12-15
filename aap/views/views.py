@@ -229,25 +229,36 @@ def home(request):
                               {'userid':userid, 'debug': debug},
                               request=request)
 
-def _flatten(res, structure, path="", flattened=None):
-    attribs = ['name', 'id','parentId', 'erfass','bemerk','arch_zs_bewe_text','arch_ws_bewe_text']
+def _flatten(res,structure, path="", flattened=None):
+
+    attribs = ['name', 'id','parentId', 'erfass','bemerk', 'leaf', 'metanode', 'inherited']
     if flattened is None:
         flattened = {}
     if type(structure) not in(dict,list):
         flattened['path'] = path
+        flattened['level'] = str(len(path.split('/')))
         res.append(flattened)
+
 
     elif isinstance(structure, list):
         for i, item in enumerate(structure):
             _flatten(res,item, path, flattened)
     else:
+       
         if 'name' in structure.keys():
             new_val = structure['name']
             filtered = dict(zip(attribs, [structure[k] for k in attribs]))
+            values = [x if x is not None else '' for x in filtered.values()]
+           
         if 'children' in structure.keys():
+            _flatten(res,'', path + "/" + new_val, filtered)
             _flatten(res,structure['children'], path + "/" + new_val, filtered)
         else:
+
+            if 'leaf' in filtered.keys():
+                filtered['leaf'] = True
             _flatten(res,'', path + "/" + new_val, filtered)
 
     return flattened
+        
 
