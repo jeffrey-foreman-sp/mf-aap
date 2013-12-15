@@ -27,12 +27,15 @@ AddOutputFilterByType DEFLATE text/html text/plain text/xml
 WSGIPassAuthorization On
 
 
+# Export redirect
+RewriteRule ^${vars:apache-entry-point}export  ${vars:export_doc} [R,L]
 # Auth
 RewriteRule ^${vars:apache-entry-point}auth/(.*)$ /${vars:instanceid}/wsgi/auth/$1 [PT]
 # Others
 RewriteRule ^${vars:apache-entry-point}(.*)$ /${vars:instanceid}/wsgi/$1 [PT] 
 # Main entry
 RewriteRule ^${vars:apache-entry-point}$ /${vars:instanceid}/wsgi/ [PT]
+
 
 # define a process group
 # WSGIDaemonProcess must be commented/removed when running the project on windows
