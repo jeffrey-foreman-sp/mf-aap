@@ -27,6 +27,9 @@ Ext.define('Aap.controller.MainBody', {
 			},
 			'dataremove button[action=confirm]': {
 				click: this.doDataRemove
+			},
+			'mainbody button[action=export]': {
+                click: this.onExport
 			}
 		});
 	}, 
@@ -58,6 +61,14 @@ Ext.define('Aap.controller.MainBody', {
 		Ext.getCmp('treestructure').getSelectionModel().select(rn);
 	},
 
+    onExport: function() {
+        Ext.Msg.alert('Export', 'Sie werden Daten exportieren!', function(btn, text){
+            if (btn == 'ok'){
+                var redirect = '/export';
+                window.open(redirect,'export','_blank');
+            }
+        });
+    },
 
 	// ******************************************************************************
 	// open the "add node" window if a node is selected

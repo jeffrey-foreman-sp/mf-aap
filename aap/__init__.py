@@ -2,6 +2,7 @@ from pyramid.authentication import SessionAuthenticationPolicy
 from pyramid.authorization import ACLAuthorizationPolicy
 from pyramid_beaker import session_factory_from_settings
 from pyramid.config import Configurator
+from pyramid.renderers import JSONP
 
 from aap.lib.helpers import parse_credentials
 
@@ -37,12 +38,14 @@ def main(global_config, **settings):
     )
 
 
-        
+    config.add_renderer('jsonp', JSONP(param_name='callback', indent=4))
+    
     config.add_route('home', '/')
     config.add_route('hello', '/hello')
     #config.add_view(home, route_name='home')
     config.add_route('view_data', '/data')
     config.add_route('edit_data', '/data/edit')
+    config.add_route('export_data', '/data/export')
 
     config.add_route('authorized', '/authorized')
     #config.add_view(authorized, route_name='authorized')

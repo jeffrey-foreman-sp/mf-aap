@@ -28,6 +28,8 @@ import json
 from aap.models import (User, S3Storage,Lock,)
 
 
+
+
 @view_config(route_name='hello')
 def hello(request):
     logged_in = authenticated_userid(request)
@@ -116,7 +118,7 @@ def auth(request):
 def forbidden(request):
     return Response('forbidden')
 
-@view_config(route_name='view_data', request_method='GET', renderer='json')
+@view_config(route_name='view_data', request_method='GET', renderer='jsonp')
 def view_data(request):
 
     s3 = S3Storage(keyname=request.registry.settings['data_js'],
@@ -126,6 +128,25 @@ def view_data(request):
     except:
         return HTTPBadGateway('Cannot connect or get data from backend')
     return {"result": json.loads(content)}
+
+@view_config(route_name='export_data', renderer='jsonp')
+def export_data(request):
+
+    
+
+    s3 = S3Storage(keyname=request.registry.settings['data_js'],
+                   bucketname=request.registry.settings['bucket'])
+    try:
+        content = s3.read()
+
+    except:
+        return HTTPBadGateway('Cannot connect or get data from backend')
+
+    js = json.loads(content)
+    #js = js['result']
+    res = []
+    _flatten(res,js)
+    return {"data":res, "length": len(res)}
     
 
 # FIXME This is ugly, depending if the user is logged or not, this method
@@ -207,4 +228,37 @@ def home(request):
     return render_to_response('aap:templates/home.mako',
                               {'userid':userid, 'debug': debug},
                               request=request)
+
+def _flatten(res,structure, path="", flattened=None):
+
+    attribs = ['name', 'id','parentId', 'erfass','bemerk', 'leaf', 'metanode', 'inherited']
+    if flattened is None:
+        flattened = {}
+    if type(structure) not in(dict,list):
+        flattened['path'] = path
+        flattened['level'] = str(len(path.split('/')))
+        res.append(flattened)
+
+
+    elif isinstance(structure, list):
+        for i, item in enumerate(structure):
+            _flatten(res,item, path, flattened)
+    else:
+       
+        if 'name' in structure.keys():
+            new_val = structure['name']
+            filtered = dict(zip(attribs, [structure[k] for k in attribs]))
+            values = [x if x is not None else '' for x in filtered.values()]
+           
+        if 'children' in structure.keys():
+            _flatten(res,'', path + "/" + new_val, filtered)
+            _flatten(res,structure['children'], path + "/" + new_val, filtered)
+        else:
+
+            if 'leaf' in filtered.keys():
+                filtered['leaf'] = True
+            _flatten(res,'', path + "/" + new_val, filtered)
+
+    return flattened
+        
 
