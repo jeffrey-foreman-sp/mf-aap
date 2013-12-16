@@ -27,7 +27,7 @@ Ext.define('Aap.view.mainbody.Tree' ,{
 		},
 		{
         	xtype: 'booleancolumn', 
-            header: 'Vererbungsknoten',
+            header: 'Bewertungsknoten:',
             text: '  ',
             trueText: 'Ja',
             falseText: '', 

@@ -3,7 +3,11 @@
 <%inherit file="base.mako"/>
 
 
-
+<script>
+/*if (window.location.protocol != 'https:') {
+          location.href = location.href.replace("http://", "https://");
+} */
+</script>
 
 
 <link href="http://www.swisstopo.admin.ch/internet/swisstopo.ConfigFavicon.ico" type="image/x-icon" rel="Shortcut Icon">
