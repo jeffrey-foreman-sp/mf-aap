@@ -26,8 +26,7 @@ import json
 
 
 from aap.models import (User, S3Storage,Lock,)
-
-
+from aap.lib.helpers import json_to_csv
 
 
 @view_config(route_name='hello')
@@ -129,10 +128,10 @@ def view_data(request):
         return HTTPBadGateway('Cannot connect or get data from backend')
     return {"result": json.loads(content)}
 
-@view_config(route_name='export_data', renderer='jsonp')
+@view_config(route_name='export_data')
 def export_data(request):
-
     
+    export = []
 
     s3 = S3Storage(keyname=request.registry.settings['data_js'],
                    bucketname=request.registry.settings['bucket'])
@@ -142,11 +141,17 @@ def export_data(request):
     except:
         return HTTPBadGateway('Cannot connect or get data from backend')
 
-    js = json.loads(content)
-    #js = js['result']
-    res = []
-    _flatten(res,js)
-    return {"data":res, "length": len(res)}
+    try:
+        js = json.loads(content)
+        _flatten(export,js)
+
+        output = json_to_csv(export)
+    except:
+        return HTTPInternalServerError('Cannot export data')
+
+    return Response(body=output, status=200, content_disposition= 'attachment; filename=aaptool.csv',
+            content_type= 'text/csv')
+
     
 
 # FIXME This is ugly, depending if the user is logged or not, this method
@@ -232,11 +237,17 @@ def home(request):
 def _flatten(res,structure, path="", flattened=None):
 
     attribs = ['name', 'id','parentId', 'erfass','bemerk', 'leaf', 'metanode', 'inherited']
+    attribs = ['name', 'ident', 'metanode', 'georefdat', 'fachst', 'zugberech', 'zugberech_text', 'echkateg', 'echkateg_text', 'nachfzeitr', 'nachfrhythm', 'datenmenge', 'imjr', 'datenzuw', 'bemerk', 'verf_zs_aufb', 'verf_zs_begr', 'verf_ws_aufb', 'verf_ws_begr', 'verf_ws_inpu', 'verf_ents', 'verf_beme', 'arch_zs_bewe', 'arch_zs_bewe_text', 'arch_zs_begr', 'arch_ws_bewe', 'arch_ws_bewe_text', 'arch_ws_begr', 'arch_ws_inpu', 'arch_ba_bewe', 'arch_ba_bewe_text', 'arch_ba_begr', 'arch_arts', 'arch_ents', 'arch_ents_text', 'arch_beme', 'erfass', 'id', 'parentId', 'ident_prefix', 'ident_suffix', 'modif', 'inherited' ]
+
     if flattened is None:
         flattened = {}
     if type(structure) not in(dict,list):
-        flattened['path'] = path
-        flattened['level'] = str(len(path.split('/')))
+        path_arr = path.split('/')
+        if (len(path_arr) >= 2):
+            path_arr = path_arr[2:]
+        flattened['amt'] = path_arr[0]
+        flattened['path'] = "/".join(path_arr)
+        flattened['stufe'] = str(len(path_arr))
         res.append(flattened)
 
 
@@ -251,7 +262,7 @@ def _flatten(res,structure, path="", flattened=None):
             values = [x if x is not None else '' for x in filtered.values()]
            
         if 'children' in structure.keys():
-            _flatten(res,'', path + "/" + new_val, filtered)
+            #_flatten(res,'', path + "/" + new_val, filtered)
             _flatten(res,structure['children'], path + "/" + new_val, filtered)
         else:
 
