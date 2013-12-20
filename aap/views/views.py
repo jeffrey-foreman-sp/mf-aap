@@ -168,7 +168,7 @@ def edit_tree(request):
         s3 = S3Storage(keyname=keyname,
                    bucketname=request.registry.settings['bucket'])
         
-        lock_id = lock.acquire(keyname , duration=900, username=logged_in)
+        lock_id = lock.acquire(keyname , duration=60, username=logged_in)
         if lock_id:
             try:
                 content = s3.read()
@@ -196,12 +196,16 @@ def edit_tree(request):
     else:
         return HTTPBadRequest() 
        
-@view_config(route_name='is_locked', permission='post', renderer='json')
+#@view_config(route_name='is_locked', permission='post', renderer='json')
+@view_config(route_name='is_locked', renderer='json')
 def is_locked(request):
     keyname = request.registry.settings['data_js']
     lock = Lock()
-
-    return lock.is_locked(keyname)
+    item= lock.is_locked(keyname)
+    if item and item.has_key('timeout'):
+        import time
+        item.add_value('expire_date', time.strftime("%a, %d %b %Y %H:%M:%S +0000", time.localtime(float(item['timeout']))))
+    return item
 
 @view_config(route_name='unlock', permission='post')
 def unlock(request):
@@ -236,7 +240,6 @@ def home(request):
 
 def _flatten(res,structure, path="", flattened=None):
 
-    attribs = ['name', 'id','parentId', 'erfass','bemerk', 'leaf', 'metanode', 'inherited']
     attribs = ['name', 'ident', 'metanode', 'georefdat', 'fachst', 'zugberech', 'zugberech_text', 'echkateg', 'echkateg_text', 'nachfzeitr', 'nachfrhythm', 'datenmenge', 'imjr', 'datenzuw', 'bemerk', 'verf_zs_aufb', 'verf_zs_begr', 'verf_ws_aufb', 'verf_ws_begr', 'verf_ws_inpu', 'verf_ents', 'verf_beme', 'arch_zs_bewe', 'arch_zs_bewe_text', 'arch_zs_begr', 'arch_ws_bewe', 'arch_ws_bewe_text', 'arch_ws_begr', 'arch_ws_inpu', 'arch_ba_bewe', 'arch_ba_bewe_text', 'arch_ba_begr', 'arch_arts', 'arch_ents', 'arch_ents_text', 'arch_beme', 'erfass', 'id', 'parentId', 'ident_prefix', 'ident_suffix', 'modif', 'inherited' ]
 
     if flattened is None:

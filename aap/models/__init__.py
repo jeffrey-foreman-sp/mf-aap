@@ -55,21 +55,23 @@ class Lock(object):
     def acquire(self,id , duration=900, username=None):
         
         lockId = uuid.uuid4()
-        try:
-            # Create the lock if it doesn't exist
-            lockTimeout    = time.time() + duration
-            if self.db.put_attributes(self.domain, id, { 'timeout' : lockTimeout, 'lockId' : lockId,'username':username }, replace=False, expected_value=['lockId', False]):
-                log.debug("New lock - id: %s" % lockId)
-                return lockId
-        except boto.exception.SDBResponseError, e:
-            if e.status != 404 and e.status != 409:
-                raise e
+
         # Check for stale lock
         attribs = self.db.get_attributes(self.domain, id, consistent_read=True)
         if attribs.has_key('timeout') and float(attribs['timeout']) < time.time():
             log.debug("Lock on %s timed out - releasing" % id)
             # Lock has timeout
             self.release(id)  
+
+        try:
+            # Create the lock if it doesn't exist
+            lockTimeout  = time.time() + duration
+            if self.db.put_attributes(self.domain, id, { 'timeout' : lockTimeout, 'lockId' : lockId,'username':username }, replace=True, expected_value=['lockId', False]):
+                log.debug("New lock - id: %s" % lockId)
+                return lockId
+        except boto.exception.SDBResponseError, e:
+            if e.status != 404 and e.status != 409:
+                raise e
 
         return None
 
