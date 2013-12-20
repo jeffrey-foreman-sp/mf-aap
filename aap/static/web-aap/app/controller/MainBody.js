@@ -64,8 +64,8 @@ Ext.define('Aap.controller.MainBody', {
     onExport: function() {
         Ext.Msg.alert('Export', 'Sie werden Daten exportieren!', function(btn, text){
             if (btn == 'ok'){
-                var redirect = '/export';
-                window.open(redirect,'export','_blank');
+                var redirect = '/data/export';
+                window.location.href = redirect;
             }
         });
     },
