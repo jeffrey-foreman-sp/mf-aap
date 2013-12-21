@@ -14,15 +14,17 @@ Ext.define('Aap.controller.MainHeader', {
 		},	
 		'mainheader button[action=login]': {
            	// 	render: this.renderLoginButton,
-                //     	toggle: this.toggleLoginButton ,
-                    afterrender: this.onEditButtonBeforeRender,
+            //     	toggle: this.toggleLoginButton ,
+            afterrender: this.onEditButtonBeforeRender,
 		    click: this.onLoginButtonClick
 		}	
 	});
     },
     onEditButtonBeforeRender: function(button) {
         if (userid) {
-            Ext.getCmp('login').setText('Abmelden');
+            var loginButton = Ext.getCmp('login');
+            loginButton.setText('Abmelden');
+		    loginButton.pressed = true;
             var  editButton = Ext.ComponentQuery.query('mainheader button[action=toggleedit]')[0]
             editButton.setText('Bearbeiten');
             editButton.toggle(false);
@@ -132,7 +134,7 @@ Ext.define('Aap.controller.MainHeader', {
 	onLoginButtonClick: function() {
 		if (Ext.getCmp('login').pressed == true) {
 			//googleLogout();
-                        window.location.href='/logout';
+            window.location.href='/logout';
 			Ext.getCmp('login').setText('Abmelden');
             
 			var  editButton = Ext.ComponentQuery.query('mainheader button[action=toggleedit]')[0]
@@ -151,7 +153,7 @@ Ext.define('Aap.controller.MainHeader', {
 		}
 		else {
 			//checkAuth(handleAuthResult);
-                        window.location.href='/auth/google';
+            window.location.href='/auth/google';
 		}
 	}
 
