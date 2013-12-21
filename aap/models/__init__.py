@@ -49,7 +49,16 @@ class Lock(object):
                aws_secret_access_key=config.get('Credentials','aws_secret_key'))
        self.domain = self.db.create_domain('mf-aap')
 
+    def _release_stalled(self, id):
+        attribs = self.db.get_attributes(self.domain, id, consistent_read=True)
+        if attribs.has_key('timeout') and float(attribs['timeout']) < time.time():
+            log.debug("Lock on %s timed out - releasing" % id)
+            # Lock has timeout
+            self.release(id)  
+
     def is_locked(self,id):
+        self._release_stalled(id)
+
         return self.db.get_attributes(self.domain, id, consistent_read=True)
         
     def acquire(self,id , duration=900, username=None):
@@ -57,11 +66,7 @@ class Lock(object):
         lockId = uuid.uuid4()
 
         # Check for stale lock
-        attribs = self.db.get_attributes(self.domain, id, consistent_read=True)
-        if attribs.has_key('timeout') and float(attribs['timeout']) < time.time():
-            log.debug("Lock on %s timed out - releasing" % id)
-            # Lock has timeout
-            self.release(id)  
+        self._release_stalled(id)
 
         try:
             # Create the lock if it doesn't exist
