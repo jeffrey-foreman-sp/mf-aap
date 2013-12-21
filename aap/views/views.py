@@ -40,6 +40,14 @@ def hello(request):
     
 @view_config(route_name='logout')
 def logout(request):
+    # Release own lock
+    logged_in = authenticated_userid(request)
+    keyname = request.registry.settings['data_js']
+    lock = Lock()
+    item= lock.is_locked(keyname)
+    if item and item.has_key('username'):
+        if logged_in == item['username']:
+            res = lock.release(keyname)
     request.session.invalidate()
     request.session.flash(u'Logged out successfully.')
     headers = forget(request)
@@ -168,7 +176,7 @@ def edit_tree(request):
         s3 = S3Storage(keyname=keyname,
                    bucketname=request.registry.settings['bucket'])
         
-        lock_id = lock.acquire(keyname , duration=60, username=logged_in)
+        lock_id = lock.acquire(keyname , duration=900, username=logged_in)
         if lock_id:
             try:
                 content = s3.read()
@@ -204,7 +212,7 @@ def is_locked(request):
     item= lock.is_locked(keyname)
     if item and item.has_key('timeout'):
         import time
-        item.add_value('expire_date', time.strftime("%a, %d %b %Y %H:%M:%S +0000", time.localtime(float(item['timeout']))))
+        item.add_value('expire_date', time.strftime("%a, %d %b %Y %H:%M:%S +0100", time.localtime(float(item['timeout']))))
     return item
 
 @view_config(route_name='unlock', permission='post')
