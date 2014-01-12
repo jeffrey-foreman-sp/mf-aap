@@ -159,7 +159,6 @@ def export_data(request):
 
     return Response(body=output, status=200, content_disposition= 'attachment; filename=aaptool.csv',
             content_type= 'text/csv')
-
     
 
 # FIXME This is ugly, depending if the user is logged or not, this method
@@ -254,8 +253,12 @@ def _flatten(res,structure, path="", flattened=None):
         flattened = {}
     if type(structure) not in(dict,list):
         path_arr = path.split('/')
-        if (len(path_arr) >= 2):
+        
+        if (len(path_arr) > 2):
             path_arr = path_arr[2:]
+        else:
+            path_arr = [flattened['name']]
+         
         flattened['amt'] = path_arr[0]
         flattened['path'] = "/".join(path_arr)
         flattened['stufe'] = str(len(path_arr))
@@ -273,7 +276,7 @@ def _flatten(res,structure, path="", flattened=None):
             values = [x if x is not None else '' for x in filtered.values()]
            
         if 'children' in structure.keys():
-            #_flatten(res,'', path + "/" + new_val, filtered)
+            _flatten(res,'', path + "/" + new_val, filtered)
             _flatten(res,structure['children'], path + "/" + new_val, filtered)
         else:
 
