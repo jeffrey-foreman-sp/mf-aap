@@ -8,7 +8,7 @@ Ext.define('Aap.view.formfields.BegrBa', {
             'full'
         ],
         data: [
-            [''],
+            ['-'],
 			['Nutzen für die Forschung'], 
 			['Zeitgenössisches Interesse'], 
 			['Brisanz'], 

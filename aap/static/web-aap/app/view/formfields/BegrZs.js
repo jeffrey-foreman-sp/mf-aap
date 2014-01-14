@@ -8,7 +8,7 @@ Ext.define('Aap.view.formfields.BegrZs', {
             'full'
         ],
         data: [
-            [''],
+            ['-'],
 			['Rechtliche Relevanz'], 
 			['Gewährleistung der Rechtssicherheit'], 
 			['Nachweis der Geschäftspraxis'] 
