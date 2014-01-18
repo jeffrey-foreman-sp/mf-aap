@@ -89,7 +89,7 @@ Ext.define('Aap.controller.MainHeader', {
    			Ext.getCmp('createbutton').hide();
 			Ext.getCmp('editbutton').hide();
 			Ext.getCmp('removebutton').hide();
-			Ext.getCmp('exportbutton').show();
+			//Ext.getCmp('exportbutton').show();
 		
 			// unlock drag&drop
 			Ext.getCmp('treestructure').getView().getPlugin().dragZone.lock();
@@ -112,7 +112,7 @@ Ext.define('Aap.controller.MainHeader', {
 	   				Ext.getCmp('createbutton').show();
 					Ext.getCmp('editbutton').show();
 					Ext.getCmp('removebutton').show();
-					Ext.getCmp('exportbutton').hide();
+					//Ext.getCmp('exportbutton').hide();
 				
 					// unlock drag&drop
 					Ext.getCmp('treestructure').getView().getPlugin().dragZone.unlock();
