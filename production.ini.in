@@ -3,10 +3,10 @@ use = egg:aap
 
 pyramid.includes = pyramid_beaker
 
-#session.type = file
-#session.data_dir = ${buildout:directory}/data/sessions/data
-#session.lock_dir = ${buildout:directory}/data/sessions/lock
-session.type = memory
+session.type = file
+session.data_dir = /tmp/aap/data/sessions/data
+session.lock_dir = /tmp/aap/data/sessions/lock
+#session.type = memory
 session.key = aapkey
 session.secret = 2f597ecc390c4766b2da0d841dd4ab9c 
 session.cookie_on_exception = true
