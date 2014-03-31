@@ -209,9 +209,21 @@ def is_locked(request):
     keyname = request.registry.settings['data_js']
     lock = Lock()
     item= lock.is_locked(keyname)
-    if item and item.has_key('timeout'):
-        import time
-        item.add_value('expire_date', time.strftime("%a, %d %b %Y %H:%M:%S +0100", time.localtime(float(item['timeout']))))
+    
+    user_id = authenticated_userid(request)
+    if user_id is not None and 'username' in item.keys():
+        if item['username'] == user_id:
+            if item and item.has_key('timeout'):
+                import time
+                duration = request.registry.settings['data_js']
+                timeout = time.time() + duration
+                item['timeout'] = timeout
+                expire_date = time.strftime("%a, %d %b %Y %H:%M:%S +0100", time.localtime(float(item['timeout'])))
+                if 'expire_date' in item.keys():
+                    item['expire_date'] = expire_date
+                else:
+                    item.add_value('expire_date',expire_date)
+                item.save()
     return item
 
 @view_config(route_name='unlock', permission='post')

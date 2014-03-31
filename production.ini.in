@@ -19,6 +19,7 @@ data_js=${vars:stagging}/data.js
 authorized_users = ${buildout:directory}/users.txt
 bucket=mf-aap
 wsgi_path=/${vars:instanceid}/wsgi
+duration = 900
 
 [server:main]
 use = egg:pyramid#wsgiref
