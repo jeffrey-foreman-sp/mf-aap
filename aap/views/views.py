@@ -215,7 +215,7 @@ def is_locked(request):
         if item['username'] == user_id:
             if item and item.has_key('timeout'):
                 import time
-                duration = request.registry.settings['data_js']
+                duration = int(request.registry.settings['duration'])
                 timeout = time.time() + duration
                 item['timeout'] = timeout
                 expire_date = time.strftime("%a, %d %b %Y %H:%M:%S +0100", time.localtime(float(item['timeout'])))
