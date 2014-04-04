@@ -7,10 +7,11 @@ session.type = file
 session.data_dir = /tmp/aap/data/sessions/data
 session.lock_dir = /tmp/aap/data/sessions/lock
 #session.type = memory
-session.key = aapkey
+# HaProxy needs SRV
+session.key = SRV
 session.secret = 2f597ecc390c4766b2da0d841dd4ab9c 
 session.cookie_on_exception = true
-session.timeout = 3600
+session.timeout = 900
 session.cookie_expires = true
 
 boto_cfg = ${buildout:directory}/boto.cfg
