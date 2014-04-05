@@ -224,6 +224,10 @@ def is_locked(request):
                 else:
                     item.add_value('expire_date',expire_date)
                 item.save()
+    else:
+        if item and item.has_key('expire_date'):
+            del item['expire_date']
+
     return item
 
 @view_config(route_name='unlock', permission='post')
