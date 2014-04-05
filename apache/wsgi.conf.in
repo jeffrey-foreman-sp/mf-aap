@@ -16,7 +16,7 @@ ExpiresActive on
 Header set Access-Control-Allow-Origin "*"
 
 # Cookie
-Header set Set-Cookie "SRV=${hostname-digest}; path=${vars:apache-entry-point}"
+Header set Set-Cookie "SRV=${hostname-digest}; path=${vars:apache-entry-point}; max-age=900;"
 
 AddOutputFilterByType DEFLATE text/css
 AddOutputFilterByType DEFLATE application/x-javascript application/javascript application/json
