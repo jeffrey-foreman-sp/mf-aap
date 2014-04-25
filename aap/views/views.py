@@ -40,6 +40,14 @@ def hello(request):
     
 @view_config(route_name='logout')
 def logout(request):
+    # Release own lock
+    logged_in = authenticated_userid(request)
+    keyname = request.registry.settings['data_js']
+    lock = Lock()
+    item= lock.is_locked(keyname)
+    if item and item.has_key('username'):
+        if logged_in == item['username']:
+            res = lock.release(keyname)
     request.session.invalidate()
     request.session.flash(u'Logged out successfully.')
     headers = forget(request)
@@ -151,7 +159,6 @@ def export_data(request):
 
     return Response(body=output, status=200, content_disposition= 'attachment; filename=aaptool.csv',
             content_type= 'text/csv')
-
     
 
 # FIXME This is ugly, depending if the user is logged or not, this method
@@ -196,12 +203,32 @@ def edit_tree(request):
     else:
         return HTTPBadRequest() 
        
-@view_config(route_name='is_locked', permission='post', renderer='json')
+#@view_config(route_name='is_locked', permission='post', renderer='json')
+@view_config(route_name='is_locked', renderer='json')
 def is_locked(request):
     keyname = request.registry.settings['data_js']
     lock = Lock()
+    item= lock.is_locked(keyname)
+    
+    user_id = authenticated_userid(request)
+    if user_id is not None and 'username' in item.keys():
+        if item['username'] == user_id:
+            if item and item.has_key('timeout'):
+                import time
+                duration = int(request.registry.settings['duration'])
+                timeout = time.time() + duration
+                item['timeout'] = timeout
+                expire_date = time.strftime("%a, %d %b %Y %H:%M:%S +0100", time.localtime(float(item['timeout'])))
+                if 'expire_date' in item.keys():
+                    item['expire_date'] = expire_date
+                else:
+                    item.add_value('expire_date',expire_date)
+                item.save()
+    else:
+        if item and item.has_key('expire_date'):
+            del item['expire_date']
 
-    return lock.is_locked(keyname)
+    return item
 
 @view_config(route_name='unlock', permission='post')
 def unlock(request):
@@ -236,15 +263,18 @@ def home(request):
 
 def _flatten(res,structure, path="", flattened=None):
 
-    attribs = ['name', 'id','parentId', 'erfass','bemerk', 'leaf', 'metanode', 'inherited']
     attribs = ['name', 'ident', 'metanode', 'georefdat', 'fachst', 'zugberech', 'zugberech_text', 'echkateg', 'echkateg_text', 'nachfzeitr', 'nachfrhythm', 'datenmenge', 'imjr', 'datenzuw', 'bemerk', 'verf_zs_aufb', 'verf_zs_begr', 'verf_ws_aufb', 'verf_ws_begr', 'verf_ws_inpu', 'verf_ents', 'verf_beme', 'arch_zs_bewe', 'arch_zs_bewe_text', 'arch_zs_begr', 'arch_ws_bewe', 'arch_ws_bewe_text', 'arch_ws_begr', 'arch_ws_inpu', 'arch_ba_bewe', 'arch_ba_bewe_text', 'arch_ba_begr', 'arch_arts', 'arch_ents', 'arch_ents_text', 'arch_beme', 'erfass', 'id', 'parentId', 'ident_prefix', 'ident_suffix', 'modif', 'inherited' ]
 
     if flattened is None:
         flattened = {}
     if type(structure) not in(dict,list):
         path_arr = path.split('/')
-        if (len(path_arr) >= 2):
+        
+        if (len(path_arr) > 2):
             path_arr = path_arr[2:]
+        else:
+            path_arr = [flattened['name']]
+         
         flattened['amt'] = path_arr[0]
         flattened['path'] = "/".join(path_arr)
         flattened['stufe'] = str(len(path_arr))
@@ -262,7 +292,7 @@ def _flatten(res,structure, path="", flattened=None):
             values = [x if x is not None else '' for x in filtered.values()]
            
         if 'children' in structure.keys():
-            #_flatten(res,'', path + "/" + new_val, filtered)
+            _flatten(res,'', path + "/" + new_val, filtered)
             _flatten(res,structure['children'], path + "/" + new_val, filtered)
         else:
 

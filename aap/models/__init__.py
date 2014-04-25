@@ -49,27 +49,34 @@ class Lock(object):
                aws_secret_access_key=config.get('Credentials','aws_secret_key'))
        self.domain = self.db.create_domain('mf-aap')
 
-    def is_locked(self,id):
-        return self.db.get_attributes(self.domain, id, consistent_read=True)
-        
-    def acquire(self,id , duration=900, username=None):
-        
-        lockId = uuid.uuid4()
-        try:
-            # Create the lock if it doesn't exist
-            lockTimeout    = time.time() + duration
-            if self.db.put_attributes(self.domain, id, { 'timeout' : lockTimeout, 'lockId' : lockId,'username':username }, replace=False, expected_value=['lockId', False]):
-                log.debug("New lock - id: %s" % lockId)
-                return lockId
-        except boto.exception.SDBResponseError, e:
-            if e.status != 404 and e.status != 409:
-                raise e
-        # Check for stale lock
+    def _release_stalled(self, id):
         attribs = self.db.get_attributes(self.domain, id, consistent_read=True)
         if attribs.has_key('timeout') and float(attribs['timeout']) < time.time():
             log.debug("Lock on %s timed out - releasing" % id)
             # Lock has timeout
             self.release(id)  
+
+    def is_locked(self,id):
+        self._release_stalled(id)
+
+        return self.db.get_attributes(self.domain, id, consistent_read=True)
+        
+    def acquire(self,id , duration=900, username=None):
+        
+        lockId = uuid.uuid4()
+
+        # Check for stale lock
+        self._release_stalled(id)
+
+        try:
+            # Create the lock if it doesn't exist
+            lockTimeout  = time.time() + duration
+            if self.db.put_attributes(self.domain, id, { 'timeout' : lockTimeout, 'lockId' : lockId,'username':username }, replace=True, expected_value=['lockId', False]):
+                log.debug("New lock - id: %s" % lockId)
+                return lockId
+        except boto.exception.SDBResponseError, e:
+            if e.status != 404 and e.status != 409:
+                raise e
 
         return None
 

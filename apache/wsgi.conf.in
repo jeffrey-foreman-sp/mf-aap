@@ -15,6 +15,9 @@ ExpiresActive on
 # Enabling CORS
 Header set Access-Control-Allow-Origin "*"
 
+# Cookie
+Header set Set-Cookie "SRV=${hostname-digest}; path=${vars:apache-entry-point}; max-age=900;"
+
 AddOutputFilterByType DEFLATE text/css
 AddOutputFilterByType DEFLATE application/x-javascript application/javascript application/json
 AddOutputFilterByType DEFLATE text/html text/plain text/xml

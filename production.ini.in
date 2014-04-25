@@ -4,13 +4,19 @@ use = egg:aap
 pyramid.includes = pyramid_beaker
 
 #session.type = file
-#session.data_dir = ${buildout:directory}/data/sessions/data
-#session.lock_dir = ${buildout:directory}/data/sessions/lock
-session.type = memory
-session.key = aapkey
-session.secret = 2f597ecc390c4766b2da0d841dd4ab9c 
+#session.data_dir = /tmp/aap/data/sessions/data
+#session.lock_dir = /tmp/aap/data/sessions/lock
+session.secret = ${secret} 
 session.cookie_on_exception = true
-session.timeout = 3600
+session.timeout = 900
+# cookie stuff
+# HaProxy needs SRV
+session.key = aapkey
+session.type = cookie
+session.domain = .bgdi.ch
+session.path = /
+session.validate_key = aS527Q53dTQc9fE8nX3z6XhhPbdb3oEr
+session.encrypt_key = ${authtkt_secret}
 session.cookie_expires = true
 
 boto_cfg = ${buildout:directory}/boto.cfg
@@ -19,6 +25,7 @@ data_js=${vars:stagging}/data.js
 authorized_users = ${buildout:directory}/users.txt
 bucket=mf-aap
 wsgi_path=/${vars:instanceid}/wsgi
+duration = 900
 
 [server:main]
 use = egg:pyramid#wsgiref

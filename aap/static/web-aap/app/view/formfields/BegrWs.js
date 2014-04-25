@@ -8,7 +8,7 @@ Ext.define('Aap.view.formfields.BegrWs', {
             'full'
         ],
         data: [
-            [''],
+            ['-'],
 			['Rechtliche Relevanz'], 
 			['Nutzung durch die zuständige Stelle'], 
 			['Nutzung durch die Bundesverwaltung'], 

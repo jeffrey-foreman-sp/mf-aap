@@ -10,6 +10,7 @@ requires = [
     'pyramid',
     'pyramid_debugtoolbar',
     'pyramid_beaker',
+    'pycrypto',
     'google-api-python-client',
     'waitress',
     'boto',

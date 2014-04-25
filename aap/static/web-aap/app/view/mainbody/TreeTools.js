@@ -36,12 +36,12 @@ Ext.define('Aap.view.mainbody.TreeTools' ,{
 			id: 'removebutton',
 			hidden: true,	
 			text: 'Löschen'
-		},{
+		}/*{,
 			xtype: 'button',
 			action: 'export',
 			id: 'exportbutton',
 			text: 'Exportieren'
-		}
+		} */
 	]
 
 
