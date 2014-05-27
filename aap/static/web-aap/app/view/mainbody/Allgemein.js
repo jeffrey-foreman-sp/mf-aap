@@ -7,6 +7,7 @@ Ext.define('Aap.view.mainbody.Allgemein',{
 
 	bodyPadding: 10,
 	defaultType: 'displayfield',
+    autoScroll: true,
 	defaults: {
 		width: '100%',	
 		anchor: '100%',
